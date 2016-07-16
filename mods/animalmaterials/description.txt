@@ -1,0 +1,6 @@
+Animalmaterials contains resources to be used for mobs and animals
+
+Changes:
+
+0.0.1
+	-initial version

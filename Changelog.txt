@@ -1,0 +1,23 @@
+Version 0.3:
+------------
+- Fix dead tree generation
+- Digged nodes are dropped and need to be collected by pressing "USE"-Key (default E)
+- Fix some mapgen bugs and crashes
+- Fix wheat bug (digging)
+- Added zombies
+- Reduce stack sizes (depending on context between 20 and 60)
+- Added beds (currently no way to get wool for crafting)
+- Chests in ruins (and coffins) cant be opened anymore (items are dropped when cracked)
+- New formspec background
+- Many, many smaller fixes and tweaks
+
+
+Version 0.5 BETA:
+-----------------
+- Added mineralsand back (an restored original wasteland's sand texture)
+- Made torches 3D
+- Reduced water range
+- Updated hud and hunger
+- Removed remains of bronze (by andersje)
+- A lot of cleanup (code, textures)
+- Relicensed to GPL 3.0

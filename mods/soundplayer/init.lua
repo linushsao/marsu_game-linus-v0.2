@@ -1,0 +1,1 @@
+--minetest.sound_play( {name="hall", gain=1.0} )

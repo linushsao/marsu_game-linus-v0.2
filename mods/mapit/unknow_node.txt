@@ -1,0 +1,11 @@
+Unknown nodes:
+bitchange:mineninth_in_ground
+coffin:coffin
+coffin:gravestone
+default:dead_tree
+default:dry_dirt
+default:hardened_clay
+default:mineralsand
+default:torch_floor
+default:torch_wall
+ruins:chest

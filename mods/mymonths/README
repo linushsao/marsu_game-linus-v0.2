@@ -1,0 +1,55 @@
+Mod is by Don and Nathan
+
+Mymonths is licenced as DWYWPL
+
+Fall leaf textures are modified from original default textures by Cisoun (WTFPL) and Paramat. (CC BY-SA 3.0)
+The rain and snow code comes from the weather mod
+from topic - https://forum.minetest.net/viewtopic.php?t=5245
+by Jeija
+
+- Code: LGPL
+- Textures:
+  - Snow cover: WTFPL
+  - Rain / Snow: CC-BY-SA 3.0, credit goes to TeddyDesTodes, from his weather branch at https://github.com/TeddyDesTodes/minetest/tree/weather
+- Sound Effects:
+  - mymonths_rain & mymonths_rain1: CC0 by Q.K.
+  
+This mod adds months, weeks and days to Minetest.
+A Minetest year has 12 months with 2 weeks per month. Each week has 7 days. 
+
+The weather is depended on the time of year. If it is winter then it will snow spring has rain etc. 
+Leaves turn color in the fall and the the tree will have no leaves or apples through the winter. 
+The leaves grow back in the spring and the apples later in the year.
+Acacia trees will bloom in January
+
+The desert and savannah biomes do not get rain or snow but do have sand storms.
+The snow biomes do not get rain.
+
+The trees in these biomes do not loose their leaves. 
+
+
+Each morning at 6am a chat message will say the date. If the day is a holiday it will show in chat with the morning date.
+
+If you are caught in a storm you will need to seek shelter. Rain or snow does nothingbut if you are in a storm, snowstorm, 
+sandstorm or hail you will recieve damage. You need to cover yourself so you do not recieve damage.
+
+
+Chat Commands
+
+You need the priv mymonths to set mymonth things. You do not need it to check the weather.
+
+/setweather rain,storm,snow,snowstorm,sandstorm,hail
+
+/setmonth - can be either 1-12,January-December,january-december or jan-dec
+
+/setday 1-14
+
+No priv needed for these commands
+
+/weather - tell you what the weather is
+
+/date - tells you what the time and date is
+
+/holidays - gives a list of holidays. These are Minetest holidays made up by me. I will not add real holidays.
+
+Holidays were added to give players a bit of fun.
