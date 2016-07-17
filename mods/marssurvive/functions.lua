@@ -130,7 +130,7 @@ minetest.register_globalstep(function(dtime)
 							local c=a:get_stack("main", i):get_count()-1
 							a:set_stack("main", i,ItemStack({name="marssurvive:air_gassbotte",count=c}))
 							a:set_stack("main", 1,ItemStack({name="marssurvive:sp",wear=0}))
-							minetest.sound_play("marssurvive_pff", {pos=pos, gain = 1, max_hear_distance = 8,}) 
+							minetest.sound_play("marssurvive_pff", {pos=pos, gain = 1, max_hear_distance = 8,})
 							have_more=1
 							if c<4 and c>1 then minetest.chat_send_player(player:get_player_name(), "Warning: You have air gassbottes left: " .. c) end
 							if c==0 then minetest.chat_send_player(player:get_player_name(), "Warning: You have none gassbottes!") end
