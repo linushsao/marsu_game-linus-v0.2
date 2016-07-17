@@ -17,7 +17,7 @@ economy.itemprices_pr={
 	["default:mese_crystal_fragment"]=200,
 	["marssurvive:air_gassbotte"]=50,
 	["marssurvive:oxogen"]=20,
-	["marssurvive:clayblock"]=10,
+	["default:clay_lamp"]=10,
 
 }
 economy.mobkillrewards={
