@@ -116,7 +116,7 @@ local npc_trader_prototype = {
 
 		generic = {
 					description= S("Trader"),
-					base_health=200,
+					base_health=2000,
 					kill_result="",
 					armor_groups= {fleshy=60,},
 					groups = {npc_groups,immortal},
