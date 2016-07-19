@@ -8,6 +8,7 @@ economy.itemprices_pr={
 	["bucket:bucket_empty"]=120,
 	["default:iron_lump"]=50,
 	["default:copper_lump"]=100,
+	["technic:zinc_lump"]=150,
 --	["moreores:silver_block"]=300,
 --	["technic:brass_block"]=100,
 	["default:gold_lump"]=300,
