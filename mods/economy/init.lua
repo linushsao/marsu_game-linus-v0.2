@@ -9,7 +9,6 @@ economy.itemprices_pr={
 	["default:clay_lump"]=10,
 	["farming:bread"]=5,
 	["default:apple"]=5,
-	["bags:small"]=15,
 	["animalmaterials:fur"]=10,
 	["mobs:leather"]=10,
 	["animalmaterials:fur_deer"]=10,
