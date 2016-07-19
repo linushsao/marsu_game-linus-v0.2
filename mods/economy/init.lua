@@ -7,16 +7,12 @@ economy.itemprices_pr={
 	["currency:minegeld"]=1,
 	["marssurvive:oxogen"]=20,
 	["default:clay_lump"]=10,
-	["marssurvive:airgen5"]=75,
-	["marssurvive:air_gassbotte"]=80,
-	["marssurvive:sp"]=150,
 	["farming:bread"]=5,
 	["default:apple"]=5,
-	["currency:shop"]=150,
 	["bags:small"]=15,
 	["animalmaterials:fur"]=10,
 	["mobs:leather"]=10,
-	["animalmaterials:fur"]=10,
+	["animalmaterials:fur_deer"]=10,
 	["bucket:bucket_empty"]=120,
 
 }
