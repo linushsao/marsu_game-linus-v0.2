@@ -327,7 +327,7 @@ minetest.register_node("marssurvive:cobble", {
 })
 
 minetest.register_node("marssurvive:ice", {
-	description = "Ice",
+	description = "Mars Ice",
 	tiles = {"default_ice.png^[colorize:#ffffff99"},
 	is_ground_content = false,
 	paramtype = "light",

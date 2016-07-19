@@ -15,12 +15,14 @@ minetest.register_craft({
 	}
 })
 
+--[[
 minetest.register_craft({
 	output = "default:water_source",
 	recipe = {
 		{"marssurvive:ice","",""},
 	}
 })
+--]]
 
 minetest.register_craft({
 	output = "marssurvive:door1_closed",

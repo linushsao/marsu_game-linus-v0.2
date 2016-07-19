@@ -115,6 +115,12 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	type = "cooking",
+	output = "default:water_source",
+	recipe = "caverealms:thin_ice",
+})
+
+minetest.register_craft({
 	output = 'default:furnace',
 	recipe = {
 		{'group:cobble', 'group:cobble', 'group:cobble'},
