@@ -193,32 +193,20 @@ local npc_trader_prototype = {
 		},
 		trader_inventory = {
 				goods = {
---          { "protector:protect 1","","bitchange:minecoin 1"},
-          { "currency:shop 1", "", "bitchange:minecoin 10"},
-          { "bags:small 1", "", "bitchange:minecoin 1"},
-          { "mapit:maptool 1", "", "bitchange:minecoin 5"},
-          { "animalmaterials:fur 1", "", "bitchange:mineninth 2"},
-          { "mobs:leather 1", "", "bitchange:mineninth 3"},
-          { "animalmaterials:fur_deer 1", "", "bitchange:mineninth 4"},
---          { "default:mese_crystal 1", "", "bitchange:minecoin 10"},
+          { "default:mese_crystal 1", "", "bitchange:minecoin 6"},
+          { "default:iron_lump 1","","bitchange:minecoin 4"},
+          { "default:copper_lump 1","","bitchange:minecoin 7"},
+          { "technic:zinc_lump 1","","bitchange:minecoin 4"},
+          { "default:gold_lump 1","","bitchange:minecoin 20"},
+          { "default:diamond 1","","bitchange:minecoin 35"},
+          { "default:mese_crystal_fragment 1","","bitchange:minecoin 7"},
+--          { "mapit:maptool 1", "", "bitchange:minecoin 5"},
           { "default:chest_locked 1", "", "bitchange:minecoin 2"},
---          { "gemalde:node_1 1","","bitchange:minecoin 1"},
---          { "default:obsidian 1","","bitchange:minecoin 3"},
---          { "farming:cotton 5","animalmaterials:fur 2","bitchange:mineninth 4"},
---          { "default:torch 2","","bitchange:mineninth 2"},
-          { "default:apple 5","","bitchange:mineninth 2"},
-          { "farming:bread 3","","bitchange:mineninth 5"},
---          { "fishing:pole 1","","bitchange:minecoin 10"},
---      	  { "fishing:bait_worm 5","","bitchange:mineninth 2"},
---          { "xdecor:crafting_guide 1","","bitchange:minecoin 10"},
-          { "marssurvive:sp 1","","bitchange:minecoin 10"},
-          { "marssurvive:air_gassbotte 1","","bitchange:minecoin 6"},
-          { "marssurvive:airgen5 1","","bitchange:minecoin 5"},
           { "xdecor:crafting_guide 1","","bitchange:minecoin 10"},
 
---        { "animalmaterials:egg 3","","bitchange:mineninth 1"},
---          { "farming:bread 1","","bitchange:mineninth 1"},
---          { "mobs:meat_raw 1","","bitchange:mineninth 1"},
+
+
+
 						},
 				random_names = { "Iron Man","Android","Xaver","Fritz","Thomas","Martin"},
 			}
