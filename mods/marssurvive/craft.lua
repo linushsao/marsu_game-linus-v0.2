@@ -131,3 +131,65 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "marssurvive:wood 3",
 	recipe = {{"marssurvive:tree","",""}}})
+
+minetest.register_craft({
+	output = "marssurvive:airgen5",
+	recipe = {
+		{"technic:battery","marssurvive:airgen4"},
+	}
+})
+
+minetest.register_craft({
+	output = "marssurvive:airgen4",
+	recipe = {
+		{"technic:battery","marssurvive:airgen3"},
+	}
+})
+
+minetest.register_craft({
+	output = "marssurvive:airgen3",
+	recipe = {
+		{"technic:battery","marssurvive:airgen2"},
+	}
+})
+
+minetest.register_craft({
+	output = "marssurvive:airgen2",
+	recipe = {
+		{"technic:battery","marssurvive:airgen1"},
+	}
+})
+
+minetest.register_craft({
+	output = "marssurvive:airgen1",
+	recipe = {
+		{"technic:battery","marssurvive:airgen0"},
+	}
+})
+
+minetest.register_craft({
+	output = "marssurvive:batteryblock",
+	recipe = {
+		{"technic:battery","technic:battery","technic:battery"},
+		{"technic:battery","technic:battery","technic:battery"},
+		{"technic:battery","technic:battery","technic:battery"},
+	}
+})
+
+minetest.register_craft({
+	output = "marssurvive:unlimitedbatteryblock",
+	recipe = {
+		{"marssurvive:batteryblock","marssurvive:batteryblock","marssurvive:batteryblock"},
+		{"marssurvive:batteryblock","marssurvive:batteryblock","marssurvive:batteryblock"},
+		{"marssurvive:batteryblock","marssurvive:batteryblock","marssurvive:batteryblock"},
+	}
+})
+
+minetest.register_craft({
+	output = "marssurvive:airgen_unlimited",
+	recipe = {
+		{"marssurvive:unlimitedbatteryblock","marssurvive:unlimitedbatteryblock","marssurvive:unlimitedbatteryblock"},
+		{"marssurvive:unlimitedbatteryblock","marssurvive:airgen5","marssurvive:unlimitedbatteryblock"},
+		{"marssurvive:unlimitedbatteryblock","marssurvive:unlimitedbatteryblock","marssurvive:unlimitedbatteryblock"},
+	}
+})

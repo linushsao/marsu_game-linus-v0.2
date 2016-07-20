@@ -645,3 +645,69 @@ minetest.register_node("marssurvive:ujeore", {
 	groups = {cracky = 1},
 	sounds = default.node_sound_stone_defaults(),
 })
+
+minetest.register_node("marssurvive:airgen_unlimited", {
+	description = "Unlimited Air Generator",
+	tiles = {"marssurvive_shieldblock.png^default_obsidian_glass.png","marssurvive_gen_public.png"},
+	groups = {dig_immediate=3,not_in_creative_inventory=airgen_tmpn},
+	sounds = default.node_sound_stone_defaults(),
+on_construct = function(pos)
+		minetest.get_meta(pos):set_string("infotext", "Unlimited Air Generator")
+	end,
+on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+		if true then
+			local ch={xp=1,xm=1,yp=1,ym=1,zp=1,zm=1, ypxz=1,ypz=1,ypx=1,ypmxz=1, ymxz=1,ymz=1,ymx=1,ymmxz=1,all=14}
+			for ii=1,marssurvive.air-2,1 do
+				if ch.xp==1 and minetest.get_node({x=pos.x+ii,y=pos.y,z=pos.z}).name~="air" then ch.xp=0 ch.all=ch.all-1 end
+				if ch.xm==1 and minetest.get_node({x=pos.x-ii,y=pos.y,z=pos.z}).name~="air" then ch.xm=0 ch.all=ch.all-1 end
+				if ch.zp==1 and minetest.get_node({x=pos.x,y=pos.y,z=pos.z+ii}).name~="air" then ch.zp=0 ch.all=ch.all-1 end
+				if ch.zm==1 and minetest.get_node({x=pos.x,y=pos.y,z=pos.z-ii}).name~="air" then ch.zm=0 ch.all=ch.all-1 end
+
+				if ch.yp==1 and minetest.get_node({x=pos.x,y=pos.y+ii,z=pos.z}).name~="air" then ch.yp=0 ch.all=ch.all-1 end
+				if ch.ym==1 and minetest.get_node({x=pos.x,y=pos.y-ii,z=pos.z}).name~="air" then ch.ym=0 ch.all=ch.all-1 end
+
+				if ch.ypxz==1 and minetest.get_node({x=pos.x+ii,y=pos.y+ii,z=pos.z+ii}).name~="air" then ch.ypxz=0 ch.all=ch.all-1 end
+				if ch.ypz==1 and minetest.get_node({x=pos.x-ii,y=pos.y+ii,z=pos.z+ii}).name~="air" then ch.ypz=0 ch.all=ch.all-1 end
+				if ch.ypx==1 and minetest.get_node({x=pos.x+ii,y=pos.y+ii,z=pos.z-ii}).name~="air" then ch.ypx=0 ch.all=ch.all-1 end
+				if ch.ypmxz==1 and minetest.get_node({x=pos.x-ii,y=pos.y+ii,z=pos.z-ii}).name~="air" then ch.ypmxz=0 ch.all=ch.all-1 end
+
+				if ch.ymxz==1 and minetest.get_node({x=pos.x+ii,y=pos.y-ii,z=pos.z+ii}).name~="air" then ch.ymxz=0 ch.all=ch.all-1 end
+				if ch.ymz==1 and minetest.get_node({x=pos.x-ii,y=pos.y-ii,z=pos.z+ii}).name~="air" then ch.ymz=0 ch.all=ch.all-1 end
+				if ch.ymx==1 and minetest.get_node({x=pos.x+ii,y=pos.y-ii,z=pos.z-ii}).name~="air" then ch.ymx=0 ch.all=ch.all-1 end
+				if ch.ymmxz==1 and minetest.get_node({x=pos.x-ii,y=pos.y-ii,z=pos.z-ii}).name~="air" then ch.ymmxz=0 ch.all=ch.all-1 end
+				if ch.all==0 then break end
+			end
+				if ch.all>0 then
+					minetest.get_meta(pos):set_string("infotext", "Unlimited Air Generator [This area is too big (max " .. marssurvive.air-1 .. ") you have to rebuild]")
+					return
+				end
+			local done=0
+			for ii=1,17,1 do
+				minetest.get_meta(pos):set_int("prl",0)
+				local np=minetest.find_node_near(pos,1,{"air"})
+				if np~=nil then
+					minetest.set_node(np, {name = "marssurvive:air"})
+					minetest.get_meta(np):set_int("prl",1)
+					done=1
+				else
+					break
+				end
+			end
+			if done==1 then
+--				minetest.swap_node(pos, {name = "marssurvive:airgen" .. (i-1)})
+--				minetest.get_meta(pos):set_string("infotext", "Air Generator " .. (i-1)*20 .."% power")
+				minetest.sound_play("marssurvive_pff", {pos=pos, gain = 1, max_hear_distance = 8,})
+			end
+		end
+	end,
+})
+
+minetest.register_craftitem("marssurvive:batteryblock", {
+	description = "Battery Block",
+	inventory_image = "marssurvive_batteryblock.png",
+})
+
+minetest.register_craftitem("marssurvive:unlimitedbatteryblock", {
+	description = "Unlimited Battery Block",
+	inventory_image = "marssurvive_unlimitedbatteryblock.png",
+})
