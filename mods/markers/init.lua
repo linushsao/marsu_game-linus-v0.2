@@ -18,7 +18,7 @@ markers.EXPIRE_AFTER = 60*60*24;
 markers.MAX_HEIGHT   = 100;
 
 -- only areas up to this size (in square meters) can be protected
-markers.MAX_SIZE     = 1024; -- 32m * 32m = 1024 m^2
+markers.MAX_SIZE     = 40000; -- 32m * 32m = 1024 m^2
 
 
 dofile(minetest.get_modpath("markers").."/areas.lua");
