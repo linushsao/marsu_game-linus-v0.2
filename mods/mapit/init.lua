@@ -81,7 +81,7 @@ local updateMap = function(forceUpdate)
 			lastUpdateTime = tonumber(lUT)
 		else
 			fileStr = fileStr.. curLine
-		end
+		end		
 --        	print (line)
         end
 
@@ -95,7 +95,7 @@ local updateMap = function(forceUpdate)
 --	local lfs = require "lfs"
 		local lastUpdateTime = lfs.attributes( mapFilePName ).modification
 	end
-
+	
 	if (lastUpdateTime < os.time()-updateInterval) or forceUpdate then
 		fileStr = fileStr.. worldName.. " = ".. os.time().. "\r\n"
 		fh:close()
@@ -104,7 +104,7 @@ local updateMap = function(forceUpdate)
 		local osx = "python \"".. curModPath.. "/".. "minetestmapper-numpy.py\" --pixelspernode 1 --drawscale \"".. worldPath.. "\" \"".. mapFilePName.. "\""
 		os.execute(osx)
 		print("mapit: Updated map for ".. worldName)
-
+	
 		fh = io.open(mapitHistoryPName, "w")
 		fh:write(fileStr)
 	else
@@ -151,9 +151,7 @@ minetest.register_node('mapit:teleportWaypoint', {
 
 minetest.register_tool("mapit:maptool", {
 	description = "Map Tool",
---	inventory_image = string.gsub(string.gsub(minetest.get_worldpath(), "(.*worlds.)(.*)", "%2"),"%s+", "_")..".png",
-  inventory_image = "map.png",
-
+	inventory_image = string.gsub(string.gsub(minetest.get_worldpath(), "(.*worlds.)(.*)", "%2"),"%s+", "_")..".png",
 	on_use = function(itemstack, user, pointed_thing)
 	map_handler_maptool(itemstack,user,pointed_thing)
 	end,
@@ -196,7 +194,7 @@ function generateMapStrings()
 		yaw = math.deg(yaw)
 		yaw = math.fmod (yaw, 360)
 		if yaw<0 then yaw = 360 + yaw end
-		if yaw>360 then yaw = yaw - 360 end
+		if yaw>360 then yaw = yaw - 360 end           
 		if yaw < 90 then
 			rotate = 90
 		elseif yaw < 180 then
@@ -258,7 +256,7 @@ function generateMapStrings()
 	local lBorderFu =wMapFu * lBorderPp
 	local tBorderFu = hMapFu * tBorderPp
 
-
+	
 	-- SCALE AND LOCATE ARROW
 	local arrowSizeFuZ=0.4
 	local arrowSizeFuX=0.4		--*aspectRatio
@@ -281,10 +279,10 @@ function generateMapStrings()
 
 --		button[X,Y;W,H;name;label]
 	local buttons = ""
---	buttons = buttons.."button["..(wFormFu-0.8)..",0;0.8,0.8;zoomIn;z+]"
---	buttons = buttons.."button["..(wFormFu-0.8)..",1;0.8,0.8;zoomOut;z-]"
---	buttons = buttons.."button["..(wFormFu-0.8)..",2;0.8,0.8;updateMap;reMap]"
---	buttons = buttons.."image_button["..(wFormFu-0.8)..",3;0.8,0.8;logo.png;teleport;T]"
+	buttons = buttons.."button["..(wFormFu-0.8)..",0;0.8,0.8;zoomIn;z+]"
+	buttons = buttons.."button["..(wFormFu-0.8)..",1;0.8,0.8;zoomOut;z-]"
+	buttons = buttons.."button["..(wFormFu-0.8)..",2;0.8,0.8;updateMap;reMap]"
+	buttons = buttons.."image_button["..(wFormFu-0.8)..",3;0.8,0.8;logo.png;teleport;T]"
 	if minetest.get_modpath("travelpoints") then
 		buttons = buttons.."image_button["..(wFormFu-0.8)..",4;0.8,0.8;teleport.png;TP;TP]"
 	end
@@ -343,7 +341,7 @@ function generateMapStrings()
 					local tPLocFuZ = tPLocFuZ + tBorderFu
 					-- generate the appropriate string for the travelpoint
 					mapitTPButtons = mapitTPButtons.. "image_button[".. tPLocFuX.. ",".. tPLocFuZ.. ";".. tPSizeFuX.. ",".. tPSizeFuZ.. ";teleport.png;TP".. (index-2).. ";".. (index-2).. ";true;false]"
-
+				
 					mapitTPButtons = mapitTPButtons.. "button[".. wFormFu.. ",".. ((index-2)/2).. ";3,".. tPSizeFuZ.. ";TP".. (index-2).. ";".. (index-2).. " ".. title.. "]"
 				elseif index > 50 then
 					minetest.chat_send_player(mapitPlayerName, "Sorry: mapit can only fit 50 travelpoints on the map", false)
@@ -463,151 +461,151 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		if fields.TP2 then
 			tPIndex = 4
 		end
-		if fields.TP3 then
+		if fields.TP3 then	
 			tPIndex =5
-		end
-		if fields.TP4 then
+		end	
+		if fields.TP4 then	
 			tPIndex =6
-		end
-		if fields.TP5 then
+		end	
+		if fields.TP5 then	
 			tPIndex =7
-		end
-		if fields.TP6 then
+		end	
+		if fields.TP6 then	
 			tPIndex =8
-		end
-		if fields.TP7 then
+		end	
+		if fields.TP7 then	
 			tPIndex =9
-		end
-		if fields.TP8 then
+		end	
+		if fields.TP8 then	
 			tPIndex =10
-		end
-		if fields.TP9 then
+		end	
+		if fields.TP9 then	
 			tPIndex =11
-		end
-		if fields.TP10 then
+		end	
+		if fields.TP10 then	
 			tPIndex =12
-		end
-		if fields.TP11 then
+		end	
+		if fields.TP11 then	
 			tPIndex =13
-		end
-		if fields.TP12 then
+		end	
+		if fields.TP12 then	
 			tPIndex =14
-		end
-		if fields.TP13 then
+		end	
+		if fields.TP13 then	
 			tPIndex =15
-		end
-		if fields.TP14 then
+		end	
+		if fields.TP14 then	
 			tPIndex =16
-		end
-		if fields.TP15 then
+		end	
+		if fields.TP15 then	
 			tPIndex =17
-		end
-		if fields.TP16 then
+		end	
+		if fields.TP16 then	
 			tPIndex =18
-		end
-		if fields.TP17 then
+		end	
+		if fields.TP17 then	
 			tPIndex =19
-		end
-		if fields.TP18 then
+		end	
+		if fields.TP18 then	
 			tPIndex =20
-		end
-		if fields.TP19 then
+		end	
+		if fields.TP19 then	
 			tPIndex =21
-		end
-		if fields.TP20 then
+		end	
+		if fields.TP20 then	
 			tPIndex =22
-		end
-		if fields.TP21 then
+		end	
+		if fields.TP21 then	
 			tPIndex =23
-		end
-		if fields.TP22 then
+		end	
+		if fields.TP22 then	
 			tPIndex =24
-		end
-		if fields.TP23 then
+		end	
+		if fields.TP23 then	
 			tPIndex =25
-		end
-		if fields.TP24 then
+		end	
+		if fields.TP24 then	
 			tPIndex =26
-		end
-		if fields.TP25 then
+		end	
+		if fields.TP25 then	
 			tPIndex =27
-		end
-		if fields.TP26 then
+		end	
+		if fields.TP26 then	
 			tPIndex =28
-		end
-		if fields.TP27 then
+		end	
+		if fields.TP27 then	
 			tPIndex =29
-		end
-		if fields.TP28 then
+		end	
+		if fields.TP28 then	
 			tPIndex =30
-		end
-		if fields.TP29 then
+		end	
+		if fields.TP29 then	
 			tPIndex =31
-		end
-		if fields.TP30 then
+		end	
+		if fields.TP30 then	
 			tPIndex =32
-		end
-		if fields.TP31 then
+		end	
+		if fields.TP31 then	
 			tPIndex =33
-		end
-		if fields.TP32 then
+		end	
+		if fields.TP32 then	
 			tPIndex =34
-		end
-		if fields.TP33 then
+		end	
+		if fields.TP33 then	
 			tPIndex =35
-		end
-		if fields.TP34 then
+		end	
+		if fields.TP34 then	
 			tPIndex =36
-		end
-		if fields.TP35 then
+		end	
+		if fields.TP35 then	
 			tPIndex =37
-		end
-		if fields.TP36 then
+		end	
+		if fields.TP36 then	
 			tPIndex =38
-		end
-		if fields.TP37 then
+		end	
+		if fields.TP37 then	
 			tPIndex =39
-		end
-		if fields.TP38 then
+		end	
+		if fields.TP38 then	
 			tPIndex =40
-		end
-		if fields.TP39 then
+		end	
+		if fields.TP39 then	
 			tPIndex =41
-		end
-		if fields.TP40 then
+		end	
+		if fields.TP40 then	
 			tPIndex =42
-		end
-		if fields.TP41 then
+		end	
+		if fields.TP41 then	
 			tPIndex =43
-		end
-		if fields.TP42 then
+		end	
+		if fields.TP42 then	
 			tPIndex =44
-		end
-		if fields.TP43 then
+		end	
+		if fields.TP43 then	
 			tPIndex =45
-		end
-		if fields.TP44 then
+		end	
+		if fields.TP44 then	
 			tPIndex =46
-		end
-		if fields.TP45 then
+		end	
+		if fields.TP45 then	
 			tPIndex =47
-		end
-		if fields.TP46 then
+		end	
+		if fields.TP46 then	
 			tPIndex =48
-		end
-		if fields.TP47 then
+		end	
+		if fields.TP47 then	
 			tPIndex =49
-		end
-		if fields.TP48 then
+		end	
+		if fields.TP48 then	
 			tPIndex =50
-		end
-		if fields.TP49 then
+		end	
+		if fields.TP49 then	
 			tPIndex =51
-		end
-		if fields.TP50 then
+		end	
+		if fields.TP50 then	
 			tPIndex =52
 		end
-
+	
 		if tPIndex >=0 then
 			for index, value in ipairs(travelpoints_array) do
 				-- Omit first index (used for travelpoints:transporter_pad/_active's formspec)
@@ -1033,12 +1031,12 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		if mapitMapState == "t" then
 			teleportTargetWuX = pngMinWuX + butX*worldStepWuX + 0.5*worldStepWuX
 			teleportTargetWuZ = pngMaxWuZ - butZ*worldStepWuZ - 0.5*worldStepWuZ
-
+			
 			local manip = minetest.get_voxel_manip()
 			local groundLevel = nil
 			local i
 			-- This will fail if ground level is below 0 (but this doesn't happen very often)
-			for i = 96, -100, -1 do
+			for i = 96, -100, -1 do	
 				p = {x=teleportTargetWuX, y=i, z=teleportTargetWuZ}
 				manip:read_from_map(p, p)
 --				player:setpos(p)
@@ -1213,7 +1211,7 @@ local function parse_IDAT(fh, len, compression_method)
     parse_zlib(fh, len)
   else
     -- print('(unrecognized compression method)')
-  end
+  end  
 end
 
 function parse_png(filename)
@@ -1271,15 +1269,15 @@ function parse_png(filename)
 --      print ("mapit: tEXt len=" .. len)
 --      print ("mapit: tEXt keyword=".. keyword)
 --      print ("mapit: tEXt text=" .. text)
-      if keyword == "pngRegion" then
+      if keyword == "pngRegion" then 
         pngRegionWu = text
-      elseif keyword == "pngMinX" then
+      elseif keyword == "pngMinX" then 
         pngMinWuX = tonumber(text)
-      elseif keyword == "pngMaxZ" then
+      elseif keyword == "pngMaxZ" then 
         pngMaxWuZ = tonumber(text)
-      elseif keyword == "border" then
+      elseif keyword == "border" then 
         borderPx = tonumber(text)
-      elseif keyword == "pixPerNode" then
+      elseif keyword == "pixPerNode" then 
         pixPerNodePx = tonumber(text)
       end
 
@@ -1321,7 +1319,7 @@ if minetest.get_modpath("unified_inventory") then
 			local worldName = string.gsub(worldPath, "(.*worlds.)(.*)", "%2")
 
 			local mapFileName = worldName:gsub("%s+", "_").. ".png"
-
+			
 			local formspec = "image_button[0.06,0.99;7.92,7.52;"..mapFileName..";uI;click here for map]"
 			print ('mapit')
 			print (formspec)
@@ -1330,3 +1328,5 @@ if minetest.get_modpath("unified_inventory") then
 		end,
 	})
 end
+
+
