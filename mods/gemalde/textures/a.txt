@@ -1,0 +1,15 @@
+
+*金剛地普賢菩薩，glowtest:green_crystal_1
+*金剛火文殊菩薩，glowtest:red_crystal_1
+*金剛空地藏菩薩，glowtest:yellow_crystal_1
+*金剛水觀音菩薩，glowtest:blue_crystal_1
+*金剛風彌勒菩薩。glowtest:pink_crystal_1
+
+Item xdecor:table 99
+
+
+
+
+
+
+
