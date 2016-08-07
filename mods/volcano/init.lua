@@ -1,7 +1,7 @@
 -- volcano 0.1.1 by paramat
 -- For latest stable Minetest and back to 0.4.6
 -- Depends default
--- Licenses: Code WTFPL. Textures CC BY-SA. Ash is recoloured default sand by VanessaE 
+-- Licenses: Code WTFPL. Textures CC BY-SA. Ash is recoloured default sand by VanessaE
 
 -- Parameters
 
@@ -19,14 +19,14 @@ local COOLCHA = 3 --  -- 1/x chance per "magma_flowing"
 local MAXALT = 63 --  -- Maximum y of volcano
 local MAXRAD = 3 --  -- Maximum radius of vent
 local LAVCHA = 1.5 --  -- Average number of lava flows from vent perimeter
-local ASHTHR = 0.1 --  -- Ash noise threshold 
+local ASHTHR = 0.1 --  -- Ash noise threshold
 
 -- 3D Perlin noise for ash nodes
 
 local SEEDDIFF1 = 3673967
-local OCTAVES1 = 4 -- 
-local PERSISTENCE1 = 0.6 -- 
-local SCALE1 = 64 -- 
+local OCTAVES1 = 4 --
+local PERSISTENCE1 = 0.6 --
+local SCALE1 = 64 --
 
 -- Stuff
 
@@ -164,9 +164,16 @@ minetest.register_node("volcano:ash", {
 
 minetest.register_abm({
 	nodenames = {
+		--[[
 		"default:stone_with_mese",
 		"default:stone_with_gold",
 		"default:stone_with_diamond",
+		--]]
+		"marssurvive:stone_with_mese",
+		"marssurvive:stone_with_gold",
+		"marssurvive:stone_with_diamond",
+
+
 	},
 	neighbors = {"default:lava_source", "default:lava_flowing"},
 	interval = CONDINT,
