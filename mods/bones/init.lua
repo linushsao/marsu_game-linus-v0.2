@@ -95,9 +95,9 @@ minetest.register_on_dieplayer(function(player)
 	local param2 = minetest.dir_to_facedir(player:get_look_dir())
 
 	if may_replace(pos, player) then
-		minetest.chat_send_all("may_replace:true")
+--		minetest.chat_send_all("may_replace:true")
 		choice = math.random(1, 3)
-		minetest.chat_send_all("choice:"..choice)
+--		minetest.chat_send_all("choice:"..choice)
 
 		if choice == 1 then
 			minetest.set_node(pos, {name="bones:bones_infected", param2=param2})

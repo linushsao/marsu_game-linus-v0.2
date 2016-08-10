@@ -66,7 +66,7 @@ minetest.register_abm({
 	catch_up = false,
 	action = function(pos, node)
   pos.y = pos.y+2
-  minetest.chat_send_all(minetest.get_node_light(pos,nil))
+--  minetest.chat_send_all(minetest.get_node_light(pos,nil))
   if (minetest.get_node_light(pos,nil)) < 4 then
       minetest.add_entity(pos,"zombies:zombie")
   end
