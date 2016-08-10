@@ -12,7 +12,7 @@ minetest.register_on_newplayer(function(player)
 end)
 
 minetest.register_on_respawnplayer(function(player)
-    player:setpos({x=46.9, y=12.5, z=-197})
+--    player:setpos({x=46.9, y=12.5, z=-197})
 
 --[[
     local inv=player:get_inventory()
@@ -57,6 +57,24 @@ minetest.register_abm({
 		minetest.set_node(pos, {name = "default:mossycobble"})
 	end
 })
+
+minetest.register_abm({
+	nodenames = {"bones:bones_infected"},
+	neighbors = {"air"},
+	interval = 60,
+	chance = 5,
+	catch_up = false,
+	action = function(pos, node)
+  pos.y = pos.y+2
+  minetest.chat_send_all(minetest.get_node_light(pos,nil))
+  if (minetest.get_node_light(pos,nil)) < 4 then
+      minetest.add_entity(pos,"zombies:zombie")
+  end
+
+	end
+})
+
+
 
 minetest.register_abm({
 	nodenames = {"marssurvive:stone"},
