@@ -13,7 +13,12 @@ economy.itemprices_pr={
 	["mobs:leather"]=10,
 	["animalmaterials:fur_deer"]=10,
 	["bucket:bucket_empty"]=120,
-
+--
+	["default:iron_lump"]=100,
+	["default:copper_lump"]=200,
+	["default:gold_lump"]=600,
+	["default:diamond"]=1000,
+	["default:mese_crystal_fragment"]=200,
 }
 economy.mobkillrewards={
 	["creatures:zombie"]=10,
