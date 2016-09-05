@@ -1,3 +1,4 @@
+--[[
 minetest.register_craftitem("zombies:rotten_flesh", {
 	description = "Rotten Flesh",
 	inventory_image = "mobs_rotten_flesh.png",
@@ -223,3 +224,4 @@ mobs:register_spawn("zombies:zombie",{"bones:bones_infection"}, 5, 0, 1, 1, 3100
 --mobs:register_egg("zombies:1arm", "One Armed Zombie", "zombie_head.png", 0)
 --mobs:register_egg("zombies:crawler", "Crawling Zombie", "zombie_head.png", 0)
 --mobs:register_egg("zombies:normal", "Zombie 2", "zombie_head.png", 0)
+--]]

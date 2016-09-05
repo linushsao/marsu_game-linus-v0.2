@@ -15,10 +15,9 @@ minetest.register_node("markers:stone", {
 	end,
 })
 
---[[
+
 minetest.register_craft({
    output = "markers:stone",
    recipe = { { "markers:mark" },
               { "default:cobble" },
              } });
---]]
