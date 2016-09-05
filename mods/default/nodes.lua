@@ -558,6 +558,7 @@ minetest.register_node("default:jungleleaves", {
 		max_items = 1,
 		items = {
 			{items = {'default:junglesapling'}, rarity = 20},
+			{items = {'moretrees:rubber_tree_sapling'}, rarity = 40},
 			{items = {'default:jungleleaves'}}
 		}
 	},

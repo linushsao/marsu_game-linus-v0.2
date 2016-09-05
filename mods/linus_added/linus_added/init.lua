@@ -58,6 +58,7 @@ minetest.register_abm({
 	end
 })
 
+--[[
 minetest.register_abm({
 	nodenames = {"bones:bones_infected"},
 	neighbors = {"air"},
@@ -73,7 +74,7 @@ minetest.register_abm({
 
 	end
 })
-
+--]]
 
 
 minetest.register_abm({
