@@ -34,12 +34,13 @@ minetest.register_globalstep(function(dtime)
 		-- January
 		if tonumber(month) == 1 then
 
-			if math.random(1, 15) == 1 then
+			if math.random(1, 100) == 1 then
 				mymonths.weather = "sandstorm"
 				minetest.chat_send_all("It is sandstorm of MARS")
 			end
 
 		-- February
+		--[[
 		elseif tonumber(month) == 2 then
 
 			if math.random(1, 500) == 1 then
@@ -72,7 +73,7 @@ minetest.register_globalstep(function(dtime)
 			end
 
 		-- June
-		--[[
+
 		elseif 	tonumber(month) == 6 then
 
 			if math.random(1, 5000) == 1 then
