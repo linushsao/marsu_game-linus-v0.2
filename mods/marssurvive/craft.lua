@@ -102,6 +102,16 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "marssurvive:mars_sapling",
+	recipe = {
+		{"","",""},
+		{"","default:mossycobble", ""},
+		{"","default:clay_lump",""},
+	}
+})
+
+
+minetest.register_craft({
 	output = "marssurvive:steelwallblock 8",
 	recipe = {
 		{"default:steel_ingot","default:steel_ingot","default:steel_ingot"},
