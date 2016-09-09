@@ -39,6 +39,7 @@ minetest.register_globalstep(function(dtime)
 				mymonths.weather = "sandstorm"
 				minetest.chat_send_all("It is sandstorm of MARS")
 			end
+			
 --]]
 		-- February
 		--[[
