@@ -46,7 +46,7 @@ dofile(minetest.get_modpath("mymonths") .. "/command.lua")
 dofile(minetest.get_modpath("mymonths") .. "/months.lua")
 
 if mymonths.use_weather == true then
-	dofile(minetest.get_modpath("mymonths").."/weather.lua")
+--	dofile(minetest.get_modpath("mymonths").."/weather.lua")
 end
 
 if mymonths.use_weather == false then
