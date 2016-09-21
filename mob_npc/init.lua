@@ -32,7 +32,7 @@ local npc_groups = {
 
 local modpath = minetest.get_modpath("mob_npc")
 
---dofile (modpath .. "/spawn_building.lua")
+dofile (modpath .. "/spawn_building.lua")
 
 local npc_prototype = {
 		name="npc",
@@ -182,28 +182,33 @@ local npc_trader_prototype = {
 		},
 		trader_inventory = {
 				goods = {
-          { "default:mese_crystal 1", "", "bitchange:minecoin 90"},
-          { "default:iron_lump 1","","bitchange:minecoin 8"},
-          { "default:copper_lump 1","","bitchange:minecoin 14"},
-          { "technic:zinc_lump 1","","bitchange:minecoin 8"},
---          { "default:gold_lump 1","","bitchange:minecoin 40"},
-          { "default:diamond 1","","bitchange:minecoin 90"},
-          { "default:mese_crystal_fragment 1","","bitchange:minecoin 10"},
---          { "mapit:maptool 1", "", "bitchange:minecoin 5"},
-          { "default:chest_locked 1", "", "bitchange:minecoin 2"},
-          { "currency:shop 1", "", "bitchange:minecoin 10"},
-          { "xdecor:crafting_guide 1","","bitchange:minecoin 10"},
-          { "bags:small 1","","bitchange:minecoin 1"},
-          { "marssurvive:sp 1","","bitchange:minecoin 10"},
-          { "marssurvive:air_gassbotte 1","","bitchange:minecoin 6"},
-          { "marssurvive:airgen5 1","","bitchange:minecoin 5"},
+							{ "currency:minegeld 10", "default:coal_lump 5","default:cobble 30"},
+							--{ "default:mese 1", "","bitchange:minecoin 60"},
+							--{ "default:diamond 1", "", "bitchange:minecoin 40"},
+							{ "animalmaterials:saddle 1", "", "bitchange:minecoin 18"},
+							{ "default:sword_steel 1", "", "bitchange:minecoin 4"},
+							{ "shields:shield_steel 1", "", "bitchange:minecoin 15"},
+							--{ "default:iron_lump 1", "", "bitchange:minecoin 2"},
+							--{ "technic:brass_ingot 1", "", "bitchange:minecoin 10"},
+							{ "mapit:maptool 1", "", "bitchange:minecoin 15"},
+							{ "animalmaterials:fur 1", "", "bitchange:mineninth 2"},
+							{ "default:mese_crystal 1", "", "bitchange:minecoin 10"},
+                            { "technic:granite 1","","bitchange:minecoin 3"},
+							{ "default:chest_locked 3", "", "bitchange:minecoin 2"},
+							{ "gemalde:node_1 1","","bitchange:minecoin 1"},
+							{ "default:obsidian 1","","bitchange:minecoin 3"},
+							{ "farming:cotton 5","animalmaterials:fur 2","bitchange:mineninth 4"},
+							{ "default:torch 10","","bitchange:mineninth 2"},
+							--{ "default:apple 5","","bitchange:mineninth 2"},
+							{ "animalmaterials:egg 3","","bitchange:mineninth 1"},
+							{ "farming:bread 2","","bitchange:mineninth 1"},
+                            { "mobs:meat_raw 1","","bitchange:mineninth 1"},
 						},
 				random_names = { "Hans","Franz","Xaver","Fritz","Thomas","Martin"},
 			}
 		}
 
 
---[[
 mobf_spawner_register("npc_trader_spawner_1",
 				npc_trader_prototype.modname .. ":" .. npc_trader_prototype.name,
 	{
@@ -231,7 +236,7 @@ mobf_spawner_register("npc_trader_spawner_1",
 	cyclic_spawning = false,
 	custom_check = building_spawner.spawn_check,
 	})
---]]
+
 
 --register with animals mod
 minetest.log("action","\tadding mob "..npc_trader_prototype.name)
@@ -239,3 +244,6 @@ mobf_add_mob(npc_trader_prototype)
 minetest.log("action","\tadding mob "..npc_prototype.name)
 mobf_add_mob(npc_prototype)
 minetest.log("action","MOD: mob_npc mod                version " .. version .. " loaded")
+
+--linus added
+dofile (modpath .. "/npc_mars.lua")
