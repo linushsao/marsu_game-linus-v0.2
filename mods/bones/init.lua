@@ -102,8 +102,8 @@ minetest.register_on_dieplayer(function(player)
 		if (choice == 1 and pos.y <-300) then
 			minetest.set_node(pos, {name="bones:bones_infected", param2=param2})
 			minetest.chat_send_all("Somebody die at ("..pos.x..","..pos.y..","..pos.z..") ,")
-			minetest.chat_send_all("and the corpse is infected by unknown virus in dirt of mars.")
-			minetest.chat_send_all("Break the infected bone,or keep the weapon and Beware the Night...")
+--			minetest.chat_send_all("and the corpse is infected by unknown virus in dirt of mars.")
+--			minetest.chat_send_all("Break the infected bone,or keep the weapon and Beware the Night...")
 
 		end
 	end
