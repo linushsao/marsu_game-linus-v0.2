@@ -182,12 +182,12 @@ local npc_trader_prototype = {
 		},
 		trader_inventory = {
 				goods = {
-          { "default:mese_crystal 1", "", "bitchange:minecoin 90"},
+          { "default:mese_crystal 1", "default:diamond 1", "bitchange:minecoin 90"},
           { "default:iron_lump 1","","bitchange:minecoin 8"},
           { "default:copper_lump 1","","bitchange:minecoin 14"},
           { "technic:zinc_lump 1","","bitchange:minecoin 8"},
-          { "technic:chromium_lump 1","","bitchange:minecoin 120"},
-          { "default:diamond 1","","bitchange:minecoin 90"},
+          { "technic:chromium_lump 1","default:diamond 1","bitchange:minecoin 120"},
+          { "default:diamond 1","default:mese_crystal 1","bitchange:minecoin 90"},
           { "default:mese_crystal_fragment 1","","bitchange:minecoin 10"},
 --          { "mapit:maptool 1", "", "bitchange:minecoin 5"},
           { "default:chest_locked 1", "", "bitchange:minecoin 2"},
