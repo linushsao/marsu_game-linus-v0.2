@@ -1,3 +1,4 @@
+--[[
 minetest.register_craft({
 	output = 'currency:safe',
 	recipe = {
@@ -6,7 +7,7 @@ minetest.register_craft({
 		{'default:steel_ingot', 'default:steel_ingot', 'default:steel_ingot'},
 	}
 })
-
+--]]
 minetest.register_craft({
 	output = 'currency:shop',
 	recipe = {
