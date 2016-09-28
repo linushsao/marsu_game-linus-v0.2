@@ -17,3 +17,4 @@ MARS DEFAULT MATERIALS:
 
   ![Mars sand to Sand](http://i67.tinypic.com/vrfuqg.png) ![Mars sand to Sandstone](http://i64.tinypic.com/2aabyv4.png) ![Mars sand to glass](http://i65.tinypic.com/1zqrdxt.png)
   
+  **Methods to dig:** You can dig it using a `shovel for fast digging`. If you have knowledge of technic thingys and get upto there, you can use a `quarry to dig those too; ofcourse with other materials in that area`. **Then again, may be some of you have come here with skills so formidable to just skim over tutorial by looking at pics only; can dig it with their filthy hands**. :smiling_imp:
