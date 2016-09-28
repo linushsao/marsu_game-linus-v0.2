@@ -13,7 +13,7 @@ MARS DEFAULT MATERIALS:
 
   **Place**: It just everywhere. You come out of spawn; its there, just below your feet. Ya! Its the same sand Mark Whatney used to mix with his :poop: to make a gooey puddle and grow potatoes. :flushed: But don't worry we have better and not so sh\**y plans to grow plants here.
   
-  **Uses**: Ok enough :laughing: Be Serious. It can be used to `craft sand (white ones) by placing it in the crafting grid`. But it's better use is to make a sandstone and thereby sandstone bricks. `Put 3 blocks of mars sand in a column of the crafting grid and get a sandstone` (we will describe about it).
+  **Uses**: Ok enough :laughing: Be Serious. It can be used to `craft sand (white ones) by placing it in the crafting grid`. But it's better use is to make sandstone and glass. `Put 3 blocks of mars sand in a column of the crafting grid and get a sandstone` (we will describe about it). You can also `create glass from burning mars sand in a furnace`.
 
-  ![Mars sand to Sand](http://i67.tinypic.com/vrfuqg.png) ![Mars sand to Sandstone](http://i64.tinypic.com/2aabyv4.png)
+  ![Mars sand to Sand](http://i67.tinypic.com/vrfuqg.png) ![Mars sand to Sandstone](http://i64.tinypic.com/2aabyv4.png) ![Mars sand to glass](http://i65.tinypic.com/1zqrdxt.png)
   
