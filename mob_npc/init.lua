@@ -46,7 +46,7 @@ local npc_prototype = {
 
 		generic = {
 					description="NPC",
-					base_health=40,
+					base_health=4000,
 					kill_result="",
 					armor_groups= {
 						fleshy=90,
