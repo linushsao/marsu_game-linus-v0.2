@@ -185,7 +185,7 @@ minetest.override_item("stairs:stair_cobble", {tiles = {"default_desert_stone.pn
 --ores from technid mod
 minetest.register_ore({
 	ore_type       = "scatter",
-	ore            = "mtechnic:mineral_uranium",
+	ore            = "technic:mineral_uranium",
 	wherein        = "marssurvive:stone",
 	clust_scarcity = 18 * 18 * 18,
 	clust_num_ores = 3,
