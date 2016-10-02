@@ -120,6 +120,15 @@ minetest.register_craft({
     },
 })
 
+minetest.register_craft({
+	output = "bags:small",
+	recipe = {
+        {"", "group:stick", ""},
+        {"group:wood", "marssurvive:alien_death_fiber", "group:wood"},
+        {"group:wood", "group:wood", "group:wood"},
+    },
+})
+
 
 minetest.register_craft({
 	output = "bags:medium",
@@ -134,8 +143,8 @@ minetest.register_craft({
 	output = "bags:medium",
 	recipe = {
         {"", "group:stick", ""},
-        {"bags:small", "marssurvive:unused2", "bags:small"},
-        {"bags:small", "marssurvive:unused2", "bags:small"},
+        {"bags:small", "marssurvive:alien_death_fiber", "bags:small"},
+        {"bags:small", "marssurvive:alien_death_fiber", "bags:small"},
     },
 })
 
@@ -152,8 +161,8 @@ minetest.register_craft({
 	output = "bags:large",
 	recipe = {
         {"", "group:stick", ""},
-        {"bags:medium", "marssurvive:unused", "bags:medium"},
-        {"bags:medium", "marssurvive:unused", "bags:medium"},
+        {"bags:medium", "marssurvive:alien_big_fiber", "bags:medium"},
+        {"bags:medium", "marssurvive:alien_big_fiber", "bags:medium"},
     },
 })
 

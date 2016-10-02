@@ -203,3 +203,28 @@ minetest.register_craft({
 		{"marssurvive:unlimitedbatteryblock","marssurvive:unlimitedbatteryblock","marssurvive:unlimitedbatteryblock"},
 	}
 })
+
+--linus added
+minetest.register_craftitem("marssurvive:alien_big_fiber", {
+	description = "Alien Big's fiber",
+	inventory_image = "marssurvive_unused_fiber.png",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "marssurvive:alien_big_fiber",
+	recipe = "marssurvive:unused",
+	cooktime = 10
+})
+
+minetest.register_craftitem("marssurvive:alien_death_fiber", {
+	description = "Alien Death's fiber",
+	inventory_image = "marssurvive_unused2_fiber.png",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "marssurvive:alien_death_fiber",
+	recipe = "marssurvive:unused2",
+	cooktime = 10
+})

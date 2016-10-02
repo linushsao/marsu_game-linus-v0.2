@@ -621,14 +621,14 @@ minetest.register_node("marssurvive:stone_with_diamond", {
 })
 
 minetest.register_node("marssurvive:unused", {
-	description = "Alien Big's leather",
+	description = "Alien Big's material",
 	tiles = {"marssurvive_unused.png"},
 	inventory_image = "marssurvive_unused.png",
 	groups = {cracky = 3},
 	sounds = default.node_sound_stone_defaults(),
 })
 minetest.register_node("marssurvive:unused2", {
-	description = "Alien Death's leather",
+	description = "Alien Death's material",
 	tiles = {"marssurvive_unused2.png"},
 	inventory_image = "marssurvive_unused2.png",
 	groups = {cracky = 3},
