@@ -9,9 +9,9 @@ economy.itemprices_pr={
 	["default:clay_lump"]=10,
 	["farming:bread"]=5,
 	["default:apple"]=5,
-	["animalmaterials:fur"]=10,
-	["mobs:leather"]=10,
-	["animalmaterials:fur_deer"]=10,
+	["animalmaterials:fur"]=30,
+	["mobs:leather"]=30,
+	["animalmaterials:fur_deer"]=30,
 	["bucket:bucket_empty"]=120,
 --
 	["default:iron_lump"]=100,

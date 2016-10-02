@@ -119,6 +119,8 @@ minetest.register_craft({
         {"group:wood", "group:wood", "group:wood"},
     },
 })
+
+
 minetest.register_craft({
 	output = "bags:medium",
 	recipe = {
@@ -127,12 +129,31 @@ minetest.register_craft({
         {"bags:small", "mobs:leather", "bags:small"},
     },
 })
+
+minetest.register_craft({
+	output = "bags:medium",
+	recipe = {
+        {"", "group:stick", ""},
+        {"bags:small", "marssurvive:unused2", "bags:small"},
+        {"bags:small", "marssurvive:unused2", "bags:small"},
+    },
+})
+
+
 minetest.register_craft({
 	output = "bags:large",
 	recipe = {
         {"", "group:stick", ""},
         {"bags:medium", "animalmaterials:fur_deer", "bags:medium"},
         {"bags:medium", "animalmaterials:fur_deer", "bags:medium"},
+    },
+})
+minetest.register_craft({
+	output = "bags:large",
+	recipe = {
+        {"", "group:stick", ""},
+        {"bags:medium", "marssurvive:unused", "bags:medium"},
+        {"bags:medium", "marssurvive:unused", "bags:medium"},
     },
 })
 
