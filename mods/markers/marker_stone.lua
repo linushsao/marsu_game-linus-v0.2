@@ -21,3 +21,4 @@ minetest.register_craft({
    recipe = { { "markers:mark" },
               { "default:cobble" },
              } });
+

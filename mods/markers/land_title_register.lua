@@ -3,7 +3,7 @@
 minetest.register_tool( "markers:land_title_register",
 {
     description = "Land title register. Left-click with it to get information about who owns the land you clicked on.",
-    groups = {},
+    groups = {}, 
     inventory_image = "default_book.png", -- TODO
     wield_image = "",
     wield_scale = {x=1,y=1,z=1},
@@ -29,8 +29,8 @@ minetest.register_tool( "markers:land_title_register",
        local name = placer:get_player_name();
 
        -- the position is what we're actually looking for
-       local pos  = minetest.get_pointed_thing_position( pointed_thing, 0 ); --under );
-
+       local pos  = minetest.get_pointed_thing_position( pointed_thing, false ); -- not above
+       
        if( not( pos ) or not( pos.x )) then
           minetest.chat_send_player( name, "Position not found.");
           return itemstack;
@@ -41,7 +41,7 @@ minetest.register_tool( "markers:land_title_register",
 
        return itemstack; -- nothing consumed, nothing changed
     end,
-
+     
 
     on_use = function(itemstack, placer, pointed_thing)
 
@@ -50,8 +50,8 @@ minetest.register_tool( "markers:land_title_register",
        end
        local name = placer:get_player_name();
 
-       local pos  = minetest.get_pointed_thing_position( pointed_thing, under );
-
+       local pos  = minetest.get_pointed_thing_position( pointed_thing, false ); -- not above
+       
        if( not( pos ) or not( pos.x )) then
           minetest.chat_send_player( name, "Position not found.");
           return itemstack;
@@ -64,11 +64,11 @@ minetest.register_tool( "markers:land_title_register",
     end,
 })
 
---[[
+
 minetest.register_craft({
    output = "markers:land_title_register",
    recipe = { { "markers:mark" },
               { "markers:stone" },
               { "default:book"}
              } });
---]]
+
