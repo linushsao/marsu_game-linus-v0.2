@@ -187,66 +187,66 @@ minetest.override_item("stairs:stair_cobble", {tiles = {"default_desert_stone.pn
 		ore_type       = "scatter",
 		ore            = "technic:mineral_uranium",
 		wherein        = "marssurvive:stone",
-		clust_scarcity = 18 * 18 * 18,
-		clust_num_ores = 3,
+		clust_scarcity = 10 * 10 * 10,
+		clust_num_ores = 5,
 		clust_size     = 2,
 		y_min          = -31000,
-		y_max          = -64,
+		y_max          = -250,
 	})
 
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "technic:mineral_chromium",
 		wherein        = "marssurvive:stone",
-		clust_scarcity = 18 * 18 * 18,
-		clust_num_ores = 3,
+		clust_scarcity = 10 * 10 * 10,
+		clust_num_ores = 5,
 		clust_size     = 2,
 		y_min          = -31000,
-		y_max          = -64,
+		y_max          = -250,
 	})
 
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "technic:mineral_zinc",
 		wherein        = "marssurvive:stone",
-		clust_scarcity = 18 * 18 * 18,
-		clust_num_ores = 3,
+		clust_scarcity = 10 * 10 * 10,
+		clust_num_ores = 5,
 		clust_size     = 2,
 		y_min          = -31000,
-		y_max          = -64,
+		y_max          = -250,
 	})
 
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "technic:mineral_lead",
 		wherein        = "marssurvive:stone",
-		clust_scarcity = 18 * 18 * 18,
-		clust_num_ores = 3,
+		clust_scarcity = 10 * 10 * 10,
+		clust_num_ores = 5,
 		clust_size     = 2,
 		y_min          = -31000,
-		y_max          = -64,
+		y_max          = -250,
 	})
 
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "technic:granite",
 		wherein        = "marssurvive:stone",
-		clust_scarcity = 18 * 18 * 18,
-		clust_num_ores = 3,
+		clust_scarcity = 10 * 10 * 10,
+		clust_num_ores = 5,
 		clust_size     = 2,
 		y_min          = -31000,
-		y_max          = -64,
+		y_max          = -250,
 	})
 
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "technic:marble",
 		wherein        = "marssurvive:stone",
-		clust_scarcity = 18 * 18 * 18,
-		clust_num_ores = 3,
+		clust_scarcity = 10 * 10 * 10,
+		clust_num_ores = 5,
 		clust_size     = 2,
 		y_min          = -31000,
-		y_max          = -64,
+		y_max          = -250,
 	})
 
 
