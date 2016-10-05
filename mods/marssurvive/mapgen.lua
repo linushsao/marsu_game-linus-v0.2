@@ -116,14 +116,14 @@ minetest.override_item("stairs:stair_cobble", {tiles = {"default_desert_stone.pn
 		ore_type       = "scatter",
 		ore            = "marssurvive:stone_with_mese",
 		wherein        = "marssurvive:stone",
-		clust_scarcity = 18 * 18 * 18,
+		clust_scarcity = 38 * 38 * 38,
 		clust_num_ores = 3,
 		clust_size     = 2,
 		y_min          = -31000,
 		y_max          = -64,
 	})
 
-
+--[[
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "default:mese",
@@ -134,17 +134,17 @@ minetest.override_item("stairs:stair_cobble", {tiles = {"default_desert_stone.pn
 		y_min          = -31000,
 		y_max          = -1024,
 	})
-
+--]]
 
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "marssurvive:stone_with_gold",
 		wherein        = "marssurvive:stone",
-		clust_scarcity = 15 * 15 * 15,
+		clust_scarcity = 25 * 25 * 25,
 		clust_num_ores = 3,
 		clust_size     = 2,
 		y_min          = -31000,
-		y_max          = -64,
+		y_max          = -640,
 	})
 
 
@@ -152,11 +152,11 @@ minetest.override_item("stairs:stair_cobble", {tiles = {"default_desert_stone.pn
 		ore_type       = "scatter",
 		ore            = "marssurvive:stone_with_diamond",
 		wherein        = "marssurvive:stone",
-		clust_scarcity = 15 * 15 * 15,
+		clust_scarcity = 25 * 25 * 25,
 		clust_num_ores = 4,
 		clust_size     = 3,
 		y_min          = -31000,
-		y_max          = -256,
+		y_max          = -512,
 	})
 
 
