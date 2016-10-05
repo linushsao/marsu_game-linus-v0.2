@@ -191,6 +191,7 @@ local npc_trader_prototype = {
           { "default:mese_crystal_fragment 1","","bitchange:minecoin 10"},
 --          { "mapit:maptool 1", "", "bitchange:minecoin 5"},
           { "default:chest_locked 1", "", "bitchange:minecoin 2"},
+          { "more_chests:dropbox 1", "", "bitchange:minecoin 2"},
           { "currency:shop 1", "", "bitchange:minecoin 10"},
           { "xdecor:crafting_guide 1","","bitchange:minecoin 10"},
           { "bags:small 1","","bitchange:minecoin 1"},
