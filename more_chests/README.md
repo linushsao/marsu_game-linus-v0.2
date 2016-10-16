@@ -5,8 +5,6 @@ More Chests
 
 This mod is a fork of 0gb.us's chests_0gb_us https://forum.minetest.net/viewtopic.php?f=11&t=4366
 
-Megaf's more_chests fixes several bugs, uses new textures and adds compatibility with [VanessaE's Pipeworks] (https://github.com/VanessaE/pipeworks) mod.
-
 The following text was writen by 0gb.us
 ```
 Cobble Chest:
@@ -44,4 +42,5 @@ Wifi Chest
 {'default:wood','default:wood','default:wood'}
 
 A wacky chest that doesn't store it's items in the usual way, but instead, stores them remotely. For that reason, all wifi chests appear to have the same inventory. Due to not actually having an inventory, wifi chests can also be mined, even when they appear to have stuff in them. Lastly, as everyone gets their own wifi account, the items you see in the wifi chest are not the same items anyone else sees. This chest's properties make it nice for keeping secrets, as well as essentially almost doubling your inventory space, if you choose to carry one with you.
-```
+
+'''
