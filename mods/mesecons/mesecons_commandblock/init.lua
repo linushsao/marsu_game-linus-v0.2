@@ -43,7 +43,7 @@ minetest.register_chatcommand("hp", {
 })
 
 local function initialize_data(meta)
-	local commands = meta:get_string("commands")
+	local commands = minetest.formspec_escape(meta:get_string("commands"))
 	meta:set_string("formspec",
 		"invsize[9,5;]" ..
 		"textarea[0.5,0.5;8.5,4;commands;Commands;"..commands.."]" ..
@@ -93,9 +93,22 @@ local function receive_fields(pos, formname, fields, sender)
 end
 
 local function resolve_commands(commands, pos)
+	local players = minetest.get_connected_players()
+
+	-- No players online: remove all commands containing
+	-- @nearest, @farthest and @random
+	if #players == 0 then
+		commands = commands:gsub("[^\r\n]+", function (line)
+			if line:find("@nearest") then return "" end
+			if line:find("@farthest") then return "" end
+			if line:find("@random") then return "" end
+			return line
+		end)
+		return commands
+	end
+
 	local nearest, farthest = nil, nil
 	local min_distance, max_distance = math.huge, -1
-	local players = minetest.get_connected_players()
 	for index, player in pairs(players) do
 		local distance = vector.distance(pos, player:getpos())
 		if distance < min_distance then

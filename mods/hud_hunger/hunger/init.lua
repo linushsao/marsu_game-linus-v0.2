@@ -1,7 +1,8 @@
 hunger = {}
+hunger.players = {}
 hunger.food = {}
 
-HUNGER_TICK = 300		-- time in seconds after that 1 hunger point is taken
+HUNGER_TICK = 800		-- time in seconds after that 1 hunger point is taken
 HUNGER_HEALTH_TICK = 4		-- time in seconds after player gets healed/damaged
 HUNGER_MOVE_TICK = 0.5		-- time in seconds after the movement is checked
 
@@ -17,6 +18,10 @@ HUNGER_STARVE_LVL = 3		-- level of staturation that causes starving
 
 HUNGER_MAX = 30			-- maximum level of saturation
 
+SPRINT_SPEED = 1.8		-- how much faster player can run if satiated
+SPRINT_JUMP = 1.1		-- how much higher player can jump if satiated
+SPRINT_DRAIN = 0.35		-- how fast to drain satation while sprinting (0-1)
+
 
 local modpath = minetest.get_modpath("hunger")
 dofile(modpath .. "/functions.lua")
@@ -31,23 +36,27 @@ if minetest.setting_getbool("enable_damage") then
 	inv:set_size("hunger", 1)
 
 	local name = player:get_player_name()
-	hunger[name] = {}
-	hunger[name].lvl = hunger.read(player)
-	hunger[name].exhaus = 0
-	local lvl = hunger[name].lvl
+	hunger.players[name] = {sprinting="false", shouldSprint="false"}
+	hunger.players[name].lvl = hunger.read(player)
+	hunger.players[name].exhaus = 0
+	local lvl = hunger.players[name].lvl
 	if lvl > 20 then
 		lvl = 20
 	end
 	minetest.after(0.8, function()
-		hud.change_item(player, "hunger", {offset = "item", item_name = "air"})
+		hud.swap_statbar(player, "hunger", "air")
 		hud.change_item(player, "hunger", {number = lvl, max = 20})
 	end)
+    end)
+
+    minetest.register_on_leaveplayer(function(player)
+	local name = player:get_player_name()
+	hunger.players[name] = nil
     end)
 
     -- for exhaustion
     minetest.register_on_placenode(hunger.handle_node_actions)
     minetest.register_on_dignode(hunger.handle_node_actions)
-    minetest.register_on_item_eat(hunger.eat)
     minetest.register_on_respawnplayer(function(player)
 	hunger.update_hunger(player, 20)
     end)

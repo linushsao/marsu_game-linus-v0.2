@@ -45,7 +45,7 @@ function mesecon.lightstone_add(name, base_item, texture_off, texture_on)
 		output = "mesecons_lightstone:lightstone_" .. name .. "_off",
 		recipe = {
 			{"",base_item,""},
-			{base_item,"technic:battery",base_item},
+			{base_item,"default:torch",base_item},
 			{"","group:mesecon_conductor_craftable",""}
 		}
 	})
