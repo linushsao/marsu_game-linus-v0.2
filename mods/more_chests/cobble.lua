@@ -11,7 +11,7 @@ minetest.register_node("more_chests:cobble", {
 		"default_cobble.png", "default_cobble.png", "cobblechest_front.png"},
 	paramtype2 = "facedir",
 	groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2, tubedevice = 1, tubedevice_receiver = 1},
--- First attempt to add a way to connect to pipeworks.	
+-- First attempt to add a way to connect to pipeworks.
 	tube = {
 	insert_object = function(pos, node, stack, direction)
 		local meta = minetest.get_meta(pos)
@@ -106,3 +106,11 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = 'more_chests:cobble',
+	recipe = {
+		{'marssurvive:wood','default:cobble','marssurvive:wood'},
+		{'default:cobble','default:steel_ingot','default:cobble'},
+		{'marssurvive:wood','default:cobble','marssurvive:wood'}
+	}
+})

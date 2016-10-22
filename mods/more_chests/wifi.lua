@@ -38,9 +38,15 @@ minetest.register_craft({
 		{'default:wood','default:wood','default:wood'}
 	}
 })
-
+minetest.register_craft({
+	output = 'more_chests:wifi',
+	recipe = {
+		{'marssurvive:wood','default:mese','marssurvive:wood'},
+		{'marssurvive:wood','default:steel_ingot','marssurvive:wood'},
+		{'marssurvive:wood','marssurvive:wood','marssurvive:wood'}
+	}
+})
 minetest.register_on_joinplayer(function(player)
 	local inv = player:get_inventory()
 	inv:set_size("more_chests:wifi", 8*4)
 end)
-

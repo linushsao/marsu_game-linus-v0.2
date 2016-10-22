@@ -121,4 +121,11 @@ minetest.register_craft({
 		{'default:wood','default:wood','default:wood'}
 	}
 })
-
+minetest.register_craft({
+	output = 'more_chests:secret',
+	recipe = {
+		{'marssurvive:wood','default:cobble','marssurvive:wood'},
+		{'marssurvive:wood','default:steel_ingot','marssurvive:wood'},
+		{'marssurvive:wood','marssurvive:wood','marssurvive:wood'}
+	}
+})

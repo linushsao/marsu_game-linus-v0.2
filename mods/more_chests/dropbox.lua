@@ -101,4 +101,11 @@ minetest.register_craft({
 		{'default:wood','default:wood','default:wood'}
 	}
 })
-
+minetest.register_craft({
+	output = 'more_chests:dropbox',
+	recipe = {
+		{'marssurvive:wood','','marssurvive:wood'},
+		{'marssurvive:wood','default:steel_ingot','marssurvive:wood'},
+		{'marssurvive:wood','marssurvive:wood','marssurvive:wood'}
+	}
+})
