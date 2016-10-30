@@ -66,6 +66,7 @@ minetest.register_node("farming_plus:potato", {
 
 minetest.register_craftitem("farming_plus:potato_item", {
 	description = "Potato",
+	on_use = minetest.item_eat(4),
 	inventory_image = "farming_potato.png",
 })
 
@@ -76,4 +77,3 @@ minetest.register_alias("farming_plus:potatoe_seed", "farming_plus:potato_seed")
 minetest.register_alias("farming_plus:potatoe", "farming_plus:potato")
 minetest.register_alias("farming_plus:potatoe_1", "farming_plus:potato_1")
 minetest.register_alias("farming_plus:potatoe_2", "farming_plus:potato_2")
-

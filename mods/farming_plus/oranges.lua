@@ -82,8 +82,8 @@ minetest.register_node("farming_plus:orange", {
 
 minetest.register_craftitem("farming_plus:orange_item", {
 	description = "Orange",
-	inventory_image = "farming_orange.png",
 	on_use = minetest.item_eat(4),
+	inventory_image = "farming_orange.png",
 })
 
 farming:add_plant("farming_plus:orange", {"farming_plus:orange_1", "farming_plus:orange_2", "farming_plus:orange_3"}, 50, 20)

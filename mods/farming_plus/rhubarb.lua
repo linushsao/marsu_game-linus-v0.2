@@ -66,6 +66,7 @@ minetest.register_node("farming_plus:rhubarb", {
 
 minetest.register_craftitem("farming_plus:rhubarb_item", {
 	description = "Rhubarb",
+	on_use = minetest.item_eat(2),
 	inventory_image = "farming_rhubarb.png",
 })
 
