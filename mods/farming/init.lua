@@ -98,6 +98,7 @@ minetest.register_craft({
 
 farming.register_plant("farming:tomato", {
 	description = "Tomato Seed",
+	on_use = minetest.item_eat(4),
 	inventory_image = "farming_tomato_seed.png",
 	steps = 3,
 	minlight = 8,
@@ -107,6 +108,7 @@ farming.register_plant("farming:tomato", {
 
 farming.register_plant("farming:potato", {
 	description = "Potato Seed",
+	on_use = minetest.item_eat(4),
 	inventory_image = "farming_potato_seed.png",
 	steps = 3,
 	minlight = 8,
@@ -116,6 +118,7 @@ farming.register_plant("farming:potato", {
 
 farming.register_plant("farming:strawberry", {
 	description = "Strawberry Seed",
+	on_use = minetest.item_eat(3),
 	inventory_image = "farming_strawberry_seed.png",
 	steps = 3,
 	minlight = 8,
@@ -125,6 +128,7 @@ farming.register_plant("farming:strawberry", {
 
 farming.register_plant("farming:spice", {
 	description = "Spice Seed",
+	on_use = minetest.item_eat(2),
 	inventory_image = "farming_spice_seed.png",
 	steps = 3,
 	minlight = 8,
