@@ -7,7 +7,7 @@ minetest.register_alias("group:cobble", "marssurvive:cobble")
 minetest.register_alias("group:wood", "marssurvive:wood")
 
 minetest.register_on_newplayer(function(player)
-    player:setpos({x=65, y=12, z=-210})
+    player:setpos({x=52.2, y=12.5, z=-197.1})
     return true
 end)
 
