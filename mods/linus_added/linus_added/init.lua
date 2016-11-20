@@ -36,19 +36,31 @@ end)
 minetest.register_on_joinplayer(function(player)
 
 --	minetest.chat_send_all("ready to revoke privs")
-
   local playername = player:get_player_name()
 --  minetest.chat_send_all(playername)
---[[
-  if ((playername ~= "tm3") and (playername ~= "juli") and (playername ~= "yang2003")) then
+  if ((playername ~= "tm3") and (playername ~= "juli") and (playername ~= "yang2003") and (playername ~= "admin")) then
+    local privs = minetest.get_player_privs(playername)
+--    minetest.chat_send_all("ready to revoke privs")
+
+    if (privs.interact) then
+--    minetest.chat_send_all("for interat")
     minetest.set_player_privs(playername,{})
+--    minetest.chat_send_all(dump(minetest.get_player_privs(playername)))
     local privs = minetest.get_player_privs(playername)
     privs.home = true
     privs.shout = true
+    privs.interact = true
     minetest.set_player_privs(playername, privs)
---]]
+    else
+--      minetest.chat_send_all("for no interat")
+      minetest.set_player_privs(playername,{})
+--      minetest.chat_send_all(dump(minetest.get_player_privs(playername)))
+      local privs = minetest.get_player_privs(playername)
+      privs.home = true
+      privs.shout = true
+      minetest.set_player_privs(playername, privs)
+    end
 --    minetest.chat_send_all("revoke completely")
-
 --    minetest.chat_send_all(dump(minetest.get_player_privs(playername)))
   end
 
