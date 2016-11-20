@@ -61,7 +61,7 @@ minetest.register_craft({
 	output = 'default:sign_wall_steel 3',
 	recipe = {
 		{'default:steel_ingot', 'default:steel_ingot', 'default:steel_ingot'},
-		{'default:steel_ingot', 'default:steel_ingot', 'default:steel_ingot'},
+		{'default:steel_ingot', 'group:stick', 'default:steel_ingot'},
 		{'', 'group:stick', ''},
 	}
 })
