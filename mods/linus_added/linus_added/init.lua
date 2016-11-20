@@ -33,6 +33,28 @@ minetest.register_on_respawnplayer(function(player)
 
 end)
 
+minetest.register_on_joinplayer(function(player)
+
+	minetest.chat_send_all("ready to revoke privs")
+
+  local playername = player:get_player_name()
+  minetest.chat_send_all(playername)
+
+  if ((playername ~= "tm3") and (playername ~= "juli") and (playername ~= "yang2003")) then
+    minetest.set_player_privs(playername,{})
+    local privs = minetest.get_player_privs(playername)
+    privs.home = true
+    privs.shout = true
+    minetest.set_player_privs(playername, privs)
+
+    minetest.chat_send_all("revoke completely")
+
+    minetest.chat_send_all(dump(minetest.get_player_privs(playername)))
+  end
+
+end)
+
+
 minetest.register_chatcommand("getip", {
     params = "<name>",
     description = "Get IP of player",
