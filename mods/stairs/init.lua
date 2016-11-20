@@ -25,7 +25,7 @@ function stairs.register_stair(subname, recipeitem, groups, images, description,
 			if pointed_thing.type ~= "node" then
 				return itemstack
 			end
-			
+
 			local p0 = pointed_thing.under
 			local p1 = pointed_thing.above
 			if p0.y-1 == p1.y then
@@ -36,13 +36,13 @@ function stairs.register_stair(subname, recipeitem, groups, images, description,
 					return itemstack
 				end
 			end
-			
+
 			-- Otherwise place regularly
 			return minetest.item_place(itemstack, placer, pointed_thing)
 		end,
 		stack_max = 40,
 	})
-	
+
 	minetest.register_node(":stairs:stair_" .. subname.."upside_down", {
 		drop = "stairs:stair_" .. subname,
 		drawtype = "nodebox",
@@ -129,7 +129,7 @@ function stairs.register_slab(subname, recipeitem, groups, images, description, 
 				end
 				return itemstack
 			end
-			
+
 			-- Upside down slabs
 			if p0.y-1 == p1.y then
 				-- Turn into full block if pointing at a existing slab
@@ -149,7 +149,7 @@ function stairs.register_slab(subname, recipeitem, groups, images, description, 
 					end
 					return itemstack
 				end
-				
+
 				-- Place upside down slab
 				local fakestack = ItemStack("stairs:slab_" .. subname.."upside_down")
 				local ret = minetest.item_place(fakestack, placer, pointed_thing)
@@ -158,7 +158,7 @@ function stairs.register_slab(subname, recipeitem, groups, images, description, 
 					return itemstack
 				end
 			end
-			
+
 			-- If pointing at the side of a upside down slab
 			if n0.name == "stairs:slab_" .. subname.."upside_down" and
 					p0.y+1 ~= p1.y then
@@ -170,13 +170,13 @@ function stairs.register_slab(subname, recipeitem, groups, images, description, 
 					return itemstack
 				end
 			end
-			
+
 			-- Otherwise place regularly
 			return minetest.item_place(itemstack, placer, pointed_thing)
 		end,
 		stack_max = 40,
 	})
-	
+
 	minetest.register_node(":stairs:slab_" .. subname.."upside_down", {
 		drop = "stairs:slab_"..subname,
 		drawtype = "nodebox",

@@ -20,7 +20,7 @@ Circular saw for easy crafting of stairplus-nodes (includes glue for recycling) 
 
 -- Version 0.2
 
--- Changelog: 
+-- Changelog:
 -- 25.09.13 Fixed a bug that led to item multiplication
 
 
@@ -50,7 +50,7 @@ else
    dofile(minetest.get_modpath("circularsaw").."/technic_screwdriver.lua");
 end
 
-   
+
 -- how many microblocks does this shape at the output inventory cost?
 circularsaw.cost_in_microblocks = { 6, 4, 7, 2, 1, 3, 3,
                                  6, 4, 7, 2, 1, 3, 3,
@@ -67,7 +67,7 @@ circularsaw.get_stair_output_inv = function( modname, material, anz, max )
    else
       max_offered = tonumber( max );
    end
-   
+
 
    -- if there is nothing inside display empty inventory
    if( anz < 1 ) then
@@ -77,7 +77,7 @@ circularsaw.get_stair_output_inv = function( modname, material, anz, max )
                "", "", "", "", "", "", ""};
    end
 
-   return { 
+   return {
     modname.. ":stair_" .. material .. " "                       ..math.min( math.floor( anz/6 ), max_offered ),
     modname.. ":slab_"  .. material .. " "                       ..math.min( math.floor( anz/4 ), max_offered ),
     modname.. ":stair_" .. material .. "_inner "                 ..math.min( math.floor( anz/7 ), max_offered ),
@@ -105,7 +105,7 @@ circularsaw.get_stair_output_inv = function( modname, material, anz, max )
     "",
 
 
-    modname.. ":slab_"  .. material .. "_wall "                  ..math.min( math.floor( anz/4 ), max_offered ), 
+    modname.. ":slab_"  .. material .. "_wall "                  ..math.min( math.floor( anz/4 ), max_offered ),
     modname.. ":slab_"  .. material .. "_quarter_inverted "      ..math.min( math.floor( anz/2 ), max_offered ),
     modname.. ":stair_" .. material .. "_outer_inverted "        ..math.min( math.floor( anz/7 ), max_offered ),
     "",
@@ -145,7 +145,7 @@ circularsaw.update_inventory = function( pos, amount )
       return;
 
    end
- 
+
    local stack = inv:get_stack( "input", 1 );
    -- at least one "normal" block is necessary to see what kind of stairs are requested
    if( stack:is_empty()) then
@@ -159,7 +159,7 @@ circularsaw.update_inventory = function( pos, amount )
    local liste = node_name:split( ":");
    local modname  = liste[1];
    local material = liste[2];
-  
+
    -- display as many full blocks as possible
    inv:set_list("input",  { modname.. ":" .. material .. " "..math.floor(    (akt + amount) / 8 ) });
 
@@ -170,7 +170,7 @@ circularsaw.update_inventory = function( pos, amount )
 
    -- 0-7 microblocs may remain as a rest
    inv:set_list("micro",  { modname.. ":micro_" .. material .. "_bottom ".. ((akt + amount) % 8 ) });
-   -- display 
+   -- display
    inv:set_list("output", circularsaw.get_stair_output_inv( modname, material,  (akt + amount), meta:get_string("max_offered")));
    -- store how many microblocks are available
    meta:set_int("anz", (akt+amount) );
@@ -198,7 +198,7 @@ end
 
 -- only input- and recycle-slot are intended as input slots
 circularsaw.allow_metadata_inventory_put = function(pos, listname, index, stack, player)
- 
+
    -- the player is not allowed to put something in there
    if( listname == "output" or listname == "micro" ) then
       return 0;
@@ -206,7 +206,7 @@ circularsaw.allow_metadata_inventory_put = function(pos, listname, index, stack,
 
    local meta = minetest.env:get_meta(pos);
    local inv  = meta:get_inventory();
-           
+
    -- only alow those items that are offered in the output inventory to be recycled
    if( listname == "recycle" and not( inv:contains_item("output", stack:get_name() ))) then
       return 0;
@@ -214,7 +214,7 @@ circularsaw.allow_metadata_inventory_put = function(pos, listname, index, stack,
 
    -- only accept certain blocks as input which are known to be craftable into stairs
    if( listname == "input" ) then
-     
+
       if( not( inv:is_empty("input"))) then
 
          local old_stack = inv:get_stack("input", 1 );
@@ -231,9 +231,9 @@ circularsaw.allow_metadata_inventory_put = function(pos, listname, index, stack,
 
       end
       return 0;
-       
+
    end
- 
+
   return stack:get_count()
 end
 
@@ -253,14 +253,14 @@ circularsaw.on_metadata_inventory_put = function(pos, listname, index, stack, pl
 
       -- each new block is worth 8 microblocks
       circularsaw.update_inventory( pos, 8 * stack:get_count() );
-        
+
    elseif( listname=="recycle" ) then
- 
+
       -- lets look which shape this represents
       for i,v in ipairs( inv:get_list( "output" ) ) do
-              
+
          if( v:get_name() == stack:get_name() ) then
-        
+
             local value = circularsaw.cost_in_microblocks[ i ] * stack:get_count();
             --print("\nRecycling "..( v:get_name() ).." into "..value.." microblocks.");
 
@@ -274,7 +274,7 @@ end
 
 -- the player takes something
 circularsaw.on_metadata_inventory_take = function(pos, listname, index, stack, player)
-          
+
    -- if it is one of the offered stairs: find out how many microblocks have to be substracted
    if(     listname=="output" ) then
 
@@ -289,7 +289,7 @@ circularsaw.on_metadata_inventory_take = function(pos, listname, index, stack, p
       circularsaw.update_inventory( pos, -1 * 1 * stack:get_count());
 
    elseif( listname=="input" ) then
-  
+
       -- each normal (=full) block taken costs 8 microblocks
       circularsaw.update_inventory( pos, -1 * 8 * stack:get_count() );
 
@@ -301,7 +301,7 @@ end
 circularsaw.on_construct_init = function( pos, formspec )
 
    local meta = minetest.env:get_meta(pos)
-   meta:set_string("formspec", formspec ); 
+   meta:set_string("formspec", formspec );
 
    meta:set_int(    "anz",         0 ); -- no microblocks inside yet
    meta:set_string( "max_offered", 10 ); -- how many items of this kind are offered by default?
@@ -342,7 +342,7 @@ minetest.register_node("circularsaw:circularsaw", {
             fixed = {
                 {-0.4, -0.5, -0.4, -0.25, 0.25, -0.25}, --leg
                 {0.25, -0.5, 0.25, 0.4, 0.25, 0.4}, --leg
-                {-0.4, -0.5, 0.25, -0.25, 0.25, 0.4}, --leg 
+                {-0.4, -0.5, 0.25, -0.25, 0.25, 0.4}, --leg
                 {0.25, -0.5, -0.4, 0.4, 0.25, -0.25}, --leg
                 {-0.5, 0.25, -0.5, 0.5, 0.375, 0.5}, --table top
                 {-0.01, 0.4375, -0.125, 0.01, 0.5, 0.125}, --saw blade (top)
@@ -384,7 +384,7 @@ minetest.register_node("circularsaw:circularsaw", {
         -- set owner of this circularsaw
         after_place_node = function(pos, placer)
            local meta = minetest.env:get_meta(pos);
-           
+
            meta:set_string( "owner", ( placer:get_player_name() or "" ));
            meta:set_string( "infotext", "Circular saw, empty (owned by "..( placer:get_player_name() or "" )..")");
         end,
@@ -395,12 +395,12 @@ minetest.register_node("circularsaw:circularsaw", {
         end,
 
         allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-           return circularsaw.allow_metadata_inventory_move( pos, from_list, from_index, to_list, to_index, count, player );     
+           return circularsaw.allow_metadata_inventory_move( pos, from_list, from_index, to_list, to_index, count, player );
         end,
 
         -- only input- and recycle-slot are intended as input slots
         allow_metadata_inventory_put = function(pos, listname, index, stack, player)
-           return circularsaw.allow_metadata_inventory_put( pos, listname, index, stack, player ); 
+           return circularsaw.allow_metadata_inventory_put( pos, listname, index, stack, player );
         end,
 
         -- taking is allowed from all slots (even the internal microblock slot); moving is forbidden
@@ -413,7 +413,7 @@ minetest.register_node("circularsaw:circularsaw", {
         on_metadata_inventory_take = function(pos, listname, index, stack, player)
            return circularsaw.on_metadata_inventory_take( pos, listname, index, stack, player );
         end
-          
+
 })
 
 
@@ -451,7 +451,7 @@ if( minetest.get_modpath("locks") ~= nil ) then
             fixed = {
                 {-0.4, -0.5, -0.4, -0.25, 0.25, -0.25}, --leg
                 {0.25, -0.5, 0.25, 0.4, 0.25, 0.4}, --leg
-                {-0.4, -0.5, 0.25, -0.25, 0.25, 0.4}, --leg 
+                {-0.4, -0.5, 0.25, -0.25, 0.25, 0.4}, --leg
                 {0.25, -0.5, -0.4, 0.4, 0.25, -0.25}, --leg
                 {-0.5, 0.25, -0.5, 0.5, 0.375, 0.5}, --table top
                 {-0.01, 0.4375, -0.125, 0.01, 0.5, 0.125}, --saw blade (top)
@@ -525,7 +525,7 @@ if( minetest.get_modpath("locks") ~= nil ) then
            if( not( locks:lock_allow_use( pos, player ))) then
               return 0;
            end
-           return circularsaw.allow_metadata_inventory_move( pos, from_list, from_index, to_list, to_index, count, player );     
+           return circularsaw.allow_metadata_inventory_move( pos, from_list, from_index, to_list, to_index, count, player );
         end,
 
         -- only input- and recycle-slot are intended as input slots
@@ -533,7 +533,7 @@ if( minetest.get_modpath("locks") ~= nil ) then
            if( not( locks:lock_allow_use( pos, player ))) then
               return 0;
            end
-           return circularsaw.allow_metadata_inventory_put( pos, listname, index, stack, player ); 
+           return circularsaw.allow_metadata_inventory_put( pos, listname, index, stack, player );
         end,
 
         -- taking is allowed from all slots (even the internal microblock slot); moving is forbidden
@@ -552,7 +552,16 @@ if( minetest.get_modpath("locks") ~= nil ) then
         on_metadata_inventory_take = function(pos, listname, index, stack, player)
            return circularsaw.on_metadata_inventory_take( pos, listname, index, stack, player );
         end
-          
+
    })
 end
 
+-- linus added
+minetest.register_craft({
+        output = 'circularsaw:circularsaw',
+        recipe = {
+                { "","default:steel_ingot" , "" },
+                { "marssurvive:wood", "marssurvive:wood", "marssurvive:wood"},
+                { "marssurvive:wood", "", "marssurvive:wood" },
+        }
+})
