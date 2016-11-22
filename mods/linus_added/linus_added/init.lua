@@ -302,6 +302,7 @@ minetest.register_ore({
 })
 
 
+--[[
 minetest.register_chatcommand("grant", {
 	params = "",
 	description = "override grant",
@@ -360,3 +361,4 @@ minetest.register_chatcommand("grant", {
     --
 	end
 })
+--]]
