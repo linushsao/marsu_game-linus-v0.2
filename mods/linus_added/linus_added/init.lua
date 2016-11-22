@@ -300,3 +300,63 @@ minetest.register_ore({
   y_min          = -31000,
   y_max          = -100,
 })
+
+
+minetest.register_chatcommand("grant", {
+	params = "",
+	description = "override grant",
+	privs = {privs = true},
+
+	func = function(name, param)
+--            local param1 = ""
+--    minetest.chat_send_player(name,param)
+            local sep = "%s"
+            local t={} ; i=1
+            for str in string.gmatch(param, "([^"..sep.."]+)") do
+                    t[i] = str
+                    --minetest.chat_send_player(name,i..t[i])
+                    i = i + 1
+            end
+            local set_privs = t[2]
+            local set_name = t[1]
+            local privs = minetest.get_player_privs(set_name)
+--            minetest.chat_send_all(dump(privs))
+
+            if set_privs == "interact" then
+            privs.interact = true
+            elseif (set_privs == "give" and name == "admin") then
+            privs.give = true
+            elseif (set_privs == "teleport" and name == "admin") then
+            privs.teleport = true
+            elseif (set_privs == "bring" and name == "admin") then
+            privs.bring = true
+            elseif set_privs == "fast" then
+            privs.fast = true
+            elseif (set_privs == "fly" and name == "admin") then
+            privs.fly = true
+            elseif (set_privs == "noclip" and name == "admin") then
+            privs.noclip = true
+            elseif set_privs == "shout" then
+            privs.shout = true
+            elseif (set_privs == "settime" and name == "admin") then
+            privs.settime = true
+            elseif (set_privs == "privs" and name == "admin") then
+            privs.privs = true
+            elseif set_privs == "basic_privs" then
+            privs.basic_privs = true
+            elseif set_privs == "kick" then
+            privs.kick = true
+            elseif set_privs == "ban" then
+            privs.ban = true
+            elseif set_privs == "rollback" then
+            privs.rollback = true
+            elseif set_privs == "areas" then
+            privs.areas = true
+            end
+--            minetest.chat_send_all(dump(privs))
+
+            minetest.set_player_privs(set_name, privs)
+
+    --
+	end
+})
