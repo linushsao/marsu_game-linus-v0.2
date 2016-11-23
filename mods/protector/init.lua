@@ -278,7 +278,7 @@ end
 --= Protection Block
 
 minetest.register_node("protector:protect", {
-	description = "Protection Block",
+	description = "unused Protection Block",
 	drawtype = "nodebox",
 	tiles = {
 		"moreblocks_circle_stone_bricks.png",
@@ -297,6 +297,8 @@ minetest.register_node("protector:protect", {
 			{-0.5 ,-0.5, -0.5, 0.5, 0.5, 0.5},
 		}
 	},
+
+--[[
 
 	on_place = protector.check_overlap,
 
@@ -344,6 +346,8 @@ minetest.register_node("protector:protect", {
 	end,
 
 	on_blast = function() end,
+
+	--]]
 })
 
 --[[

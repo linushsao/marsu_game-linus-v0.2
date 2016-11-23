@@ -1,10 +1,14 @@
 -- for covering old version item
-
 minetest.register_alias("group:sand", "marssurvive:sand")
 minetest.register_alias("group:sapling", "marssurvive:mars_sapling")
 minetest.register_alias("group:stone", "marssurvive:stone")
+minetest.register_alias("protector:protect", "marssurvive:stone")
 minetest.register_alias("group:cobble", "marssurvive:cobble")
 minetest.register_alias("group:wood", "marssurvive:wood")
+
+
+
+
 
 minetest.register_on_newplayer(function(player)
     player:setpos({x=52.2, y=12.5, z=-197.1})

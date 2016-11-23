@@ -34,7 +34,7 @@ minetest.register_on_newplayer(function(player)
 	inv:add_item("main","default:lamp_wall")
 	inv:add_item("main","default:apple 3")
 	inv:add_item("main","farming:bread 3")
-	inv:add_item("main","protector:protect")
+	inv:add_item("main","markers:mark 4")
 
 	--if minetest.check_player_privs(player:get_player_name(), {server=true}) then
 	--	inv:add_item("main","marssurvive:tospaceteleporter")
