@@ -278,7 +278,7 @@ end
 --= Protection Block
 
 minetest.register_node("protector:protect", {
-	description = "unused Protection Block",
+	description = "unused Protection Block,could be exchange for 4 marks in players hall",
 	drawtype = "nodebox",
 	tiles = {
 		"moreblocks_circle_stone_bricks.png",
