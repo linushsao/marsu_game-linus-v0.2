@@ -71,19 +71,6 @@ minetest.register_on_joinplayer(function(player)
 end)
 
 
-minetest.register_chatcommand("getip", {
-    params = "<name>",
-    description = "Get IP of player",
-    privs = {privs = true},
-    func = function(name, param)
-        if minetest.get_player_by_name(param) == nil then
-            minetest.chat_send_player(name, "Player not found")
-            return
-        end
-        minetest.chat_send_player(name, "IP of " .. param .. " is ".. minetest.get_player_ip(param))
-    end,
-})
-
 
 minetest.register_abm({
 	nodenames = {"marssurvive:cobble"},
@@ -304,6 +291,51 @@ minetest.register_ore({
   y_min          = -31000,
   y_max          = -100,
 })
+
+--extra command
+
+minetest.register_chatcommand("bring", {
+
+	params = "Usage:bring <name>",
+	description = "bring moderator immediately to a player's location",
+	privs = {basic_privs = true},
+
+	func = function(name, param)
+
+    minetest.chat_send_player(name, name.." "..param)
+
+    local player = minetest.get_player_by_name(param)
+    if player == nil then
+       minetest.chat_send_player(name,"player "..param.."is not avilable or off-line")
+       return false
+    end
+
+    local caller = minetest.get_player_by_name(name)
+    local pos = player:getpos()
+
+    minetest.chat_send_player(name, "X "..pos.x)
+    minetest.chat_send_player(name, "Y "..pos.y)
+    minetest.chat_send_player(name, "Z "..pos.z)
+
+    caller:setpos({x=pos.x,y=pos.y,z=pos.z})
+      minetest.chat_send_player(name, "Teleported to player "..param.."!")
+
+	end
+})
+
+minetest.register_chatcommand("getip", {
+    params = "Usage:getip <name>",
+    description = "Get IP of player",
+    privs = {basic_privs = true},
+    func = function(name, param)
+        if minetest.get_player_by_name(param) == nil then
+            minetest.chat_send_player(name, "Player not found")
+            return
+        end
+        minetest.chat_send_player(name, "IP of " .. param .. " is ".. minetest.get_player_ip(param))
+    end,
+})
+
 
 
 --[[
