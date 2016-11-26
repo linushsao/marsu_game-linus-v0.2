@@ -103,3 +103,11 @@ minetest.register_craft( {
 	},
 })
 
+minetest.register_craft( {
+	output = 'ufos:furnace',
+	recipe = {
+		{ "default:steel_ingot", "marssurvive:crystal", "default:steel_ingot"},
+		{ "marssurvive:crystal", "default:furnace", "marssurvive:crystal"},
+		{ "default:steel_ingot", "marssurvive:crystal", "default:steel_ingot"},
+	},
+})

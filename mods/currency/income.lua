@@ -35,6 +35,8 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 	earn_income(digger)
 end)
 
+--[[
 minetest.register_on_placenode(function(pos, node, placer)
 	earn_income(placer)
 end)
+--]]
