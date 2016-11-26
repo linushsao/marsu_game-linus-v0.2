@@ -87,18 +87,15 @@ minetest.register_globalstep(function(dtime)
 				minetest.chat_send_all("It's a Storm")
 			end
 
+--]]
 		-- July
 		elseif tonumber(month) == 7 then
 
-			if math.random(1, 5000) == 1 then
-				mymonths.weather = "rain"
-				minetest.chat_send_all("It is Raining")
-
-			elseif math.random(1, 5000) == 1 then
-				mymonths.weather = "storm"
-				minetest.chat_send_all("It's a Storm")
+			if math.random(1, 100) == 1 then
+				mymonths.weather = "sandstorm"
+				minetest.chat_send_all("It is sandstorm of MARS")
 			end
-
+--[[
 		-- August
 		elseif 	tonumber(month) == 8 then
 
