@@ -49,7 +49,17 @@ minetest.register_node("bones:bones_infected", {
 		footstep = {name="default_gravel_footstep", gain=0.5},
 		dug = {name="default_gravel_footstep", gain=1.0},
 	}),
+	on_place = function(itemstack, placer, pointed_thing)
+		local pos = pointed_thing.above
+		minetest.add_entity({x=pos.x,y=pos.y+1,z=pos.z},"zombies:zombie")
+		minetest.set_node({x=pos.x,y=pos.y,z=pos.z},{name="marssurvive:sand"})
+
+		return minetest.item_place(itemstack, placer, pointed_thing)
+
+	end,
 	})
+
+
 
 
 local function may_replace(pos, player)

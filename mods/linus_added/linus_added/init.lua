@@ -87,20 +87,14 @@ minetest.register_abm({
 minetest.register_abm({
 	nodenames = {"bones:bones_infected"},
 	neighbors = {"air"},
-	interval = 60,
-	chance = 5,
+	interval = 5,
+	chance = 1,
 	catch_up = false,
 	action = function(pos, node)
-  pos.y = pos.y+2
---  minetest.chat_send_all(minetest.get_node_light(pos,nil))
-  if (minetest.get_node_light(pos,nil)) < 4 then
-      minetest.add_entity(pos,"zombies:zombie")
-  end
-
+  minetest.chat_send_all("bones vanish!!")
 	end
 })
 --]]
-
 
 minetest.register_abm({
 	nodenames = {"marssurvive:stone"},
