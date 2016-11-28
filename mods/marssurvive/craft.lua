@@ -136,7 +136,9 @@ minetest.register_craft({
 })
 minetest.register_craft({
 	output = "default:stick 4",
-	recipe = {{"marssurvive:clayblock","",""}}})
+--	recipe = {{"marssurvive:clayblock","",""}}})
+	recipe = {{"default:clay_lump","",""}}})
+
 
 minetest.register_craft({
 	output = "marssurvive:wood 3",
