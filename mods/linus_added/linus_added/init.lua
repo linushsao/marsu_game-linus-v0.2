@@ -70,7 +70,15 @@ minetest.register_on_joinplayer(function(player)
 
 end)
 
+minetest.register_on_punchnode(function(pos, node, puncher, pointed_thing)
+    if minetest.is_protected(pos, puncher) then
+            print("jail...")
+       puncher:setpos({x=-408, y=-4180, z=-97})
+    end
+end)
 
+
+--about ABM
 
 minetest.register_abm({
 	nodenames = {"marssurvive:cobble"},
