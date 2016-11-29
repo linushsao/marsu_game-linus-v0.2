@@ -41,7 +41,7 @@ minetest.register_on_protection_violation(function(pos, name)
 
 				if not player then return end
 
-				 player:setpos({x=638,y=5,z=473}) --- teleport to Coordinate x,y,z
+				 player:setpos({x=-408, y=-4180, z=-97}) --- teleport to Coordinate x,y,z
 
 	 end
 end)
