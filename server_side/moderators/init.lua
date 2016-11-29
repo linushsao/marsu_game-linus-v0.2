@@ -122,6 +122,20 @@ minetest.register_chatcommand("getip", {
     end,
 })
 
+minetest.register_chatcommand("spawn", {
+
+	params = "",
+	description = "spawn to player hall",
+	privs = {},
+
+	func = function(name, param)
+--    minetest.chat_send_player(name, name.." "..param)
+    local caller = minetest.get_player_by_name(name)
+    caller:setpos({x=46.9, y=12.5, z=-197})
+    minetest.chat_send_player(name, "Spawn to player hall")
+	   end
+})
+
 --[[
 minetest.register_chatcommand("grant", {
 	params = "",
