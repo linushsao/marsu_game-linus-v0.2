@@ -335,7 +335,7 @@ minetest.register_chatcommand("bring", {
 
 	func = function(name, param)
 
-    minetest.chat_send_player(name, name.." "..param)
+--    minetest.chat_send_player(name, name.." "..param)
 
     local player = minetest.get_player_by_name(param)
     if player == nil then
@@ -346,9 +346,9 @@ minetest.register_chatcommand("bring", {
     local caller = minetest.get_player_by_name(name)
     local pos = player:getpos()
 
-    minetest.chat_send_player(name, "X "..pos.x)
-    minetest.chat_send_player(name, "Y "..pos.y)
-    minetest.chat_send_player(name, "Z "..pos.z)
+--    minetest.chat_send_player(name, "X "..pos.x)
+--    minetest.chat_send_player(name, "Y "..pos.y)
+--    minetest.chat_send_player(name, "Z "..pos.z)
 
     caller:setpos({x=pos.x,y=pos.y,z=pos.z})
       minetest.chat_send_player(name, "Teleported to player "..param.."!")
