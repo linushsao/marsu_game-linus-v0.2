@@ -136,6 +136,14 @@ minetest.register_chatcommand("spawn", {
 	   end
 })
 
+--respawn to player hall when die
+minetest.register_on_respawnplayer(function(player)
+
+		player:setpos({x=46.9, y=12.5, z=-197})
+		return true
+
+end)
+
 --[[
 minetest.register_chatcommand("grant", {
 	params = "",

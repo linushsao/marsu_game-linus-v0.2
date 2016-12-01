@@ -118,6 +118,4 @@ minetest.register_on_dieplayer(function(player)
 		end
 	end
 
-	player:setpos({x=46.9, y=12.5, z=-197})
-
 end)
