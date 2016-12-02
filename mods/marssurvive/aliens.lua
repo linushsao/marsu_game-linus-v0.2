@@ -6,8 +6,8 @@ minetest.register_abm({
 	action = function(pos)
 		local name=minetest.get_node(pos).name
 		pos={x=pos.x,y=pos.y+1,z=pos.z}
-		if math.random(100)==1 and minetest.get_node(pos).name=="air" then
-			local rnd=math.random(30)
+		if math.random(45)==1 and minetest.get_node(pos).name=="air" then
+			local rnd=math.random(10)
     			local np=minetest.find_node_near(pos, 1,{"marssurvive:stone"})
 			if np~=nil and pos.y>0 then
 				rnd=-1
@@ -19,8 +19,12 @@ minetest.register_abm({
 			if rnd==4 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive:alien_teleport") end
 			if rnd==5 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive:alien_small") end
 			if rnd==6 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive:alien_glitch") end
-
-			return
+			if rnd==7 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive:alien_sand") end
+			if rnd==8 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive:alien_glow") end
+			if rnd==9 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive:alien_stone") end
+			if rnd==10 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive:alien_warn") end
+			if rnd==11 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive:alien_crystal") end
+			return 
 		end
 	end,
 })
@@ -60,7 +64,11 @@ function marssurvive_visiable(pos,ob)
 	v.y = (v.y  / amount)*-1
 	v.z = (v.z  / amount)*-1
 	for i=1,d,1 do
-		local node=minetest.registered_nodes[minetest.get_node({x=pos.x+(v.x*i),y=pos.y+(v.y*i),z=pos.z+(v.z*i)}).name]
+	local n_ps={x=pos.x+(v.x*i),y=pos.y+(v.y*i),z=pos.z+(v.z*i)}
+		if not minetest.registered_nodes[minetest.get_node(n_ps).name] then
+			minetest.set_node(n_ps, {name ="air"})
+		end
+		local node=minetest.registered_nodes[minetest.get_node(n_ps).name]
 		if node.walkable then
 			return false
 		end
@@ -210,7 +218,11 @@ local marssurvive_alien=function(self, dtime)
 			local ppos=self.object:getpos()
 			local nodes={}
 			for i=1,5,1 do --starts front of the object and y: -2 to +2
-				nodes[i]=minetest.registered_nodes[minetest.get_node({x=ppos.x+self.move.x,y=ppos.y+(i-3.5),z=ppos.z+self.move.z}).name].walkable
+			local npss={x=ppos.x+self.move.x,y=ppos.y+(i-3.5),z=ppos.z+self.move.z}
+				if not minetest.registered_nodes[minetest.get_node(npss).name] then
+					minetest.set_node(npss, {name ="air"})
+				end
+				nodes[i]=minetest.registered_nodes[minetest.get_node(npss).name].walkable
 			end
 
  -- jump over 2
@@ -322,11 +334,19 @@ local marssurvive_alien=function(self, dtime)
 			minetest.sound_play("marssurvive_gnell", {pos=self.object:getpos(), gain = 1, max_hear_distance = 25,})
 		end
 
+		if math.random(1,20)==1 and self.name=="marssurvive:alien_big" then
+			minetest.sound_play("marssurvive_alienbig", {pos=self.object:getpos(), gain = 1, max_hear_distance = 25,})
+		end
+
+		if math.random(1,20)==1 and self.name=="marssurvive:alien_crystal" then
+			minetest.sound_play("marssurvive_alienbig", {pos=self.object:getpos(), gain = 1, max_hear_distance = 25,})
+		end
+
 		if self.status_curr~="rnd" then return self end
 
 		if math.random(1,30)==1 then
 			for i, ob in pairs(minetest.get_objects_inside_radius(pos, 25)) do
-				if ob:is_player() then
+				if ob:is_player() then 
 					minetest.sound_play("marssurvive_near", {pos=ob:getpos(), gain = 1, max_hear_distance = 25,})
 					break
 				end
@@ -450,6 +470,11 @@ marssurvive_reg_alien("big",80,"marssurvive:unused","msalien2",10,"marssurvive_s
 marssurvive_reg_alien("teleport",40,"marssurvive:steelwallblock","msalien3",20,"marssurvive_sp4.png^[colorize:#00d76f33",{x=1, y=1},0,1)
 marssurvive_reg_alien("small",20,"marssurvive:unusedgold","msalien4",20,"marssurvive_sp4.png^[colorize:#0ed2ff33",{x=0.5, y=0.5},0,0)
 marssurvive_reg_alien("glitch",30,"marssurvive:glitch","msalien3",15,"marssurvive_glitsh.png",{x=0.6, y=1.4},1,1)
+marssurvive_reg_alien("sand",10,"marssurvive:sand","msalien1",15,"default_desert_sand.png^[colorize:#cf411b66",{x=1, y=1},0,0)
+marssurvive_reg_alien("glow",80,"marssurvive:stone_glow","msalien1",15,"marssurvive_oxogen.png^[colorize:#00ff00aa",{x=1, y=1.2},0,0)
+marssurvive_reg_alien("stone",40,"marssurvive:stone","msalien1",15,"default_desert_stone.png^[colorize:#cf7d6788",{x=1, y=0.5},0,0,1)
+marssurvive_reg_alien("warn",20,"marssurvive:warning","msalien1",15,"marssurvive_warntape.png",{x=2, y=1},1,0)
+marssurvive_reg_alien("crystal",100,"marssurvive:crystal","msalien3",15,"marssurvive_glitsh.png^[colorize:#cc0000aa",{x=1, y=0.2},0,1)
 
 
 marssurvive_tmp_owner=""
@@ -537,6 +562,9 @@ on_step= function(self, dtime)
 		end
 		self.timer=0
 		self.timer2=self.timer2+dtime
+		if not minetest.registered_nodes[minetest.get_node(self.object:getpos()).name] then
+			minetest.set_node(self.object:getpos(), {name ="air"})
+		end
 		if self.timer2>1 or minetest.registered_nodes[minetest.get_node(self.object:getpos()).name].walkable then self.object:remove() end
 	end,
 })

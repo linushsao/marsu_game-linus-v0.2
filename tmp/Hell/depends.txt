@@ -1,3 +1,0 @@
-default
-portals_api
-tnt

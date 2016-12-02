@@ -1,4 +1,35 @@
 minetest.register_craft({
+	output = "marssurvive:trapdoor_1 2",
+	recipe = {
+		{"marssurvive:warning","marssurvive:shieldblock",""},
+		{"marssurvive:warning","marssurvive:shieldblock", ""},
+	}
+})
+
+minetest.register_craft({
+	output = "marssurvive:smart_glasspane_side 2",
+	recipe = {{"default:glass", "default:glass"},
+		{"default:glass", "default:glass"},}})
+minetest.register_craft({
+	output = "marssurvive:smart_glasspane_down",
+	recipe = {{"marssurvive:smart_glasspane_side"},}})
+minetest.register_craft({
+	output = "marssurvive:smart_glasspane_up",
+	recipe = {{"marssurvive:smart_glasspane_down"},}})
+minetest.register_craft({
+	output = "marssurvive:smart_glasspane_side",
+	recipe = {{"marssurvive:smart_glasspane_up"},}})
+minetest.register_craft({
+	type = "cooking",
+	output = "default:glass",
+	recipe = "marssurvive:smart_glasspane_side",})
+
+minetest.register_craft({
+	output = "marssurvive:clight 3",
+	recipe = {{"default:glass","default:glass","default:glass"},
+		{"","default:mese_crystal_fragment",""}}})
+
+minetest.register_craft({
 	output = "marssurvive:secam_off",
 	recipe = {
 		{"default:steel_ingot", "dye:black", "default:steel_ingot"},

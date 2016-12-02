@@ -1,3 +1,167 @@
+minetest.register_node("marssurvive:trapdoor_1", {
+	description = "Trap door",
+	drawtype = "nodebox",
+	paramtype = "light",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.375, -0.5, 0.5, -0.4375, 0.5},
+			{-0.5, 0.4375, -0.5, 0.5, 0.375, 0.5},
+		}
+	},
+	tiles = {"marssurvive_shieldblock.png","marssurvive_shieldblock.png","marssurvive_door2.png","marssurvive_warntape.png","marssurvive_door2.png","marssurvive_door2_2.png",},
+	groups = {cracky = 1, level = 2, not_in_creative_inventory=0},
+	sounds = default.node_sound_stone_defaults(),
+	paramtype = "light",
+	paramtype2 = "facedir",
+	sunlight_propagates = true,
+	is_ground_content = false,
+	climbable = true,
+on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+	minetest.swap_node(pos, {name="marssurvive:trapdoor_2", param2=minetest.get_node(pos).param2})
+	minetest.sound_play("marssurvive_door2", {pos=pos, gain = 1, max_hear_distance = 5})
+	minetest.after(4, function(pos)
+		if minetest.get_node(pos).name=="marssurvive:trapdoor_2" then
+			minetest.swap_node(pos, {name="marssurvive:trapdoor_1", param2=minetest.get_node(pos).param2})
+			minetest.sound_play("marssurvive_door2", {pos=pos, gain = 1, max_hear_distance = 5})
+		end
+	end, pos)
+
+
+	end,
+})
+minetest.register_node("marssurvive:trapdoor_2", {
+	description = "Trap door (open)",
+	drop="marssurvive:trapdoor_1",
+	drawtype = "nodebox",
+	paramtype = "light",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{0.375, -0.375, -0.5, 1.5, -0.4375, 0.5},
+			{0.375, 0.4375, -0.5, 1.5, 0.375, 0.5},
+		}
+	},
+	tiles = {"marssurvive_shieldblock.png","marssurvive_shieldblock.png","marssurvive_door2_open.png","marssurvive_warntape.png","marssurvive_door2_open.png","marssurvive_door2_2_open.png",},
+	groups = {cracky = 1, level = 2, not_in_creative_inventory=1},
+	sounds = default.node_sound_wood_defaults(),
+	paramtype = "light",
+	paramtype2 = "facedir",
+	sunlight_propagates = true,
+	is_ground_content = false,
+	climbable = true,
+on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+	local p={x=pos.x,y=pos.y+1,z=pos.z}
+	minetest.sound_play("marssurvive_door2", {pos=pos, gain = 1, max_hear_distance = 5})
+	minetest.swap_node(pos, {name="marssurvive:trapdoor_1", param2=minetest.get_node(pos).param2})
+	end,
+})
+
+
+minetest.register_node("marssurvive:smart_glasspane_side", {
+	description = "Smart glass pane (sides)",
+	tiles = {"default_glass.png", "default_glass_detail.png"},
+	wield_image = "default_glass.png",
+	drawtype = "nodebox",
+	groups = {cracky = 2, oddly_breakable_by_hand = 3},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0.4375, 0.5, 0.5, 0.5},
+		}
+	},
+	is_ground_content = false,
+	sunlight_propagates = true,
+	sounds = default.node_sound_glass_defaults(),
+})
+
+minetest.register_node("marssurvive:smart_glasspane_down", {
+	description = "Smart glass pane (down)",
+	tiles = {"default_glass.png", "default_glass_detail.png"},
+	wield_image = "default_glass.png",
+	drawtype = "nodebox",
+	groups = {cracky = 2, oddly_breakable_by_hand = 3,not_in_creative_inventory=1},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
+		}
+	},
+	is_ground_content = false,
+	sunlight_propagates = true,
+	sounds = default.node_sound_glass_defaults(),
+})
+
+minetest.register_node("marssurvive:smart_glasspane_up", {
+	description = "Smart glass pane (up)",
+	tiles = {"default_glass.png", "default_glass_detail.png"},
+	wield_image = "default_glass.png",
+	drawtype = "nodebox",
+	groups = {cracky = 2, oddly_breakable_by_hand = 3,not_in_creative_inventory=1},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, 0.4375, -0.5, 0.5, 0.5, 0.5},
+		}
+	},
+	is_ground_content = false,
+	sunlight_propagates = true,
+	sounds = default.node_sound_glass_defaults(),
+})
+
+
+
+minetest.register_node("marssurvive:crystal", {
+	description = "Alien's Crystal",
+--brower from glowtest mod,because it's not available in marssurvlve mod
+	drawtype = "nodebox",
+	tiles = {"marssurvive_crystal.png"},
+     paramtype = "light",
+	light_propagates = true,
+	sunlight_propagates = true,
+	light_source = 3,
+     alpha = 200,
+	is_ground_content = false,
+	groups = {cracky=3,oddly_breakable_by_hand=3,crystal=1},
+	sounds = default.node_sound_glass_defaults(),
+     node_box = {
+        type = "fixed",
+        fixed = {
+            {-0.1875,-0.5,-0.125,0.1875,0.3125,0.1875},
+            {0.0625,-0.5,-0.25,0.3125,0,0},
+            {0.0625,-0.5,0.1875,0.25,0.1875,0.375},
+            {-0.3125,-0.5,-0.3125,-0.0625,0.0625,0},
+            {-0.375,-0.5,0.0625,-0.125,-0.0625,0.3125},
+        }
+    },
+     on_place = function(itemstack, placer, pointed_thing)
+		local stack = ItemStack("glowtest:blue_crystal_"..math.random(1,5))
+		local ret = minetest.item_place(stack, placer, pointed_thing)
+		return ItemStack("glowtest:blue_crystal_1 "..itemstack:get_count()-(1-ret:get_count()))
+	end,
+})
+
+
+
+minetest.register_node("marssurvive:clight", {
+	description = "Ceiling light",
+	tiles = {"default_cloud.png"},
+	drawtype = "nodebox",
+	groups = {snappy = 3, not_in_creative_inventory=0},
+	sounds = default.node_sound_glass_defaults(),
+	is_ground_content = false,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	node_box = {type="fixed",fixed={-0.2,0.4,-0.4,0.2,0.6,0.4}},
+	light_source=14,
+})
+
 minetest.register_tool("marssurvive:sandpick", {
 	description = "Sandstone Pickaxe",
 	inventory_image = "default_tool_woodpick.png^[colorize:#cf411b66",
@@ -288,6 +452,27 @@ collision_box = {
 
 end
 
+minetest.register_node("marssurvive:stone_glow", {
+	description = "Stone glow",
+	drawtype = "mesh",
+	mesh = "stone1.obj",
+	visual_scale = 0.27,
+	tiles = {"marssurvive_oxogen^[colorize:#00ff00aa"},
+	groups = {dig_immediate=3,not_in_creative_inventory=0,stone=1},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	sounds = default.node_sound_stone_defaults(),
+	sunlight_propagates = true,
+	is_ground_content = false,
+	light_source=3,
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.3, -0.5, -0.3, 0.3, 0.-0.25, 0.3}
+	},
+collision_box = {
+		type = "fixed",
+		fixed = {{-0.3, -0.5, -0.3, 0.3, 0.-0.25, 0.3},}},
+})
 
 minetest.register_node("marssurvive:sand", {
 	description = "Mars Sand",

@@ -273,6 +273,16 @@ minetest.override_item("stairs:stair_cobble", {tiles = {"default_desert_stone.pn
 		decoration = "marssurvive:stone_small",
 	})
 
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"marssurvive:sand","marssurvive:stone"},
+		sidelen = 16,
+		fill_ratio = 0.00001,
+		y_min = -31000,
+		y_max = 50,
+		decoration = "marssurvive:crystal",
+	})
+
 -- this part makes it crash or just wont work
 
 --mapgen_params = {
