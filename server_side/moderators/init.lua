@@ -144,6 +144,22 @@ minetest.register_on_respawnplayer(function(player)
 
 end)
 
+--warning before reboot
+local timer = 0
+local check_time = ""
+
+minetest.register_globalstep(function(dtime)
+
+	timer = timer + dtime
+
+	if timer >= 60 then
+    check_time = os.date("%H:%M")
+    if check_time=="23:54" then	minetest.chat_send_all("!!!Warning,Server will be restarted after 5 mins!!!") end
+    if check_time=="23:58" then minetest.chat_send_all("!!!Warning,Server will be restarted after 1 mins!!!") end
+		timer = 0
+	end
+end)
+
 --[[
 minetest.register_chatcommand("grant", {
 	params = "",
