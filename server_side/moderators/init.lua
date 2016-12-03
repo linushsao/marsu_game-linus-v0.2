@@ -154,8 +154,13 @@ minetest.register_globalstep(function(dtime)
 
 	if timer >= 60 then
     check_time = os.date("%H:%M")
-    if check_time=="23:54" then	minetest.chat_send_all("!!!Warning,Server will be restarted after 5 mins!!!") end
-    if check_time=="23:58" then minetest.chat_send_all("!!!Warning,Server will be restarted after 1 mins!!!") end
+    if check_time=="23:54" then
+          minetest.chat_send_all("!!!Warning,Server will be restarted after 5 mins!!!")
+    end
+    if check_time=="23:58" then
+          minetest.chat_send_all("!!!Warning,Server will be restarted after 1 mins!!!")
+          minetest.chat_send_all("!!!Server will be online again in a minute !!!")
+    end
 		timer = 0
 	end
 end)
