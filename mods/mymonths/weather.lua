@@ -404,7 +404,7 @@ minetest.register_globalstep(function(dtime)
 		elseif mymonths.weather2 == "sandstorm" then
 
 			minetest.add_particlespawner({
-				amount = 35,
+				amount = 5,
 				time = 0.5,
 				minpos = minps,
 				maxpos = maxps,
