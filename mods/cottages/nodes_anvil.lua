@@ -131,7 +131,7 @@ minetest.register_node("cottages:anvil", {
 		end
 		if(   listname=='input'
 		 and( stack:get_wear() == 0
-                   or stack:get_name() == "technic:water_can" 
+                   or stack:get_name() == "technic:water_can"
                    or stack:get_name() == "technic:lava_can" )) then
 
 			minetest.chat_send_player( player:get_player_name(),
@@ -167,9 +167,9 @@ minetest.register_node("cottages:anvil", {
 		local input = inv:get_stack('input',1);
 
 		-- only tools can be repaired
-		if( not( input ) 
+		if( not( input )
 		   or input:is_empty()
-                   or input:get_name() == "technic:water_can" 
+                   or input:get_name() == "technic:water_can"
                    or input:get_name() == "technic:lava_can" ) then
 
 			meta:set_string("formspec",
@@ -187,15 +187,15 @@ minetest.register_node("cottages:anvil", {
 		   and minetest.registered_items[ tool_name ] ) then
 			if(     minetest.registered_items[ tool_name ].inventory_image ) then
 				hud_image = minetest.registered_items[ tool_name ].inventory_image;
-			elseif( minetest.registered_items[ tool_name ].textures 
+			elseif( minetest.registered_items[ tool_name ].textures
 			    and type(minetest.registered_items[ tool_name ].textures)=='table') then
 				hud_image = minetest.registered_items[ tool_name ].textures[1];
-			elseif( minetest.registered_items[ tool_name ].textures 
+			elseif( minetest.registered_items[ tool_name ].textures
 			    and type(minetest.registered_items[ tool_name ].textures)=='string') then
 				hud_image = minetest.registered_items[ tool_name ].textures;
 			end
 		end
-			
+
 		local hud1 = puncher:hud_add({
 			hud_elem_type = "image",
 			scale = {x = 15, y = 15},
@@ -247,7 +247,7 @@ minetest.register_node("cottages:anvil", {
 		inv:set_stack("input", 1, input)
 
 		-- damage the hammer slightly
-		wielded:add_wear( 100 );
+		wielded:add_wear( 500 );
 		puncher:set_wielded_item( wielded );
 
 		-- do not spam too much
@@ -281,14 +281,14 @@ if ( minetest.get_modpath("castle") ~= nil ) then
 	recipe = {
 		 {'castle:anvil'},
 		},
-  }) 
+  })
 
   minetest.register_craft({
 	output = "castle:anvil",
 	recipe = {
 		 {'cottages:anvil'},
 		},
-  }) 
+  })
 end
 
 
@@ -300,4 +300,3 @@ minetest.register_craft({
                 {cottages.craftitem_steel,cottages.craftitem_steel,cottages.craftitem_steel},
                 {'',                   cottages.craftitem_stick,      ''                   } }
 })
-
