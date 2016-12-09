@@ -16,6 +16,7 @@ minetest.register_on_punchnode(function(pos, node, puncher, pointed_thing)
 		--local mypos = minetest.pos_to_string(pos) -- Sets variable to (X,Y,Z.. where Y is up)
 		local grifer_pos = {}
 		local grifer_file = minetest.get_worldpath() .. "/grifer_file"
+		local check_time = os.date("%H:%M")
 
 		local player = minetest.get_player_by_name(puncher)
 		local pos = player:getpos()
@@ -27,7 +28,7 @@ minetest.register_on_punchnode(function(pos, node, puncher, pointed_thing)
 		if changed then
 			local output = io.open(grifer_file, "w")
 				for i, v in pairs(grifer_pos) do
-						output:write(v.x.." "..v.y.." "..v.z.." "..i..node.name.."\n")
+						output:write(check_time.."("..v.x..","..v.y..","..v.z..")"..i..node.name.."\n")
 				end
 				io.close(output)
 				changed = false
