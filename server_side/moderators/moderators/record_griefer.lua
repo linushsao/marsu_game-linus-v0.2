@@ -1,34 +1,51 @@
 
--- Overriding in protection mods
-old_is_protected = minetest.is_protected
+--[[
+local old_is_protected = minetest.is_protected
 function minetest.is_protected(pos, name)
-	if not mymod:can_interact(pos, name) then
-		return true
-	end
-	return old_is_protected(pos, name)
+	 if not areas:canInteract(pos, name) then
+			return true
+	 end
+	 return old_is_protected(pos, name)
 end
+--]]
 
 minetest.register_on_punchnode(function(pos, node, puncher, pointed_thing)
 
-	if minetest.is_protected(pos, puncher) then
+
+	local old_is_protected = minetest.is_protected
+	local puncher_name = puncher:get_player_name()
+	local pos = pos
+
+--[[
+	print("on_punchnode outside")
+	print("########################################")
+	print("check_areas:canInteract "..dump(areas:canInteract(pos, puncher)))
+	print("check pos:"..dump(pos))
+	print("check node:"..dump(node))
+	print("check puncher:"..puncher_name)
+	print("check pointed_thing:"..dump(pointed_thing))
+--]]
+
+	if not areas:canInteract(pos, puncher) then
+--		 print("on_punchnode inside")
 		--record to log
 		--local puncher_name = puncher:get_player_name()
 		--local mypos = minetest.pos_to_string(pos) -- Sets variable to (X,Y,Z.. where Y is up)
 		local grifer_pos = {}
-		local grifer_file = minetest.get_worldpath() .. "/grifer_file"
-		local check_time = os.date("%H:%M")
+		local griefer_file = minetest.get_worldpath() .. "/griefer_file"
+		local check_time = os.date("%x %H:%M")
+		local owners = areas:getNodeOwners(pos)
 
-		local player = minetest.get_player_by_name(puncher)
-		local pos = player:getpos()
+		grifer_pos[puncher_name] = pos
 
-		grifer_pos[player:get_player_name()] = pos
-
-		changed = true
+		local changed = true
 
 		if changed then
-			local output = io.open(grifer_file, "w")
+			local output = io.open(griefer_file, "a")
 				for i, v in pairs(grifer_pos) do
-						output:write(check_time.."("..v.x..","..v.y..","..v.z..")"..i..node.name.."\n")
+						output:write("Time:"..check_time.."(CST),position:("..v.x..","..v.y..","..v.z.."),area_owner:"..table.concat(owners, ", ")..",griefer:"..i..",node:"..node.name.."\n")
+--						print("finished io.open")
+
 				end
 				io.close(output)
 				changed = false
