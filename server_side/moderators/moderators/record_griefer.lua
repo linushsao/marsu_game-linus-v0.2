@@ -43,7 +43,7 @@ minetest.register_on_punchnode(function(pos, node, puncher, pointed_thing)
 		if changed then
 			local output = io.open(griefer_file, "a")
 				for i, v in pairs(grifer_pos) do
-						output:write("Time:"..check_time.."(CST),position:("..v.x..","..v.y..","..v.z.."),area_owner:"..table.concat(owners, ", ")..",griefer:"..i..",node:"..node.name.."\n")
+						output:write("Time:"..check_time.."(CST),position:("..v.x..","..v.y..","..v.z.."),area_owner:"..table.concat(owners, ", ")..",griefer:"..i..",node:"..node.name.."<br> \n ")
 --						print("finished io.open")
 
 				end
