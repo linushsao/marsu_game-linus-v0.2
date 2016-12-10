@@ -15,6 +15,7 @@ minetest.register_on_punchnode(function(pos, node, puncher, pointed_thing)
 	local old_is_protected = minetest.is_protected
 	local puncher_name = puncher:get_player_name()
 	local pos = pos
+	local font_color = ""
 
 --[[
 	print("on_punchnode outside")
@@ -35,6 +36,15 @@ minetest.register_on_punchnode(function(pos, node, puncher, pointed_thing)
 		local griefer_file = minetest.get_worldpath() .. "/griefer_file"
 		local check_time = os.date("%x %H:%M")
 		local owners = areas:getNodeOwners(pos)
+		local check_area = false
+
+		for _, v in pairs(owners) do
+				if v == puncher_name then check_area = true end
+		end
+		print(dump(check_area))
+
+		if not check_area then font_color = "red" end
+		print(font_color)
 
 		grifer_pos[puncher_name] = pos
 
@@ -43,7 +53,7 @@ minetest.register_on_punchnode(function(pos, node, puncher, pointed_thing)
 		if changed then
 			local output = io.open(griefer_file, "a")
 				for i, v in pairs(grifer_pos) do
-						output:write("Time:"..check_time.."(CST),position:("..v.x..","..v.y..","..v.z.."),area_owner:"..table.concat(owners, ", ")..",griefer:"..i..",node:"..node.name.."<br> \n ")
+						output:write("<font color="..font_color..">".."Time:"..check_time.."(CST),position:("..v.x..","..v.y..","..v.z.."),area_owner:"..table.concat(owners, ", ")..",puncher:<b>"..i.."</b>,node:"..node.name.."</font><br> \n ")
 --						print("finished io.open")
 
 				end
