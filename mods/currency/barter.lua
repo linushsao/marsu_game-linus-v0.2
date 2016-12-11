@@ -87,7 +87,7 @@ barter.chest.exchange = function(meta)
 	meta:set_int("pl1step",0)
 	meta:set_int("pl2step",0)
 end
---[[
+
 minetest.register_node("currency:barter", {
         drawtype = "nodebox",
 	description = "Barter Table",
@@ -163,4 +163,3 @@ minetest.register_node("currency:barter", {
 		return stack:get_count()
 	end,
 })
---]]
