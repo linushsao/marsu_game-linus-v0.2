@@ -12,6 +12,10 @@ end
 --record the puncher,but puncher maybe just punch not get node.
 minetest.register_on_punchnode(function(pos, node, puncher, pointed_thing)
 
+	if (pos == nil or node == nil or puncher == nil or pointed_thing == nil) then 
+	return true
+	end
+
 
 	local old_is_protected = minetest.is_protected
 	local puncher_name = puncher:get_player_name()
@@ -68,6 +72,10 @@ end)
 
 --record the digger,digger means really get node.
 minetest.register_on_dignode(function(pos, oldnode, digger)
+
+	if (digger == nil or pos == nil or oldnode == nil) then
+	return true
+	end
 
 		local old_is_protected = minetest.is_protected
 		local digger_name = digger:get_player_name()
