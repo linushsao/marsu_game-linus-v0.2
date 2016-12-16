@@ -28,7 +28,14 @@ minetest.register_on_joinplayer(function(player)
   local playername = player:get_player_name()
 --  minetest.chat_send_all(playername)
  -- if ((playername ~= "tm3") and (playername ~= "juli") and (playername ~= "yang2003") and (playername ~= "admin")) then
-  if ( (not is_md0(playername)) and (not is_md0(playername)) and (not is_md0(playername)) and (not is_md0(playername)))  then
+  if is_md0(playername) then
+		local check_file = minetest.get_worldpath() .. "/check_file"
+		if io.open(check_file, "r") ~= nil then
+		recovery_md0_privs()
+--		print("not nil")
+		end
+		return true
+	else
     local privs = minetest.get_player_privs(playername)
 --    minetest.chat_send_all("ready to revoke privs")
 
