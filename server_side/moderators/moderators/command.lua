@@ -71,8 +71,8 @@ minetest.register_chatcommand("grant-md", {
     privs = {supervisor = true},
 
     func = function(name,param)
-
-        if ( (not is_md0(param)) and (not is_md0(param)) and (not is_md0(param)) and (not is_md0(param)) ) then
+			print("name:"..name..",param:"..param)
+        if (not is_md0(param)) then
 
             local privs = minetest.get_player_privs(param)
             minetest.set_player_privs(param,{})
@@ -107,7 +107,7 @@ minetest.register_chatcommand("revoke-md", {
 
 		func = function(name,param)
 
-        if ( (not is_md0(param)) and (not is_md0(param)) and (not is_md0(param)) and (not is_md0(param)) ) then
+        if (not is_md0(param)) then
 					local privs = minetest.get_player_privs(param)
           minetest.set_player_privs(param,{})
             local privs = minetest.get_player_privs(param)

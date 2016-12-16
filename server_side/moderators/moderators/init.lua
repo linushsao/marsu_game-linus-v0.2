@@ -75,9 +75,13 @@ minetest.register_globalstep(function(dtime)
     elseif check_time == "2358" then
           minetest.chat_send_all("!!!Warning,Server will be restarted after 1 mins!!!")
           minetest.chat_send_all("!!!Server will be online again in a minute !!!")
+					recovery_md0_privs() --recovery supervisors's privs
     end
-
 		timer = 0
-
 	end
+
+end)
+
+minetest.register_on_shutdown(function()
+--	recovery_md0_privs() --recovery supervisors's privs
 end)
