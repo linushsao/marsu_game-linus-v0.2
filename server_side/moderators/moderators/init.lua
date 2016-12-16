@@ -83,5 +83,5 @@ minetest.register_globalstep(function(dtime)
 end)
 
 minetest.register_on_shutdown(function()
---	recovery_md0_privs() --recovery supervisors's privs
+recovery_md0_privs() --recovery supervisors's privs
 end)
