@@ -33,7 +33,7 @@ circularsaw.known_stairs = {}
 
 
 -- register known stairsplus:-stairs
-for i,v in ipairs( {"wood","stone","cobble","mossycobble","brick","sandstone","steelblock","desert_stone","glass"} ) do
+for i,v in ipairs( {"wood","stone","cobble","mossycobble","brick","sandstone","steelblock","desert_stone","glass","meselamp"} ) do
    table.insert( circularsaw.known_stairs, "default:"..v );
 end
 
