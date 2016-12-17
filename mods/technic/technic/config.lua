@@ -6,9 +6,9 @@ local defaults = {
 	enable_mining_drill = "true",
 	enable_mining_laser = "true",
 	enable_flashlight = "false",
-	enable_wind_mill = "false",
-	enable_frames = "false",
-	enable_corium_griefing = "true",
+	enable_wind_mill = "true",
+	enable_frames = "true",
+	enable_corium_griefing = "false",
 }
 
 for k, v in pairs(defaults) do
