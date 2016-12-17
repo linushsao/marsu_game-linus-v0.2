@@ -51,19 +51,10 @@ minetest.register_chatcommand("spawn", {
 
 	func = function(name, param)
     local caller = minetest.get_player_by_name(name)
-    caller:setpos({x=65, y=6.5, z=-200})
+    caller:setpos({x=66, y=6.5, z=-198})
     minetest.chat_send_player(name, "Spawn to player hall")
 	   end
 })
-
---respawn to player hall when die
-minetest.register_on_respawnplayer(function(player)
-
-		player:setpos({x=57.7, y=13, z=-197})
-		return true
-
-end)
-
 
 minetest.register_chatcommand("grant-md", {
     params = "Usage:grant-md <name>",

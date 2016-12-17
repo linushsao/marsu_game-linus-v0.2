@@ -17,8 +17,16 @@ dofile(minetest.get_modpath("moderators") .. "/record_griefer.lua")
 
 --spawn point
 minetest.register_on_newplayer(function(player)
-    player:setpos({x=62, y=13, z=-169})
+    player:setpos({x=62, y=13, z=-197})
     return true
+end)
+
+--respawn to player hall when die
+minetest.register_on_respawnplayer(function(player)
+
+		player:setpos({x=66, y=6.5, z=-198})
+		return true
+
 end)
 
 --check privs for areas for all players
@@ -62,6 +70,8 @@ minetest.register_on_joinplayer(function(player)
   end
 
 end)
+
+
 
 
 
