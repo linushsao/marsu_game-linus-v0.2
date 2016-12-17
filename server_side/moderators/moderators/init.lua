@@ -17,7 +17,7 @@ dofile(minetest.get_modpath("moderators") .. "/record_griefer.lua")
 
 --spawn point
 minetest.register_on_newplayer(function(player)
-    player:setpos({x=52.2, y=12.5, z=-197.1})
+    player:setpos({x=62, y=13, z=-169})
     return true
 end)
 
