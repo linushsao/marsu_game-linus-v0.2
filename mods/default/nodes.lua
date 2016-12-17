@@ -557,8 +557,21 @@ minetest.register_node("default:jungleleaves", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {'default:junglesapling'}, rarity = 20},
-			{items = {'moretrees:rubber_tree_sapling'}, rarity = 40},
+			{items = {'default:junglesapling'}, rarity = math.random(20, 40)},
+			{items = {'moretrees:apple_tree_sapling'}, rarity = math.random(40, 100)},
+			{items = {'moretrees:beech_sapling'}, rarity = math.random(40, 100)},
+			{items = {'moretrees:birch_sapling'}, rarity = math.random(40, 100)},
+			{items = {'moretrees:rubber_tree_sapling'}, rarity = math.random(40, 100)},
+			{items = {'moretrees:poplar_small_sapling'}, rarity = math.random(40, 100)},
+			{items = {'moretrees:poplar_sapling'}, rarity = math.random(40, 100)},
+			{items = {'moretrees:palm_sapling'}, rarity = math.random(40, 100)},
+			{items = {'moretrees:oak_sapling'}, rarity = math.random(40, 100)},
+			{items = {'moretrees:fir_sapling'}, rarity = math.random(40, 100)},
+			{items = {'moretrees:date_palm_sapling'}, rarity = math.random(40, 100)},
+			{items = {'moretrees:cedar_sapling'}, rarity = math.random(40, 100)},
+			{items = {'moretrees:sequoia_sapling'}, rarity = math.random(40, 100)},
+			{items = {'moretrees:spruce_sapling'}, rarity = math.random(40, 100)},
+			{items = {'moretrees:willow_sapling'}, rarity = math.random(40, 100)},
 			{items = {'default:jungleleaves'}}
 		}
 	},
