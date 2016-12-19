@@ -15,7 +15,7 @@ minetest.register_globalstep(function(dtime)
 	t = 0
 
 	if minetest.get_modpath("lightning") then
-		if mymonths.weather == "sandstorm" then
+		if mymonths.weather == "storm" then
 		lightning.strike()
 		end
 	end
@@ -29,93 +29,151 @@ minetest.register_globalstep(function(dtime)
 		end
 	else
 
---		minetest.chat_send_all(tonumber(month))
-
 		-- January
-
 		if tonumber(month) == 1 then
 
-			if math.random(1, 500) == 1 then
-				mymonths.weather = "sandstorm"
-				minetest.chat_send_all("It is sandstorm of MARS")
+			if math.random(1, 2) == 1 then
+				mymonths.weather = "storm"
+				minetest.chat_send_all("It's a Storm")
 			end
-
 
 		-- February
 		elseif tonumber(month) == 2 then
 
-			if math.random(1, 500) == 1 then
-			lightning.strike()
+			if math.random(1, 1000) == 1 then
+				mymonths.weather = "snow"
+				minetest.chat_send_all("It is Snowing")
+
+			elseif math.random(1, 5000) == 1 then
+				mymonths.weather = "snowstorm"
+				minetest.chat_send_all("It's a Snow storm")
+
+			elseif math.random(1, 5000) == 1 then
+				mymonths.weather = "hail"
+				minetest.chat_send_all("It is Hailing")
 			end
 
 		-- March
 		elseif tonumber(month) == 3 then
 
-			if math.random(1, 500) == 1 then
-			lightning.strike()
+			if math.random(1, 1000) == 1 then
+				mymonths.weather = "rain"
+				minetest.chat_send_all("It is Raining")
+
+			elseif math.random(1, 2500) == 2 then
+				mymonths.weather = "snow"
+				minetest.chat_send_all("It is Snowing")
+
+			elseif math.random(1, 5000) == 1 then
+				mymonths.weather = "hail"
+				minetest.chat_send_all("It is Hailing")
 			end
 
 		-- April
 		elseif tonumber(month) == 4 then
 
-			if math.random(1, 500) == 1 then
-			lightning.strike()
+			if math.random(1, 1000) == 1 then
+				mymonths.weather = "rain"
 			end
 
 		-- May
 		elseif tonumber(month) == 5 then
 
-			if math.random(1, 500) == 1 then
-			lightning.strike()
+			if math.random(1, 1500) == 1 then
+				mymonths.weather = "rain"
+				minetest.chat_send_all("It is Raining")
+
+			elseif math.random(1, 5000) == 1 then
+				mymonths.weather = "storm"
+				minetest.chat_send_all("It's a Storm")
 			end
 
 		-- June
-
 		elseif 	tonumber(month) == 6 then
 
-			if math.random(1, 500) == 1 then
-			lightning.strike()
+			if math.random(1, 5000) == 1 then
+				mymonths.weather = "rain"
+				minetest.chat_send_all("It is Raining")
+
+			elseif math.random(1, 5000) == 1 then
+				mymonths.weather = "storm"
+				minetest.chat_send_all("It's a Storm")
 			end
 
 		-- July
 		elseif tonumber(month) == 7 then
 
-			if math.random(1, 500) == 1 then
-			lightning.strike()
+			if math.random(1, 5000) == 1 then
+				mymonths.weather = "rain"
+				minetest.chat_send_all("It is Raining")
+
+			elseif math.random(1, 5000) == 1 then
+				mymonths.weather = "storm"
+				minetest.chat_send_all("It's a Storm")
 			end
+
 		-- August
 		elseif 	tonumber(month) == 8 then
 
-			if math.random(1, 500) == 1 then
-			lightning.strike()
+			if math.random(1, 5000) == 1 then
+				mymonths.weather = "rain"
+				minetest.chat_send_all("It is Raining")
+
+			elseif math.random(1, 5000) == 1 then
+				mymonths.weather = "storm"
+				minetest.chat_send_all("It's a Storm")
 			end
 
 		-- September
 		elseif tonumber(month) == 9 then
 
-			if math.random(1, 500) == 1 then
-			lightning.strike()
+			if math.random(1, 1500) == 1 then
+				mymonths.weather = "rain"
+				minetest.chat_send_all("It is Raining")
+
+			elseif math.random(1, 2500) == 1 then
+				mymonths.weather = "storm"
+				minetest.chat_send_all("It's a Storm")
 			end
 
 		-- October
 		elseif tonumber(month) == 10 then
 
-			if math.random(1, 500) == 1 then
-			lightning.strike()
+			if math.random(1, 1000) == 1 then
+				mymonths.weather = "rain"
+				minetest.chat_send_all("It is Raining")
+
+			elseif math.random(1, 2500) == 1 then
+				mymonths.weather = "storm"
+				minetest.chat_send_all("It's a Storm")
 			end
 
 		-- November
 		elseif tonumber(month) == 11 then
 
-			if math.random(1, 500) == 1 then
-			lightning.strike()
+			if math.random(1, 1000) == 1 then
+				mymonths.weather = "rain"
+				minetest.chat_send_all("It is Raining")
+
+			elseif math.random(1, 2000) == 2 then
+				mymonths.weather = "snow"
+				minetest.chat_send_all("It is Snowing")
 			end
 
 		-- December
 		elseif tonumber(month) == 12 then
 
-			if math.random(1, 500) == 1 then
-			lightning.strike()
+			if math.random(1, 2500) == 1 then
+				mymonths.weather = "rain"
+				minetest.chat_send_all("It is Raining")
+
+			elseif math.random(1, 1000) == 1 then
+				mymonths.weather = "snow"
+				minetest.chat_send_all("It is Snowing")
+
+			elseif math.random(1, 5000) == 1 then
+				mymonths.weather = "hail"
+				minetest.chat_send_all("It is Hailing")
 			end
 		end
 	end
@@ -429,7 +487,7 @@ minetest.register_globalstep(function(dtime)
 			and mymonths.damage == true then
 
 				if hp_t >= 15 then
-					player:set_hp(hp - 6)
+					player:set_hp(hp - 1)
 					hp_t = 0
 				end
 			end

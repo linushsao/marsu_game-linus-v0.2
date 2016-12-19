@@ -187,7 +187,6 @@ minetest.register_chatcommand("setday", {
 --Weather
 if mymonths.use_weather == true then
 
---[[
 minetest.register_chatcommand("weather", {
 	params = "",
 	description = "Tells player the weather",
@@ -197,7 +196,7 @@ minetest.register_chatcommand("weather", {
 		minetest.chat_send_player(name,"The weather is " .. mymonths.weather2)
 	end
 })
---]]
+
 end -- END IF
 
 --Time and Date
@@ -219,7 +218,7 @@ minetest.register_chatcommand("date", {
 		local my = ".00"
 		local mz = mx..my
 		local mf = string.find(mz, "%p",1)
-		local mi = string.sub(mx,mf-2,mf-1)
+		local mi = string.sub(mx,mf-2,mf-1) 
 		local ampm = "am"
 
 		th = th or 0 -- if nil then force value

@@ -1,10 +1,7 @@
 
 --Places Snow on ground
-
-
 if mymonths.snow_on_ground == true then
 
---[[
 minetest.register_abm({
 	nodenames = {"default:leaves", "default:dirt", "default:dirt_with_grass"},
 	neighbors = {"air"},
@@ -31,9 +28,7 @@ minetest.register_abm({
 	end
 })
 
-
 --Replace grass and flowers with snow
-
 minetest.register_abm({
 	nodenames = {"group:flora", "mymonths:puddle"},
 	neighbors = {"air"},
@@ -57,7 +52,6 @@ minetest.register_abm({
 		end
 	end
 })
-
 
 -- Changes snow to larger snow
 minetest.register_abm({
@@ -149,14 +143,12 @@ minetest.register_abm({
 		end
 	end
 })
---]]
 
 end -- END IF
 
 if mymonths.use_puddles == true then
 
 -- Makes Puddles when raining
---[[
 minetest.register_abm({
 	nodenames = {"default:dirt", "default:dirt_with_grass"},
 	neighbors = {"default:air"},
@@ -205,6 +197,5 @@ minetest.register_abm({
 		end
 	end
 })
---]]
 
 end -- END IF
