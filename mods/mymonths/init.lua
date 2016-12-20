@@ -11,10 +11,10 @@ mymonths.use_weather = true
 mymonths.leaves = true
 
 --Have snow accumulate on the ground
-mymonths.snow_on_ground = true
+mymonths.snow_on_ground = false
 
 --Puddles appear when raining
-mymonths.use_puddles = true
+mymonths.use_puddles = false
 
 --Flowers die in winter, grown in spring
 mymonths.flowers_die = true
@@ -41,7 +41,7 @@ if input then
 end
 
 dofile(minetest.get_modpath("mymonths") .. "/functions.lua")
-dofile(minetest.get_modpath("mymonths") .. "/abms.lua")
+--dofile(minetest.get_modpath("mymonths") .. "/abms.lua")
 dofile(minetest.get_modpath("mymonths") .. "/command.lua")
 dofile(minetest.get_modpath("mymonths") .. "/months.lua")
 
