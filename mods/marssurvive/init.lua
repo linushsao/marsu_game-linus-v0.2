@@ -123,8 +123,14 @@ on_step= function(self, dtime)
 		end
 
 		if self.user:get_inventory():get_stack("main", 1):get_name()~="marssurvive:sp" then
+			--linus add
+			if not u_skins.u_skins[self.user:get_player_name()] then
+				u_skins.u_skins[self.user:get_player_name()] = "character_1"
+			end
+			u_skins.update_player_skin(minetest.get_player_by_name(self.user:get_player_name()))
+			--
 			self.object:set_detach()
-			self.user:set_properties({mesh = "character.b3d",textures = marssurvive.player_sp[self.user:get_player_name()].skin})
+--			self.user:set_properties({mesh = "character.b3d",textures = marssurvive.player_sp[self.user:get_player_name()].skin})
 			marssurvive.player_sp[self.user:get_player_name()].skin={}
 			marssurvive.player_sp[self.user:get_player_name()].sp=0
 			self.object:remove()
