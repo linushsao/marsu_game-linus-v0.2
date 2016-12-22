@@ -820,7 +820,7 @@ minetest.register_node("marssurvive:unused2", {
 	sounds = default.node_sound_stone_defaults(),
 })
 minetest.register_node("marssurvive:unusedgold", {
-	description = "Unused gold",
+	description = "Alien Small's gene",
 	tiles = {"marssurvive_gold.png"},
 	groups = {cracky = 3},
 	sounds = default.node_sound_stone_defaults(),
