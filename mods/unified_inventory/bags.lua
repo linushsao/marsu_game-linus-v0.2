@@ -161,27 +161,27 @@ if minetest.get_modpath("farming") ~= nil then
 	minetest.register_craft({
 		output = "unified_inventory:bag_small",
 		recipe = {
-			{"",           "farming:cotton", ""},
-			{"group:wool", "group:wool",     "group:wool"},
-			{"group:wool", "group:wool",     "group:wool"},
+			{"", "group:stick", ""},
+			{"group:wood", "marssurvive:alien_death_fiber", "group:wood"},
+			{"group:wood", "group:wood", "group:wood"},
 		},
 	})
 
 	minetest.register_craft({
 		output = "unified_inventory:bag_medium",
 		recipe = {
-			{"",               "",                            ""},
-			{"farming:cotton", "unified_inventory:bag_small", "farming:cotton"},
-			{"farming:cotton", "unified_inventory:bag_small", "farming:cotton"},
+			{"", "group:stick", ""},
+			{"bags:small", "marssurvive:alien_death_fiber", "bags:small"},
+			{"bags:small", "marssurvive:alien_death_fiber", "bags:small"},
 		},
 	})
 
 	minetest.register_craft({
 		output = "unified_inventory:bag_large",
 		recipe = {
-			{"",               "",                             ""},
-			{"farming:cotton", "unified_inventory:bag_medium", "farming:cotton"},
-			{"farming:cotton", "unified_inventory:bag_medium", "farming:cotton"},
+			{"", "group:stick", ""},
+			{"bags:medium", "marssurvive:alien_big_fiber", "bags:medium"},
+			{"bags:medium", "marssurvive:alien_big_fiber", "bags:medium"},
 	    },
 	})
 end
