@@ -3,8 +3,8 @@
 --
 
 minetest.register_alias("mapgen_stone", "marssurvive:stone")
-minetest.register_alias("mapgen_dirt", "marssurvive:stone")
-minetest.register_alias("mapgen_dirt_with_grass", "marssurvive:stone")
+minetest.register_alias("mapgen_dirt", "marssurvive:sand")
+minetest.register_alias("mapgen_dirt_with_grass", "marssurvive:sand")
 minetest.register_alias("mapgen_sand", "marssurvive:sand")
 minetest.register_alias("mapgen_water_source", "default:water_source")
 minetest.register_alias("mapgen_river_water_source", "default:river_water_source")
@@ -12,11 +12,11 @@ minetest.register_alias("mapgen_lava_source", "default:lava_source")
 minetest.register_alias("mapgen_gravel", "default:gravel")
 minetest.register_alias("mapgen_desert_stone", "marssurvive:stone")
 minetest.register_alias("mapgen_desert_sand", "marssurvive:sand")
-minetest.register_alias("mapgen_dirt_with_snow", "default:dirt_with_snow")
-minetest.register_alias("mapgen_snowblock", "default:snowblock")
-minetest.register_alias("mapgen_snow", "default:snow")
+minetest.register_alias("mapgen_dirt_with_snow", "marssurvive:sand")
+minetest.register_alias("mapgen_snowblock", "marssurvive:sand")
+minetest.register_alias("mapgen_snow", "marssurvive:sand")
 minetest.register_alias("mapgen_ice", "marssurvive:ice")
-minetest.register_alias("mapgen_sandstone", "marssurvive:stone")
+minetest.register_alias("mapgen_sandstone", "marssurvive:sand")
 
 -- Flora
 
