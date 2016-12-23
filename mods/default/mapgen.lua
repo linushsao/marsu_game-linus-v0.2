@@ -2,40 +2,41 @@
 -- Aliases for map generator outputs
 --
 
+
 minetest.register_alias("mapgen_stone", "marssurvive:stone")
 minetest.register_alias("mapgen_dirt", "marssurvive:sand")
 minetest.register_alias("mapgen_dirt_with_grass", "marssurvive:sand")
 minetest.register_alias("mapgen_sand", "marssurvive:sand")
-minetest.register_alias("mapgen_water_source", "default:water_source")
-minetest.register_alias("mapgen_river_water_source", "default:river_water_source")
+minetest.register_alias("mapgen_water_source", "default:lava_source")
+minetest.register_alias("mapgen_river_water_source", "default:lava_source")
 minetest.register_alias("mapgen_lava_source", "default:lava_source")
-minetest.register_alias("mapgen_gravel", "marssurvive:sand")
+minetest.register_alias("mapgen_gravel", "default:lava_source")
 minetest.register_alias("mapgen_desert_stone", "marssurvive:stone")
 minetest.register_alias("mapgen_desert_sand", "marssurvive:sand")
 minetest.register_alias("mapgen_dirt_with_snow", "marssurvive:sand")
 minetest.register_alias("mapgen_snowblock", "marssurvive:sand")
 minetest.register_alias("mapgen_snow", "marssurvive:sand")
-minetest.register_alias("mapgen_ice", "marssurvive:ice")
-minetest.register_alias("mapgen_sandstone", "marssurvive:sand")
+minetest.register_alias("mapgen_ice", "marssurvive:stone")
+minetest.register_alias("mapgen_sandstone", "marssurvive:sandstone")
 
 -- Flora
 
-minetest.register_alias("mapgen_tree", "default:tree")
-minetest.register_alias("mapgen_leaves", "default:leaves")
-minetest.register_alias("mapgen_apple", "default:apple")
-minetest.register_alias("mapgen_jungletree", "default:jungletree")
-minetest.register_alias("mapgen_jungleleaves", "default:jungleleaves")
-minetest.register_alias("mapgen_junglegrass", "default:desert_stone")
-minetest.register_alias("mapgen_pine_tree", "default:pine_tree")
-minetest.register_alias("mapgen_pine_needles", "default:pine_needles")
+minetest.register_alias("mapgen_tree", "air")
+minetest.register_alias("mapgen_leaves", "air")
+minetest.register_alias("mapgen_apple", "air")
+minetest.register_alias("mapgen_jungletree", "air")
+minetest.register_alias("mapgen_jungleleaves", "air")
+minetest.register_alias("mapgen_junglegrass", "air")
+minetest.register_alias("mapgen_pine_tree", "air")
+minetest.register_alias("mapgen_pine_needles", "air")
 
 -- Dungeons
 
-minetest.register_alias("mapgen_cobble", "marssurvive:sand")
-minetest.register_alias("mapgen_stair_cobble", "marssurvive:sand")
-minetest.register_alias("mapgen_mossycobble", "marssurvive:sand")
-minetest.register_alias("mapgen_sandstonebrick", "default:sandstonebrick")
-minetest.register_alias("mapgen_stair_sandstonebrick", "stairs:stair_sandstonebrick")
+minetest.register_alias("mapgen_cobble", "marssurvive:cobble")
+minetest.register_alias("mapgen_stair_cobble", "stairs:stair_cobble")
+minetest.register_alias("mapgen_mossycobble", "default:mossycobble")
+minetest.register_alias("mapgen_sandstonebrick", "marssurvive:sandstone")
+minetest.register_alias("mapgen_stair_sandstonebrick", "marssurvive:sandstone")
 
 
 --
@@ -52,7 +53,7 @@ function default.register_ores()
 	minetest.register_ore({
 		ore_type        = "blob",
 		ore             = "default:clay",
-		wherein         = {"default:sand"},
+		wherein         = {"marssurvive:sand"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
 		y_min           = -15,
@@ -72,8 +73,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type        = "blob",
-		ore             = "default:sand",
-		wherein         = {"default:stone", "default:sandstone",
+		ore             = "marssurvive:sand",
+		wherein         = {"marssurvive:stone", "marssurvive:sandstone",
 			"default:desert_stone"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
@@ -95,7 +96,7 @@ function default.register_ores()
 	minetest.register_ore({
 		ore_type        = "blob",
 		ore             = "default:dirt",
-		wherein         = {"default:stone", "default:sandstone"},
+		wherein         = {"marssurvive:stone", "marssurvive:sandstone"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
 		y_min           = -31,
@@ -116,7 +117,7 @@ function default.register_ores()
 	minetest.register_ore({
 		ore_type        = "blob",
 		ore             = "default:gravel",
-		wherein         = {"default:stone"},
+		wherein         = {"marssurvive:stone"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
 		y_min           = -31000,
@@ -136,8 +137,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_coal",
-		wherein        = "default:stone",
+		ore            = "marssurvive:stone_with_coal",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 8 * 8 * 8,
 		clust_num_ores = 8,
 		clust_size     = 3,
@@ -147,8 +148,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_coal",
-		wherein        = "default:stone",
+		ore            = "marssurvive:stone_with_coal",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 24 * 24 * 24,
 		clust_num_ores = 27,
 		clust_size     = 6,
@@ -160,8 +161,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_iron",
-		wherein        = "default:stone",
+		ore            = "marssurvive:stone_with_iron",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 12 * 12 * 12,
 		clust_num_ores = 3,
 		clust_size     = 2,
@@ -171,8 +172,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_iron",
-		wherein        = "default:stone",
+		ore            = "marssurvive:stone_with_iron",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 9 * 9 * 9,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -182,8 +183,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_iron",
-		wherein        = "default:stone",
+		ore            = "marssurvive:stone_with_iron",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 7 * 7 * 7,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -193,8 +194,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_iron",
-		wherein        = "default:stone",
+		ore            = "marssurvive:stone_with_iron",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 24 * 24 * 24,
 		clust_num_ores = 27,
 		clust_size     = 6,
@@ -206,8 +207,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_mese",
-		wherein        = "default:stone",
+		ore            = "marssurvive:stone_with_mese",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 18 * 18 * 18,
 		clust_num_ores = 3,
 		clust_size     = 2,
@@ -217,8 +218,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_mese",
-		wherein        = "default:stone",
+		ore            = "marssurvive:stone_with_mese",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 14 * 14 * 14,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -229,7 +230,7 @@ function default.register_ores()
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "default:mese",
-		wherein        = "default:stone",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 36 * 36 * 36,
 		clust_num_ores = 3,
 		clust_size     = 2,
@@ -241,8 +242,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_gold",
-		wherein        = "default:stone",
+		ore            = "marssurvive:stone_with_gold",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 15 * 15 * 15,
 		clust_num_ores = 3,
 		clust_size     = 2,
@@ -252,8 +253,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_gold",
-		wherein        = "default:stone",
+		ore            = "marssurvive:stone_with_gold",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 13 * 13 * 13,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -265,8 +266,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_diamond",
-		wherein        = "default:stone",
+		ore            = "marssurvive:stone_with_diamond",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 17 * 17 * 17,
 		clust_num_ores = 4,
 		clust_size     = 3,
@@ -276,8 +277,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_diamond",
-		wherein        = "default:stone",
+		ore            = "marssurvive:stone_with_diamond",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 15 * 15 * 15,
 		clust_num_ores = 4,
 		clust_size     = 3,
@@ -289,8 +290,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_copper",
-		wherein        = "default:stone",
+		ore            = "marssurvive:stone_with_copper",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 12 * 12 * 12,
 		clust_num_ores = 4,
 		clust_size     = 3,
@@ -300,8 +301,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_copper",
-		wherein        = "default:stone",
+		ore            = "marssurvive:stone_with_copper",
+		wherein        = "marssurvive:stone",
 		clust_scarcity = 9 * 9 * 9,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -343,9 +344,9 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "glacier_ocean",
 		node_dust = "default:snowblock",
-		node_top = "default:sand",
+		node_top = "marssurvive:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "marssurvive:sand",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -399,9 +400,9 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "tundra_ocean",
 		--node_dust = "",
-		node_top = "default:sand",
+		node_top = "marssurvive:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "marssurvive:sand",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -436,9 +437,9 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "taiga_ocean",
 		--node_dust = "",
-		node_top = "default:sand",
+		node_top = "marssurvive:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "marssurvive:sand",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -474,9 +475,9 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "stone_grassland_dunes",
 		--node_dust = "",
-		node_top = "default:sand",
+		node_top = "marssurvive:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "marssurvive:sand",
 		depth_filler = 2,
 		--node_stone = "",
 		--node_water_top = "",
@@ -492,9 +493,9 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "stone_grassland_ocean",
 		--node_dust = "",
-		node_top = "default:sand",
+		node_top = "marssurvive:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "marssurvive:sand",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -529,9 +530,9 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "coniferous_forest_dunes",
 		--node_dust = "",
-		node_top = "default:sand",
+		node_top = "marssurvive:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "marssurvive:sand",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -547,9 +548,9 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "coniferous_forest_ocean",
 		--node_dust = "",
-		node_top = "default:sand",
+		node_top = "marssurvive:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "marssurvive:sand",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -570,7 +571,7 @@ function default.register_biomes()
 		depth_top = 1,
 		node_filler = "default:dirt",
 		depth_filler = 1,
-		node_stone = "default:sandstone",
+		node_stone = "marssurvive:sandstone",
 		--node_water_top = "",
 		--depth_water_top = ,
 		--node_water = "",
@@ -584,11 +585,11 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "sandstone_grassland_dunes",
 		--node_dust = "",
-		node_top = "default:sand",
+		node_top = "marssurvive:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "marssurvive:sand",
 		depth_filler = 2,
-		node_stone = "default:sandstone",
+		node_stone = "marssurvive:sandstone",
 		--node_water_top = "",
 		--depth_water_top = ,
 		--node_water = "",
@@ -602,11 +603,11 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "sandstone_grassland_ocean",
 		--node_dust = "",
-		node_top = "default:sand",
+		node_top = "marssurvive:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "marssurvive:sand",
 		depth_filler = 3,
-		node_stone = "default:sandstone",
+		node_stone = "marssurvive:sandstone",
 		--node_water_top = "",
 		--depth_water_top = ,
 		--node_water = "",
@@ -657,9 +658,9 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "deciduous_forest_ocean",
 		--node_dust = "",
-		node_top = "default:sand",
+		node_top = "marssurvive:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "marssurvive:sand",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -695,9 +696,9 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "desert_ocean",
 		--node_dust = "",
-		node_top = "default:sand",
+		node_top = "marssurvive:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "marssurvive:sand",
 		depth_filler = 3,
 		node_stone = "default:desert_stone",
 		--node_water_top = "",
@@ -750,9 +751,9 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "savanna_ocean",
 		--node_dust = "",
-		node_top = "default:sand",
+		node_top = "marssurvive:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "marssurvive:sand",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -805,9 +806,9 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "rainforest_ocean",
 		--node_dust = "",
-		node_top = "default:sand",
+		node_top = "marssurvive:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "marssurvive:sand",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -941,7 +942,7 @@ end
 local function register_grass_decoration(offset, scale, length)
 	minetest.register_decoration({
 		deco_type = "simple",
-		place_on = {"default:dirt_with_grass", "default:sand"},
+		place_on = {"default:dirt_with_grass", "marssurvive:sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = offset,
