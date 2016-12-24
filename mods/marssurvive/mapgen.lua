@@ -1,8 +1,8 @@
 minetest.clear_registered_ores()
 --minetest.clear_registered_biomes()
 --minetest.clear_registered_decorations()
-minetest.override_item("default:cobble", {tiles = {"default_desert_stone.png^[colorize:#cf7d6788"}})
-minetest.override_item("default:mossycobble", {tiles = {"default_desert_stone.png^[colorize:#cf7d6788"}})
+--minetest.override_item("default:cobble", {tiles = {"default_desert_stone.png^[colorize:#cf7d6788"}})
+--minetest.override_item("default:mossycobble", {tiles = {"default_desert_stone.png^[colorize:#cf7d6788"}})
 minetest.override_item("stairs:stair_cobble", {tiles = {"default_desert_stone.png^[colorize:#cf7d6788"}})
 
 	minetest.register_biome({
@@ -293,7 +293,7 @@ decoration = "marssurvive:sand",
 --seed=8777,
 --water_level=-31000,
 --flags="caves, noflat",
---mg_name = "marssurvive", 
+--mg_name = "marssurvive",
 --}--light, mgv7_np_cave1
 
 
