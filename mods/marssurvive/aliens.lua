@@ -12,7 +12,6 @@ minetest.register_abm({
 			if np~=nil and pos.y>0 then
 				rnd=-1
 			end
-
 			if rnd==1 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive:alien_common") end
 			if rnd==2 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive:alien_death") end
 			if rnd==3 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive:alien_big") end
@@ -220,7 +219,7 @@ local marssurvive_alien=function(self, dtime)
 			for i=1,5,1 do --starts front of the object and y: -2 to +2
 			local npss={x=ppos.x+self.move.x,y=ppos.y+(i-3.5),z=ppos.z+self.move.z}
 				if not minetest.registered_nodes[minetest.get_node(npss).name] then
-				--	minetest.set_node(npss, {name ="air"})  --linus added
+					minetest.set_node(npss, {name ="air"})
 				end
 				nodes[i]=minetest.registered_nodes[minetest.get_node(npss).name].walkable
 			end

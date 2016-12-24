@@ -33,12 +33,12 @@ for i, name in pairs(leaves_table) do
 	})
 
 	for _,v in pairs(moretrees_leaves_table) do
-	
+
 			if string.match(v,"moretrees") then v1 = string.gsub(v,"moretrees:","") end
 			if string.match(v,"default")   then v1 = string.gsub(v,"default:","") end
-			
+
 			print('mymonths:leaves_' .. name.."_"..v1)
-			
+
 			minetest.register_node('mymonths:leaves_' .. name.."_"..v1, {
 				description = v1.."_"..name .. ' leaves',
 				drawtype = 'allfaces_optional',
@@ -70,7 +70,7 @@ for i, name in pairs(sticks_table) do
 	})
 
 	for _,v in pairs(moretrees_leaves_table) do
-	
+
 			if string.match(v,"moretrees") then v1 = string.gsub(v,"moretrees:","") end
 			if string.match(v,"default") then   v1 = string.gsub(v,"default:","") end
 
@@ -142,17 +142,14 @@ minetest.register_abm({
 	end
 })
 
---All papyrus should be die by September~December
+--All papyrus should be die after sandstorm's season
 minetest.register_abm({
 	nodenames = {'default:papyrus'},
-	interval = 10,
-	chance = 5,
-
+	interval = 300,
+	chance = 10,
 	action = function (pos, node, active_object_count, active_object_count_wider)
-
-		if (mymonths.month_counter == 9 and mymonths.month_counter <=12) then
-					print("action of September")
-			minetest.set_node(pos, {name = 'air'})  
+		if (mymonths.month_counter == 2 and mymonths.month_counter <=3 ) then
+			minetest.set_node(pos, {name = 'air'})
 		end
 	end
 })
@@ -277,7 +274,7 @@ minetest.register_abm({
 
 		if mymonths.month_counter == 3
 		or mymonths.month_counter == 4 then
-		
+
 			if node.name == 'mymonths:sticks_default' then
 				minetest.set_node(pos, {name = 'mymonths:leaves_blooms'})
 			else
@@ -299,7 +296,7 @@ minetest.register_abm({
 					end
 				end
 			end
-	
+
 			if node.name == 'mymonths:leaves_stick' then
 			print("LEAVES STICKS")
 				minetest.set_node(pos, {name = 'default:leaves'})
@@ -311,7 +308,7 @@ minetest.register_abm({
 					end
 				end
 			end
-			
+
 			if node.name == 'mymonths:sticks_aspen' then
 				minetest.set_node(pos, {name = 'mymonths:leaves_aspen_blooms'})
 			else
@@ -474,5 +471,3 @@ minetest.register_abm({
 		end
 	end
 })
-
-

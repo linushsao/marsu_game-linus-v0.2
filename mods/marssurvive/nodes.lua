@@ -449,7 +449,6 @@ collision_box = {
 		type = "fixed",
 		fixed = {{-0.3, -0.5, -0.3, 0.3, 0.-0.25, 0.3},}},
 })
-
 end
 
 minetest.register_node("marssurvive:stone_glow", {

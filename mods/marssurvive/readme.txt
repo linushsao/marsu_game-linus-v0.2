@@ -1,6 +1,5 @@
-Licenses: code LGPL 2.1 media CC BY-SA 3.0
-Created by: UjEdwin
-Date: 2016-03-28
+Licenses: code and media CC0
+Created by: UjEdwin + juli
 
 Mars survive
 
@@ -26,6 +25,22 @@ this is a security measure from graifers.
 place it and another teleport will be placed at +1100 block hight over it, evyerone can click it to be teleported but only the owner can dig it.
 
 The space occurs at +1000 blocks height.
+
+
+Version 7 (by juli)
+Removed: the entity from spacesuit
+Added: 2 new spacesuits: red: half damage by aliens, blue: 1/3 damage by aliens
+Added: craftings for both suits
+Changed: gassbottles with air-generator refillable
+Version 6
+Added: trap door
+Added: smart glass panes
+Added: glowing cystal and stone
+Added: 5 aliens
+Added: lamp
+Version 5
+Removed: unnecessary door and space suit models
+Changed to CC0 license
 Version 4
 Added: alien sounds
 Version 3

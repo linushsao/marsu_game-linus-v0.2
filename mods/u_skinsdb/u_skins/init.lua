@@ -25,22 +25,23 @@ dofile(u_skins.modpath.."/players.lua")
 
 u_skins.update_player_skin = function(player)
 	local name = player:get_player_name()
-	--linus added
-	if player:get_inventory():get_stack("main", 1):get_name()~="marssurvive:sp" then
 
-	if u_skins.get_type(u_skins.u_skins[name]) == u_skins.type.SPRITE then
-		player:set_properties({
+	--linus added
+	if marssurvive.player_sp[player:get_player_name()].sp == 0 then --linus added
+
+		if u_skins.get_type(u_skins.u_skins[name]) == u_skins.type.SPRITE then
+			player:set_properties({
 			visual = "upright_sprite",
 			textures = {u_skins.u_skins[name]..".png",u_skins.u_skins[name].."_back.png"},
 			visual_size = {x=1, y=2},
-		})
-	elseif u_skins.get_type(u_skins.u_skins[name]) == u_skins.type.MODEL then
-		player:set_properties({
+			})
+		elseif u_skins.get_type(u_skins.u_skins[name]) == u_skins.type.MODEL then
+			player:set_properties({
 			visual = "mesh",
 			textures = {u_skins.u_skins[name]..".png"},
 			visual_size = {x=1, y=1},
-		})
-	end
+			})
+		end
   end
 	u_skins.save()
 end
