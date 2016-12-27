@@ -9,8 +9,8 @@ local set_wear_sp = function(inventory, wear)
 end
 
 local player_get_sp = function(inventory)
-  print("get_sp:"..inventory:get_stack("main", 1):get_name().."#")
-  print("get_sp_sub:"..string.sub(inventory:get_stack("main", 1):get_name(), 15).."#")
+--  print("get_sp:"..inventory:get_stack("main", 1):get_name().."#")
+--  print("get_sp_sub:"..string.sub(inventory:get_stack("main", 1):get_name(), 15).."#")
 
         return marssurvive.registered_spacesuits[string.sub(inventory:get_stack("main", 1):get_name(), 15)]
 end
@@ -19,11 +19,11 @@ local player_attach_sp = function(player)
         marssurvive.player_sp[player:get_player_name()].sp=1
         local sp=player_get_sp(player:get_inventory())
         marssurvive.player_sp[player:get_player_name()].skin=player:get_properties().textures
-        print(dump(sp))
-        print(dump(sp.textures))
-        print(player:get_player_name())
+ --       print(dump(sp))
+ --       print(dump(sp.textures))
+ --       print(player:get_player_name())
         local spp = player:get_inventory():get_stack("main", 1):get_name()
-        print("SUIT is:"..spp)
+  --      print("SUIT is:"..spp)
         if spp ~= "marssurvive:spred" and spp ~= "marssurvive:spblue" then
           sp.textures = sp.textures and {textures_switch(player:get_player_name())}
         end
@@ -180,7 +180,9 @@ minetest.register_globalstep(function(dtime)
 			stack_one_sp(player:get_inventory()) and
 			player:get_inventory():get_stack("main", 1):get_wear()>=65533 then
 			marssurvive.player_sp[player:get_player_name()].sp=1
-		elseif not stack_one_sp(player:get_inventory()) and n~="ignore" then
+		elseif ((not stack_one_sp(player:get_inventory())) 
+			or player:get_inventory():get_stack("main", 1):get_wear()>=65533) 
+			and n~="ignore" then
 		        if n=="air" then								--(no spacesuit and in default air: lose 8 hp)
 			player:set_hp(player:get_hp()-8)
 		        elseif n~="marssurvive:air2" then						--(no spacesuit and inside something else: lose 1 hp)
