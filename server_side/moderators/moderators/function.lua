@@ -12,6 +12,19 @@ function is_md0(name)
 
 end
 
+--retuen suit's texture according to normal player or md/supervisors
+function textures_switch(player)
+
+  local suit_md0 = "marssurvive_sp_startrek_md0.png"
+  local suit_normal = "marssurvive_sp_white.png"
+--  local suit_default = "character.png"
+  if player == nil then return suit_normal end
+  if is_md0(player) then return suit_md0
+  else return suit_normal
+  end
+
+end
+
 function recovery_md0_privs()
 
   for _, name in ipairs(md_0) do

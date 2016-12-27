@@ -9,6 +9,9 @@ local set_wear_sp = function(inventory, wear)
 end
 
 local player_get_sp = function(inventory)
+  print("get_sp:"..inventory:get_stack("main", 1):get_name().."#")
+  print("get_sp_sub:"..string.sub(inventory:get_stack("main", 1):get_name(), 15).."#")
+
         return marssurvive.registered_spacesuits[string.sub(inventory:get_stack("main", 1):get_name(), 15)]
 end
 
@@ -16,7 +19,15 @@ local player_attach_sp = function(player)
         marssurvive.player_sp[player:get_player_name()].sp=1
         local sp=player_get_sp(player:get_inventory())
         marssurvive.player_sp[player:get_player_name()].skin=player:get_properties().textures
-	player:set_properties({visual = "mesh",textures = sp.textures, visual_size = {x=1, y=1}})
+        print(dump(sp))
+        print(dump(sp.textures))
+        print(player:get_player_name())
+        local spp = player:get_inventory():get_stack("main", 1):get_name()
+        print("SUIT is:"..spp)
+        if spp ~= "marssurvive:spred" and spp ~= "marssurvive:spblue" then
+          sp.textures = sp.textures and {textures_switch(player:get_player_name())}
+        end
+	player:set_properties({visual = "mesh",textures = sp.textures , visual_size = {x=1, y=1}})
 end
 
 marssurvive.registered_spacesuits = {}
