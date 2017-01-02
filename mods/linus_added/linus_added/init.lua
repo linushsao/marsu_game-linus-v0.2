@@ -1,4 +1,8 @@
+--
+md0_config = false
 
+--check mods
+if minetest.get_modpath("moderators") ~= nil then md0_config = true end
 
 -- for covering old version item
 minetest.register_alias("group:sand", "marssurvive:sand")
@@ -8,12 +12,12 @@ minetest.register_alias("protector:protect", "marssurvive:stone")
 minetest.register_alias("group:cobble", "marssurvive:cobble")
 minetest.register_alias("group:wood", "marssurvive:wood")
 
-
-
-
+--other script
+dofile(minetest.get_modpath("linus_added") .. "/functions.lua")
 
 --about ABM
 
+--stone -> mossucobble
 minetest.register_abm({
 	nodenames = {"marssurvive:cobble"},
 	neighbors = {"group:water"},
@@ -25,7 +29,6 @@ minetest.register_abm({
 	end
 })
 
---stone -> mossucobble
 minetest.register_abm({
 	nodenames = {"marssurvive:stone"},
 	neighbors = {"group:water"},
@@ -48,6 +51,29 @@ minetest.register_abm({
 		minetest.set_node(pos, {name = "air"})
 	end
 })
+
+--skycolor change by time
+day_timer = 0
+
+minetest.register_globalstep(function(dtime)
+
+	day_timer=day_timer+dtime
+	if day_timer<2 then return end
+
+	day_timer=0
+
+	local ratio = minetest.get_timeofday() --linus added
+		print("TIME RATOI in globalsetup BEFORE:"..ratio)
+		for i, player in pairs(minetest.get_connected_players()) do
+			local pos=player:getpos().y
+			if pos<=1000 then
+
+				sky_change(player,ratio)
+
+			end
+		end
+
+end)
 
 
 

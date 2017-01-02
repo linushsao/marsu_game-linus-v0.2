@@ -24,7 +24,7 @@ local player_attach_sp = function(player)
  --       print(player:get_player_name())
         local spp = player:get_inventory():get_stack("main", 1):get_name()
   --      print("SUIT is:"..spp)
-        if spp ~= "marssurvive:spred" and spp ~= "marssurvive:spblue" then
+        if spp ~= "marssurvive:spred" and spp ~= "marssurvive:spblue" and md0_config then
           sp.textures = sp.textures and {textures_switch(player:get_player_name())}
         end
 	player:set_properties({visual = "mesh",textures = sp.textures , visual_size = {x=1, y=1}})
