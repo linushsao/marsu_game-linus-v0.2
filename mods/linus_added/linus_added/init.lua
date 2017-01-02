@@ -63,7 +63,7 @@ minetest.register_globalstep(function(dtime)
 	day_timer=0
 
 	local ratio = minetest.get_timeofday() --linus added
-		print("TIME RATOI in globalsetup BEFORE:"..ratio)
+--		print("TIME RATOI in globalsetup BEFORE:"..ratio)
 		for i, player in pairs(minetest.get_connected_players()) do
 			local pos=player:getpos().y
 			if pos<=1000 then
