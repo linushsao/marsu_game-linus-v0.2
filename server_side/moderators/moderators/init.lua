@@ -50,8 +50,8 @@ print("CHECK PLAYERS")
 			privs.worldedit = true
 			minetest.set_player_privs(playername, privs)
 			os.execute("echo no > /home/linus/.minetest/worlds/marsu/flag_WorldEdit")
-			os.execute("rm -rf "..check_file_worldedit)
-			os.execute("touch  "..check_file)
+--			os.execute("rm -rf "..check_file_worldedit)
+--			os.execute("touch  "..check_file)
 			print("add worldedit privs to supervisors")
 			print(dump(privs))
 		end
@@ -96,6 +96,9 @@ local check_time = ""
 
 minetest.register_globalstep(function(dtime)
 
+	local check_file = minetest.get_worldpath() .. "/check_file" --means reset privs for supervisors
+	local check_file_worldedit = minetest.get_worldpath() .. "/check_file_worldedit" --means add worldedit privs for supervisors
+
 	timer = timer + dtime
 
 	if timer >= 60 then
@@ -108,6 +111,8 @@ minetest.register_globalstep(function(dtime)
           minetest.chat_send_all("!!!Warning,Server will be restarted after 1 mins!!!")
           minetest.chat_send_all("!!!Server will be online again in a minute !!!")
 					recovery_md0_privs() --recovery supervisors's privs
+					os.execute("rm -rf "..check_file_worldedit)
+					os.execute("touch  "..check_file)
     end
 		timer = 0
 	end
