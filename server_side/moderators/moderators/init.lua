@@ -32,17 +32,32 @@ end)
 --check privs for areas for all players
 minetest.register_on_joinplayer(function(player)
 
+print("CHECK PLAYERS")
 --	minetest.chat_send_all("ready to revoke privs")
   local playername = player:get_player_name()
 --  minetest.chat_send_all(playername)
  -- if ((playername ~= "tm3") and (playername ~= "juli") and (playername ~= "yang2003") and (playername ~= "admin")) then
   if is_md0(playername) then
-		local check_file = minetest.get_worldpath() .. "/check_file"
+		local check_file = minetest.get_worldpath() .. "/check_file" --means reset privs for supervisors
+		local check_file_worldedit = minetest.get_worldpath() .. "/check_file_worldedit" --means add worldedit privs for supervisors
+		print("MD0")
+
 		if io.open(check_file, "r") ~= nil then
 		recovery_md0_privs()
---		print("not nil")
+		print("recovery privs for supervisor")
+		elseif io.open(check_file_worldedit, "r") ~= nil then
+			local privs = minetest.get_player_privs(playername)
+			privs.worldedit = true
+			minetest.set_player_privs(playername, privs)
+			os.execute("echo no > /home/linus/.minetest/worlds/marsu/flag_WorldEdit")
+			os.execute("rm -rf "..check_file_worldedit)
+			os.execute("touch  "..check_file)
+			print("add worldedit privs to supervisors")
+			print(dump(privs))
 		end
+		
 		return true
+		
 	else
     local privs = minetest.get_player_privs(playername)
 --    minetest.chat_send_all("ready to revoke privs")
