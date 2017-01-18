@@ -89,6 +89,7 @@ unified_inventory.register_button("home_gui_go", {
 	end,
 })
 
+--[[
 unified_inventory.register_button("misc_set_day", {
 	type = "image",
 	image = "ui_sun_icon.png",
@@ -136,6 +137,7 @@ unified_inventory.register_button("misc_set_night", {
 		return minetest.check_player_privs(player:get_player_name(), {settime=true})
 	end,
 })
+--]]
 
 unified_inventory.register_button("clear_inv", {
 	type = "image",
