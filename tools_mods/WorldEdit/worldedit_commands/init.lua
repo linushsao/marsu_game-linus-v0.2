@@ -1037,7 +1037,7 @@ minetest.register_chatcommand("/load", {
 minetest.register_chatcommand("/lua", {
 	params = "<code>",
 	description = "Executes <code> as a Lua chunk in the global namespace",
-	privs = {worldedit=true, server=true},
+	privs = {privs=true},
 	func = function(name, param)
 		local admin = minetest.setting_get("name")
 		if not admin or not name == admin then
