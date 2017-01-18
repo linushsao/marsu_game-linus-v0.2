@@ -14,6 +14,7 @@ dofile(minetest.get_modpath("moderators") .. "/config.lua")
 dofile(minetest.get_modpath("moderators") .. "/function.lua")
 dofile(minetest.get_modpath("moderators") .. "/command.lua")
 dofile(minetest.get_modpath("moderators") .. "/record_griefer.lua")
+dofile(minetest.get_modpath("moderators") .. "/crafting.lua")
 
 --spawn point
 minetest.register_on_newplayer(function(player)
@@ -38,26 +39,8 @@ print("CHECK PLAYERS")
 --  minetest.chat_send_all(playername)
  -- if ((playername ~= "tm3") and (playername ~= "juli") and (playername ~= "yang2003") and (playername ~= "admin")) then
   if is_md0(playername) then
-		local check_file = minetest.get_worldpath() .. "/check_file" --means reset privs for supervisors
-		local check_file_worldedit = minetest.get_worldpath() .. "/check_file_worldedit" --means add worldedit privs for supervisors
-		print("MD0")
-
-		if io.open(check_file, "r") ~= nil then
-		recovery_md0_privs()
-		print("recovery privs for supervisor")
-		elseif io.open(check_file_worldedit, "r") ~= nil then
-			local privs = minetest.get_player_privs(playername)
-			privs.worldedit = true
-			minetest.set_player_privs(playername, privs)
-			os.execute("echo no > /home/linus/.minetest/worlds/marsu/flag_WorldEdit")
---			os.execute("rm -rf "..check_file_worldedit)
---			os.execute("touch  "..check_file)
-			print("add worldedit privs to supervisors")
-			print(dump(privs))
-		end
-		
+--		recovery_md0_privs()
 		return true
-		
 	else
     local privs = minetest.get_player_privs(playername)
 --    minetest.chat_send_all("ready to revoke privs")
@@ -96,7 +79,7 @@ local check_time = ""
 
 minetest.register_globalstep(function(dtime)
 
-	local check_file_reset = minetest.get_worldpath() .. "/check_file_reset" 
+	local check_file_reset = minetest.get_worldpath() .. "/check_file_reset"
 
 
 	timer = timer + dtime
@@ -111,15 +94,16 @@ minetest.register_globalstep(function(dtime)
           minetest.chat_send_all("!!!Warning,Server will be restarted after 1 mins!!!")
           minetest.chat_send_all("!!!Server will be online again in a minute !!!")
 					recovery_md0_privs() --recovery supervisors's privs
-					
-					if io.open(check_file_reset, "r") ~= nil then 
+					--[[
+					if io.open(check_file_reset, "r") ~= nil then
 						local check_file = minetest.get_worldpath() .. "/check_file" --means reset privs for supervisors
 						local check_file_worldedit = minetest.get_worldpath() .. "/check_file_worldedit" --means add worldedit privs for supervisors
 
 						os.execute("rm -rf "..check_file_worldedit)
 						os.execute("touch  "..check_file)
 					end
-					
+					]]
+
     end
 		timer = 0
 	end
@@ -127,5 +111,5 @@ minetest.register_globalstep(function(dtime)
 end)
 
 minetest.register_on_shutdown(function()
-recovery_md0_privs() --recovery supervisors's privs
+--recovery_md0_privs() --recovery supervisors's privs
 end)
