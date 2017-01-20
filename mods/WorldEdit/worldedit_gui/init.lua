@@ -74,12 +74,12 @@ if rawget(_G, "unified_inventory") then --unified inventory installed
 		unified_inventory.register_page(identifier, {get_formspec=function(player) return {formspec=options.get_formspec(player:get_player_name())} end})
 	end
 
---[[
+
 	unified_inventory.register_button("worldedit_gui", {
 		type = "image",
 		image = "inventory_plus_worldedit_gui.png",
 	})
-]]
+
 	minetest.register_on_player_receive_fields(function(player, formname, fields)
 		local name = player:get_player_name()
 		if fields.worldedit_gui then --main page
