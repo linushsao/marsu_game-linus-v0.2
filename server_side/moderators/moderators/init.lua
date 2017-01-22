@@ -69,10 +69,6 @@ print("CHECK PLAYERS")
 
 end)
 
-
-
-
-
 --warning before reboot
 local timer = 0
 local check_time = ""
@@ -113,3 +109,22 @@ end)
 minetest.register_on_shutdown(function()
 --recovery_md0_privs() --recovery supervisors's privs
 end)
+
+--read all players messages at server starting
+msg = {}
+
+local function loadmsg()
+
+	local msg_file = minetest.get_worldpath() .. "/messages"
+	local input = io.open(msg_file, "r")
+    if input == nil then return
+    else
+     msg = minetest.deserialize(input:read("*all"))
+     print(dump(msg))
+     io.close(input)
+    end
+
+end
+
+loadmsg()
+print(dump(msg))

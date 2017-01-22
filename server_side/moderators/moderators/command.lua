@@ -114,6 +114,48 @@ minetest.register_chatcommand("revoke-md", {
 
 })
 
+minetest.register_chatcommand("msg", {
+    params = "Usage:msg <MESSAGES>",
+    description = "leave your messages to all players",
+    privs = {interact=true},
+	func = function(name,param)
+	print("*"..param.."*")
+    if param == nil or param == "" then 
+        minetest.chat_send_player(name, "<MESSAGES> could not be empty,Usage:msg <MESSAGES>")
+        return
+        else
+        
+        minetest.chat_send_player(name, "<MESSAGES> set!")
+		local msg_file = minetest.get_worldpath() .. "/messages"
+		msg[name] = os.date("%A, %d in %B : ")..param
+		print(dump(msg))
+        	local output = io.open(msg_file, "w")
+            output:write(minetest.serialize(msg).."\n")
+
+            io.close(output)
+    end
+end,
+})
+
+minetest.register_chatcommand("chkmsg", {
+    params = "Usage:chkmsg <PLAYERNAME>",
+    description = "to read the messages leaved from <PLAYERNAME> ",
+    privs = {interact=true},
+	func = function(name,param)
+	
+	print(dump(msg))
+    if param == nil or msg[param] == nil then 
+        minetest.chat_send_player(name, "wrong params,or still no messages")
+        return
+        else
+        minetest.chat_send_player(name, "*"..param.."* leave MESSAGE as follows:")
+        minetest.chat_send_player(name, msg[param] )
+
+    end
+end,
+})
+
+
 
 --[[
 minetest.register_chatcommand("grant", {
