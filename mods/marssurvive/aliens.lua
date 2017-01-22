@@ -469,9 +469,9 @@ marssurvive_reg_alien("big",80,"marssurvive:unused","msalien2",10,"marssurvive_s
 marssurvive_reg_alien("teleport",60,"default:copper_lump","msalien3",20,"marssurvive_sp4.png^[colorize:#00d76f33",{x=1, y=1},0,1)
 marssurvive_reg_alien("small",20,"marssurvive:unusedgold","msalien4",20,"marssurvive_sp4.png^[colorize:#0ed2ff33",{x=0.5, y=0.5},0,0)
 marssurvive_reg_alien("glitch",30,"marssurvive:glitch","msalien3",15,"marssurvive_glitsh.png",{x=0.6, y=1.4},1,1)
-marssurvive_reg_alien("sand",10,"default:copper_lump","msalien1",15,"default_desert_sand.png^[colorize:#cf411b66",{x=1, y=1},0,0)
+marssurvive_reg_alien("sand",50,"default:copper_lump","msalien1",15,"default_desert_sand.png^[colorize:#cf411b66",{x=1, y=1},0,0)
 marssurvive_reg_alien("glow",80,"marssurvive:stone_glow","msalien1",15,"marssurvive_oxogen.png^[colorize:#00ff00aa",{x=1, y=1.2},0,0)
-marssurvive_reg_alien("stone",40,"default:copper_lump","msalien1",15,"default_desert_stone.png^[colorize:#cf7d6788",{x=1, y=0.5},0,0,1)
+marssurvive_reg_alien("stone",60,"default:copper_lump","msalien1",15,"default_desert_stone.png^[colorize:#cf7d6788",{x=1, y=0.5},0,0,1)
 marssurvive_reg_alien("warn",20,"marssurvive:warning","msalien1",15,"marssurvive_warntape.png",{x=2, y=1},1,0)
 marssurvive_reg_alien("crystal",100,"marssurvive:crystal","msalien3",15,"marssurvive_glitsh.png^[colorize:#cc0000aa",{x=1, y=0.2},0,1)
 
