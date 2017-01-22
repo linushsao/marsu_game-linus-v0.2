@@ -826,7 +826,18 @@ minetest.register_node("marssurvive:unusedgold", {
 })
 minetest.register_node("marssurvive:ujeore", {
 	description = "UjE ore (UjEdwin the creator of the mars mod)",
-	drop="default:steel_ingot 4",
+--	drop="default:steel_ingot 4",
+	drop = {
+		max_items = 4,
+		items = {
+			{items = {'default:steel_ingot'}, rarity = 2},
+			{items = {'default:copper_lump'}, rarity = 2},
+			{items = {'default:steel_ingot 2'}},
+			{items = {'default:copper_lump'}}
+
+		}
+	},
+
 	tiles = {"marssurvive_ujeore.png"},
 	groups = {cracky = 1},
 	sounds = default.node_sound_stone_defaults(),
