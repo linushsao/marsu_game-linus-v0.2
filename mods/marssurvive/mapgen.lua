@@ -123,7 +123,7 @@ minetest.override_item("stairs:stair_cobble", {tiles = {"default_desert_stone.pn
 		y_max          = -64,
 	})
 
-
+--[[
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "default:mese",
@@ -134,7 +134,7 @@ minetest.override_item("stairs:stair_cobble", {tiles = {"default_desert_stone.pn
 		y_min          = -31000,
 		y_max          = -1024,
 	})
-
+--]]
 
 	minetest.register_ore({
 		ore_type       = "scatter",
