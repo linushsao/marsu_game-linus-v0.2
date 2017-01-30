@@ -1,0 +1,24 @@
+==> How to enable ...
+	-> Open 'config.txt' with your editor and modify it
+
+==> Add special access to nodes, how?
+	-> Exchange shop: open 'shop.lua' and edit the function 'has_exchange_shop_privilege',
+		return 'true' to grant access to the contents, return 'false' to disallow
+	-> Warehouse: same like exchange shop, this time 'warehouse.lua' and 'has_locked_chest_privilege'
+	
+==> Can I ...
+	-> Suggest things: Sure, I'm happy about (almost) every suggestion, just I'm pretty new, which
+		means I can't realize all of them
+	-> Report a fault: I hope this will not happen too much, post it at the topic in the MT forums
+	-> Edit the files: Yes sure, the license is 'WTFPL' but I'm always happy about credits :smile:
+	-> Delete this mod: Stupid question
+	-> Exchange textures: Yes, it's WFTPL! Maybe you need to ask the original creator of the images
+
+==> Give me informations about the converting!
+Burning:
+	1 Gold block		->	2 MineCoin block
+	2 MineCoin block	->	1 Gold block
+	1 Coin base			->	1 MineNinth
+Crafting:
+	1 Zinc block	->	8 Coin base
+	1 Tin block		->	20 Coin base
