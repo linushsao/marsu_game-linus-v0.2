@@ -1,0 +1,27 @@
+-- General configuration - BitChange
+-- Created by Krock
+
+bitchange_initial_give			=	2
+-- Enable/Disable whole nodes
+bitchange_enable_exchangeshop	=	true
+bitchange_enable_moneychanger	=	true
+bitchange_enable_warehouse		=	false
+
+-- Set this variable to the modname of the other currency mod.
+-- Let it empty if no other currency is installed.
+-- Supported: money (by kotolegokot), money2 (by Bad Command), currency (by Dan Duncombe)
+bitchange_bank_type				=	""
+
+-- Tin converting/generation
+bitchange_use_moreores_tin		=	false -- Activate using
+bitchange_need_generate_tin		=	false -- Generate only if needed
+-- Zinc converting/generation
+bitchange_use_technic_zinc		=	false -- Activate using
+bitchange_need_generate_zinc	=	false -- Generate only if needed
+
+-- Pipeworks support
+bitchange_exchangeshop_pipeworks	=	false
+bitchange_warehouse_pipeworks		=	false
+
+-- Advanced generation settings
+-- Change in 'minecoins.lua', starting at line 101
