@@ -568,6 +568,8 @@ minetest.register_node("default:jungleleaves", {
 			{items = {'moretrees:sequoia_sapling'}, rarity = math.random(40, 100)},
 			{items = {'moretrees:spruce_sapling'}, rarity = math.random(40, 100)},
 			{items = {'moretrees:willow_sapling'}, rarity = math.random(40, 100)},
+			{items = {'farming_plus:banana_sapling'}, rarity = math.random(40, 100)},
+			{items = {'farming_plus:cocoa_sapling'}, rarity = math.random(40, 100)},
 			{items = {'default:jungleleaves'}}
 		}
 	},
@@ -958,6 +960,19 @@ minetest.register_node("default:junglegrass", {
 	walkable = false,
 	buildable_to = true,
 	groups = {snappy = 3, flora = 1, attached_node = 1},
+	drop = {
+	max_items = 1,
+	items = {
+		{items = {'farming_plus:carrot_seed'}, rarity = math.random(40, 100)},
+		{items = {'farming_plus:cocoa_bean'}, rarity = math.random(40, 100)},
+		{items = {'farming_plus:orange_seed'}, rarity = math.random(40, 100)},
+		{items = {'farming_plus:potato_seed'}, rarity = math.random(40, 100)},
+		{items = {'farming_plus:rhubarb_seed'}, rarity = math.random(40, 100)},
+		{items = {'farming_plus:strawberry_seed'}, rarity = math.random(40, 100)},
+		{items = {'farming_plus:tomato_seed'}, rarity = math.random(40, 100)},
+		{items = {'default:junglegrass'}}
+	}
+},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
