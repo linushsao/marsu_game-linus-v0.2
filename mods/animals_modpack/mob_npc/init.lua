@@ -196,7 +196,7 @@ local npc_trader_prototype = {
           { "currency:barter 1","","bitchange:minecoin 1"},
 --          { "xdecor:crafting_guide 1","","bitchange:minecoin 10"},
           { "bitchange:minecoin 10","","xdecor:crafting_guide 1"},
-          { "bags:small 1","","bitchange:minecoin 1"},
+          { "unified_inventory:bag_small 1","","bitchange:minecoin 1"},
           { "marssurvive:sp 1","","bitchange:minecoin 10"},
           { "marssurvive:air_gassbotte 1","","bitchange:minecoin 6"},
           { "marssurvive:airgen5 1","","bitchange:minecoin 5"},
