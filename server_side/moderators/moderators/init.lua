@@ -110,8 +110,9 @@ minetest.register_on_shutdown(function()
 --recovery_md0_privs() --recovery supervisors's privs
 end)
 
---read all players messages at server starting
+--read all players messages/worldedit_limits at server starting
 msg = {}
+worldedit_limits = {}
 
 local function loadmsg()
 
@@ -126,5 +127,21 @@ local function loadmsg()
 
 end
 
+local function load_worldedit_limits()
+
+	local worldedit_limits_file = minetest.get_worldpath() .. "/worldedit_limits"
+	local input = io.open(worldedit_limits_file, "r")
+    if input == nil then return
+    else
+     worldedit_limits = minetest.deserialize(input:read("*all"))
+     print(dump(worldedit_limits))
+     io.close(input)
+    end
+
+end
+
 loadmsg()
+load_worldedit_limits()
+
 print(dump(msg))
+print(dump(worldedit_limits))

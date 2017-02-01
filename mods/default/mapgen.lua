@@ -231,7 +231,7 @@ function default.register_ores()
 		ore_type       = "scatter",
 		ore            = "default:mese",
 		wherein        = "marssurvive:stone",
-		clust_scarcity = 36 * 36 * 36,
+		clust_scarcity = 24 * 24 * 24,
 		clust_num_ores = 3,
 		clust_size     = 2,
 		y_min          = -31000,
