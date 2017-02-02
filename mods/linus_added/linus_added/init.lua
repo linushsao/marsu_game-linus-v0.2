@@ -169,7 +169,10 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'marssurvive:clayblock',
 	recipe = {
-		{'default:clay_lump'},
+		{'default:clay_lump','default:clay_lump',''},
+		{'','',''},
+		{'','',''},
+
 	}
 })
 
