@@ -49,6 +49,20 @@ minetest.register_abm({
 	catch_up = false,
 	action = function(pos, node)
 		minetest.set_node(pos, {name = "air"})
+--		print("DRY@@@@@@@@@@@@@@@@@@")
+	end
+})
+
+--water will be FORZEN
+minetest.register_abm({
+	nodenames = {"default:water_source","default:water_flowing"},
+	neighbors = {"marssurvive:ice"},
+	interval = 30,
+	chance = 2,
+	catch_up = false,
+	action = function(pos, node)
+		minetest.set_node(pos, {name = "default:ice"})
+--		print("FROZEN@@@@@@@@@@@@@@@@@@")
 	end
 })
 
@@ -106,6 +120,12 @@ minetest.register_craft({
 	type = "cooking",
 	output = "default:water_source",
 	recipe = "marssurvive:ice",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "default:water_source",
+	recipe = "default:ice",
 })
 
 minetest.register_craft({
