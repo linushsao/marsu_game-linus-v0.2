@@ -167,13 +167,19 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'default:sandstone',
+	output = 'marssurvive:clayblock',
 	recipe = {
-		{'', 'marssurvive:sand',''},
-		{'', 'marssurvive:sand',''},
-		{'', 'marssurvive:sand',''},
+		{'default:clay_lump'},
 	}
 })
+
+minetest.register_craft({
+	output = 'default:sand',
+	recipe = {
+		{'marssurvive:sand'},
+	}
+})
+
 
 minetest.register_craft({
   type = "cooking",
