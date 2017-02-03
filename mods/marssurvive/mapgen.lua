@@ -74,7 +74,7 @@ minetest.override_item("stairs:stair_cobble", {tiles = {"default_desert_stone.pn
 		clust_scarcity = 8 * 8 * 8,
 		clust_num_ores = 8,
 		clust_size     = 4,
-		y_min          = -100,
+		y_min          = -31000,
 		y_max          = 200,
 	})
 
