@@ -12,7 +12,7 @@ end
 --record the puncher,but puncher maybe just punch not get node.
 minetest.register_on_punchnode(function(pos, node, puncher, pointed_thing)
 
-	if (pos == nil or node == nil or puncher == nil or pointed_thing == nil) then 
+	if (pos == nil or node == nil or puncher == nil or pointed_thing == nil) then
 	return true
 	end
 
@@ -126,4 +126,18 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 		end
 
 
+end)
+
+--record the pollution_water placed by players.
+minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
+    if newnode ~= nil and newnode.name == "pollution:water_source" then
+			local griefer_file = minetest.get_worldpath() .. "/griefer_file"
+			local check_time = os.date("%x %H:%M")
+			local output = io.open(griefer_file, "a")
+
+--							output:write("<font color="..font_color..">".."Time:"..check_time.."(CST),position:("..v.x..","..v.y..","..v.z.."),area_owner:"..table.concat(owners, ", ")..",puncher:<b>"..i.."</b>,node:"..node.name.."</font><br> \n ")
+					output:write("Time:"..check_time.."(CST),position:"..  minetest.pos_to_string(pos) .. ",Node " .. newnode.name .. " placed by " .. placer:get_player_name().."<br> \n ")
+					io.close(output)
+			end
+  --      print("Node " .. newnode.name .. " at " ..  minetest.pos_to_string(pos) .. " placed by " .. placer:get_player_name())
 end)
