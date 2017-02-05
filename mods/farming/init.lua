@@ -118,7 +118,7 @@ farming.register_plant("farming:potato", {
 	fertility = {"grassland", "desert"}
 })
 
---[[
+
 farming.register_plant("farming:strawberry", {
 	description = "Strawberry Seed",
 	eat = 3,
@@ -128,7 +128,7 @@ farming.register_plant("farming:strawberry", {
 	maxlight = 20,
 	fertility = {"grassland", "desert"}
 })
---]]
+
 
 farming.register_plant("farming:spice", {
 	description = "Spice Seed",

@@ -312,6 +312,23 @@ minetest.register_craft({
 	recipe = 'marssurvive:clayblock',
 })
 
+--
+minetest.register_craft({
+	output = "bushes:strawberry_pie_raw 1",
+	recipe = {
+	{ "bushes:sugar", "farming:flour", "bushes:sugar" },
+	{ "farming:strawberry", "farming:strawberry", "farming:strawberry" },
+	},
+})
+minetest.register_craft({
+	output = "bushes:strawberry_pie_raw 1",
+	recipe = {
+	{ "bushes:sugar", "group:junglegrass", "bushes:sugar" },
+	{ "farming:strawberry", "farming:strawberry", "farming:strawberry" },
+	},
+})
+--
+
 -- for technic ore
 
 minetest.register_ore({
