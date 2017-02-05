@@ -86,4 +86,6 @@ minetest.register_craftitem("farming_plus:strawberry_item", {
 	inventory_image = "farming_strawberry.png",
 })
 
+minetest.register_alias("farming:strawberry", "farming_plus:strawberry_item")
+
 farming:add_plant("farming_plus:strawberry", {"farming_plus:strawberry_1", "farming_plus:strawberry_2", "farming_plus:strawberry_3"}, 50, 20)

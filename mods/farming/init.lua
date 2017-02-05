@@ -49,6 +49,7 @@ minetest.register_craft({
 })
 
 -- Cotton
+--[[
 farming.register_plant("farming:cotton", {
 	description = "Cotton seed",
 	inventory_image = "farming_cotton_seed.png",
@@ -59,6 +60,7 @@ farming.register_plant("farming:cotton", {
 })
 
 minetest.register_alias("farming:string", "farming:cotton")
+--]]
 
 minetest.register_craft({
 	output = "wool:white",
@@ -116,6 +118,7 @@ farming.register_plant("farming:potato", {
 	fertility = {"grassland", "desert"}
 })
 
+--[[
 farming.register_plant("farming:strawberry", {
 	description = "Strawberry Seed",
 	eat = 3,
@@ -125,6 +128,7 @@ farming.register_plant("farming:strawberry", {
 	maxlight = 20,
 	fertility = {"grassland", "desert"}
 })
+--]]
 
 farming.register_plant("farming:spice", {
 	description = "Spice Seed",
