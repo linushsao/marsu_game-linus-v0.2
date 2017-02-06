@@ -24,8 +24,8 @@ minetest.register_on_newplayer(function(player)
 	inv:add_item("main","marssurvive:sandpick")
 	inv:add_item("main","marssurvive:air_gassbotte 3")
 	inv:add_item("main","default:lamp_wall")
-	inv:add_item("main","default:apple 3")
-	inv:add_item("main","farming:bread 3")
+	inv:add_item("main","default:apple 6")
+	inv:add_item("main","farming:bread 9")
 	inv:add_item("main","markers:mark 4")
 
 	--if minetest.check_player_privs(player:get_player_name(), {server=true}) then
@@ -66,7 +66,7 @@ function marssurvive_space(player)
 	if marssurvive.player_space[player:get_player_name()].inside==0 and pos<=1000 then
 		marssurvive.player_space[player:get_player_name()].inside=1
 		marssurvive_setgrav(player,0.5)
-		
+
 		minetest.after(0.1,function()
 			local ratio = minetest.get_timeofday() --linus added
 			sky_change(player,ratio)--linus added
