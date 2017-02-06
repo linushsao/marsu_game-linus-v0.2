@@ -25,7 +25,8 @@ hbhunger.HUD_TICK = 0.1
 --Some hunger settings
 hbhunger.exhaustion = {} -- Exhaustion is experimental!
 
-hbhunger.HUNGER_TICK = 800 -- time in seconds after that 1 hunger point is taken
+hbhunger.HUNGER_TICK = 90 -- time in seconds after that 1 hunger point is taken
+--a day-night cycle lasts 20 minutes by default,player eat 3 breads a day,so 6 minutes a bread(add 4hp).
 hbhunger.EXHAUST_DIG = 3  -- exhaustion increased this value after digged node
 hbhunger.EXHAUST_PLACE = 1 -- exhaustion increased this value after placed
 hbhunger.EXHAUST_MOVE = 0.3 -- exhaustion increased this value if player movement detected
@@ -34,7 +35,7 @@ hbhunger.EXHAUST_LVL = 160 -- at what exhaustion player satiation gets lowerd
 
 --load custom settings
 local set = io.open(minetest.get_modpath("hbhunger").."/hbhunger.conf", "r")
-if set then 
+if set then
 	dofile(minetest.get_modpath("hbhunger").."/hbhunger.conf")
 	set:close()
 end
@@ -80,7 +81,7 @@ hbhunger.set_hunger_raw = function(player)
 	if not inv  or not value then return nil end
 	if value > 30 then value = 30 end
 	if value < 0 then value = 0 end
-	
+
 	inv:set_stack("hunger", 1, ItemStack({name=":", count=value+1}))
 
 	return true
@@ -140,7 +141,7 @@ minetest.register_globalstep(function(dtime)
 
 			-- update all hud elements
 			update_hud(player)
-			
+
 			local controls = player:get_player_control()
 			-- Determine if the player is walking
 			if controls.up or controls.down or controls.left or controls.right then

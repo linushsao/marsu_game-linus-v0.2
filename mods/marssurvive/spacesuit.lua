@@ -180,8 +180,8 @@ minetest.register_globalstep(function(dtime)
 			stack_one_sp(player:get_inventory()) and
 			player:get_inventory():get_stack("main", 1):get_wear()>=65533 then
 			marssurvive.player_sp[player:get_player_name()].sp=1
-		elseif ((not stack_one_sp(player:get_inventory())) 
-			or player:get_inventory():get_stack("main", 1):get_wear()>=65533) 
+		elseif ((not stack_one_sp(player:get_inventory()))
+			or player:get_inventory():get_stack("main", 1):get_wear()>=65533)
 			and n~="ignore" then
 		        if n=="air" then								--(no spacesuit and in default air: lose 8 hp)
 			player:set_hp(player:get_hp()-8)
@@ -193,13 +193,37 @@ minetest.register_globalstep(function(dtime)
 end)
 
 --NEW (ARMOR)
+
 minetest.register_on_player_hpchange(function(player, hp_change)
+  print("origional:"..hp_change)
+
 	if hp_change < 0 then
 	        local inv = player:get_inventory()
 	        if stack_one_sp(inv) then
 	                local sp = player_get_sp(inv)
 		        hp_change = hp_change * (1/sp.heal)
+            if hp_change > -1 then hp_change = -1 end --add by linus to keep hungry effect on special spacesuit
+            print(hp_change)
 	        end
 	end
+  print(hp_change)
 	return hp_change
 end, true)
+
+
+--[[
+minetest.register_on_player_hpchange(function(player, hp_change)
+   if hp_change < 0 then
+           local inv = player:get_inventory()
+           if stack_one_sp(inv) then
+                   local sp = player_get_sp(inv)
+              hp_change = hp_change * (1/sp.heal)
+         print(hp_change)
+         if hp_change > -1 then
+            return -1
+         end
+           end
+   end
+   return hp_change
+end, true)
+--]]
