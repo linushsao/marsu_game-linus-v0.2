@@ -202,7 +202,7 @@ minetest.register_on_player_hpchange(function(player, hp_change)
 	        if stack_one_sp(inv) then
 	                local sp = player_get_sp(inv)
 		        hp_change = hp_change * (1/sp.heal)
-            if hp_change > -1 then hp_change = -1 end --add by linus to keep hungry effect on special spacesuit
+            if hp_change > -1 then hp_change = -1 end --add by juli to keep hungry effect on special spacesuit
             print(hp_change)
 	        end
 	end
