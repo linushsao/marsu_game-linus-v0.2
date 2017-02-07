@@ -195,7 +195,7 @@ end)
 --NEW (ARMOR)
 
 minetest.register_on_player_hpchange(function(player, hp_change)
-  print("origional:"..hp_change)
+--  print("origional:"..hp_change)
 
 	if hp_change < 0 then
 	        local inv = player:get_inventory()
@@ -203,10 +203,10 @@ minetest.register_on_player_hpchange(function(player, hp_change)
 	                local sp = player_get_sp(inv)
 		        hp_change = hp_change * (1/sp.heal)
             if hp_change > -1 then hp_change = -1 end --add by juli to keep hungry effect on special spacesuit
-            print(hp_change)
+  --          print(hp_change)
 	        end
 	end
-  print(hp_change)
+--  print(hp_change)
 	return hp_change
 end, true)
 
