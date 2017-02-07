@@ -25,7 +25,7 @@ hbhunger.HUD_TICK = 0.1
 --Some hunger settings
 hbhunger.exhaustion = {} -- Exhaustion is experimental!
 
-hbhunger.HUNGER_TICK = 90 -- time in seconds after that 1 hunger point is taken
+hbhunger.HUNGER_TICK = 300 -- time in seconds after that 1 hunger point is taken
 --a day-night cycle lasts 20 minutes by default,player eat 3 breads a day,so 6 minutes a bread(add 4hp).
 hbhunger.EXHAUST_DIG = 3  -- exhaustion increased this value after digged node
 hbhunger.EXHAUST_PLACE = 1 -- exhaustion increased this value after placed
