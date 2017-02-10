@@ -286,6 +286,7 @@ function default.register_ores()
 		y_max          = -256,
 	})
 
+	--[[
 	-- Copper
 
 	minetest.register_ore({
@@ -309,6 +310,7 @@ function default.register_ores()
 		y_min          = -31000,
 		y_max          = -64,
 	})
+	--]]
 end
 
 
