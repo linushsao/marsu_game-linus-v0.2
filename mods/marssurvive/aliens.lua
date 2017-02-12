@@ -2,7 +2,7 @@ minetest.register_abm({
 	nodenames = {"air"},
 	neighbors = {"marssurvive:stone_medium","marssurvive:stone_small","marssurvive:stone"},
 	interval = 180,
-	chance = 1000,
+	chance = 500,
 	action = function(pos)
 		local name=minetest.get_node(pos).name
 		pos={x=pos.x,y=pos.y+1,z=pos.z}
