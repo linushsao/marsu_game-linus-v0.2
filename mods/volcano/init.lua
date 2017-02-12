@@ -346,7 +346,8 @@ minetest.register_abm({
 			local nodename = env:get_node({x=x,y=y-j,z=z}).name
 			if nodename == "default:water_source" or nodename == "default:water_flowing" then
 				if ash then
-					env:add_node({x=x,y=y-j,z=z},{name="default:stone"})
+--					env:add_node({x=x,y=y-j,z=z},{name="default:stone"})
+					env:add_node({x=x,y=y-j,z=z},{name="marssurvive:stone_with_copper"})
 				else
 					env:add_node({x=x,y=y-j,z=z},{name="default:obsidian"})
 				end

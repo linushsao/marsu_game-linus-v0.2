@@ -14,10 +14,14 @@ economy.itemprices_pr={
 --	["animalmaterials:fur_deer"]=30,
 	["bucket:bucket_empty"]=120,
 --
-	["default:iron_lump"]=100,
-	["default:copper_lump"]=200,
+--	["default:iron_lump"]=100,
+--	["default:copper_lump"]=200,
 	["default:gold_lump"]=600,
 	["default:diamond"]=1000,
+	["moreores:mithril_lump"]=200,
+	["moreores:silver_lump"]=200,
+	["moreores:tin_lump"]=200,
+
 	["default:mese_crystal_fragment"]=200,
 }
 economy.mobkillrewards={
