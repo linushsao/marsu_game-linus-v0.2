@@ -1,5 +1,5 @@
 moretrees.avoidnodes = {}
-	
+
 moretrees.treelist = {
 	{"beech",	"Beech Tree"},
 	{"apple_tree",	"Apple Tree"},
@@ -23,7 +23,7 @@ local moretrees_new_leaves_drawtype = "allfaces_optional"
 local moretrees_new_leaves_extension = ".png"
 local moretrees_plantlike_leaves_visual_scale = 1
 
-if moretrees.plantlike_leaves then 
+if moretrees.plantlike_leaves then
 	moretrees_new_leaves_drawtype = "plantlike"
 	moretrees_new_leaves_extension = "_plantlike.png"
 	moretrees_plantlike_leaves_visual_scale = 1.189
@@ -84,6 +84,12 @@ for i in ipairs(moretrees.treelist) do
 			sounds = default.node_sound_wood_defaults(),
 			on_place = minetest.rotate_node,
 		})
+		--linus added
+		minetest.register_craft({
+			type = "fuel",
+			recipe = "moretrees:"..treename.."_trunk",
+			burntime = 15,
+		})
 
 		minetest.register_node("moretrees:"..treename.."_planks", {
 			description = treedesc.." Planks",
@@ -108,7 +114,7 @@ for i in ipairs(moretrees.treelist) do
 			groups = {snappy=2,dig_immediate=3,flammable=2,attached_node=1,sapling=1},
 			sounds = default.node_sound_defaults(),
 		})
-	
+
 		minetest.register_node("moretrees:"..treename.."_sapling_ongen", {
 			description = treedesc.." Sapling",
 			drawtype = "plantlike",
@@ -164,6 +170,13 @@ for i in ipairs(moretrees.treelist) do
 					{items = {"moretrees:"..treename.."_leaves"} }
 				}
 			},
+		})
+
+		--linus added
+		minetest.register_craft({
+			type = "fuel",
+			recipe = "moretrees:"..treename.."_leaves",
+			burntime = 2,
 		})
 
 		if minetest.get_modpath("moreblocks") and moretrees.enable_stairsplus then
@@ -490,4 +503,3 @@ minetest.register_alias("conifers:trunk_reversed", "moretrees:fir_trunk_sideways
 minetest.register_alias("conifers:leaves", "moretrees:fir_leaves")
 minetest.register_alias("conifers:leaves_special", "moretrees:fir_leaves_bright")
 minetest.register_alias("conifers:sapling", "moretrees:fir_sapling")
-
