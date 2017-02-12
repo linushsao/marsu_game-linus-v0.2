@@ -188,7 +188,7 @@ local npc_trader_prototype = {
           { "technic:zinc_lump 1","","bitchange:minecoin 20"},
           { "technic:chromium_lump 1","","bitchange:minecoin 20"},
 --          { "default:diamond 1","default:mese_crystal 1","bitchange:minecoin 90"},
-          { "default:mese_crystal_fragment 1","","bitchange:minecoin 10"},
+--          { "default:mese_crystal_fragment 1","","bitchange:minecoin 10"},
           { "markers:mark 4", "bitchange:minecoin 1", "protector:protect 1"},
           { "default:chest_locked 1", "", "bitchange:minecoin 2"},
           { "more_chests:dropbox 1", "", "bitchange:minecoin 2"},
