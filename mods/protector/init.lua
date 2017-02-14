@@ -442,6 +442,15 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = "protector:protect2",
+	recipe = {
+		{"default:stone", "default:stone", "default:stone"},
+		{"default:stone", "moreores:mithril_ingot", "default:stone"},
+		{"default:stone", "default:stone", "default:stone"},
+	}
+})
+
 -- If name entered or button press
 
 minetest.register_on_player_receive_fields(function(player, formname, fields)
