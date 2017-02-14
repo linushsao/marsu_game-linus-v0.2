@@ -16,19 +16,6 @@ dofile(minetest.get_modpath("moderators") .. "/command.lua")
 dofile(minetest.get_modpath("moderators") .. "/record_griefer.lua")
 dofile(minetest.get_modpath("moderators") .. "/crafting.lua")
 
---spawn point
-minetest.register_on_newplayer(function(player)
-    player:setpos({x=62, y=13, z=-197})
-    return true
-end)
-
---respawn to player hall when die
-minetest.register_on_respawnplayer(function(player)
-
-		player:setpos({x=66, y=6.5, z=-198})
-		return true
-
-end)
 
 --check privs for areas for all players
 minetest.register_on_joinplayer(function(player)
@@ -110,7 +97,7 @@ minetest.register_on_shutdown(function()
 --recovery_md0_privs() --recovery supervisors's privs
 end)
 
---read all players messages/worldedit_limits at server starting
+--read all configure at server starting
 msg = {}
 worldedit_limits = {}
 
@@ -140,8 +127,99 @@ local function load_worldedit_limits()
 
 end
 
+local function load_mars_conf()
+
+	local mars_conf_file = minetest.get_worldpath() .. "/mars_conf"
+	local input = io.open(mars_conf_file, "r")
+	local positions = {"spawn","respawn","jail"}
+
+    	if input == nil then
+				mars_conf["spawn"]={x=spawn_point.x,y=spawn_point.y,z=spawn_point.z}
+				mars_conf["respawn"]={x=respawn_point.x,y=respawn_point.y,z=respawn_point.z}
+				mars_conf["jail"]={x=jail_point.x,y=jail_point.y,z=jail_point.z}
+				mars_conf["md_0"]=md_0
+				return
+			end
+
+			mars_conf = minetest.deserialize(input:read("*all"))
+			io.close(input)
+			--setup the config
+				if mars_conf["spawn"] == nil then
+					mars_conf["spawn"]={x=spawn_point.x,y=spawn_point.y,z=spawn_point.z}
+					elseif mars_conf["respawn"] == nil then
+						mars_conf["respawn"]={x=respawn_point.x,y=respawn_point.y,z=respawn_point.z}
+					elseif mars_conf["jail"] == nil then
+						mars_conf["jail"]={x=jail_point.x,y=jail_point.y,z=jail_point.z}
+					elseif mars_conf["md_0"] == nil then
+						mars_conf["md_0"]=md_0
+				end
+end
+
+function register_pos_conf()
+
+	if mars_conf == nil then return end
+	--spawn point
+	minetest.register_on_newplayer(function(player)
+		player:setpos({x=mars_conf["spawn"].x, y=mars_conf["spawn"].y, z=mars_conf["spawn"].z})
+		return true
+	end)
+
+	--respawn to player hall when die
+	minetest.register_on_respawnplayer(function(player)
+		player:setpos({x=mars_conf["respawn"].x, y=mars_conf["respawn"].y, z=mars_conf["respawn"].z})
+		return true
+	end)
+
+	--jail the same as interact.lua of area mod
+	minetest.register_on_protection_violation(function(pos, name)
+
+		if not areas:canInteract(pos, name) then
+			local owners = areas:getNodeOwners(pos)
+			minetest.chat_send_player(name,
+				 ("%s is protected by %s."):format(
+						minetest.pos_to_string(pos),
+						table.concat(owners, ", ")))
+
+			-- Begin here teleporting player to x,y,z if touching
+			 local player = minetest.get_player_by_name(name) -- local var for playername
+				if not player then return end
+				 player:setpos({x=mars_conf["jail"].x, y=mars_conf["jail"].y, z=mars_conf["jail"].z}) --- teleport to Coordinate x,y,z
+		end
+	end)
+
+end
+
 loadmsg()
 load_worldedit_limits()
+load_mars_conf()
+register_pos_conf()
+
+
+
+--[[
+--spawn point
+minetest.register_on_newplayer(function(player)
+    player:setpos({x=v["spawn"].x, y=v["spawn"].y, z=v["spawn"].z})
+    return true
+end)
+
+--respawn to player hall when die
+minetest.register_on_respawnplayer(function(player)
+    player:setpos({x=v["respawn"].x, y=v["respawn"].y, z=v["respawn"].z})
+		return true
+
+end)
+]]
 
 print(dump(msg))
 print(dump(worldedit_limits))
+
+
+minetest.register_on_shutdown(function()
+--recovery_md0_privs() --recovery supervisors's privs
+	save_all_mars_config()
+	minetest.log("action","mars_config saved.")
+
+end)
+
+minetest.log("action","MOD: moderators loaded.")

@@ -155,7 +155,47 @@ minetest.register_chatcommand("chkmsg", {
 end,
 })
 
+--about set positions
 
+
+minetest.register_chatcommand("confpos", {
+    params = "Usage:confpos <PARAMS> .<PARAMS>={spawn,respawn,jail,all},*all* means show current configure of positions.",
+    description = "set spawn/respawn/jail point as your current position,only for supervisors.",
+    privs = {interact=supervisor},
+
+	func = function(name,param)
+		local player = minetest.get_player_by_name(name)
+		local pos = player:getpos()
+		local positions = {"spawn","respawn","jail"}
+		local check_param = false
+
+			if param == "all" then --show current configure
+				check_param = true
+				for _,v in ipairs(positions) do
+					local conf = mars_conf[v]
+					minetest.chat_send_player(name, "Current "..v.." is ( "..conf.x..", "..conf.y..", "..conf.z.." ).")
+				end
+
+				else --setup configure and take effect
+				for _,v in ipairs(positions) do
+					if v == param then
+						save_mars_config(v,pos,name)
+						local conf = mars_conf[v]
+						minetest.chat_send_player(name, "New "..v.." is ( "..conf.x..", "..conf.y..", "..conf.z.." ).")
+
+						register_pos_conf()
+
+						check_param = true
+					end
+				end
+			end
+
+			if check_param == false then
+				minetest.chat_send_player(name, "Wrong params,pls */help confpos* for online manual")
+			end
+
+	end,
+})
 
 --[[
 minetest.register_chatcommand("grant", {

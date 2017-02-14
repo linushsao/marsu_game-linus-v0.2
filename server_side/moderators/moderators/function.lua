@@ -33,9 +33,10 @@ function recovery_md0_privs()
       local privs = minetest.get_player_privs(name)
       minetest.set_player_privs(name,{})
       local privs = minetest.get_player_privs(name)
---md_0_privs = {'server','areas','home','shout','fly','fast','basic_privs','protection_bypass','rollback','kick','interact','teleport','ban','supervisor'} --supervisors
+--md_0_privs = {'server','areas','bring','home','shout','fly','fast','basic_privs','protection_bypass','rollback','kick','interact','teleport','ban','supervisor'} --supervisors
       privs.server = true
       privs.areas = true
+      privs.bring = true
       privs.home = true
       privs.shout = true
       privs.fly = true
@@ -54,4 +55,30 @@ function recovery_md0_privs()
   end
   end
 
+end
+
+--save mars_config
+function save_mars_config(index,pos,name)
+
+			if (index == nil or pos == nil or name == nil) then return end
+
+			mars_conf[index]={x=pos.x,y=pos.y,z=pos.z}
+
+			local mars_config_file = minetest.get_worldpath() .. "/mars_conf"
+			local output = io.open(mars_config_file, "w")
+			if output == nil then return
+			else
+			output:write(minetest.serialize(mars_conf).."\n")
+			io.close(output)
+      end
+
+end
+
+--save ALL_mars_config
+function save_all_mars_config()
+			local mars_config_file = minetest.get_worldpath() .. "/mars_conf"
+			local output = io.open(mars_config_file, "w")
+			if output == nil then return end
+			output:write(minetest.serialize(mars_conf).."\n")
+			io.close(output)
 end

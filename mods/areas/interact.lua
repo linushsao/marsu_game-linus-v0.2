@@ -8,6 +8,7 @@ function minetest.is_protected(pos, name)
 	 return old_is_protected(pos, name)
 end
 
+--[[ move to init.lua of moderators mod
 minetest.register_on_protection_violation(function(pos, name)
 
 	 if not areas:canInteract(pos, name) then
@@ -26,3 +27,4 @@ minetest.register_on_protection_violation(function(pos, name)
 
 	 end
 end)
+]]
