@@ -161,7 +161,7 @@ end,
 minetest.register_chatcommand("confpos", {
     params = "Usage:confpos <PARAMS> .<PARAMS>={spawn,respawn,jail,all},*all* means show current configure of positions.",
     description = "set spawn/respawn/jail point as your current position,only for supervisors.",
-    privs = {interact=supervisor},
+		privs = {supervisor = true},
 
 	func = function(name,param)
 		local player = minetest.get_player_by_name(name)
