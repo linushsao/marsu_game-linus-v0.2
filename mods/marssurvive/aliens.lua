@@ -219,7 +219,7 @@ local marssurvive_alien=function(self, dtime)
 			for i=1,5,1 do --starts front of the object and y: -2 to +2
 			local npss={x=ppos.x+self.move.x,y=ppos.y+(i-3.5),z=ppos.z+self.move.z}
 				if not minetest.registered_nodes[minetest.get_node(npss).name] then
-					minetest.set_node(npss, {name ="air"})
+--					minetest.set_node(npss, {name ="air"})  --disabled alien destroy dirt by linus
 				end
 				nodes[i]=minetest.registered_nodes[minetest.get_node(npss).name].walkable
 			end
