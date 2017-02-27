@@ -1,6 +1,6 @@
 marssurvive={breath_timer=0,player_sp={},air=21,player_space={},
 itemdroptime=tonumber(minetest.setting_get("item_entity_ttl")),
-aliens={},aliens_max=4}
+aliens={},aliens_max=14}
 
 
 if marssurvive.itemdroptime=="" or marssurvive.itemdroptime==nil then
