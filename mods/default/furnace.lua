@@ -3,7 +3,7 @@
 -- Formspecs
 --
 
-local function active_formspec(fuel_percent, item_percent)
+local function active_formspec(fuel_percent, item_percent,pos)
 	local formspec = 
 		"size[8,8.5]"..
 		default.gui_bg..
@@ -12,7 +12,7 @@ local function active_formspec(fuel_percent, item_percent)
 		"list[current_name;src;2.75,0.5;1,1;]"..
 		"list[current_name;fuel;2.75,2.5;1,1;]"..
 		"image[2.75,1.5;1,1;default_furnace_fire_bg.png^[lowpart:"..
-		(100-fuel_percent)..":default_furnace_fire_fg.png]"..
+		(100-fuel_percent)..":"..if_fire(pos).."]"..
 		"image[3.75,1.5;1,1;gui_furnace_arrow_bg.png^[lowpart:"..
 		(item_percent)..":gui_furnace_arrow_fg.png^[transformR270]"..
 		"list[current_name;dst;4.75,0.96;2,2;]"..
@@ -132,7 +132,7 @@ local function furnace_node_timer(pos, elapsed)
 
 		-- If there is a cookable item then check if it is ready yet
 		if cookable then
-			src_time = src_time + 1
+			src_time = src_time + 1*tonumber(if_air(pos))
 			if src_time >= cooked.time then
 				-- Place result in dst list if possible
 				if inv:room_for_item("dst", cooked.item) then
@@ -193,7 +193,7 @@ local function furnace_node_timer(pos, elapsed)
 		active = "active "
 		local fuel_percent = math.floor(fuel_time / fuel_totaltime * 100)
 		fuel_state = fuel_percent .. "%"
-		formspec = active_formspec(fuel_percent, item_percent)
+		formspec = active_formspec(fuel_percent, item_percent,pos)
 		swap_node(pos, "default:furnace_active")
 		-- make sure timer restarts automatically
 		result = true
@@ -207,7 +207,7 @@ local function furnace_node_timer(pos, elapsed)
 		timer:stop()
 	end
 
-	local infotext = "Furnace " .. active .. "(Item: " .. item_state .. "; Fuel: " .. fuel_state .. ")"
+	local infotext = "Furnace " .. active .. "(Item: " .. item_state .. "; Fuel: " .. fuel_state .. "; Efficiency: " .. tonumber(if_air(pos))*100 .. "%)"
 
 	--
 	-- Set meta values
