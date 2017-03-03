@@ -1,5 +1,12 @@
 --scifi_nodes by D00Med
 
+minetest.log("action","MOD: scifi_nodes loading ...")
+
+--recipes contribution from tm3
+dofile(minetest.get_modpath("scifi_nodes") .. "/crafts.lua")
+
+
+
 --the builder node
 
 minetest.register_node("scifi_nodes:builder", {
