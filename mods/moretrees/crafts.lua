@@ -18,6 +18,29 @@ for i in ipairs(moretrees.treelist) do
 		}
 	})
 
+--linus added for transfer planks from moretree mod
+	minetest.register_craft({
+		type = "shapeless",
+		output = "default:wood",
+		recipe = {
+			"moretrees:"..treename.."_planks"
+		}
+	})
+
+	minetest.register_craft({
+		type = "fuel",
+		recipe = "moretrees:"..treename.."_planks",
+		burntime = 7,
+	})
+
+	minetest.register_craft({
+		type = "fuel",
+		recipe = "moretrees:"..treename.."_trunk",
+		burntime = 30,
+	})
+--linus added for transfer planks from moretree mod
+
+
 	minetest.register_craft({
 		type = "shapeless",
 		output = "moretrees:"..treename.."_planks 4",
@@ -146,5 +169,3 @@ minetest.register_craft({
 	output = "moretrees:fir_nuts 4",
 	recipe = "moretrees:fir_cone",
 })
-
-
