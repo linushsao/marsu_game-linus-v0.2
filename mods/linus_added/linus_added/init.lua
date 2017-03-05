@@ -14,6 +14,7 @@ minetest.register_alias("group:wood", "marssurvive:wood")
 
 --other script
 dofile(minetest.get_modpath("linus_added") .. "/functions.lua")
+dofile(minetest.get_modpath("linus_added") .. "/command.lua")
 
 --about ABM
 
