@@ -203,3 +203,18 @@ minetest.register_node("farming:cotton_8", {
 	},
 	sounds = default.node_sound_leaves_defaults(),
 })
+
+--linus added:cotton grown
+for i = 1,8 do
+	if i < 8 then
+	minetest.register_abm({
+		nodenames = {"farming:cotton_"..tostring(i)},
+		interval = 1200, -- Run every 1200 seconds
+		chance = 10, -- Select every 1 in 10 nodes
+
+		action = function(pos, node, active_object_count, active_object_count_wider)
+			minetest.set_node({x = pos.x, y = pos.y, z = pos.z}, {name = "farming:cotton_"..(i+1)})
+		end
+	})
+	end
+end
