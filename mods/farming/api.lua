@@ -204,10 +204,9 @@ farming.register_plant = function(name, def)
 		},
 		fertility = def.fertility,
 		on_place = function(itemstack, placer, pointed_thing)
-			return farming.place_seed(itemstack, placer, pointed_thing, mname .. ":seed_" .. pname)
+			return farming.place_seed(itemstack, placer, pointed_thing, mname .. ":" .. pname.."_1")
 		end
 	})
-
 	-- Register harvest
 	minetest.register_craftitem(":" .. mname .. ":" .. pname, {
 		description = pname:gsub("^%l", string.upper),
