@@ -213,7 +213,10 @@ for i = 1,8 do
 		chance = 10, -- Select every 1 in 10 nodes
 
 		action = function(pos, node, active_object_count, active_object_count_wider)
+			local l = minetest.get_node_light({x=pos.x, y=pos.y+1, z=pos.z})
+			if l>12 then
 			minetest.set_node({x = pos.x, y = pos.y, z = pos.z}, {name = "farming:cotton_"..(i+1)})
+			end
 		end
 	})
 	end
