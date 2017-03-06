@@ -6,14 +6,14 @@ farming.path = minetest.get_modpath("farming")
 dofile(farming.path .. "/api.lua")
 dofile(farming.path .. "/nodes.lua")
 dofile(farming.path .. "/hoes.lua")
-dofile(farming.path .. "/cotton.lua")
-dofile(farming.path .. "/wheat.lua")
+--dofile(farming.path .. "/cotton.lua")
+--dofile(farming.path .. "/wheat.lua")
 
 -- WHEAT
 farming.register_plant("farming:wheat", {
 	description = "Wheat seed",
 	inventory_image = "farming_wheat_seed.png",
-	steps = 3,
+	steps = 8,
 	minlight = 13,
 	maxlight = default.LIGHT_MAX,
 	fertility = {"grassland"}
@@ -49,18 +49,18 @@ minetest.register_craft({
 })
 
 -- Cotton
---[[
+
 farming.register_plant("farming:cotton", {
 	description = "Cotton seed",
 	inventory_image = "farming_cotton_seed.png",
-	steps = 3,
+	steps = 8,
 	minlight = 13,
 	maxlight = default.LIGHT_MAX,
 	fertility = {"grassland", "desert"}
 })
 
 minetest.register_alias("farming:string", "farming:cotton")
---]]
+
 
 minetest.register_craft({
 	output = "wool:white",

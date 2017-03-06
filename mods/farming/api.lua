@@ -281,14 +281,37 @@ farming.register_plant = function(name, def)
 			sounds = default.node_sound_leaves_defaults(),
 		})
 		end
+
+	-- Growing ABM
+		if i < def.steps then
+		minetest.register_abm({
+			nodenames = {mname..":"..pname.."_"..tostring(i)},
+			interval = 1200, -- Run every 1200 seconds
+			chance = 12, -- Select every 1 in 10 nodes
+
+			action = function(pos, node, active_object_count, active_object_count_wider)
+				local l = minetest.get_node_light({x=pos.x, y=pos.y+1, z=pos.z})
+				if l>12 then
+				minetest.set_node({x = pos.x, y = pos.y, z = pos.z}, {name = mname..":"..pname.."_"..tostring(i+1)})
+				end
+			end
+		})
+		end
+
 	end
 
 	-- Growing ABM
+
+
+	--[[
 	minetest.register_abm({
 		nodenames = {"group:" .. pname, "group:seed"},
 		neighbors = {"group:soil"},
-		interval = 1200,
-		chance = 10,
+		interval = 2,
+		chance = 1,
+--		interval = 1200,
+--		chance = 10,
+
 		action = function(pos, node)
 			local plant_height = minetest.get_item_group(node.name, pname)
 
@@ -336,6 +359,7 @@ farming.register_plant = function(name, def)
 			minetest.set_node(pos, {name = mname .. ":" .. pname .. "_" .. plant_height + 1})
 		end
 	})
+	--]]
 
 	-- Return
 	local r = {
