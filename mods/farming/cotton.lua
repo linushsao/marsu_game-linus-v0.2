@@ -210,7 +210,7 @@ for i = 1,8 do
 	minetest.register_abm({
 		nodenames = {"farming:cotton_"..tostring(i)},
 		interval = 120, -- Run every 1200 seconds
-		chance = 100, -- Select every 1 in 10 nodes
+		chance = 20, -- Select every 1 in 10 nodes
 
 		action = function(pos, node, active_object_count, active_object_count_wider)
 			local l = minetest.get_node_light({x=pos.x, y=pos.y+1, z=pos.z})
