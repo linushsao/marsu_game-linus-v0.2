@@ -121,8 +121,8 @@ end
 --All leaves should be pale green by August
 minetest.register_abm({
 	nodenames = {'default:leaves','group:moretrees_leaves'},
-	interval = 10,
-	chance = 5,
+	interval = 600,
+	chance = 10,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -145,7 +145,7 @@ minetest.register_abm({
 --All papyrus should be die after sandstorm's season
 minetest.register_abm({
 	nodenames = {'default:papyrus'},
-	interval = 300,
+	interval = 600,
 	chance = 10,
 	action = function (pos, node, active_object_count, active_object_count_wider)
 		if (mymonths.month_counter == 2 and mymonths.month_counter <=3 ) then
@@ -158,8 +158,8 @@ minetest.register_abm({
 --All leaves should be orange by September
 minetest.register_abm({
 	nodenames = {'group:leaves_change','mymonths:leaves_pale_green'},
-	interval = 10,
-	chance = 5,
+	interval = 600,
+	chance = 10,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -185,8 +185,8 @@ minetest.register_abm({
 nodenames = {'group:leaves_change','mymonths:leaves_orange'},
 --	nodenames = {'default:leaves','group:moretrees_leaves','mymonths:leaves_pale_green','mymonths:leaves_orange'},
 
-	interval = 10,
-	chance = 5,
+	interval = 600,
+	chance = 10,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -211,8 +211,8 @@ nodenames = {'group:leaves_change','mymonths:leaves_orange'},
 --All default leaves should be sticks in November and December
 minetest.register_abm({
 	nodenames = {'group:leaves_change','mymonths:leaves_red', 'mymonths:leaves_red_aspen'},
-	interval = 10,
-	chance = 5,
+	interval = 600,
+	chance = 10,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -240,8 +240,8 @@ minetest.register_abm({
 --All aspen leaves should be sticks in November and December
 minetest.register_abm({
 	nodenames = {'default:aspen_leaves', 'mymonths:leaves_orange_aspen', 'mymonths:leaves_red_aspen',},
-	interval = 10,
-	chance = 5,
+	interval = 600,
+	chance = 10,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -267,8 +267,8 @@ minetest.register_abm({
 --New growth in spring
 minetest.register_abm({
 	nodenames = {'group:sticks_change','mymonths:sticks_default', 'mymonths:leaves_blooms', 'mymonths:sticks_aspen', 'mymonths:leaves_aspen_blooms'},
-	interval = 60,
-	chance = 40,
+	interval = 600,
+	chance = 10,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -338,8 +338,8 @@ minetest.register_abm({
 --By April all trees should be back to normal
 minetest.register_abm({
 	nodenames = {'group:leaves_change','mymonths:sticks_default','mymonths:leaves_sticks', 'mymonths:leaves_blooms', 'mymonths:sticks_aspen', 'mymonths:leaves_aspen_blooms'},
-	interval = 10,
-	chance = 5,
+	interval = 600,
+	chance = 10,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -369,7 +369,7 @@ minetest.register_abm({
 --apples die in November
 minetest.register_abm({
 	nodenames = {'default:apple'},
-	interval = 15,
+	interval = 600,
 	chance = 10,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
@@ -427,8 +427,8 @@ minetest.register_abm({
 --apples grow in fall
 minetest.register_abm({
 	nodenames = {'default:leaves'},
-	interval = 60,
-	chance = 15,
+	interval = 600,
+	chance = 10,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -448,8 +448,8 @@ minetest.register_abm({
 --apples change to leaves or sticks is not in season
 minetest.register_abm({
 	nodenames = {'default:apple'},
-	interval = 10,
-	chance = 5,
+	interval = 600,
+	chance = 10,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
