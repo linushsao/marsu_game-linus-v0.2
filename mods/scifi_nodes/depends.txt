@@ -1,3 +1,8 @@
 default
-hbhunger
-xpanes?
+xpanes
+moreblocks
+mesecons
+mesecons_microcontroller
+mesecons_button
+mesecons_torch
+dye

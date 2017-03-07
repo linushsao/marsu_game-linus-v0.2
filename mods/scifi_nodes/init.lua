@@ -1,11 +1,4 @@
---scifi_nodes by D00Med
-
-minetest.log("action","MOD: scifi_nodes loading ...")
-
---recipes contribution from tm3
-dofile(minetest.get_modpath("scifi_nodes") .. "/crafts.lua")
-
-
+--scifi_nodes by D00Med 
 
 --the builder node
 
@@ -359,6 +352,7 @@ minetest.register_node("scifi_nodes:octgrn", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	use_texture_alpha = true,
+	light_source = 10,
 	groups = {cracky=2},
 	sounds = default.node_sound_glass_defaults(),
 })
@@ -473,16 +467,16 @@ node.types = {
 	{"dent",      "dented metal block",       "dent"},
 	{"greenmetal",      "green metal wall",       "grnmetl"},
 	{"greenmetal2",      "green metal wall2",       "grnmetl2"},
-	{"greenlights",      "green wall lights",       "grnlt"},
-	{"greenlights2",      "green wall lights2",       "grnlt2"},
-	{"greenbar",      "green light bar",       "grnlghtbr"},
+	{"greenlights",      "green wall lights",       "grnlt", 10},
+	{"greenlights2",      "green wall lights2",       "grnlt2", 10},
+	{"greenbar",      "green light bar",       "grnlghtbr", 10},
 	{"green2",      "green wall panel",       "grn2"},
 	{"greentubes",      "green pipes",       "grntubes"},
 	{"grey",      "grey wall",       "gry"},
 	{"greybolts",      "grey wall bolts",       "gryblts"},
 	{"greybars",      "grey bars",       "grybrs"},
 	{"greydots",      "grey wall dots",       "grydts"},
-	{"greygreenbar",      "gray power pipe",       "grygrnbr"},
+	{"greygreenbar",      "gray power pipe",       "grygrnbr", 10},
 	{"octofloor",      "Doom floor",       "octofloor"},
 	{"octofloor2",      "Brown Doom floor",       "octofloor2"},
 	{"doomwall1",      "Doom wall 1",       "doomwall1"},
@@ -547,7 +541,6 @@ node.plants = {
 	{"plant10", "Umbrella weed", 1,0, 10},
 	{"eyetree", "Eye Tree", 2.5,0, 0},
 	{"grass", "Alien Grass", 1,0, 0},
-	{"plant_trap", "Plant_trap", 1,0, 0},
 }
 
 for _, row in ipairs(node.plants) do
@@ -563,7 +556,6 @@ for _, row in ipairs(node.plants) do
 		drawtype = "plantlike",
 		inventory_image = {"scifi_nodes_"..name..".png"},
 		groups = {snappy=1, oddly_breakable_by_hand=1, dig_immediate=3, flora=1},
-		on_use = minetest.item_eat(1),
 		paramtype = "light",
 		visual_scale = size,
 		buildable_to = true,
@@ -578,22 +570,6 @@ for _, row in ipairs(node.plants) do
 		is_ground_content = false,
 		light_source = light,
 	})
-
-	hbhunger.register_food("scifi_nodes:"..name, 1)
-
-	--Alien planet will be dead
-	minetest.register_abm({
-		nodenames = {"scifi_nodes:"..name},
-		neighbors = {"default:dirt","default:dirt_with_grass","marssurvive:sand","marssurvive:stone"},
-		interval = 30,
-		chance = 2,
-		catch_up = false,
-		action = function(pos, node)
-			minetest.set_node(pos, {name = "air"})
-	--		print("Alien Planet dead@@@@@@@@@@@@@@@@@@")
-		end
-	})
-
 end
 
 --chest code from default(Copyright (C) 2012 celeron55, Perttu Ahola <celeron55@gmail.com>)
@@ -691,10 +667,10 @@ minetest.register_node("scifi_nodes:box", {
 		"scifi_nodes_box.png"
 	},
 	paramtype2 = "facedir",
-	groups = {cracky = 1, oddly_breakable_by_hand = 2, fuel = 8},
+	groups = {cracky = 1},
 	legacy_facedir_simple = true,
 	is_ground_content = false,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = default.node_sound_metal_defaults(),
 
 	after_dig_node = drop_chest_stuff(),
 	on_construct = function(pos)
@@ -801,3 +777,4 @@ end
 dofile(minetest.get_modpath("scifi_nodes").."/doors.lua")
 dofile(minetest.get_modpath("scifi_nodes").."/nodeboxes.lua")
 dofile(minetest.get_modpath("scifi_nodes").."/models.lua")
+dofile(minetest.get_modpath("scifi_nodes").."/crafts.lua")
