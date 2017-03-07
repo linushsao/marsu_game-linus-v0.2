@@ -83,6 +83,7 @@ minetest.register_abm({
 })
 
 -- in this case is the default air the vacuum, and air2 is air
+--[[
 minetest.register_abm({
 	nodenames = {"default:water_source"},
 	neighbors = {"marssurvive:ice"},
@@ -92,6 +93,7 @@ minetest.register_abm({
 		minetest.set_node(pos, {name = "marssurvive:ice"})
 	end,
 })
+]]
 
 minetest.register_abm({
 	nodenames = {"marssurvive:air2"},
