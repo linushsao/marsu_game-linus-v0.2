@@ -286,8 +286,8 @@ farming.register_plant = function(name, def)
 		if i < def.steps then
 		minetest.register_abm({
 			nodenames = {mname..":"..pname.."_"..tostring(i)},
-			interval = 1200, -- Run every 1200 seconds
-			chance = 12, -- Select every 1 in 10 nodes
+			interval = 120, -- Run every 120 seconds
+			chance = 50, -- Select every 1 in 50 nodes
 
 			action = function(pos, node, active_object_count, active_object_count_wider)
 				local l = minetest.get_node_light({x=pos.x, y=pos.y+1, z=pos.z})
