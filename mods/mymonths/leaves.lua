@@ -1,4 +1,5 @@
-
+INTERVAL_TIME = 180
+CHANGE_NUMBER = 10
 --Nodes #################
 
 local leaves_table = {
@@ -37,7 +38,7 @@ for i, name in pairs(leaves_table) do
 			if string.match(v,"moretrees") then v1 = string.gsub(v,"moretrees:","") end
 			if string.match(v,"default")   then v1 = string.gsub(v,"default:","") end
 
-			print('mymonths:leaves_' .. name.."_"..v1)
+--			print('mymonths:leaves_' .. name.."_"..v1)
 
 			minetest.register_node('mymonths:leaves_' .. name.."_"..v1, {
 				description = v1.."_"..name .. ' leaves',
@@ -56,7 +57,6 @@ for i, name in pairs(leaves_table) do
 end
 
 for i, name in pairs(sticks_table) do
-
 	minetest.register_node('mymonths:sticks_' .. name, {
 	description = 'Sticks',
 	drawtype = 'allfaces_optional',
@@ -69,12 +69,19 @@ for i, name in pairs(sticks_table) do
 	groups = {snappy = 3, leafdecay = 3, flammable = 2, leaves = 1},
 	})
 
-	for _,v in pairs(moretrees_leaves_table) do
+	minetest.register_craft({
+		output = "default:stick 2",
+		recipe = {
+					{ 'mymonths:sticks_' .. name,'mymonths:sticks_' .. name,'mymonths:sticks_' .. name },
+					{ 'mymonths:sticks_' .. name,'mymonths:sticks_' .. name,'mymonths:sticks_' .. name },
+					{ 'mymonths:sticks_' .. name,'mymonths:sticks_' .. name,'mymonths:sticks_' .. name },
+				}
+	})
 
+	for _,v in pairs(moretrees_leaves_table) do
 			if string.match(v,"moretrees") then v1 = string.gsub(v,"moretrees:","") end
 			if string.match(v,"default") then   v1 = string.gsub(v,"default:","") end
-
-			minetest.register_node('mymonths:sticks_' .. name.."_"..v1, {
+			minetest.register_node('mymonths:sticks_' .. v1, {
 			description = v1.."_"..'Sticks',
 			drawtype = 'allfaces_optional',
 			waving = 1,
@@ -85,11 +92,22 @@ for i, name in pairs(sticks_table) do
 			drop = 'mymonths:leaves_sticks 2',
 			groups = {snappy = 3, leafdecay = 3, flammable = 2, leaves = 1, sticks_change =1},
 			})
+
+			minetest.register_craft({
+				output = "default:stick 3",
+				recipe = {
+							{ 'mymonths:sticks_' .. v1,'mymonths:sticks_' .. v1,'mymonths:sticks_' .. v1 },
+							{ 'mymonths:sticks_' .. v1,'mymonths:sticks_' .. v1,'mymonths:sticks_' .. v1 },
+							{ 'mymonths:sticks_' .. v1,'mymonths:sticks_' .. v1,'mymonths:sticks_' .. v1 },
+						}
+			})
+
 	end
 end
 
 
 
+--[[
 for _,v in pairs(moretrees_leaves_table) do
 	if not string.match(v,"default") then
 		local v1 = string.gsub(v,"moretrees:","")
@@ -114,15 +132,27 @@ for _,v in pairs(moretrees_leaves_table) do
 
 	end
 end
-
+--]]
 
 --ABMs ##################
+
+--All papyrus should be die after sandstorm's season
+minetest.register_abm({
+	nodenames = {'default:papyrus'},
+	interval = INTERVAL_TIME,
+	chance = CHANGE_NUMBER,
+	action = function (pos, node, active_object_count, active_object_count_wider)
+		if (mymonths.month_counter == 2 and mymonths.month_counter <=3 ) then
+			minetest.set_node(pos, {name = 'air'})
+		end
+	end
+})
 
 --All leaves should be pale green by August
 minetest.register_abm({
 	nodenames = {'default:leaves','group:moretrees_leaves'},
-	interval = 600,
-	chance = 10,
+	interval = INTERVAL_TIME,
+	chance = CHANGE_NUMBER,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -142,24 +172,13 @@ minetest.register_abm({
 	end
 })
 
---All papyrus should be die after sandstorm's season
-minetest.register_abm({
-	nodenames = {'default:papyrus'},
-	interval = 601,
-	chance = 10,
-	action = function (pos, node, active_object_count, active_object_count_wider)
-		if (mymonths.month_counter == 2 and mymonths.month_counter <=3 ) then
-			minetest.set_node(pos, {name = 'air'})
-		end
-	end
-})
 
 
 --All leaves should be orange by September
 minetest.register_abm({
 	nodenames = {'group:leaves_change','mymonths:leaves_pale_green'},
-	interval = 602,
-	chance = 10,
+	interval = INTERVAL_TIME,
+	chance = CHANGE_NUMBER,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -185,8 +204,8 @@ minetest.register_abm({
 nodenames = {'group:leaves_change','mymonths:leaves_orange'},
 --	nodenames = {'default:leaves','group:moretrees_leaves','mymonths:leaves_pale_green','mymonths:leaves_orange'},
 
-	interval = 603,
-	chance = 10,
+interval = INTERVAL_TIME,
+chance = CHANGE_NUMBER,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -211,8 +230,8 @@ nodenames = {'group:leaves_change','mymonths:leaves_orange'},
 --All default leaves should be sticks in November and December
 minetest.register_abm({
 	nodenames = {'group:leaves_change','mymonths:leaves_red', 'mymonths:leaves_red_aspen'},
-	interval = 604,
-	chance = 10,
+	interval = INTERVAL_TIME,
+	chance = CHANGE_NUMBER,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -222,13 +241,15 @@ minetest.register_abm({
 		or mymonths.month_counter == 2 then
 					print("action of Novemer - febur")
 
-			if node.name == 'mymonths:leaves_red' or 'mymonths:leaves_red_aspen' then
+			if node.name == 'mymonths:leaves_red' then
 				minetest.set_node(pos, {name = 'mymonths:sticks_default'})
+			elseif node.name == 'mymonths:leaves_red_aspen' then
+				minetest.set_node(pos, {name = 'mymonths:sticks_aspen'})
 				else
 					for _,v in pairs(moretrees_leaves_table) do
 						local v1 = string.gsub(v,"moretrees:","")
 						if string.match(node.name,v1) then
-							minetest.set_node(pos, {name = 'mymonths:leaves_sticks_'..v1})
+							minetest.set_node(pos, {name = 'mymonths:sticks_'..v1})
 						end
 					end
 			end
@@ -237,11 +258,12 @@ minetest.register_abm({
 	 end
 })
 
+--[[
 --All aspen leaves should be sticks in November and December
 minetest.register_abm({
 	nodenames = {'default:aspen_leaves', 'mymonths:leaves_orange_aspen', 'mymonths:leaves_red_aspen',},
-	interval = 605,
-	chance = 10,
+	interval = INTERVAL_TIME,
+	chance = CHANGE_NUMBER,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -263,12 +285,13 @@ minetest.register_abm({
 		end
 	end
 })
+--]]
 
 --New growth in spring
 minetest.register_abm({
 	nodenames = {'group:sticks_change','mymonths:sticks_default', 'mymonths:leaves_blooms', 'mymonths:sticks_aspen', 'mymonths:leaves_aspen_blooms'},
-	interval = 606,
-	chance = 10,
+	interval = INTERVAL_TIME,
+	chance = CHANGE_NUMBER,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -277,6 +300,8 @@ minetest.register_abm({
 
 			if node.name == 'mymonths:sticks_default' then
 				minetest.set_node(pos, {name = 'mymonths:leaves_blooms'})
+			elseif node.name == 'mymonths:sticks_aspen' then
+				minetest.set_node(pos, {name = 'mymonths:leaves_aspen_blooms'})
 			else
 				for _,v in pairs(moretrees_leaves_table) do
 					local v1 = string.gsub(v,"moretrees:","")
@@ -286,6 +311,7 @@ minetest.register_abm({
 				end
 			end
 
+--[[
 			if node.name == 'mymonths:leaves_blooms' then
 				minetest.set_node(pos, {name = 'default:leaves'})
 			else
@@ -331,6 +357,7 @@ minetest.register_abm({
 					end
 --			minetest.set_node(pos, {name = 'mymonths:sticks_aspen'})
 			end
+					--]]
 		end
 	end
 })
@@ -338,8 +365,8 @@ minetest.register_abm({
 --By April all trees should be back to normal
 minetest.register_abm({
 	nodenames = {'group:leaves_change','mymonths:sticks_default','mymonths:leaves_sticks', 'mymonths:leaves_blooms', 'mymonths:sticks_aspen', 'mymonths:leaves_aspen_blooms'},
-	interval = 607,
-	chance = 10,
+	interval = INTERVAL_TIME,
+	chance = CHANGE_NUMBER,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -369,8 +396,8 @@ minetest.register_abm({
 --apples die in November
 minetest.register_abm({
 	nodenames = {'default:apple'},
-	interval = 608,
-	chance = 10,
+	interval = INTERVAL_TIME,
+	chance = CHANGE_NUMBER,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -427,8 +454,8 @@ minetest.register_abm({
 --apples grow in fall
 minetest.register_abm({
 	nodenames = {'default:leaves'},
-	interval = 609,
-	chance = 10,
+	interval = INTERVAL_TIME,
+	chance = CHANGE_NUMBER,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -448,8 +475,8 @@ minetest.register_abm({
 --apples change to leaves or sticks is not in season
 minetest.register_abm({
 	nodenames = {'default:apple'},
-	interval = 610,
-	chance = 10,
+	interval = INTERVAL_TIME,
+	chance = CHANGE_NUMBER,
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
