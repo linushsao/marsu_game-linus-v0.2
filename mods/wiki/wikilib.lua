@@ -53,7 +53,7 @@ local function get_page_path(name, player) --> path, is_file, allow_save
 			if user:find("..[/\\]") then
 				return wikilib.internal_pages[".BadPageName"], false, false
 			end
-			if (n == "0") and (not minetest.check_player_privs(player, {wiki_admin=true})) then
+			if (n == "0") and (not minetest.check_player_privs(player, {supervisor=true})) then
 				return wikilib.internal_pages[".Forbidden"], false, false
 			end
 			path = "users/"..user.."/page"..n
