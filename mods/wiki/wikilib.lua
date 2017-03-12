@@ -53,7 +53,7 @@ local function get_page_path(name, player) --> path, is_file, allow_save
 			if user:find("..[/\\]") then
 				return wikilib.internal_pages[".BadPageName"], false, false
 			end
-			if (n == "0") and (not minetest.check_player_privs(player, {supervisor=true})) then
+			if (n == "0") and (not minetest.check_player_privs(player, {wiki_admin=true})) then
 				return wikilib.internal_pages[".Forbidden"], false, false
 			end
 			path = "users/"..user.."/page"..n
@@ -182,7 +182,7 @@ end
 
 minetest.register_node("wiki:wiki", {
 	description = "Wiki",
-	tiles = { "default_wood.png", "default_wood.png", "default_bookshelf.png" },
+	tiles = { "wiki_top.png", "default_wood.png", "wiki_side.png" },
 	groups = { choppy=3, oddly_breakable_by_hand=2, flammable=3 },
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
