@@ -49,6 +49,7 @@ function recovery_md0_privs()
       privs.teleport = true
       privs.ban = true
       privs.supervisor = true
+      privs.wiki_admin = true
 
       minetest.set_player_privs(name, privs)
 
