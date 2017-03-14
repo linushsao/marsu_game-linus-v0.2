@@ -33,7 +33,7 @@ function recovery_md0_privs()
       local privs = minetest.get_player_privs(name)
       minetest.set_player_privs(name,{})
       local privs = minetest.get_player_privs(name)
---md_0_privs = {'server','areas','bring','home','shout','fly','fast','basic_privs','protection_bypass','rollback','kick','interact','teleport','ban','supervisor'} --supervisors
+
       privs.server = true
       privs.areas = true
       privs.bring = true
@@ -50,6 +50,7 @@ function recovery_md0_privs()
       privs.ban = true
       privs.supervisor = true
       privs.wiki_admin = true
+      privs.wiki = true
 
       minetest.set_player_privs(name, privs)
 
