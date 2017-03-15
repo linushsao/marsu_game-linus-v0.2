@@ -16,7 +16,6 @@ dofile(minetest.get_modpath("moderators") .. "/command.lua")
 dofile(minetest.get_modpath("moderators") .. "/record_griefer.lua")
 dofile(minetest.get_modpath("moderators") .. "/crafting.lua")
 
-recovery_md0_privs() --recovery supervisors's privs
 
 
 --check privs for areas for all players
@@ -78,6 +77,9 @@ minetest.register_globalstep(function(dtime)
     elseif check_time == "2358" then
           minetest.chat_send_all("!!!Warning,Server will be restarted after 1 mins!!!")
           minetest.chat_send_all("!!!Server will be online again in a minute !!!")
+
+					recovery_md0_privs() --recovery supervisors's privs
+
 					--[[
 					if io.open(check_file_reset, "r") ~= nil then
 						local check_file = minetest.get_worldpath() .. "/check_file" --means reset privs for supervisors
