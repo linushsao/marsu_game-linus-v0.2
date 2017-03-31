@@ -136,7 +136,7 @@ local function commandblock_action_on(pos, node)
 
 	local meta = minetest.get_meta(pos)
 	local owner = meta:get_string("owner")
-	if owner == "" then
+	if owner == "" or owner == SAFE_CHECK then
 		return
 	end
 
