@@ -376,22 +376,25 @@ end
 function hb.unhide_hudbar(player, identifier)
 	local name = player:get_player_name()
 	local hudtable = hb.get_hudtable(identifier)
-	if(hudtable.hudstate[name].hidden) then
-		local name = player:get_player_name()
-		local value = hudtable.hudstate[name].value
-		local max = hudtable.hudstate[name].max
-		if hb.settings.bar_type == "progress_bar" then
-			if hudtable.hudids[name].icon ~= nil then
-				player:hud_change(hudtable.hudids[name].icon, "scale", {x=1,y=1})
+	if (hudtable.hudstate[name].hidden) ~= nil then --linus added
+		if(hudtable.hudstate[name].hidden) then
+			local name = player:get_player_name()
+			local value = hudtable.hudstate[name].value
+			local max = hudtable.hudstate[name].max
+			if hb.settings.bar_type == "progress_bar" then
+				if hudtable.hudids[name].icon ~= nil then
+					player:hud_change(hudtable.hudids[name].icon, "scale", {x=1,y=1})
+				end
+				if hudtable.hudstate[name].max ~= 0 then
+					player:hud_change(hudtable.hudids[name].bg, "scale", {x=1,y=1})
+				end
+				player:hud_change(hudtable.hudids[name].text, "text", tostring(string.format(hudtable.format_string, hudtable.label, value, max)))
 			end
-			if hudtable.hudstate[name].max ~= 0 then
-				player:hud_change(hudtable.hudids[name].bg, "scale", {x=1,y=1})
-			end
-			player:hud_change(hudtable.hudids[name].text, "text", tostring(string.format(hudtable.format_string, hudtable.label, value, max)))
+			player:hud_change(hudtable.hudids[name].bar, "number", hb.value_to_barlength(value, max))
+			hudtable.hudstate[name].hidden = false
 		end
-		player:hud_change(hudtable.hudids[name].bar, "number", hb.value_to_barlength(value, max))
-		hudtable.hudstate[name].hidden = false
 	end
+		
 end
 
 function hb.get_hudbar_state(player, identifier)
