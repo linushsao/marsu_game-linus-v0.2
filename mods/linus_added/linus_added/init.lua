@@ -210,7 +210,7 @@ minetest.register_globalstep(function(dtime)
 			end
 		end
 	end
-	print("wiki_pos "..dump(wiki_pos))
+--	print("wiki_pos "..dump(wiki_pos))
 end)
 
 minetest.register_on_shutdown(function()

@@ -8,7 +8,7 @@ local function load_wiki_pos()
     if input == nil then return
     else
      wiki_pos = minetest.deserialize(input:read("*all"))
-     print(dump(wiki_pos))
+ --    print(dump(wiki_pos))
      io.close(input)
     end
 end
@@ -203,7 +203,7 @@ minetest.register_node("wiki:wiki", {
 		meta:set_string("infotext", "Wiki")
 		table.insert(wiki_pos,pos)
 		save_table(wiki_pos,"wiki_pos_file")
-		print(dump(wiki_pos))
+	--	print(dump(wiki_pos))
 	end,
 	on_rightclick = function(pos, node, clicker, itemstack)
 		if clicker then
@@ -215,7 +215,7 @@ minetest.register_node("wiki:wiki", {
 		for v1,v2 in ipairs(wiki_pos) do
 			if ((v2.x == pos.x) and (v2.y == pos.y) and (v2.z == pos.z)) then table.remove(wiki_pos,v1) end
 		end
-		print(dump(wiki_pos))
+--		print(dump(wiki_pos))
 
 	end,
 
