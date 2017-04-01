@@ -376,7 +376,7 @@ end
 function hb.unhide_hudbar(player, identifier)
 	local name = player:get_player_name()
 	local hudtable = hb.get_hudtable(identifier)
-	if (hudtable.hudstate[name].hidden) ~= nil then --linus added
+	if name ~= nil then --linus added
 		if(hudtable.hudstate[name].hidden) then
 			local name = player:get_player_name()
 			local value = hudtable.hudstate[name].value
