@@ -194,18 +194,24 @@ function wikilib.show_wiki_page(player, name)
 end
 
 minetest.register_node("wiki:wiki", {
+--	description = "Wiki",
+--	tiles = { "wiki_top.png", "default_wood.png", "wiki_side.png" },
+--	groups = { choppy=3, oddly_breakable_by_hand=2, flammable=3 },
+--	sounds = default.node_sound_wood_defaults(),
+
 	description = "Mars_Wiki",
-	tiles = {{
-	    name="marski_two.png",
-	    animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1.5}
-	}},
-	paramtype = "light",
-	groups = {cracky=1},
-	light_source = 10,
-	sounds = default.node_sound_stone_defaults(),
+		tiles = {{
+		    name="marski_two.png",
+		    animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1.5}
+		}},
+		paramtype = "light",
+		groups = {cracky=1},
+		light_source = 10,
+
+
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
-		meta:set_string("infotext", "MARSKI - The Mars Wiki")
+		meta:set_string("infotext", "Wiki")
 		table.insert(wiki_pos,pos)
 		save_table(wiki_pos,"wiki_pos_file")
 	--	print(dump(wiki_pos))
@@ -236,15 +242,11 @@ minetest.register_privilege("wiki_admin", {
 	give_to_singleplayer = false,
 })
 
--- new receipe for our scifi wiki :)
-
+local BS = "default:bookshelf"
+local BSL = { BS, BS, BS }
 minetest.register_craft({
 	output = "wiki:wiki",
-	recipe = {
-	    {"","dye:yellow",""},
-	    {"dye:red","scifi_nodes:screen","dye:green"},
-	    {"","mesecons_microcontroller:microcontroller0000",""}
-	}
+	recipe = { BSL, BSL, BSL },
 })
 
 function wikilib.handle_formspec(player, formname, fields)
