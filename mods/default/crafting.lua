@@ -1148,6 +1148,7 @@ minetest.register_craft({
 	}
 })
 
+--[[
 minetest.register_craft({
 	output = 'default:papyrus',
 	recipe = {
@@ -1155,6 +1156,7 @@ minetest.register_craft({
 		{'default:dirt', '', ''},
 	}
 })
+--]]
 
 minetest.register_craft({
 	output = 'default:cactus',

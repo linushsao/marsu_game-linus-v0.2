@@ -177,7 +177,7 @@ minetest.register_globalstep(function(dtime)
 		all_objects[v1] = minetest.get_objects_inside_radius({x=vv.x, y=vv.y, z=vv.z},3)
 		if #all_objects[v1] ~= 0 then print("#all_objects :"..v1.."##"..dump(all_objects[v1]))
 		else
-			print("wiki node "..v1.." detect no object")
+	--		print("wiki node "..v1.." detect no object")
 			wiki_show[v1] = {}
 		end
 
