@@ -56,8 +56,3 @@ function technic.set_RE_wear(itemstack, item_load, max_load)
 	itemstack:set_wear(temp)
 	return itemstack
 end
-
---linus added for avoid server panic
-function technic.switching_station_timeout_count(tier,machine_type)
-return true
-end
