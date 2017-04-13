@@ -316,8 +316,10 @@ minetest.register_craftitem("painting:paintedcanvas", {
 		data = minetest.deserialize(minetest.decompress(data))
 
 		local obj = minetest.add_entity(pos, "painting:picent")
-		obj:set_properties{ textures = { to_imagestring(data.grid, data.res) }}
-		obj:setyaw(math.pi * fd / -2)
+		if data ~= nil then
+			obj:set_properties{ textures = { to_imagestring(data.grid, data.res) }}
+			obj:setyaw(math.pi * fd / -2)
+		end
 
 		return ItemStack("")
 	end
