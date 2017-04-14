@@ -1,3 +1,5 @@
+local fs_helpers = pipeworks.fs_helpers
+
 local function delay(x)
 	return (function() return x end)
 end
@@ -167,14 +169,47 @@ local function punch_filter(data, filtpos, filtnode, msg)
 	local fakePlayer = {
 		get_player_name = delay(owner),
 		is_fake_player = ":pipeworks",
+		get_wielded_item = delay(ItemStack(nil))
 	} -- TODO: use a mechanism as the wielder one
-	local dir = minetest.facedir_to_right_dir(filtnode.param2)
+	local dir = pipeworks.facedir_to_right_dir(filtnode.param2)
 	local frompos = vector.subtract(filtpos, dir)
 	local fromnode = minetest.get_node(frompos)
 	if not fromnode then return end
 	local fromdef = minetest.registered_nodes[fromnode.name]
 	if not fromdef then return end
 	local fromtube = fromdef.tube
+	local input_special_cases = {
+		["technic:mv_furnace"] = "dst",
+		["technic:mv_furnace_active"] = "dst",
+		["technic:mv_electric_furnace"] = "dst",
+		["technic:mv_electric_furnace_active"] = "dst",
+		["technic:mv_alloy_furnace"] = "dst",
+		["technic:mv_alloy_furnace_active"] = "dst",
+		["technic:mv_centrifuge"] = "dst",
+		["technic:mv_centrifuge_active"] = "dst",
+		["technic:mv_compressor"] = "dst",
+		["technic:mv_compressor_active"] = "dst",
+		["technic:mv_extractor"] = "dst",
+		["technic:mv_extractor_active"] = "dst",
+		["technic:mv_grinder"] = "dst",
+		["technic:mv_grinder_active"] = "dst",
+		["technic:tool_workshop"] = "src",
+	}
+
+	-- make sure there's something appropriate to inject the item into
+	local todir = pipeworks.facedir_to_right_dir(filtnode.param2)
+	local topos = vector.add(filtpos, todir)
+	local tonode = minetest.get_node(topos)
+	local todef = minetest.registered_nodes[tonode.name]
+
+	if not todef
+	  or not (minetest.get_item_group(tonode.name, "tube") == 1
+			  or minetest.get_item_group(tonode.name, "tubedevice") == 1
+			  or minetest.get_item_group(tonode.name, "tubedevice_receiver") == 1) then
+		return
+	end
+
+	if fromtube then fromtube.input_inventory = input_special_cases[fromnode.name] or fromtube.input_inventory end
 	if not (fromtube and fromtube.input_inventory) then return end
 
 	local slotseq_mode

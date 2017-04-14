@@ -41,6 +41,11 @@ pipeworks.mesecons_rules={{x=0,y=0,z=1},{x=0,y=0,z=-1},{x=1,y=0,z=0},{x=-1,y=0,z
 
 pipeworks.liquid_texture = "default_water.png"
 
+pipeworks.button_off   = {text="", texture="pipeworks_button_off.png", addopts="false;false;pipeworks_button_interm.png"}
+pipeworks.button_on    = {text="", texture="pipeworks_button_on.png",  addopts="false;false;pipeworks_button_interm.png"}
+pipeworks.button_base  = "image_button[0,4.3;1,0.6"
+pipeworks.button_label = "label[0.9,4.31;Allow splitting incoming stacks from tubes]"
+
 -- Helper functions
 
 function pipeworks.fix_image_names(table, replacement)
@@ -108,7 +113,10 @@ dofile(pipeworks.modpath.."/wielder.lua")
 if pipeworks.enable_pipes then dofile(pipeworks.modpath.."/pipes.lua") end
 if pipeworks.enable_teleport_tube then dofile(pipeworks.modpath.."/teleport_tube.lua") end
 if pipeworks.enable_pipe_devices then dofile(pipeworks.modpath.."/devices.lua") end
-if pipeworks.enable_redefines then dofile(pipeworks.modpath.."/compat.lua") end
+if pipeworks.enable_redefines then
+	dofile(pipeworks.modpath.."/compat-chests.lua")
+	dofile(pipeworks.modpath.."/compat-furnaces.lua")
+end
 if pipeworks.enable_autocrafter then dofile(pipeworks.modpath.."/autocrafter.lua") end
 
 minetest.register_alias("pipeworks:pipe", "pipeworks:pipe_110000_empty")
