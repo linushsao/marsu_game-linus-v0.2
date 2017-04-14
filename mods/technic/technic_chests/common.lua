@@ -28,7 +28,7 @@ technic.chests.can_dig = function(pos, player)
 end
 
 local function inv_change(pos, count, player)
-	if (default.can_interact_with_node(player, pos)) ~= nil then --linus added
+	if (default.can_interact_with_node) ~= nil then --linus added
 		if not default.can_interact_with_node(player, pos) then
 			return 0
 		end
@@ -63,4 +63,3 @@ function technic.chests.on_inv_take(pos, listname, index, stack, player)
 			" takes " .. stack:get_name()  ..
 			" from chest at " .. minetest.pos_to_string(pos))
 end
-

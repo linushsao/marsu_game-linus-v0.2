@@ -135,17 +135,19 @@ minetest.override_item("default:chest_locked", {
 		pipeworks.after_place(pos)
 	end,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-		if default.can_interact_with_node(clicker, pos) then
-			local meta = minetest.get_meta(pos)
-			local formspec = meta:get_string("formspec")
-			print("on_rightclick")
-			print(dump(formspec))
-			setup_locked_formspec(pos, meta, clicker)
-			minetest.show_formspec(
-				clicker:get_player_name(),
-				"default:chest_locked",
-				get_locked_chest_formspec(pos)
-			)
+		if (default.can_interact_with_node) ~= nil then --linus added
+			if default.can_interact_with_node(clicker, pos) then
+				local meta = minetest.get_meta(pos)
+				local formspec = meta:get_string("formspec")
+				print("on_rightclick")
+				print(dump(formspec))
+				setup_locked_formspec(pos, meta, clicker)
+				minetest.show_formspec(
+					clicker:get_player_name(),
+					"default:chest_locked",
+					get_locked_chest_formspec(pos)
+				)
+			end
 		end
 		return itemstack
 	end,
