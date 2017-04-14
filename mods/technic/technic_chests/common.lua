@@ -28,8 +28,10 @@ technic.chests.can_dig = function(pos, player)
 end
 
 local function inv_change(pos, count, player)
-	if not default.can_interact_with_node(player, pos) then
-		return 0
+	if (default.can_interact_with_node(player, pos)) ~= nil then --linus added
+		if not default.can_interact_with_node(player, pos) then
+			return 0
+		end
 	end
 	return count
 end
