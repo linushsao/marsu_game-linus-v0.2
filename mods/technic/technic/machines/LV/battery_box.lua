@@ -1,4 +1,3 @@
--- LV Battery box
 
 minetest.register_craft({
 	output = 'technic:lv_battery_box0',

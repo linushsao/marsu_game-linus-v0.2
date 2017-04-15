@@ -70,7 +70,6 @@ minetest.register_node("technic:coal_alloy_furnace_active", {
 })
 
 minetest.register_abm({
-	label = "Machines: run coal alloy furnace",
 	nodenames = {"technic:coal_alloy_furnace", "technic:coal_alloy_furnace_active"},
 	interval = 1,
 	chance = 1,

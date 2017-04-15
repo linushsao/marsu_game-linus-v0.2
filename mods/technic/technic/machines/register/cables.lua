@@ -11,118 +11,15 @@ function technic.get_cable_tier(name)
 	return cable_tier[name]
 end
 
-local function check_connections(pos)
-	-- Build a table of all machines
-	local machines = {}
-	for tier,list in pairs(technic.machines) do
-		for k,v in pairs(list) do
-			machines[k] = v
-		end
-	end
-	local connections = {}
-	local positions = {
-		{x=pos.x+1, y=pos.y,   z=pos.z},
-		{x=pos.x-1, y=pos.y,   z=pos.z},
-		{x=pos.x,   y=pos.y+1, z=pos.z},
-		{x=pos.x,   y=pos.y-1, z=pos.z},
-		{x=pos.x,   y=pos.y,   z=pos.z+1},
-		{x=pos.x,   y=pos.y,   z=pos.z-1}}
-	for _,connected_pos in pairs(positions) do
-		local name = minetest.get_node(connected_pos).name
-		if machines[name] or technic.get_cable_tier(name) then
-			table.insert(connections,connected_pos)
-		end
-	end
-	return connections
-end
-
-local function clear_networks(pos)
-	local node = minetest.get_node(pos)
-	local meta = minetest.get_meta(pos)
-	local placed = node.name ~= "air"
-	local positions = check_connections(pos)
-	if #positions < 1 then return end
-	local dead_end = #positions == 1
-	for _,connected_pos in pairs(positions) do
-		local net = technic.cables[minetest.hash_node_position(connected_pos)]
-		if net and technic.networks[net] then
-			if dead_end and placed then
-				-- Dead end placed, add it to the network
-				-- Get the network
-				local network_id = technic.cables[minetest.hash_node_position(positions[1])]
-				if not network_id then
-					-- We're evidently not on a network, nothing to add ourselves to
-					return
-				end
-				local sw_pos = minetest.get_position_from_hash(network_id)
-				sw_pos.y = sw_pos.y + 1
-				local network = technic.networks[network_id]
-				local tier = network.tier
-
-				-- Actually add it to the (cached) network
-				-- This is similar to check_node_subp
-				technic.cables[minetest.hash_node_position(pos)] = network_id
-				pos.visited = 1
-				if technic.is_tier_cable(name, tier) then
-					table.insert(network.all_nodes,pos)
-				elseif technic.machines[tier][node.name] then
-					meta:set_string(tier.."_network",minetest.pos_to_string(sw_pos))
-					if     technic.machines[tier][node.name] == technic.producer then
-						table.insert(network.PR_nodes,pos)
-					elseif technic.machines[tier][node.name] == technic.receiver then
-						table.insert(network.RE_nodes,pos)
-					elseif technic.machines[tier][node.name] == technic.producer_receiver then
-						table.insert(network.PR_nodes,pos)
-						table.insert(network.RE_nodes,pos)
-					elseif technic.machines[tier][node.name] == "SPECIAL" and
-							(pos.x ~= sw_pos.x or pos.y ~= sw_pos.y or pos.z ~= sw_pos.z) and
-							from_below then
-						table.insert(network.SP_nodes,pos)
-					elseif technic.machines[tier][node.name] == technic.battery then
-						table.insert(network.BA_nodes,pos)
-					end
-				end
-			elseif dead_end and not placed then
-				-- Dead end removed, remove it from the network
-				-- Get the network
-				local network_id = technic.cables[minetest.hash_node_position(positions[1])]
-				if not network_id then
-					-- We're evidently not on a network, nothing to add ourselves to
-					return
-				end
-				local network = technic.networks[network_id]
-
-				-- Search for and remove machine
-				technic.cables[minetest.hash_node_position(pos)] = nil
-				for tblname,table in pairs(network) do
-					if tblname ~= "tier" then
-						for machinenum,machine in pairs(table) do
-							if machine.x == pos.x
-							and machine.y == pos.y
-							and machine.z == pos.z then
-								table[machinenum] = nil
-							end
-						end
-					end
-				end
-			else
-				-- Not a dead end, so the whole network needs to be recalculated
-				for _,v in pairs(technic.networks[net].all_nodes) do
-					local pos1 = minetest.hash_node_position(v)
-					technic.cables[pos1] = nil
-				end
-				technic.networks[net] = nil
-			end
-		end
-	end
+local function clear_networks()
+	technic.networks = {}
 end
 
 function technic.register_cable(tier, size)
 	local ltier = string.lower(tier)
 	cable_tier["technic:"..ltier.."_cable"] = tier
 
-	local groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2,
-			["technic_"..ltier.."_cable"] = 1}
+	local groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2}
 
 	local node_box = {
 		type = "connected",
@@ -147,96 +44,10 @@ function technic.register_cable(tier, size)
 		sunlight_propagates = true,
 		drawtype = "nodebox",
 		node_box = node_box,
-		connects_to = {"group:technic_"..ltier.."_cable",
+		connects_to = {"technic:"..ltier.."_cable",
 			"group:technic_"..ltier, "group:technic_all_tiers"},
 		on_construct = clear_networks,
 		on_destruct = clear_networks,
-	})
-
-	local xyz = {
-		["-x"] = 1,
-		["-y"] = 2,
-		["-z"] = 3,
-		["x"] = 4,
-		["y"] = 5,
-		["z"] = 6,
-	}
-	local notconnects = {
-		[1] = "left",
-		[2] = "bottom",
-		[3] = "front",
-		[4] = "right",
-		[5] = "top",
-		[6] = "back",
-	}
-	local function s(p)
-		if p:find("-") then
-			return p:sub(2)
-		else
-			return "-"..p
-		end
-	end
-	for p, i in pairs(xyz) do
-		local def = {
-			description = S("%s Cable Plate"):format(tier),
-			tiles = {"technic_"..ltier.."_cable.png"},
-			groups = table.copy(groups),
-			sounds = default.node_sound_wood_defaults(),
-			drop = "technic:"..ltier.."_cable_plate_1",
-			paramtype = "light",
-			sunlight_propagates = true,
-			drawtype = "nodebox",
-			node_box = table.copy(node_box),
-			connects_to = {"group:technic_"..ltier.."_cable",
-				"group:technic_"..ltier, "group:technic_all_tiers"},
-			on_construct = clear_networks,
-			on_destruct = clear_networks,
-		}
-		def.node_box.fixed = {
-			{-size, -size, -size, size, size, size},
-			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5}
-		}
-		def.node_box.fixed[1][xyz[p]] = 7/16 * (i-3.5)/math.abs(i-3.5)
-		def.node_box.fixed[2][xyz[s(p)]] = 3/8 * (i-3.5)/math.abs(i-3.5)
-		def.node_box["connect_"..notconnects[i]] = nil
-		if i == 1 then
-			def.on_place = function(itemstack, placer, pointed_thing)
-				local pointed_thing_diff = vector.subtract(pointed_thing.above, pointed_thing.under)
-				local num
-				for k, v in pairs(pointed_thing_diff) do
-					if v ~= 0 then
-						num = xyz[s(tostring(v):sub(-2, -2)..k)]
-						break
-					end
-				end
-				minetest.set_node(pointed_thing.above, {name = "technic:"..ltier.."_cable_plate_"..num})
-				if not (creative and creative.is_enabled_for(placer)) then
-					itemstack:take_item()
-				end
-				return itemstack
-			end
-		else
-			def.groups.not_in_creative_inventory = 1
-		end
-		minetest.register_node("technic:"..ltier.."_cable_plate_"..i, def)
-		cable_tier["technic:"..ltier.."_cable_plate_"..i] = tier
-	end
-
-	local c = "technic:"..ltier.."_cable"
-	minetest.register_craft({
-		output = "technic:"..ltier.."_cable_plate_1 5",
-		recipe = {
-			{"", "", c},
-			{c , c , c},
-			{"", "", c},
-		}
-	})
-
-	minetest.register_craft({
-		output = c,
-		recipe = {
-			{"technic:"..ltier.."_cable_plate_1"},
-		}
 	})
 end
 
@@ -244,7 +55,7 @@ end
 local function clear_nets_if_machine(pos, node)
 	for tier, machine_list in pairs(technic.machines) do
 		if machine_list[node.name] ~= nil then
-			return clear_networks(pos)
+			return clear_networks()
 		end
 	end
 end

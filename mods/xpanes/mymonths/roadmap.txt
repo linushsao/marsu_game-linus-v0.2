@@ -1,0 +1,35 @@
+Add more blocks that snow will land on
+
+Add more items that change with the seasons
+	- dirt with grass - grass turns brown in the fall
+	- jungle trees have moss during the wet season (spring)
+	- acorns on pine trees in the fall
+	- flowers die in the fall and re grow in the spring
+
+Add support for moretrees and plantlife.
+	- make deciduous trees leaves change
+	- 
+
+Add support for mobs
+	- Animals that hibernate would not spawn in the winter
+	- More rabbits in the late spring
+
+Weather
+	- Make better weather textures
+	- Find a way to make weather work better/less lag
+	- make sky change when raining/snowing
+	- raindrops in water
+	- lightning
+	- better/more sounds
+
+Months/Days
+	- make it so mods can register holidays
+	- make an easy api for other mods to use this
+
+Farming
+	- making farming a seasonal thing
+	- crops only grow from april to oct
+	- make a greenhouse mod so crops can be grown year round
+	- make crops full maturity at the right time of year
+	- make crops yeild more since they will take longer to grow
+	- add support for other farming mods (farming redo, farmingplus, crops etc)

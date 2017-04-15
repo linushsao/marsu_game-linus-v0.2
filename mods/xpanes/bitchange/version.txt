@@ -1,0 +1,73 @@
+======>- Version 1.6.6 -<======
+- default config 'config.default.txt'
+- generation adjustments (coins are alot cheaper now)
+- recommended: enable converting of gold
+- new item: "Coin base" to burn into a MineNinth
+- changed some codes in the converting
+  * 'HELP_ME.txt' for more information
+
+======>- Version 1.6.5u1 -<======
+- read more in 'config.txt' how to configure it
+- added currency support for bank
+- added money2 support for bank
+
+======>- Version 1.6.5 -<======
+- initial money
+- 32px textures updated
+- money exchange rate optimized (needs a bugtest)
+- added a bank (depends on money mod)
+
+======>- Version 1.6.2 -<======
+- some graphic edits
+- editable exchange shop title
+
+======>- Version 1.6.0 -<======
+- 32px textures
+- fixed money changer bug
+- some generation rarity changes
+- mineninths now digable below -32
+
+======>- Version 1.5.5 -<======
+- added converting gold into MineCoins
+- MineNinths now also can be found under -64m
+- putted together 'crafting.lua' and 'minecoins.lua'
+- added 'config.txt'
+- some fixes
+
+======>- Version 1.5.0 -<======
+- added 'HELP_ME.txt', name sais all
+- pipework support for the exchange shop
+- pipework support for the warehouse
+
+======>- Version 1.4.0 -<======
+- built shop.lua from scratch
+- added warehouse.lua for people which have troubles with the space
+  * enable the warehouse in init.lua
+
+======>- Version 1.3.0 -<======
+- fixes in moneychanger.lua
+- added moneychanger.lua (might still contain fails)
+
+======>- Version 1.2.0 -<======
+- changed some textures
+- serval bigfixes
+- added converting moreores:tin to MineCoin Ninths
+- added converting technic:zink to MineCoin Ninths
+- added generation of zink and tin
+  * enable the support for zinc and/or zinc in moreores.lua
+
+======>- Version 1.1.0 -<======
+- modifed parts of generation
+- renamed Bitcoins to MineCoins
+- destroyed all existing "Bitcoins" by setting them a new name
+- about 30 letters of new codes
+
+======>- Version 1.0.0 -<======
+- first release
+- exteneded stack limit for bitcoins to 30'000
+- bigger stocks in the exchange shop
+- ore generation added/replaced
+- Bitninth added
+- copied "Currency and Economy" from: https://forum.minetest.net/viewtopic.php?pid=106971#p106971
+- copied "Bitcoins" mod from: https://forum.minetest.net/viewtopic.php?pid=119354#p119354
+===============================

@@ -1,0 +1,23 @@
+--Turn damage on or off. This will make storms and hail cause damage
+
+mymonths.damage = false
+
+------------------------------------------------------------------------
+--You can turn weather off 
+
+mymonths.use_weather = true
+
+------------------------------------------------------------------------
+--Leaves change color in the fall.
+
+mymonths.leaves = true
+
+------------------------------------------------------------------------
+--Have snow accumulate on the ground
+
+mymonths.snow_on_ground = true
+
+------------------------------------------------------------------------
+--Puddles appear when raining
+
+mymonths.use_puddles = true

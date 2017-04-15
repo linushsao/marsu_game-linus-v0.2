@@ -35,9 +35,6 @@ dofile(modpath.."/crafts.lua")
 -- Register functions
 dofile(modpath.."/register.lua")
 
--- Radiation
-dofile(modpath.."/radiation.lua")
-
 -- Machines
 dofile(modpath.."/machines/init.lua")
 

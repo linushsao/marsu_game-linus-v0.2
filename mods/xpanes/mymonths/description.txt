@@ -1,0 +1,1 @@
+Adds days of the week and months. Also weather, including rain and snow.
