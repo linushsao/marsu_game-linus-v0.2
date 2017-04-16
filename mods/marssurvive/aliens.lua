@@ -222,7 +222,7 @@ local marssurvive_alien=function(self, dtime)
 --					minetest.set_node(npss, {name ="air"})  --disabled alien destroy dirt by linus
 				end
 --				nodes[i]=minetest.registered_nodes[minetest.get_node(npss).name].walkable
-					if (minetest.registered_nodes[minetest.get_node(npss).name].walkable) ~= nil then --linus added
+					if (minetest.registered_nodes[minetest.get_node(npss).name]) ~= nil then --linus added
 						nodes[i]=minetest.registered_nodes[minetest.get_node(npss).name].walkable
 					end
 
