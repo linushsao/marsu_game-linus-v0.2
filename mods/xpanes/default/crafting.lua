@@ -653,14 +653,14 @@ minetest.register_craft({
 		{'default:brick'},
 	}
 })
-
+--[[
 minetest.register_craft({
 	output = 'default:paper',
 	recipe = {
 		{'default:papyrus', 'default:papyrus', 'default:papyrus'},
 	}
 })
-
+--]]
 minetest.register_craft({
 	output = 'default:book',
 	recipe = {

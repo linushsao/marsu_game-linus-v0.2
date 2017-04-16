@@ -34,18 +34,19 @@ default.gui_survival_form = "size[8,8.5]"..
 			"listring[current_player;craft]"..
 			default.get_hotbar_bg(0,4.25)
 
--- for covering old version item
---dofile(minetest.get_modpath("linus_added").."/init.lua")
-
 -- Load files
-dofile(minetest.get_modpath("default").."/functions.lua")
-dofile(minetest.get_modpath("default").."/nodes.lua")
-dofile(minetest.get_modpath("default").."/furnace.lua")
-dofile(minetest.get_modpath("default").."/tools.lua")
-dofile(minetest.get_modpath("default").."/craftitems.lua")
-dofile(minetest.get_modpath("default").."/crafting.lua")
---dofile(minetest.get_modpath("default").."/mapgen.lua")
-dofile(minetest.get_modpath("default").."/player.lua")
-dofile(minetest.get_modpath("default").."/trees.lua")
-dofile(minetest.get_modpath("default").."/aliases.lua")
-dofile(minetest.get_modpath("default").."/legacy.lua")
+local default_path = minetest.get_modpath("default")
+
+dofile(default_path.."/functions.lua")
+dofile(default_path.."/trees.lua")
+dofile(default_path.."/nodes.lua")
+dofile(default_path.."/furnace.lua")
+dofile(default_path.."/torch.lua")
+dofile(default_path.."/tools.lua")
+dofile(default_path.."/item_entity.lua")
+dofile(default_path.."/craftitems.lua")
+dofile(default_path.."/crafting.lua")
+dofile(default_path.."/mapgen.lua")
+dofile(default_path.."/player.lua")
+dofile(default_path.."/aliases.lua")
+dofile(default_path.."/legacy.lua")

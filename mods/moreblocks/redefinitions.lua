@@ -24,14 +24,14 @@ minetest.register_craft({
 		{"default:stick", "", "default:stick"},
 	}
 })
-
+--[[
 minetest.register_craft({
 	output = "default:paper 4",
 	recipe = {
 		{"default:papyrus", "default:papyrus", "default:papyrus"},
 	}
 })
-
+--]]
 minetest.register_craft({
 	output = "default:rail 24",
 	recipe = {
