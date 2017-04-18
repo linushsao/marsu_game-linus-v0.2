@@ -196,6 +196,12 @@ minetest.register_craftitem("default:iron_lump", {
 	inventory_image = "default_iron_lump.png",
 })
 
+--linus added
+minetest.register_craftitem("default:iron_lump1", {
+	description = "Iron Lump(with Impurities)",
+	inventory_image = "default_iron_lump1.png",
+})
+
 minetest.register_craftitem("default:copper_lump", {
 	description = "Copper Lump",
 	inventory_image = "default_copper_lump.png",

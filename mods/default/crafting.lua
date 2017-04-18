@@ -788,6 +788,14 @@ minetest.register_craft({
 	recipe = "default:iron_lump",
 })
 
+--linus added
+minetest.register_craft({
+	type = "cooking",
+	output = "default:steel_ingot",
+	recipe = "default:iron_lump1",
+	cooktime = 12,
+})
+
 minetest.register_craft({
 	type = "cooking",
 	output = "default:copper_ingot",
