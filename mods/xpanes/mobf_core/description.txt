@@ -1,1 +1,0 @@
-MOBF core contains basics to create a mob
