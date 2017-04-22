@@ -1,4 +1,4 @@
-
+print("load ufos...")
 ufos = {}
 
 local floor_pos = function(pos)
@@ -9,6 +9,7 @@ local UFO_SPEED = 1
 local UFO_TURN_SPEED = 2
 local UFO_MAX_SPEED = 10
 local UFO_FUEL_USE = .01
+local UFO_CHARGE_RADIUS = 3
 
 ufos.fuel_from_wear = function(wear)
 	local fuel
@@ -46,7 +47,9 @@ ufos.ufo_from_item = function(itemstack,placer,pointed_thing)
 	local wear = itemstack:get_wear()
 	ufos.set_fuel(ufos.ufo,ufos.fuel_from_wear(wear))
 	-- add the entity
-	e = minetest.env:add_entity(pointed_thing.above, "ufos:ufo")
+	e = minetest.add_entity(pointed_thing.above, "ufos:ufo")
+	-- set high hp to not destroy it with guns etc
+	e:set_hp(1000000)
 	-- remove the item
 	itemstack:take_item()
 	-- reset owner for next ufo
@@ -72,6 +75,7 @@ ufos.ufo = {
 	visual = "mesh",
 	mesh = "ufo.x",
 	textures = {"ufo_0.png"},
+	groups = {immortal=1},
 	
 	driver = nil,
 	owner_name = "",
@@ -83,9 +87,14 @@ function ufos.ufo:on_rightclick (clicker)
 	if not clicker or not clicker:is_player() then
 		return
 	end
+	print("UFO driver: ", dump(self.driver))
 	if self.driver and clicker == self.driver then
 		self.driver = nil
 		clicker:set_detach()
+		self.object:setvelocity({x=0, y=0, z=0})
+		local pos = clicker:getpos()
+		minetest.chat_send_player(clicker:get_player_name(),
+			"out of UFO at pos ".. pos.x .. ";" .. pos.y .. ";" .. pos.z)
 	elseif not self.driver then
 		if ufos.check_owner(self,clicker) then
 			self.driver = clicker
@@ -119,6 +128,7 @@ end
 
 function ufos.ufo:on_step (dtime)
 	local fuel = ufos.get_fuel(self)
+	
 	if self.driver then
 		local ctrl = self.driver:get_player_control()
 		local vel = self.object:getvelocity()
@@ -160,20 +170,19 @@ function ufos.ufo:on_step (dtime)
 		if ctrl.aux1 then
 			local pos = self.object:getpos()
 			local t = {{x=2,z=0},{x=-2,z=0},{x=0,z=2},{x=0,z=-2}}
-			for _, i in ipairs(t) do
-				pos.x = pos.x + i.x; pos.z = pos.z + i.z;
-				if minetest.env:get_node(pos).name == "ufos:furnace" then
-					meta = minetest.env:get_meta(pos)
-					if fuel < 100 and meta:get_int("charge") > 0 then
-						fuel = fuel + 1
-						meta:set_int("charge",meta:get_int("charge")-1)
-						meta:set_string("formspec", ufos.furnace_inactive_formspec
-							.. "label[0,0;Charge: "..meta:get_int("charge"))
-					end
+			furnace_pos = minetest.find_node_near(pos, UFO_CHARGE_RADIUS, "ufos:furnace")
+			if furnace_pos then
+				meta = minetest.get_meta(furnace_pos)
+				if fuel < 100 and meta:get_int("charge") > 0 then
+					fuel = fuel + 1
+					meta:set_int("charge",meta:get_int("charge")-1)
+					meta:set_string("formspec", ufos.furnace_inactive_formspec
+						.. "label[0,0;Charge: "..meta:get_int("charge"))
 				end
-				pos.x = pos.x - i.x; pos.z = pos.z - i.z;
 			end
 		end
+	else
+	        self.object:setvelocity({x=0, y=0, z=0})
 	end
 	
 	if fuel < 0 then fuel = 0 end
@@ -194,7 +203,8 @@ end
 minetest.register_entity("ufos:ufo", ufos.ufo)
 
 
-minetest.register_tool("ufos:ufo", {
+--register tool (with/without technic mod)
+local tooldef = {
 	description = "ufo",
 	inventory_image = "ufos_inventory.png",
 	wield_image = "ufos_inventory.png",
@@ -217,7 +227,14 @@ minetest.register_tool("ufos:ufo", {
 		ufos.ufo_from_item(itemstack,placer,pointed_thing)
 		return itemstack
 	end,
-})
+}
+
+if technic then
+        tooldef.on_refill = technic.refill_RE_charge
+        tooldef.wear_represents = "technic_RE_charge"
+        technic.register_power_tool("ufos:ufo", 2000000)
+end
+minetest.register_tool("ufos:ufo", tooldef)
 
 minetest.register_craft( {
 	output = 'ufos:ufo',
@@ -235,16 +252,16 @@ minetest.register_node("ufos:box", {
 	tiles = {"ufos_box.png"},
 	groups = {not_in_creative_inventory=1},
 	on_rightclick = function(pos, node, clicker, itemstack)
-		meta = minetest.env:get_meta(pos)
+		meta = minetest.get_meta(pos)
 		if meta:get_string("owner") == clicker:get_player_name() then
 			-- set owner
 			ufos.next_owner = meta:get_string("owner")
 			-- restore the fuel inside the node
 			ufos.set_fuel(ufos.ufo,meta:get_int("fuel"))
 			-- add the entity
-			e = minetest.env:add_entity(pos, "ufos:ufo")
+			e = minetest.add_entity(pos, "ufos:ufo")
 			-- remove the node
-			minetest.env:remove_node(pos)
+			minetest.remove_node(pos)
 			-- reset owner for next ufo
 			ufos.next_owner = ""
 		end
@@ -252,4 +269,45 @@ minetest.register_node("ufos:box", {
 })
 
 dofile(minetest.get_modpath("ufos").."/furnace.lua")
+
+--on join attach the player to his UFO again
+minetest.register_on_joinplayer(function(player)
+	print(player:get_player_name(), " joined the game with ufos")
+	local join_pos = player:getpos()
+	minetest.after(1, function()
+	local maybe_ufo = minetest.get_objects_inside_radius(join_pos, 3)
+	for _,obj in ipairs(maybe_ufo) do
+	        print("found obj")
+		if not obj:is_player() then
+			local entity = obj:get_luaentity()
+			print(entity.name)
+			if entity.name == "ufos:ufo" then 
+			        print("found ufo")
+			        entity:on_rightclick(player)
+			end
+		end
+	end
+	end)
+end)
+
+--on leave deatach
+minetest.register_on_leaveplayer(function(player)
+	print(player:get_player_name(), " left the game with ufos")
+	local join_pos = player:getpos()
+	local maybe_ufo = minetest.get_objects_inside_radius(join_pos, 3)
+	for _,obj in ipairs(maybe_ufo) do
+	        print("found obj")
+		if not obj:is_player() then
+			local entity = obj:get_luaentity()
+			print(entity.name)
+			if entity.name == "ufos:ufo" then 
+			        print("found ufo")
+			        entity:on_rightclick(player)
+			end
+		end
+	end
+end)
+
+print("ufos loaded!")
+
 
