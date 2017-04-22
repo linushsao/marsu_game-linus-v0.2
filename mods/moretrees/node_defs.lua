@@ -99,6 +99,19 @@ for i in ipairs(moretrees.treelist) do
 			sounds = default.node_sound_wood_defaults(),
 		})
 
+		--linus added
+		local battery_material={"moreores:silver_ingot","technic:lead_ingot","technic:sulfur_electrode"}
+			for _,v in ipairs(battery_material) do
+			minetest.register_craft({
+				output = 'technic:battery',
+				recipe = {
+					{"moretrees:"..treename.."_planks", v, "moretrees:"..treename.."_planks"},
+					{"moretrees:"..treename.."_planks", 'moreores:tin_ingot', "moretrees:"..treename.."_planks"},
+					{"moretrees:"..treename.."_planks", v, "moretrees:"..treename.."_planks"},
+					}
+				})
+			end
+
 		minetest.register_node("moretrees:"..treename.."_sapling", {
 			description = treedesc.." Sapling",
 			drawtype = "plantlike",

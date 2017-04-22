@@ -38,8 +38,6 @@ for i in ipairs(moretrees.treelist) do
 		recipe = "moretrees:"..treename.."_trunk",
 		burntime = 30,
 	})
---linus added for transfer planks from moretree mod
-
 
 	minetest.register_craft({
 		type = "shapeless",

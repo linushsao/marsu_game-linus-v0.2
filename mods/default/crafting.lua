@@ -359,23 +359,29 @@ minetest.register_craft({
 	}
 })
 
+--lins tweak
+local chest_material = {"group:wood","default:wood"}
+for _,v in ipairs(chest_material) do
 minetest.register_craft({
 	output = 'default:chest',
 	recipe = {
-		{'group:wood', 'group:wood', 'group:wood'},
-		{'group:wood', '', 'group:wood'},
-		{'group:wood', 'group:wood', 'group:wood'},
+		{v, v, v},
+		{v, '',v},
+		{v, v, v},
 	}
 })
 
 minetest.register_craft({
 	output = 'default:chest_locked',
 	recipe = {
-		{'group:wood', 'group:wood', 'group:wood'},
-		{'group:wood', 'default:steel_ingot', 'group:wood'},
-		{'group:wood', 'group:wood', 'group:wood'},
+		{v, v, v},
+		{v, 'default:steel_ingot', v},
+		{v, v, v},
 	}
 })
+end
+
+--<<
 
 minetest.register_craft( {
 	type = "shapeless",

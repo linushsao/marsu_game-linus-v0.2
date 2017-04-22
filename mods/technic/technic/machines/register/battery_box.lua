@@ -15,6 +15,34 @@ minetest.register_craft({
 	}
 })
 
+--linus added
+minetest.register_craft({
+	output = 'technic:battery',
+	recipe = {
+		{'default:wood', 'default:copper_ingot', 'default:wood'},
+		{'default:wood', 'moreores:tin_ingot',   'default:wood'},
+		{'default:wood', 'default:copper_ingot', 'default:wood'},
+	}
+})
+minetest.register_craft({
+	output = 'technic:sulfur_electrode 4',
+	recipe = {
+		{'technic:sulfur_dust', 'moreores:mithril_ingot'},
+	}
+})
+local battery_material={"moreores:silver_ingot","technic:lead_ingot","technic:sulfur_electrode"}
+	for _,v in ipairs(battery_material) do
+	minetest.register_craft({
+		output = 'technic:battery',
+		recipe = {
+			{'group:wood', v, 'group:wood'},
+			{'group:wood', 'moreores:tin_ingot',   'group:wood'},
+			{'group:wood', v, 'group:wood'},
+			}
+		})
+	end
+-->>
+
 minetest.register_tool("technic:battery", {
 	description = S("RE Battery"),
 	inventory_image = "technic_battery.png",
@@ -98,7 +126,7 @@ function technic.register_battery_box(data)
 			EU_upgrade, tube_upgrade = technic.handle_machine_upgrades(meta)
 		end
 		local max_charge = data.max_charge * (1 + EU_upgrade / 10)
-			
+
 		-- Charge/discharge the battery with the input EUs
 		if eu_input >= 0 then
 			current_charge = math.min(current_charge + eu_input, max_charge)
@@ -113,7 +141,7 @@ function technic.register_battery_box(data)
 		current_charge, tool_empty = technic.discharge_tools(meta,
 				current_charge, data.discharge_step,
 				max_charge)
-			
+
 		if data.tube then
 			local inv = meta:get_inventory()
 			technic.handle_machine_pipeworks(pos, tube_upgrade,
@@ -157,19 +185,19 @@ function technic.register_battery_box(data)
 		end
 		meta:set_string("infotext", infotext)
 	end
-	
+
 	for i = 0, 8 do
 		local groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2,
 				technic_machine=1, ["technic_"..ltier]=1}
 		if i ~= 0 then
 			groups.not_in_creative_inventory = 1
 		end
-		
+
 		if data.tube then
 			groups.tubedevice = 1
 			groups.tubedevice_receiver = 1
 		end
-		
+
 		minetest.register_node("technic:"..ltier.."_battery_box"..i, {
 			description = S("%s Battery Box"):format(tier),
 			tiles = {"technic_"..ltier.."_battery_box_top.png",
@@ -290,4 +318,3 @@ function technic.discharge_tools(meta, batt_charge, charge_step, max_charge)
 	inv:set_stack("dst", 1, srcstack)
 	return batt_charge, (tool_charge == 0)
 end
-

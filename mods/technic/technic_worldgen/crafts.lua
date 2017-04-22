@@ -48,6 +48,12 @@ minetest.register_craftitem(":technic:sulfur_lump", {
 	inventory_image = "technic_sulfur_lump.png",
 })
 
+--linus added
+minetest.register_craftitem(":technic:sulfur_electrode", {
+	description = S("Sulfur Electrode"),
+	inventory_image = "technic_sulfur_electrode.png",
+})
+
 minetest.register_craftitem(":technic:brass_ingot", {
 	description = S("Brass Ingot"),
 	inventory_image = "technic_brass_ingot.png",
