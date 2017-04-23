@@ -1,6 +1,6 @@
 minetest.register_abm({
 	nodenames = {"air"},
-	neighbors = {"marssurvive:stone_medium","marssurvive:stone_small","marssurvive:stone"},
+	neighbors = {"marssurvive:stone_medium","marssurvive:stone_small","marssurvive:stone","default:dirt_with_grass"},
 	interval = 120,
 	chance = 50,
 	action = function(pos)
