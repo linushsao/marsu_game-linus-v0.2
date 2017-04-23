@@ -291,8 +291,10 @@ farming.register_plant = function(name, def)
 
 			action = function(pos, node, active_object_count, active_object_count_wider)
 				local l = minetest.get_node_light({x=pos.x, y=pos.y+1, z=pos.z})
-				if l>12 then
-				minetest.set_node({x = pos.x, y = pos.y, z = pos.z}, {name = mname..":"..pname.."_"..tostring(i+1)})
+				if l ~= nil then --linus added
+					if l>12 then
+						minetest.set_node({x = pos.x, y = pos.y, z = pos.z}, {name = mname..":"..pname.."_"..tostring(i+1)})
+					end
 				end
 			end
 		})
