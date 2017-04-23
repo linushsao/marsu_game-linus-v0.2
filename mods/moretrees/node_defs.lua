@@ -111,6 +111,24 @@ for i in ipairs(moretrees.treelist) do
 					}
 				})
 			end
+			local v = "moretrees:"..treename.."_planks"
+			minetest.register_craft({
+				output = 'default:chest',
+				recipe = {
+					{v, v, v},
+					{v, '',v},
+					{v, v, v},
+				}
+			})
+			minetest.register_craft({
+				output = 'default:chest_locked',
+				recipe = {
+					{v, v, v},
+					{v, 'default:steel_ingot', v},
+					{v, v, v},
+				}
+			})
+			--<<
 
 		minetest.register_node("moretrees:"..treename.."_sapling", {
 			description = treedesc.." Sapling",
