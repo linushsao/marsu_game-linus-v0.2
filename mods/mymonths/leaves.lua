@@ -240,7 +240,9 @@ minetest.register_abm({
 		or mymonths.month_counter == 1
 		or mymonths.month_counter == 2 then
 					print("action of Novemer - febur")
-
+					if node.name == "default:dirt_with_grass" then 
+						minetest.set_node(pos, {name = 'default:dirt_with_dry_grass'})
+					end
 			if node.name == 'mymonths:leaves_red' then
 				minetest.set_node(pos, {name = 'mymonths:sticks_default'})
 			elseif node.name == 'mymonths:leaves_red_aspen' then
