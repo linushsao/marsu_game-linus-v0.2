@@ -134,7 +134,7 @@ local marssurvive_alien=function(self, dtime)
 	self.timer=self.timer+dtime
 	self.timer2=self.timer2+dtime
 
-	if self.timer2>=0.2 then
+	if self.timer2>=0.5 then
 		self.timer2=0
 
 -- if attacking or goto
@@ -189,7 +189,7 @@ local marssurvive_alien=function(self, dtime)
 
 					if self.status_target1:is_player() and self.status_target1:get_hp()<=0 then
 						minetest.sound_play("marssurvive_newfromdeath", {pos=self.status_target1:getpos(), gain = 1, max_hear_distance = 15,})
-						minetest.env:add_entity(self.status_target1:getpos(), "marssurvive:alien_death")
+						minetest.add_entity(self.status_target1:getpos(), "marssurvive:alien_death")
 					end
 					if self.axid then minetest.set_node(self.status_target1:getpos(), {name="marssurvive:acid_fire"}) end
 					setanim(self,"mine")
@@ -201,31 +201,19 @@ local marssurvive_alien=function(self, dtime)
 				end
 			end
 		end
+		local jnpos=self.object:getpos()
+		local junode=minetest.registered_nodes[minetest.get_node({x=jnpos.x,y=jnpos.y-2,z=jnpos.z}).name]
 
---jump+falling
-
---after jump
-		if self.move.jump==1 then
-			self.move.jump_timer=self.move.jump_timer-1
-			if self.move.jump_timer<=0 then
-				self.move.jump=0
-				self.object:setacceleration({x =0, y = 0, z =0})
-			end
-		end
+		if junode and junode.walkable then
 --front of a wall
-		if self.move.y==0 and self.move.jump==0 then
 			local ppos=self.object:getpos()
 			local nodes={}
 			for i=1,5,1 do --starts front of the object and y: -2 to +2
 			local npss={x=ppos.x+self.move.x,y=ppos.y+(i-3.5),z=ppos.z+self.move.z}
 				if not minetest.registered_nodes[minetest.get_node(npss).name] then
---					minetest.set_node(npss, {name ="air"})  --disabled alien destroy dirt by linus
+					minetest.set_node(npss, {name ="air"})
 				end
---				nodes[i]=minetest.registered_nodes[minetest.get_node(npss).name].walkable
-					if (minetest.registered_nodes[minetest.get_node(npss).name]) ~= nil then --linus added
-						nodes[i]=minetest.registered_nodes[minetest.get_node(npss).name].walkable
-					end
-
+				nodes[i]=minetest.registered_nodes[minetest.get_node(npss).name].walkable
 			end
 
  -- jump over 2
@@ -233,13 +221,14 @@ local marssurvive_alien=function(self, dtime)
 			if (nodes[3]==true and nodes[5]==false) or (nodes[3]==false and nodes[4]==true and nodes[5]==false) then
 				local pos=self.object:getpos()
 				local pos3={x=pos.x,y=pos.y+1,z=pos.z}
-				self.move.jump=1
-				self.move.jump_timer=1
-				self.move.y=4
 				self.move.x=self.move.x*2
 				self.move.z=self.move.z*2
-				self.object:setvelocity({x = self.move.x, y = self.move.y, z =self.move.z})
-				self.object:setacceleration({x =0, y = self.move.y, z =0})
+				self.object:setvelocity({x = self.move.x, y = 6, z =self.move.z})
+				minetest.after(0.5, function(self)
+					self.object:setvelocity({x = self.move.x, y = self.object:getvelocity().y,z = self.move.z})
+				end,self)
+
+
 			end
 
  -- if sides passable
@@ -299,24 +288,11 @@ local marssurvive_alien=function(self, dtime)
 				if minetest.registered_nodes[minetest.get_node({x=pos.x,y=pos.y-1,z=pos.z}).name].walkable==true then
 					self.move.x=self.move.x*2
 					self.move.z=self.move.z*2
-					self.move.jump=1
-					self.move.jump_timer=1
-					self.object:setvelocity({x = self.move.x, y = 1, z =self.move.z})
-					self.object:setacceleration({x =0, y = 1, z =0})
+					self.object:setvelocity({x = self.move.x, y = 6, z =self.move.z})
+					minetest.after(0.5, function(self)
+						self.object:setvelocity({x = self.move.x, y = self.object:getvelocity().y,z = self.move.z})
+					end,self)
 				end
-			end
-		end
---falling
-		if self.move.jump==0 then
-			local pos=self.object:getpos()
-			local nnode=minetest.get_node({x=pos.x,y=pos.y-1.5,z=pos.z}).name
-			local node=minetest.registered_nodes[nnode]
-			if node and node.walkable==false then
-				self.move.y=-10
-				self.object:setacceleration({x =0, y = self.move.y, z =0})
-			end
-			if node and node.walkable==true and self.move.y~=0 then
-				self.move.y=0
 			end
 		end
 	end
@@ -328,7 +304,7 @@ local marssurvive_alien=function(self, dtime)
 
 	local pos=self.object:getpos()
 	local node=minetest.get_node(pos).name
-	if minetest.get_node_group(node, "lava")>0 then
+	if minetest.get_item_group(node, "lava")>0 then
 		self.object:set_hp(self.object:get_hp()-2)
 	end
 
@@ -349,7 +325,7 @@ local marssurvive_alien=function(self, dtime)
 
 		if math.random(1,30)==1 then
 			for i, ob in pairs(minetest.get_objects_inside_radius(pos, 25)) do
-				if ob:is_player() then
+				if ob:is_player() then 
 					minetest.sound_play("marssurvive_near", {pos=ob:getpos(), gain = 1, max_hear_distance = 25,})
 					break
 				end
@@ -369,13 +345,18 @@ local marssurvive_alien=function(self, dtime)
 
 		local todmg=1
 		for i, ob in pairs(minetest.get_objects_inside_radius(pos, self.distance)) do
-			if (not ob:get_luaentity()) or (ob:get_luaentity() and (not (ob:get_luaentity().team and ob:get_luaentity().team==self.team)) and ob:get_luaentity().name~="marssurvive:icicle") then
-				if (ob.object and ob.object:get_hp()>0) or ob:get_hp()>0 then
-					if marssurvive_visiable(pos,ob) and ((not ob:get_luaentity()) or (ob:get_luaentity() and (not(self.status_curr=="attack" and ob:get_luaentity().name=="__builtin:item")))) then
-						self.status_target1=ob
-						self.status_curr="attack"
-						self.life=100
-						break
+		        --print(ob, self.team)
+		        if (ob and   (not (ob:is_player() and self.team == "human"))  ) then
+			        if (not ob:get_luaentity()) or (ob:get_luaentity() 
+				    and (not (ob:get_luaentity().team and ob:get_luaentity().team==self.team)) 
+				    and ob:get_luaentity().name~="marssurvive:icicle") then
+				        if (ob.object and ob.object:get_hp()>0) or ob:get_hp()>0 then
+					        if marssurvive_visiable(pos,ob) and ((not ob:get_luaentity()) or (ob:get_luaentity() and (not(self.status_curr=="attack" and ob:get_luaentity().name=="__builtin:item")))) then
+							self.status_target1=ob
+							self.status_curr="attack"
+							self.life=100
+							break
+						end
 					end
 				end
 			end
@@ -399,6 +380,10 @@ function setanim(self,type)
 end
 
 function marssurvive_reg_alien(name,hp,drop,team,distance,texture,size,shoot,tp)
+local life = 20
+if (team == "human") then 
+        life = 10000000000 --never die! ( die after 317,... years ;) ) 
+end
 minetest.register_entity("marssurvive:alien_" .. name,{
 	hp_max = hp,
 	physical = true,
@@ -415,6 +400,13 @@ minetest.register_entity("marssurvive:alien_" .. name,{
 	makes_footstep_sound = true,
 	automatic_rotate = false,
 on_punch=function(self, puncher, time_from_last_punch, tool_capabilities, dir)
+
+	if tool_capabilities and tool_capabilities.damage_groups and tool_capabilities.damage_groups.fleshy then
+		self.hp=self.hp-tool_capabilities.damage_groups.fleshy
+		self.object:set_hp(self.hp)
+	end
+	if (self.team == "human" and puncher:is_player()) then return end
+	
 	local pos=self.object:getpos()
 	self.status_target1=puncher
 	self.status_curr="attack"
@@ -424,20 +416,22 @@ on_punch=function(self, puncher, time_from_last_punch, tool_capabilities, dir)
 		local pos=self.object:getpos()
 		minetest.add_item(pos, self.drop):setvelocity({x = math.random(-1, 1),y=5,z = math.random(-1, 1)})
 	end
+	return self
 	end,
 on_activate=function(self, staticdata)
 		if marssurvive_aliens_max(0,self.object)==false then
 			self.object:remove()
 			return self
 		end
-		self.object:setvelocity({x=0,y=-1,z=0})
-		self.object:setacceleration({x=0,y=-1,z=0})
+		self.object:setvelocity({x=0,y=-8,z=0})
+		self.object:setacceleration({x=0,y=-8,z=0})
 		setanim(self,"stand")
+		self.hp=self.object:get_hp()
 	end,
 on_step=marssurvive_alien,
 	can_shoot=shoot,
 	can_teleport=tp,
-	life=20,
+	life=life,
 	anim_curr="",
 	status_curr="rnd",
 	status_next="",
@@ -457,14 +451,18 @@ on_step=marssurvive_alien,
 minetest.register_craftitem("marssurvive:alienispawner_" ..  name,{
 	description = "Alien " ..  name .." spawner",
 	inventory_image = texture,
-		on_use = function(itemstack, user, pointed_thing)
+		on_place = function(itemstack, user, pointed_thing)
 			if pointed_thing.type=="node" and marssurvive_aliens_max(1) then
-				minetest.env:add_entity({x=pointed_thing.above.x,y=pointed_thing.above.y+1,z=pointed_thing.above.z}, "marssurvive:alien_" .. name)
+				minetest.add_entity({x=pointed_thing.above.x,y=pointed_thing.above.y+1,z=pointed_thing.above.z}, "marssurvive:alien_" .. name)
 			end
 		itemstack:take_item()
 		return itemstack
 		end,
 })
+if (team ~= "human") then
+        marssurvive_reg_alien(name.."_friendly",hp,drop, "human",distance,texture,size,shoot,tp)
+end
+        
 end
 
 marssurvive_reg_alien("common",50,"marssurvive:aliengun","msalien1",10,"marssurvive_sp2.png",{x=0.6, y=1},1,0)
@@ -479,7 +477,6 @@ marssurvive_reg_alien("stone",60,"default:copper_lump","msalien1",15,"default_de
 marssurvive_reg_alien("warn",20,"marssurvive:warning","msalien1",15,"marssurvive_warntape.png",{x=2, y=1},1,0)
 marssurvive_reg_alien("crystal",100,"marssurvive:crystal","msalien3",15,"marssurvive_glitsh.png^[colorize:#cc0000aa",{x=1, y=0.2},0,1)
 
-
 marssurvive_tmp_owner=""
 function marssurvive_awshoot(self)
 	local pos=self.object:getpos()
@@ -488,27 +485,27 @@ function marssurvive_awshoot(self)
 	if not ob:get_luaentity() then v.y=v.y+1 end
 	local s={x=(v.x-pos.x)*2,y=(v.y-pos.y)*2,z=(v.z-pos.z)*2}
 	marssurvive_tmp_owner=self.object
-	local m=minetest.env:add_entity(pos, "marssurvive:bullet1")
+	local m=minetest.add_entity(pos, "marssurvive:bullet1")
 	m:setvelocity(s)
 	m:setacceleration(s)
 	minetest.sound_play("marssurvive_shoot", {pos=pos, gain = 1, max_hear_distance = 15,})
 	minetest.after((math.random(1,9)*0.1), function(pos,s,ob,self)
 		marssurvive_tmp_owner=self.object
-		local m=minetest.env:add_entity(pos, "marssurvive:bullet1")
+		local m=minetest.add_entity(pos, "marssurvive:bullet1")
 		m:setvelocity(s)
 		m:setacceleration(s)
 		minetest.sound_play("marssurvive_shoot", {pos=pos, gain = 1, max_hear_distance = 15,})
 	end, pos,s,ob,self)
 	minetest.after((math.random(1,9)*0.1), function(pos,s,ob,self)
 		marssurvive_tmp_owner=self.object
-		local m=minetest.env:add_entity(pos, "marssurvive:bullet1")
+		local m=minetest.add_entity(pos, "marssurvive:bullet1")
 		m:setvelocity(s)
 		m:setacceleration(s)
 		minetest.sound_play("marssurvive_shoot", {pos=pos, gain = 1, max_hear_distance = 15,})
 	end, pos,s,ob,self)
 	minetest.after((math.random(1,9)*0.1), function(pos,s,ob,self)
 		marssurvive_tmp_owner=self.object
-		local m=minetest.env:add_entity(pos, "marssurvive:bullet1")
+		local m=minetest.add_entity(pos, "marssurvive:bullet1")
 		m:setvelocity(s)
 		m:setacceleration(s)
 		minetest.sound_play("marssurvive_shoot", {pos=pos, gain = 1, max_hear_distance = 15,})
@@ -556,10 +553,12 @@ on_step= function(self, dtime)
 		local pos=self.object:getpos()
 		for i, ob in pairs(minetest.get_objects_inside_radius(pos, 2)) do
 			if (not ob:get_luaentity()) or (ob:get_luaentity() and ob:get_luaentity().name~="marssurvive:bullet1" and ob:get_luaentity().name~=self.owner:get_luaentity().name) then
-				ob:set_hp(ob:get_hp()-3)
-				ob:punch(self.object, {full_punch_interval=1.0,damage_groups={fleshy=4}}, "default:bronze_pick", nil)
-				self.timer2=2
-				break
+			        if not ob:get_armor_groups().immortal then
+					ob:set_hp(ob:get_hp()-3)
+					ob:punch(self.object, {full_punch_interval=1.0,damage_groups={fleshy=4}}, "default:bronze_pick", nil)
+					self.timer2=2
+					break
+				end
 			end
 
 		end
@@ -583,17 +582,17 @@ minetest.register_tool("marssurvive:aliengun", {
 		pos.y=pos.y+1.5
 		local veloc=15
 		marssurvive_tmp2_owner=name
-		local m=minetest.env:add_entity(pos, "marssurvive:bullet2")
+		local m=minetest.add_entity(pos, "marssurvive:bullet2")
 		local v={x=dir.x*veloc, y=dir.y*veloc, z=dir.z*veloc}
 			marssurvive_tmp2_owner=name
-			local m=minetest.env:add_entity(pos, "marssurvive:bullet2")
+			local m=minetest.add_entity(pos, "marssurvive:bullet2")
 			m:setvelocity(v)
 			m:setacceleration(v)
 			minetest.sound_play("marssurvive_shoot", {pos=pos, gain = 2, max_hear_distance = 15,})
 		minetest.after((math.random(1,9)*0.1), function(pos,v,name)
 			marssurvive_tmp2_owner=name
 
-			local m=minetest.env:add_entity(pos, "marssurvive:bullet2")
+			local m=minetest.add_entity(pos, "marssurvive:bullet2")
 			m:setvelocity(v)
 			m:setacceleration(v)
 			minetest.sound_play("marssurvive_shoot", {pos=pos, gain = 2, max_hear_distance = 15,})
@@ -631,10 +630,12 @@ on_step= function(self, dtime)
 		local pos=self.object:getpos()
 		for i, ob in pairs(minetest.get_objects_inside_radius(pos, 2)) do
 			if (ob:is_player() and ob:get_player_name()~=self.owner) or (ob:get_luaentity() and ob:get_luaentity().bullet==nil and ob:get_luaentity().name~="marssurvive:sp1") then
-				ob:set_hp(ob:get_hp()-3)
-				ob:punch(self.object, {full_punch_interval=1.0,damage_groups={fleshy=4}}, "default:bronze_pick", nil)
-				self.timer2=2
-				break
+			        if not ob:get_armor_groups().immortal then
+				        ob:set_hp(ob:get_hp()-3)
+				        ob:punch(self.object, {full_punch_interval=1.0,damage_groups={fleshy=4}}, "default:bronze_pick", nil)
+				        self.timer2=2
+				        break
+				end
 			end
 
 		end
@@ -659,9 +660,11 @@ minetest.register_tool("marssurvive:diglazer", {
 		minetest.sound_play("marssurvive_dig", {pos=pos, gain = 1, max_hear_distance = 5,})
 		minetest.sound_play("marssurvive_bullet1", {pos=pos, gain = 1, max_hear_distance = 5,})
 		if pointed_thing.type=="object" then
-			pointed_thing.ref:set_hp(pointed_thing.ref:get_hp()-5)
-			pointed_thing.ref:punch(user, {full_punch_interval=1.0,damage_groups={fleshy=4}}, "default:bronze_pick", nil)
-			return itemstack
+			if not ob:get_armor_groups().immortal then
+				pointed_thing.ref:set_hp(pointed_thing.ref:get_hp()-5)
+				pointed_thing.ref:punch(user, {full_punch_interval=1.0,damage_groups={fleshy=4}}, "default:bronze_pick", nil)
+				return itemstack
+			end
 		end
 		local name=user:get_player_name()
 		local dir = user:get_look_dir()
@@ -703,11 +706,13 @@ on_step= function(self, dtime)
 		local pos=self.object:getpos()
 		for i, ob in pairs(minetest.get_objects_inside_radius(pos, 2)) do
 			if ob:get_luaentity() and ob:get_luaentity().type=="monster" then
-				ob:set_hp(ob:get_hp()-3)
-				ob:punch(self.object, {full_punch_interval=1.0,damage_groups={fleshy=4}}, "default:bronze_pick", nil)
-				self.timer2=2
-				self.object:remove()
-				return self
+				if not ob:get_armor_groups().immortal then
+					ob:set_hp(ob:get_hp()-3)
+					ob:punch(self.object, {full_punch_interval=1.0,damage_groups={fleshy=4}}, "default:bronze_pick", nil)
+					self.timer2=2
+					self.object:remove()
+					return self
+				end
 			end
 
 		end
@@ -739,7 +744,7 @@ minetest.register_node("marssurvive:secam_off", {
 	end,
 on_rightclick = function(pos, node, player, itemstack, pointed_thing)
 	minetest.set_node(pos, {name ="marssurvive:secam", param1 = node.param1, param2 = node.param2})
-	minetest.env:get_node_timer(pos):start(1)
+	minetest.get_node_timer(pos):start(1)
 end,
 })
 
@@ -774,19 +779,47 @@ on_timer=function(pos, elapsed)
 				local v=ob:getpos()
 				if not ob:get_luaentity() then v.y=v.y+1 end
 				local s={x=(v.x-pos.x)*3,y=(v.y-pos.y)*3,z=(v.z-pos.z)*3}
-				local m=minetest.env:add_entity(pos, "marssurvive:bullet3")
+				local m=minetest.add_entity(pos, "marssurvive:bullet3")
 				m:setvelocity(s)
-				m:setacceleration(s)
-				minetest.sound_play("marssurvive_bullet2", {pos=pos, gain = 1, max_hear_distance = 15,})
+				minetest.sound_play("marssurvive_bullet1", {pos=pos, gain = 1, max_hear_distance = 15,})
 				minetest.after((math.random(1,9)*0.1), function(pos,s,v)
-				local m=minetest.env:add_entity(pos, "marssurvive:bullet3")
+				local m=minetest.add_entity(pos, "marssurvive:bullet3")
 				m:setvelocity(s)
-				m:setacceleration(s)
-				minetest.sound_play("marssurvive_bullet2", {pos=pos, gain = 1, max_hear_distance = 15,})
+				minetest.sound_play("marssurvive_bullet1", {pos=pos, gain = 1, max_hear_distance = 15,})
 				end, pos,s,v)
 				return true
 			end
 		end
 		return true
 	end,
+})
+
+--aliencatcher:
+minetest.register_tool("marssurvive:aliencatcher", {
+	description = "alien catcher",
+	range = 11,
+	inventory_image = "aliencatcher.png",
+	on_use = function(itemstack, user, pointed_thing)
+		local pos=user:getpos()
+
+		if pointed_thing.type=="nothing" then
+			return itemstack
+		end
+		
+		if pointed_thing.type=="object" then
+		        if (math.random(10) ~= 1) then return end
+		        local obj = pointed_thing.ref
+			if (obj:get_luaentity() and string.sub(obj:get_luaentity().name, 1, 17) == "marssurvive:alien") then
+				local inv = user:get_inventory()
+				stackname = "marssurvive:alienispawner_"..string.sub(obj:get_luaentity().name, 19) -- "marssurvive:alien_" ..
+				if obj:get_luaentity().team ~= "human" then
+				        stackname = stackname.."_friendly";
+				end
+				print(stackname)
+				inv:add_item("main", stackname.." 1")
+				obj:remove()
+			end
+		end
+		return itemstack
+	end
 })
