@@ -39,6 +39,14 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "marssurvive:aliencatcher",
+	recipe = {
+		{"marssurvive:diglazer"},
+		{"marssurvive:aliengun"},
+	}
+})
+
+minetest.register_craft({
 	output = "marssurvive:diglazer",
 	recipe = {
 		{"marssurvive:air_gassbotte","marssurvive:shieldblock","marssurvive:shieldblock"},
