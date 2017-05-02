@@ -225,15 +225,18 @@ local marssurvive_alien=function(self, dtime)
 				self.move.z=self.move.z*2
 				self.object:setvelocity({x = self.move.x, y = 6, z =self.move.z})
 				minetest.after(0.5, function(self)
-					minetest.log("error", "JULI DEBUG")
-					vel = self.object:getvelocity()
-				        minetest.log("error", "vel: "..dump(vel)) 
-					minetest.log("error", "vel.y: "..dump(vel.y))
-					--minetest.log("error", self.move.z)
-					minetest.log("error", "JULI DEBUG END")
-						
-					self.object:setvelocity({x = self.move.x, y = self.object:getvelocity().y,z = self.move.z})
-				end,self)
+				        debug = function()
+					    vel = self.object:getvelocity() 
+					    print(vel.y)
+					    print(self.move.z)
+					    self.object:setvelocity({x = self.move.x, y = self.object:getvelocity().y,z = self.move.z})
+				        end
+					status, err = pcall(debug, self) then
+					if not status then
+				            minetest.log("error", "DEBUG: error")
+					    minetest.log("error", dump(err))
+					end
+					end,self)
 
 
 			end
