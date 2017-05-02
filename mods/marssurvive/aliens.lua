@@ -225,6 +225,17 @@ local marssurvive_alien=function(self, dtime)
 				self.move.z=self.move.z*2
 				self.object:setvelocity({x = self.move.x, y = 6, z =self.move.z})
 				minetest.after(0.5, function(self)
+					print("DEBUG")
+					print(1,self.object)
+					print(2,self.object.setvelocity)
+					print(3,self.move)
+					print(4,self.move.x)
+					print(5,self.object.getvelocity)
+					print(6,self.object.getvelocity())
+					print(7,self.object.getvelocity().y)
+					print(8,self.move.z)
+					print("DEBUG END")
+						
 					self.object:setvelocity({x = self.move.x, y = self.object:getvelocity().y,z = self.move.z})
 				end,self)
 
