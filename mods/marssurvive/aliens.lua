@@ -358,7 +358,7 @@ local marssurvive_alien=function(self, dtime)
 		for i, ob in pairs(minetest.get_objects_inside_radius(pos, self.distance)) do
 		        --for friendly alien:
 		        if (self.team == "human") then 
-			    if ob:isplayer() then return end
+			    if ob:is_player() then return end
 			    if (ob:get_luaentity() and ob:get_luaentity().type ~= "monster") then
 				return
 			    end
