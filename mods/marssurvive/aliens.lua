@@ -356,11 +356,18 @@ local marssurvive_alien=function(self, dtime)
 
 		local todmg=1
 		for i, ob in pairs(minetest.get_objects_inside_radius(pos, self.distance)) do
-		        --print(ob, self.team)
-		        if (ob and   (not (ob:is_player() and self.team == "human"))  ) then
-			        if (not ob:get_luaentity()) or (ob:get_luaentity() 
-				    and (not (ob:get_luaentity().team and ob:get_luaentity().team==self.team)) 
+		        --for friendly alien:
+		        if (self.team == "human") then 
+			    if ob:isplayer() then return end
+			    if (ob:get_luaentity() and ob:get_luaentity().type ~= "monster") then
+				return
+			    end
+			end
+		        --not friendly:
+		        if (ob and not ob:get_luaentity()) or (ob:get_luaentity() --exists and no ent or:
+				    and (not (ob:get_luaentity().team and ob:get_luaentity().team==self.team)) --not same team
 				    and ob:get_luaentity().name~="marssurvive:icicle") then
+					--if obj is alive:
 				        if (ob.object and ob.object:get_hp()>0) or ob:get_hp()>0 then
 					        if marssurvive_visiable(pos,ob) and ((not ob:get_luaentity()) or (ob:get_luaentity() and (not(self.status_curr=="attack" and ob:get_luaentity().name=="__builtin:item")))) then
 							self.status_target1=ob
