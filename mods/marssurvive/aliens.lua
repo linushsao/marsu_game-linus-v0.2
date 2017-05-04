@@ -461,7 +461,7 @@ minetest.register_craftitem("marssurvive:alienispawner_" ..  name,{
 	description = "Alien " ..  name .." spawner",
 	inventory_image = texture,
 		on_place = function(itemstack, user, pointed_thing)
-			if pointed_thing.type=="node" and marssurvive_aliens_max(1) then
+			if pointed_thing.type=="node" then
 				minetest.add_entity({x=pointed_thing.above.x,y=pointed_thing.above.y+1,z=pointed_thing.above.z}, "marssurvive:alien_" .. name)
 			end
 		itemstack:take_item()
