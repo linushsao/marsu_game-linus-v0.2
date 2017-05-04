@@ -225,6 +225,7 @@ local marssurvive_alien=function(self, dtime)
 				self.move.z=self.move.z*2
 				self.object:setvelocity({x = self.move.x, y = 6, z =self.move.z})
 				minetest.after(0.5, function(self)
+					--PATCH
 				        --debug = function()
 			                vel = self.object:getvelocity() 
 					if not vel then return end
@@ -237,6 +238,7 @@ local marssurvive_alien=function(self, dtime)
 				            minetest.log("error", "DEBUG: error")
 					    minetest.log("error", dump(err))
 					end]]--
+					--PATCH END
 					end,self)
 			end
 
@@ -390,8 +392,10 @@ end
 
 function marssurvive_reg_alien(name,hp,drop,team,distance,texture,size,shoot,tp)
 local life = 20
+local alien_type = "monster"
 if (team == "human") then 
         life = 10000000000 --never die! ( die after 317,... years ;) ) 
+	alien_type = "animal"
 end
 minetest.register_entity("marssurvive:alien_" .. name,{
 	hp_max = hp,
@@ -452,7 +456,7 @@ on_step=marssurvive_alien,
 	move={x=0,y=0,z=0,jump=0,jump_timer=0,speed=2},
 	dmg=4,
 	team=team,
-	type = "monster",
+	type = alien_type,
 	inv={marssurvive_alien_rnd_drops},
 	distance=distance,
 	stuck_path=0,
