@@ -366,7 +366,7 @@ local marssurvive_alien=function(self, dtime)
 		        --not friendly:
 		        if (ob and ( (not ob:get_luaentity()) or (ob:get_luaentity() --exists and (no ent or:
 		          and (not (ob:get_luaentity().team and ob:get_luaentity().team==self.team)))  --not same team)
-		          and ob:get_luaentity().name~="marssurvive:icicle") then
+		          and ob:get_luaentity().name~="marssurvive:icicle")) then
 				--if obj is alive:
 				if (ob.object and ob.object:get_hp()>0) or ob:get_hp()>0 then
 				        if marssurvive_visiable(pos,ob) and ((not ob:get_luaentity()) or (ob:get_luaentity() and (not(self.status_curr=="attack" and ob:get_luaentity().name=="__builtin:item")))) then
