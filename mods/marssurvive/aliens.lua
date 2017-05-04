@@ -364,7 +364,7 @@ local marssurvive_alien=function(self, dtime)
 			    end
 			end
 		        --not friendly:
-		        if (ob and not ob:get_luaentity()) or (ob:get_luaentity() --exists and no ent or:
+		        if (ob and not ob:get_luaentity() or (ob:get_luaentity() --exists and no ent or:
 				    and (not (ob:get_luaentity().team and ob:get_luaentity().team==self.team)) --not same team
 				    and ob:get_luaentity().name~="marssurvive:icicle") then
 					--if obj is alive:
