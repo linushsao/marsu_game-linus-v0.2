@@ -134,6 +134,13 @@ local marssurvive_alien=function(self, dtime)
 	self.timer=self.timer+dtime
 	self.timer2=self.timer2+dtime
 
+-- friendly alien stay:
+        if (self.owner_command ~= "") and (self.team == "human") then 
+		self.object:setvelocity({x=0, y=0, z=0})
+		setanim(self, self.owner_command)
+		return true
+	end
+	
 	if self.timer2>=0.5 then
 		self.timer2=0
 
@@ -356,28 +363,42 @@ local marssurvive_alien=function(self, dtime)
 
 		local todmg=1
 		for i, ob in pairs(minetest.get_objects_inside_radius(pos, self.distance)) do
-		        --for friendly alien:
-		        if (self.team == "human") then 
-			    if ob:is_player() then return end
-			    if (ob:get_luaentity() and ob:get_luaentity().type ~= "monster") then
-				return
-			    end
-			end
+		        
 		        --not friendly:
-		        if (ob and ( (not ob:get_luaentity()) or (ob:get_luaentity() --exists and (no ent or:
-		          and (not (ob:get_luaentity().team and ob:get_luaentity().team==self.team)))  --not same team)
-		          and ob:get_luaentity().name~="marssurvive:icicle")) then
-				--if obj is alive:
-				if (ob.object and ob.object:get_hp()>0) or ob:get_hp()>0 then
-				        if marssurvive_visiable(pos,ob) and ((not ob:get_luaentity()) or (ob:get_luaentity() and (not(self.status_curr=="attack" and ob:get_luaentity().name=="__builtin:item")))) then
-						self.status_target1=ob
-						self.status_curr="attack"
-						self.life=100
-						break
+			if (self.team ~= "human") then
+				if (ob and ( (not ob:get_luaentity()) or (ob:get_luaentity() --exists and (no ent or:
+				  and (not (ob:get_luaentity().team and ob:get_luaentity().team==self.team)))  --not same team)
+				  and ob:get_luaentity().name~="marssurvive:icicle")) then
+
+					if (ob.object and ob.object:get_hp()>0) or ob:get_hp()>0 then
+						if marssurvive_visiable(pos,ob) and ((not ob:get_luaentity()) or (ob:get_luaentity() 
+						    and (not(self.status_curr=="attack" and ob:get_luaentity().name=="__builtin:item")))) then
+							self.status_target1=ob
+							self.status_curr="attack"
+							self.life=100
+							break
+						end
 					end
+					
+				end
+			else --for friendly alien:
+				if (not ob:is_player() and ob:get_luaentity() and ob:get_luaentity().type
+			           and ob:get_luaentity().type == "monster") then
+				   
+					if (ob.object and ob.object:get_hp()>0) or ob:get_hp()>0 then
+						if marssurvive_visiable(pos,ob) and ((not ob:get_luaentity()) or (ob:get_luaentity() 
+						    and (not(self.status_curr=="attack" and ob:get_luaentity().name=="__builtin:item")))) then
+							self.status_target1=ob
+							self.status_curr="attack"
+							self.life=100
+							break
+						end
+					end
+					
 				end
 			end
-		end
+		
+		end --for
 		marssurvive_alien_lookat(self)
 end
 
@@ -419,13 +440,22 @@ minetest.register_entity("marssurvive:alien_" .. name,{
 	makes_footstep_sound = true,
 	automatic_rotate = false,
 on_punch=function(self, puncher, time_from_last_punch, tool_capabilities, dir)
-
+	--damage only by owner or aliens to prevent griefing (by others set hp back to max)
+        if (self.team == "human" and puncher:is_player()) then 
+		if puncher:get_player_name() ~= self.owner then 
+			self.hp = self.hp_max
+			self.object:set_hp(self.hp)
+			return 
+		end
+	end
+	--damage the alien with tool
 	if tool_capabilities and tool_capabilities.damage_groups and tool_capabilities.damage_groups.fleshy then
 		self.hp=self.hp-tool_capabilities.damage_groups.fleshy
 		self.object:set_hp(self.hp)
 	end
+	--friendly alien doesn't attack an human
 	if (self.team == "human" and puncher:is_player()) then return end
-	
+	--attack human
 	local pos=self.object:getpos()
 	self.status_target1=puncher
 	self.status_curr="attack"
@@ -437,8 +467,32 @@ on_punch=function(self, puncher, time_from_last_punch, tool_capabilities, dir)
 	end
 	return self
 	end,
+on_rightclick=function(self, clicker)
+	if (self.team ~= "human") then return end
+	if (clicker:get_player_name() ~= self.owner) then return end
+        
+	print(self.owner_command)
+	if self.owner_command == "" then
+		self.owner_command = "stand"
+		print('stand')
+	elseif self.owner_command == "stand" then
+		self.owner_command = "sit"
+		print('sit')
+	elseif self.owner_command == "sit" then
+		self.owner_command = "lay"
+	elseif self.owner_command == "lay" then
+		self.owner_command = ""
+	end
+	
+	end,
 on_activate=function(self, staticdata)
-		if marssurvive_aliens_max(0,self.object)==false then
+		local data = minetest.deserialize(staticdata)
+		if (data ~= nil) then
+			self.owner = data.owner
+			self.owner_command = data.owner_command
+		end
+		--don't remoe friendly aliens
+		if marssurvive_aliens_max(0,self.object)==false and self.team ~= "human" then
 			self.object:remove()
 			return self
 		end
@@ -466,15 +520,27 @@ on_step=marssurvive_alien,
 	inv={marssurvive_alien_rnd_drops},
 	distance=distance,
 	stuck_path=0,
+	owner="-",
+	owner_command = "stand",
+get_staticdata = function(self) return minetest.serialize({owner=self.owner, owner_command=self.owner_command}) end,
 })
 minetest.register_craftitem("marssurvive:alienispawner_" ..  name,{
 	description = "Alien " ..  name .." spawner",
 	inventory_image = texture,
 		on_place = function(itemstack, user, pointed_thing)
 			if pointed_thing.type=="node" then
-				minetest.add_entity({x=pointed_thing.above.x,y=pointed_thing.above.y+1,z=pointed_thing.above.z}, "marssurvive:alien_" .. name)
+			        local pos = minetest.find_node_near({x=pointed_thing.above.x,y=pointed_thing.above.y,z=pointed_thing.above.z}, 1, "air")
+				if pos then
+					local obj = minetest.add_entity(pos, "marssurvive:alien_" .. name)
+					if obj then
+						itemstack:take_item()
+						local entity = obj:get_luaentity()
+						if entity.team == "human" then
+							entity.owner = user:get_player_name()
+						end
+					end
+				end
 			end
-		itemstack:take_item()
 		return itemstack
 		end,
 })
