@@ -866,7 +866,7 @@ on_timer=function(pos, elapsed)
 				local s={x=(v.x-pos.x)*3,y=(v.y-pos.y)*3,z=(v.z-pos.z)*3}
 				local m=minetest.add_entity(pos, "marssurvive:bullet3")
 				m:setvelocity(s)
-				minetest.sound_play("marssurvive_bullet1", {pos=pos, gain = 1, max_hear_distance = 15,})
+				minetest.sound_play("space_laser", {pos=pos, gain = 1, max_hear_distance = 15,})
 				minetest.after((math.random(1,9)*0.1), function(pos,s,v)
 				local m=minetest.add_entity(pos, "marssurvive:bullet3")
 				m:setvelocity(s)
