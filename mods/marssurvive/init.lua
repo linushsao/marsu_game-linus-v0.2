@@ -35,8 +35,6 @@ end)
 
 
 function marssurvive_setgrav(player,grav)
-	print('PHYSICS OVERRIDE', grav)
-	print(dump(player))
 	local aa= 1 - ((1-grav)*0.4)
 	player:set_physics_override({gravity=grav, jump=aa})
 end
@@ -66,19 +64,8 @@ function marssurvive_space(player)
 	if marssurvive.player_space[player:get_player_name()].inside==0 and pos<=1000 then
 		marssurvive.player_space[player:get_player_name()].inside=1
 		marssurvive_setgrav(player,0.5)
-
 		minetest.after(0.1,function()
 			local ratio = minetest.get_timeofday() --linus added
-			
-			
-			sky_change(player,ratio)--linus added
-			if ratio < 0.5 then ratio = 1*(ratio/0.5)
-			else
-				ratio = (1-ratio)/0.5
-			end
-			player:set_sky({r=math.floor(219*ratio), g=math.floor(168*ratio), b=math.floor(117*ratio)},"plain",{})
-			
-			
 		end)
 	elseif marssurvive.player_space[player:get_player_name()].inside==1 and pos>1000 then
 		marssurvive.player_space[player:get_player_name()].inside=0
