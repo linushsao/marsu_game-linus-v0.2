@@ -51,10 +51,10 @@ minetest.register_node("bones:bones_infected", {
 	}),
 	on_place = function(itemstack, placer, pointed_thing)
 		local pos = pointed_thing.above
-		minetest.add_entity({x=pos.x,y=pos.y+1,z=pos.z},"marssurvive:alien_common")
+		minetest.add_entity({x=pos.x,y=pos.y+1,z=pos.z},"marssurvive:alien_sand")
 		minetest.set_node({x=pos.x,y=pos.y,z=pos.z},{name="marssurvive:sand"})
-
-		return minetest.item_place(itemstack, placer, pointed_thing)
+		itemstack:take_item(1)
+		return itemstack
 
 	end,
 	})
