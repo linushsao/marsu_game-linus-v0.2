@@ -745,6 +745,7 @@ minetest.register_tool("marssurvive:diglazer", {
 		minetest.sound_play("marssurvive_dig", {pos=pos, gain = 1, max_hear_distance = 5,})
 		minetest.sound_play("marssurvive_bullet1", {pos=pos, gain = 1, max_hear_distance = 5,})
 		if pointed_thing.type=="object" then
+			local ob = pointed_thing.ref
 			if not ob:get_armor_groups().immortal then
 				pointed_thing.ref:set_hp(pointed_thing.ref:get_hp()-5)
 				pointed_thing.ref:punch(user, {full_punch_interval=1.0,damage_groups={fleshy=4}}, "default:bronze_pick", nil)
