@@ -370,7 +370,9 @@ minetest.register_craft({
 
 minetest.register_craft({
 	output = 'default:desert_cobble',
-	recipe = 'marssurvive:cobble',
+	recipe = {
+		{'marssurvive:cobble'},
+	}
 })
 
 minetest.register_craft({
