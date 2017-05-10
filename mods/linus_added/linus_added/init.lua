@@ -358,14 +358,19 @@ minetest.register_craft({
 minetest.register_craft({
   type = "cooking",
 	output = 'default:desert_stone',
-	recipe = 'marssurvive:stone',
+	recipe = 'default:desert_cobble',
 })
 
 minetest.register_craft({
   type = "cooking",
-	output = 'default:desert_cobble',
+	output = 'marssurvive:stone',
 	recipe = 'marssurvive:cobble',
 
+})
+
+minetest.register_craft({
+	output = 'default:desert_cobble',
+	recipe = 'marssurvive:cobble',
 })
 
 minetest.register_craft({
