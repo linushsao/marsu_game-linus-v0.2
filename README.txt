@@ -5,4 +5,4 @@
 [A Minetest subgame]
 *To play this game in Minetest, insert this repository as <MINETEST-HOME-DIR>/games/<GAME NAME> in the Minetest Engine,you could find <GAME NAME> when you open page"server->new>game".
 *The Minetest Engine can be found in: https://github.com/minetest/minetest/
-*All my work is under WTFPL License The extern mods have different Licenses. look at the modfolders for details.
+*All my work is under GPL 3.0 License The extern mods have different Licenses. look at the modfolders for details.
