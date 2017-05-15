@@ -232,20 +232,9 @@ local marssurvive_alien=function(self, dtime)
 				self.move.z=self.move.z*2
 				self.object:setvelocity({x = self.move.x, y = 6, z =self.move.z})
 				minetest.after(0.5, function(self)
-					--PATCH
-				        --debug = function()
 			                vel = self.object:getvelocity() 
 					if not vel then return end
-					--[[    print(vel.y)
-					    print(self.move.z)]]--
 					    self.object:setvelocity({x = self.move.x, y = self.object:getvelocity().y,z = self.move.z})
-				        --[[end
-					status, err = pcall(debug, self) then
-					if not status then
-				            minetest.log("error", "DEBUG: error")
-					    minetest.log("error", dump(err))
-					end]]--
-					--PATCH END
 					end,self)
 			end
 
@@ -308,6 +297,8 @@ local marssurvive_alien=function(self, dtime)
 					self.move.z=self.move.z*2
 					self.object:setvelocity({x = self.move.x, y = 6, z =self.move.z})
 					minetest.after(0.5, function(self)
+						vel = self.object:getvelocity() 
+						if not vel then return end
 						self.object:setvelocity({x = self.move.x, y = self.object:getvelocity().y,z = self.move.z})
 					end,self)
 				end
