@@ -70,6 +70,10 @@ function glowtest:register_mob(name, def)
 			end
 			local x = math.sin(yaw) * -v
 			local z = math.cos(yaw) * v
+			--PATCH by Linus : for checking the value of x,it cause error.
+			print("Value of X in set_velocity of glowtest mod :")..x
+			print("Value of Z in set_velocity of glowtest mod :")..z
+			--PATCH end
 			self.object:setvelocity({x=x, y=self.object:getvelocity().y, z=z})
 		end,
 
