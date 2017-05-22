@@ -101,6 +101,7 @@ minetest.override_item("stairs:stair_cobble", {tiles = {"default_desert_stone.pn
 	})
 
 --linus added
+	--[[
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "marssurvive:stone_with_iron1",
@@ -110,7 +111,7 @@ minetest.override_item("stairs:stair_cobble", {tiles = {"default_desert_stone.pn
 		clust_size     = 2,
 		y_min          = -31000,
 		y_max          = 50,
-	})
+	})]]--
 
 	minetest.register_ore({
 		ore_type       = "scatter",

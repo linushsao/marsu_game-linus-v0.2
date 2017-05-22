@@ -771,13 +771,13 @@ minetest.register_node("marssurvive:stone_with_iron", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("marssurvive:stone_with_iron1", {
+--[[minetest.register_node("marssurvive:stone_with_iron1", {
 	description = "Iron Ore(with Impurities)",
 	tiles = {"default_desert_stone.png^default_mineral_iron1.png^[colorize:#cf7d6788"},
 	groups = {cracky = 2},
 	drop = 'default:iron_lump1',
 	sounds = default.node_sound_stone_defaults(),
-})
+})]]--
 
 
 minetest.register_node("marssurvive:stone_with_copper", {
