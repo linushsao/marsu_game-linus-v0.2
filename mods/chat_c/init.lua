@@ -84,7 +84,7 @@ minetest.register_chatcommand("warnings", {
 })
 
 minetest.register_chatcommand("chatconf", {
-   params = "cahtconf <PARAM> , <PARAM> = empty/echo-on/echo-off,empty means show COLOR-Sheet,echo-on means repeat both plain-msg&colored msg,echo-off means print only plain-msg for you and others see colored msg",
+   params = "chatconf <PARAM> , <PARAM> = empty/echo-on/echo-off,empty means show COLOR-Sheet,echo-on means repeat both plain-msg&colored msg,echo-off means print only plain-msg for you and others see colored msg",
    description = "chat-c configure",
    privs = {interact=true},
    func = function(name, param)
