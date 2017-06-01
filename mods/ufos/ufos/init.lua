@@ -120,8 +120,11 @@ end
 function ufos.ufo:on_punch (puncher, time_from_last_punch, tool_capabilities, direction)
 	if puncher and puncher:is_player() then
 		if ufos.check_owner(self,puncher) then
-			puncher:get_inventory():add_item("main", ufos.ufo_to_item(self))
-			self.object:remove()
+			local inv = puncher:get_inventory()
+			if inv:room_for_item(ufos.ufo_to_item(self)) then
+				inv:add_item("main", ufos.ufo_to_item(self))
+				self.object:remove()
+			end
 		end
 	end
 end
