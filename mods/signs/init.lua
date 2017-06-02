@@ -37,7 +37,6 @@ local signs = {
     {delta = {x = 0, y = 0, z = -0.399}, yaw = math.pi},
     {delta = {x = -0.399, y = 0, z = 0}, yaw = math.pi / 2},
 }
-]]--
 
 local signs_yard = {
     {delta = {x = 0, y = 0, z = -0.05}, yaw = 0},
@@ -241,3 +240,4 @@ generate_line = function(s, ypos)
     end
     return texture
 end
+]]--
