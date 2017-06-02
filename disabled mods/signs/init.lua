@@ -1,5 +1,5 @@
 -- Font: 04.jp.org
---[[
+
 minetest.register_craft({
     output = "signs:sign",
     recipe = {
@@ -240,4 +240,4 @@ generate_line = function(s, ypos)
     end
     return texture
 end
-]]--
+
