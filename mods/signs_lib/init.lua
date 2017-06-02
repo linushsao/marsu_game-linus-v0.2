@@ -607,13 +607,13 @@ function signs_lib.determine_sign_type(itemstack, placer, pointed_thing, locked)
 end
 
 function signs_lib.receive_fields(pos, formname, fields, sender, lock)
-	if minetest.is_protected(pos, sender:get_player_name()) then
-		minetest.record_protection_violation(pos,
-			sender:get_player_name())
-		return
-	end
 	local lockstr = lock and "locked " or ""
 	if fields and fields.text and fields.ok then
+		if minetest.is_protected(pos, sender:get_player_name()) then
+			minetest.record_protection_violation(pos,
+				sender:get_player_name())
+			return
+		end
 		minetest.log("action", S("%s wrote \"%s\" to "..lockstr.."sign at %s"):format(
 			(sender:get_player_name() or ""),
 			fields.text,
