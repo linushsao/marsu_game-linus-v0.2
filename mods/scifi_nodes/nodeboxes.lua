@@ -442,7 +442,7 @@ minetest.register_node("scifi_nodes:lightbar", {
 	},
 	drawtype = "nodebox",
 	paramtype = "light",
-	paramtype2 = "wallmounted",
+	paramtype2 = "facedir",
 	sunlight_propagates = true,
 	light_source = 25,
 	node_box = {
