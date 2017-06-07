@@ -73,7 +73,7 @@ minetest.register_craftitem("spacesuit:air_gassbottle_empty", {
         inventory_image = "gassbottle_empty.png",
     	on_place = function(itemstack, user, pointed_thing)
 	        local node = minetest.get_node(pointed_thing.under)
-	        if string.sub(node.name, 1, 18) == "marssurvive:airgen" then
+	        if string.sub(node.name, 1, 14) == "marsair:airgen" then
 		        itemstack:set_count(itemstack:get_count()-1)
 			user:get_inventory():add_item("main", "spacesuit:air_gassbottle")
 			return itemstack
@@ -198,6 +198,8 @@ end)
 minetest.register_alias("marssurvive:air_gassbotte","spacesuit:air_gassbottle")
 minetest.register_alias("marssurvive:air_gassbotte_empty","spacesuit:air_gassbottle_empty")
 minetest.register_alias("marssurvive:sp","spacesuit:sp")
+minetest.register_alias("marssurvive:spred", "spacesuit:spred")
+minetest.register_alias("marssurvive:spblue", "spacesuit:spblue")
 
 
 --for test
