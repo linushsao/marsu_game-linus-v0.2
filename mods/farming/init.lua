@@ -6,39 +6,36 @@ farming.path = minetest.get_modpath("farming")
 dofile(farming.path .. "/api.lua")
 dofile(farming.path .. "/nodes.lua")
 dofile(farming.path .. "/hoes.lua")
---dofile(farming.path .. "/cotton.lua")
---dofile(farming.path .. "/wheat.lua")
 
 -- WHEAT
 farming.register_plant("farming:wheat", {
 	description = "Wheat seed",
+	paramtype2 = "meshoptions",
 	inventory_image = "farming_wheat_seed.png",
 	steps = 8,
 	minlight = 13,
 	maxlight = default.LIGHT_MAX,
-	fertility = {"grassland"}
+	fertility = {"grassland"},
+	groups = {flammable = 4},
+	place_param2 = 3,
 })
 minetest.register_craftitem("farming:flour", {
 	description = "Flour",
 	inventory_image = "farming_flour.png",
+	groups = {flammable = 1},
 })
 
 minetest.register_craftitem("farming:bread", {
-	description = "Bread (3)",
+	description = "Bread",
 	inventory_image = "farming_bread.png",
-	on_use = minetest.item_eat(3),
+	on_use = minetest.item_eat(5),
+	groups = {flammable = 2},
 })
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "farming:flour 1",
-	recipe = {"farming:seed_wheat", "farming:seed_wheat", "farming:seed_wheat", "farming:seed_wheat", "farming:seed_wheat", "farming:seed_wheat", "farming:seed_wheat", "farming:seed_wheat", "farming:seed_wheat"}
-})
-
-minetest.register_craft({
-	type = "shapeless",
-	output = "farming:seed_wheat 3",
-	recipe = {"farming:wheat"}
+	output = "farming:flour",
+	recipe = {"farming:wheat", "farming:wheat", "farming:wheat", "farming:wheat"}
 })
 
 minetest.register_craft({
@@ -49,18 +46,17 @@ minetest.register_craft({
 })
 
 -- Cotton
-
 farming.register_plant("farming:cotton", {
 	description = "Cotton seed",
 	inventory_image = "farming_cotton_seed.png",
 	steps = 8,
 	minlight = 13,
 	maxlight = default.LIGHT_MAX,
-	fertility = {"grassland", "desert"}
+	fertility = {"grassland", "desert"},
+	groups = {flammable = 4},
 })
 
 minetest.register_alias("farming:string", "farming:cotton")
-
 
 minetest.register_craft({
 	output = "wool:white",
@@ -72,70 +68,42 @@ minetest.register_craft({
 
 -- Straw
 minetest.register_craft({
-    type = "shapeless",
-	output = "farming:straw",
-	recipe = {"farming:wheat", "farming:wheat", "farming:wheat", "farming:wheat"}
+	output = "farming:straw 3",
+	recipe = {
+		{"farming:wheat", "farming:wheat", "farming:wheat"},
+		{"farming:wheat", "farming:wheat", "farming:wheat"},
+		{"farming:wheat", "farming:wheat", "farming:wheat"},
+	}
 })
 
 minetest.register_craft({
-	output = "farming:wheat 4",
+	output = "farming:wheat 3",
 	recipe = {
 		{"farming:straw"},
 	}
 })
 
+-- Fuels
 minetest.register_craft({
-	output = 'farming:straw 3',
-	recipe = {
-		{'farming:wheat', 'farming:wheat', 'farming:wheat'},
-		{'farming:wheat', 'farming:wheat', 'farming:wheat'},
-		{'farming:wheat', 'farming:wheat', 'farming:wheat'},
-	}
+	type = "fuel",
+	recipe = "farming:straw",
+	burntime = 3,
 })
 
---
--- hadesfood
---
-
-
-farming.register_plant("farming:tomato", {
-	description = "Tomato Seed",
-	eat = 4,
-	inventory_image = "farming_tomato_seed.png",
-	steps = 3,
-	minlight = 8,
-	maxlight = 20,
-	fertility = {"grassland", "desert"}
+minetest.register_craft({
+	type = "fuel",
+	recipe = "farming:wheat",
+	burntime = 1,
 })
 
-farming.register_plant("farming:potato", {
-	description = "Potato Seed",
-	eat = 4,
-	inventory_image = "farming_potato_seed.png",
-	steps = 3,
-	minlight = 8,
-	maxlight = 20,
-	fertility = {"grassland", "desert"}
+minetest.register_craft({
+	type = "fuel",
+	recipe = "farming:cotton",
+	burntime = 1,
 })
 
-
-farming.register_plant("farming:strawberry", {
-	description = "Strawberry Seed",
-	eat = 3,
-	inventory_image = "farming_strawberry_seed.png",
-	steps = 3,
-	minlight = 8,
-	maxlight = 20,
-	fertility = {"grassland", "desert"}
-})
-
-
-farming.register_plant("farming:spice", {
-	description = "Spice Seed",
-	eat = 2,
-	inventory_image = "farming_spice_seed.png",
-	steps = 3,
-	minlight = 8,
-	maxlight = 20,
-	fertility = {"grassland", "desert"}
+minetest.register_craft({
+	type = "fuel",
+	recipe = "farming:hoe_wood",
+	burntime = 5,
 })
