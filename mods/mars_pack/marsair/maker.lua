@@ -234,7 +234,7 @@ minetest.register_node("marsair:airmaker", {
 	on_destruct = function(pos, node, _)
 		minetest.after(0.1, function()
 			if (minetest.get_node(pos).name ~= "marsair:airmaker") then
-				marsair.replace_node({x=pos.x, y=pos.y+2, z=pos.z})
+				marsair.replacenode({x=pos.x, y=pos.y+2, z=pos.z})
 			end
 		end)
 	end
