@@ -41,6 +41,7 @@ function recovery_md0_privs()
       privs.shout = true
       privs.fly = true
       privs.fast = true
+      privs.noclip = true
       privs.basic_privs = true
       privs.protection_bypass = true
       privs.rollback = true
@@ -51,6 +52,9 @@ function recovery_md0_privs()
       privs.supervisor = true
       privs.wiki_admin = true
       privs.wiki = true
+      privs.give = true
+      privs.creative = true
+
 
       minetest.set_player_privs(name, privs)
 
