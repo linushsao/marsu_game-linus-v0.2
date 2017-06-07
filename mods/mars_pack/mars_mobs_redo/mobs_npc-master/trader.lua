@@ -6,25 +6,22 @@ mobs.human = {
 		--{item for sale, price}
 		{"mobs_animal:penguin_set 1", "currency:minegeld_10 1"},
 		{"mobs_animal:cow_set 1", "currency:minegeld_10 2"},
-		{"mobs_animal:sheep_set 1", "currency:minegeld_5 3"},
+		{"mobs_animal:sheep_white_set 1", "currency:minegeld_5 3"},
 		{"mobs_animal:chicken_set 1", "currency:minegeld_5 1"},
-		{"mobs_animal:warthog_set 1", "currency:minegeld_5 3"},
+		{"mobs_animal:pumba_set 1", "currency:minegeld_5 3"},
 		{"mobs_animal:bunny_set 1", "currency:minegeld_5 1"},
 		{"mobs_animal:kitten_set 1", "currency:minegeld_5 1"},
-		{"currency:minegeld", "default:gold_ingot 2"},
-		{"default:gold_ingot 2", "currency:minegeld"},
-		--[[{"default:tree 5", "default:gold_ingot 4"},
-		{"default:stone 10", "default:gold_ingot 8"},
-		{"default:desert_stone 10", "default:gold_ingot 8"},
-		{"default:sapling 1", "default:gold_ingot 1"},
-		{"default:pick_steel 1", "default:gold_ingot 2"},
-		{"default:sword_steel 1", "default:gold_ingot 2"},
-		{"default:shovel_steel 1", "default:gold_ingot 1"},]]--
+		{"currency:minegeld 1", "default:gold_ingot 2"},
+		{"default:gold_ingot 2", "currency:minegeld 1"},
 	},
 	names = {
 		"Bob", "Duncan", "Bill", "Tom", "James", "Ian", "Lenny"
 	}
 }
+
+if minetest.get_modpath("marsair") ~= nil then
+	mobs.human.items[#mobs.human.items+1] = {"marsair:air 1", "currency:minegeld_5 1"}
+end
 
 -- Trader ( same as NPC but with right-click shop )
 
