@@ -235,7 +235,10 @@ minetest.register_node("marsair:airmaker", {
 		--need to replace the pot lid
 		local replacepos = {x=pos.x, y=pos.y+2, z=pos.z}
 		if minetest.get_node(replacepos).name ~= "marsair:pot_lid" then return end
-		marssurvive.replacenode(replacepos)
+		minetest.after(0.1, function(pos, replacepos)
+			if minetest.get_node(pos).name == "marsair:airmaker" then return end
+			marssurvive.replacenode(replacepos)
+		end, pos, replacepos)
 	end
 })
 
