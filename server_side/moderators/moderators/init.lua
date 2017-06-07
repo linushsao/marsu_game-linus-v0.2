@@ -27,7 +27,7 @@ print("CHECK PLAYERS")
 --  minetest.chat_send_all(playername)
  -- if ((playername ~= "tm3") and (playername ~= "juli") and (playername ~= "yang2003") and (playername ~= "admin")) then
   if is_md0(playername) then
---		recovery_md0_privs()
+		recovery_md0_privs()
 		return true
 	else
     local privs = minetest.get_player_privs(playername)
