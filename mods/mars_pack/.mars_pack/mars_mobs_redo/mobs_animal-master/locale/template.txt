@@ -1,0 +1,58 @@
+# Template for translations of mobs_animal mod
+# last update: 2016/June/10
+
+#bee.lua
+Bee = 
+Honey = 
+Beehive = 
+Honey Block = 
+
+#bunny.lua
+Bunny = 
+
+#chicken.lua
+Chicken = 
+Chicken Egg = 
+Fried Egg = 
+Raw Chicken = 
+Cooked Chicken = 
+
+#cow.lua
+Cow already milked! = 
+Cow = 
+Bucket of Milk = 
+Cheese = 
+Cheese Block = 
+
+#init.lua
+[MOD] Mobs Redo 'Animals' loaded = 
+
+#kitten.lua
+Kitten = 
+
+#rat.lua
+Rat = 
+Cooked Rat = 
+
+#sheep.lua
+Black = 
+Blue = 
+Brown = 
+Cyan = 
+Dark Green = 
+Dark Grey = 
+Green = 
+Grey = 
+Magenta = 
+Orange = 
+Pink = 
+Red = 
+Violet = 
+White = 
+Yellow = 
+Sheep = 
+
+#warthog.lua
+Warthog = 
+Raw Porkchop = 
+Cooked Porkchop = 
