@@ -186,3 +186,37 @@ minetest.register_node("marsair:airgen", {
 		end,
 	}},
 })
+
+minetest.register_node("marsair:airgen_admin", {
+	description = "Air Generator (Admin)",
+	tiles = {"marssurvive_shieldblock.png^default_obsidian_glass.png", 
+			{
+				image = airgen_side_texture,
+				backface_culling = false,
+				animation = {
+					type = "vertical_frames",
+					aspect_w = 16,
+					aspect_h = 16,
+					length = 0.1
+				},
+			}
+		},
+	groups = {dig_immediate=3, tubedevice = 1, tubedevice_receiver = 1},
+	sounds = default.node_sound_stone_defaults(),
+	on_rightclick = marsair.spread_air,
+	mesecons = {effector = {
+		rules = {
+			{x=0,  y=0,  z=-1},
+			{x=1,  y=0,  z=0},
+			{x=-1, y=0,  z=0},
+			{x=0,  y=0,  z=1},
+		},
+		action_on = function (pos, node)
+			marsair.spread_air(pos)
+		end,
+	}},
+})
+
+minetest.register_alias("marssurvive:airgen_unlimited", "marsair:airgen_admin")
+minetest.register_alias("marssurvive:airgen_public", "marsair:airgen_admin")
+	
