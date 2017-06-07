@@ -818,7 +818,7 @@ minetest.register_craft({
 })
 
 --BACKWARDS COMPATIBLITY
-minetest.register_alias("marssurvive:secam", "marssurvive_alien:secam")
+minetest.register_alias("marssurvive:secam", "marssurvive_aliens:secam")
 minetest.register_alias("marssurvive:aliencatcher", "marssurvive_aliens:aliencatcher")
 minetest.register_alias("marssurvive:secam_off", "marssurvive_aliens:secam_off")
 minetest.register_alias("marssurvive:aliengun", "marssurvive_aliens:aliengun")
