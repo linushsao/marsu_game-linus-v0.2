@@ -1,3 +1,59 @@
+minetest.register_node("marssurvive:door1_closed", {
+	description = "Gate (does not support air)",
+	drawtype = "mesh",
+	mesh = "marssurvive_door1_closed.obj",
+	wield_scale = {x=0.5, y=0.5, z=0.5},
+selection_box = {
+		type = "fixed",
+		fixed = {-2.2, -0.5, -0.5, 3.2, 2.5, 0.5}
+
+	},
+collision_box = {
+		type = "fixed",
+		fixed = {{-0.5, -0.5, -0.5, 1.5, 2.5, 0.5},}},
+	tiles = {"marssurvive_shieldblock.png","marssurvive_warntape.png","default_obsidian.png","default_obsidian.png","marssurvive_warntape.png","default_obsidian.png"},
+	groups = {cracky = 1, level = 2, not_in_creative_inventory=0},
+	sounds = default.node_sound_wood_defaults(),
+	paramtype = "light",
+	paramtype2 = "facedir",
+	sunlight_propagates = true,
+	is_ground_content = false,
+	damage_per_second = 20,
+on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+		minetest.swap_node(pos, {name="marssurvive:door1", param2=minetest.get_node(pos).param2})
+	minetest.sound_play("marssurvive_door1", {pos=pos, gain = 1, max_hear_distance = 5})
+	end,
+})
+
+
+minetest.register_node("marssurvive:door1", {
+	description = "Gate (open)",
+	drawtype = "mesh",
+	mesh = "marssurvive_door1.obj",
+	drop = "marssurvive:door1_closed",
+	wield_scale = {x=0.5, y=0.5, z=0.5},
+selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 1.5, 2.5, 0.5}
+	},
+collision_box = {
+		type = "fixed",fixed = {
+			{-3.4, -0.5, -0.5, -0.5, 2.5, 0.5},
+			{4.4, -0.5, -0.5, 1.5, 2.5, 0.5}}},
+	tiles = {"marssurvive_shieldblock.png","marssurvive_warntape.png","default_obsidian.png","default_obsidian.png","marssurvive_warntape.png","default_obsidian.png"},
+	groups = {cracky = 1, level = 2, not_in_creative_inventory=1},
+	sounds = default.node_sound_wood_defaults(),
+	paramtype = "light",
+	paramtype2 = "facedir",
+	sunlight_propagates = true,
+	is_ground_content = false,
+on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+	minetest.swap_node(pos, {name="marssurvive:door1_closed", param2=minetest.get_node(pos).param2})
+	minetest.sound_play("marssurvive_door1", {pos=pos, gain = 1, max_hear_distance = 5})
+	end,
+})
+
+
 minetest.register_node("marssurvive:trapdoor_1", {
 	description = "Trap door",
 	drawtype = "nodebox",
