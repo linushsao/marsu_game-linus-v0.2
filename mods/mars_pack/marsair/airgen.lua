@@ -203,7 +203,10 @@ minetest.register_node("marsair:airgen_admin", {
 		},
 	groups = {dig_immediate=3, tubedevice = 1, tubedevice_receiver = 1},
 	sounds = default.node_sound_stone_defaults(),
-	on_rightclick = marsair.spread_air,
+	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+		marsair.spread_air(pos)
+		return itemstack
+	end,
 	mesecons = {effector = {
 		rules = {
 			{x=0,  y=0,  z=-1},
@@ -213,10 +216,10 @@ minetest.register_node("marsair:airgen_admin", {
 		},
 		action_on = function (pos, node)
 			marsair.spread_air(pos)
+			return 
 		end,
 	}},
 })
 
 minetest.register_alias("marssurvive:airgen_unlimited", "marsair:airgen_admin")
 minetest.register_alias("marssurvive:airgen_public", "marsair:airgen_admin")
-	
