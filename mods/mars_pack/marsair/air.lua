@@ -97,7 +97,7 @@ end
 		
 function air_leak(pos)
 	--print('\n\nAIRLEAK')
-	
+	if minetest.find_node_near(pos, 20, "marsair:airgen_admin") then return end
 	local gene_pos = minetest.find_node_near(pos, 20, "marsair:airgen")
 	if gene_pos == nil then 
 		--print('NO AIRGEN')
