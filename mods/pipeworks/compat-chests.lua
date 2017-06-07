@@ -35,14 +35,14 @@ local function update_chest_formspec(pos)
 end
 
 minetest.override_item("default:chest", {
-	tiles = {
+	--[[tiles = {
 		"default_chest_top.png"..tube_entry,
 		"default_chest_top.png"..tube_entry,
 		"default_chest_side.png"..tube_entry,
 		"default_chest_side.png"..tube_entry,
 		"default_chest_side.png"..tube_entry,
 		"default_chest_front.png"
-	},
+	},]]--
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, tubedevice = 1, tubedevice_receiver = 1},
 	tube = {
 		insert_object = function(pos, node, stack, direction)
@@ -102,14 +102,14 @@ local function setup_locked_formspec(pos, meta)
 end
 
 minetest.override_item("default:chest_locked", {
-	tiles = {
+	--[[tiles = {
 		"default_chest_top.png"..tube_entry,
 		"default_chest_top.png"..tube_entry,
 		"default_chest_side.png"..tube_entry,
 		"default_chest_side.png"..tube_entry,
 		"default_chest_side.png"..tube_entry,
 		"default_chest_lock.png"
-	},
+	},]]--
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, tubedevice = 1, tubedevice_receiver = 1},
 	tube = {
 		insert_object = function(pos, node, stack, direction)
