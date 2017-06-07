@@ -1,4 +1,5 @@
 default
 mobs
+animals
 intllib?
 lucky_block?

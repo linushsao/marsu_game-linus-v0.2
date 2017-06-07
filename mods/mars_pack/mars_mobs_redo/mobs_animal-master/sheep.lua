@@ -189,15 +189,4 @@ if minetest.get_modpath("ethereal") then
 	spawn_on = "ethereal:green_dirt"
 end
 
-mobs:spawn({
-	name = "mobs_animal:sheep_white",
-	nodes = {spawn_on},
-	min_light = 10,
-	chance = 15000,
-	min_height = 0,
-	max_height = 31000,
-	day_toggle = true,
-})
-
-
 mobs:alias_mob("mobs:sheep", "mobs_animal:sheep_white") -- compatibility

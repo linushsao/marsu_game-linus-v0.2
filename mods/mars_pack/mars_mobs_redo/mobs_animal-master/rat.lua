@@ -66,16 +66,6 @@ local function rat_spawn(self, pos)
 	self.health = 100
 end
 
-mobs:spawn({
-	name = "mobs_animal:rat",
-	nodes = {"default:stone"},
-	min_light = 3,
-	active_object_count = 2,
-	max_height = 0,
---	on_spawn = rat_spawn,
-})
-
-
 mobs:register_egg("mobs_animal:rat", S("Rat"), "mobs_rat_inventory.png", 0)
 
 

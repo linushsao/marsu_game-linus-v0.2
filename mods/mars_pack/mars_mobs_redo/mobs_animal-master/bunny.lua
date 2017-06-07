@@ -86,16 +86,6 @@ if minetest.get_modpath("ethereal") then
 	spawn_on = "ethereal:prairie_dirt"
 end
 
-mobs:spawn({
-	name = "mobs_animal:bunny",
-	nodes = {spawn_on},
-	min_light = 10,
-	chance = 15000,
-	min_height = 0,
-	day_toggle = true,
-})
-
-
 mobs:register_egg("mobs_animal:bunny", S("Bunny"), "mobs_bunny_inv.png", 0)
 
 

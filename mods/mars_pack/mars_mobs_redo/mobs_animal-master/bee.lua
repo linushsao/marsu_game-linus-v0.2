@@ -41,15 +41,6 @@ mobs:register_mob("mobs_animal:bee", {
 	end,
 })
 
-mobs:spawn({
-	name = "mobs_animal:bee",
-	nodes = {"group:flower"},
-	min_light = 10,
-	chance = 9000,
-	min_height = 0,
-	day_toggle = true,
-})
-
 mobs:register_egg("mobs_animal:bee", S("Bee"), "mobs_bee_inv.png", 0)
 
 -- compatibility
