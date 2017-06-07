@@ -233,8 +233,10 @@ function mobs.add_goods(entity)
 	local goods_to_add = nil
 
 	for i = 1, 15 do
-		mobs.trader_inventory.set_stack(mobs.trader_inventory,
+		if race.items[i] ~= nil then
+			mobs.trader_inventory.set_stack(mobs.trader_inventory,
 				"goods", i, race.items[i][1])
+		end
 	end
 end
 
