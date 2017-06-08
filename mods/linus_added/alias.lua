@@ -12,11 +12,11 @@ minetest.register_alias("farming:spice_4", "farming:cucumber_4")
 minetest.register_alias("farming:spice", "farming:cucumber")
 
 minetest.register_alias("farming:strawberry_3", "farming:blueberry_3")
-minetest.register_alias("farming:strawberry", "farming:blueberry")
+minetest.register_alias("farming:strawberry", "farming:blueberries")
 
 --seed alias
 minetest.register_alias("farming:seed_spice", "farming:cucumber")
-minetest.register_alias("farming:seed_strawberry", "farming:blueberry")
+minetest.register_alias("farming:seed_strawberry", "farming:blueberries")
 minetest.register_alias("farming:seed_tomato", "farming:tomato")
 minetest.register_alias("farming:seed_potato", "farming:potato")
 
