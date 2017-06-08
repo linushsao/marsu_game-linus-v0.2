@@ -46,9 +46,9 @@ spacesuit.register_spacesuit = function(name, inventory_image, protection, textu
         })
 end
 
-spacesuit.register_spacesuit("", "marssurvive_sp.png", 0, {"spacesuit_sp_white.png"})
-spacesuit.register_spacesuit("red", "marssurvive_sp.png", 33, {"spacesuit_sp_red.png"})
-spacesuit.register_spacesuit("blue", "marssurvive_sp.png", 66, {"spacesuit_sp_blue.png"})
+spacesuit.register_spacesuit("", "spacesuit_sp_white_inv.png", 0, {"spacesuit_sp_white.png"})
+spacesuit.register_spacesuit("red", "spacesuit_sp_red_inv.png", 33, {"spacesuit_sp_red.png"})
+spacesuit.register_spacesuit("blue", "spacesuit_sp_blue_inv.png", 66, {"spacesuit_sp_blue.png"})
 
 --CRAFT
 
