@@ -1,7 +1,7 @@
-#mtllib marssurvive_door1.mtl
+mtllib marssurvive_door1.mtl
 
-#g marssurvive_door1_Main-Beige1
-#usemtl Beige1
+g marssurvive_door1_Main-Beige1
+usemtl Beige1
 v -1.819201 0.373884 -0.382701
 v -1.496431 0.798336 0.444315
 v -1.810740 0.373884 0.447518
