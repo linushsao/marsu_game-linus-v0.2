@@ -7,5 +7,12 @@ minetest.register_on_newplayer(function(player)
 	if minetest.check_player_privs(player:get_player_name(), {server=true}) then
 		inv:add_item("main","marssurvive:tospaceteleporter")
 	end
+	
+	--enforce spacesuit stack one:
+	local stack_one = inv:get_stack("listname", 1)
+	if stack_one.name ~= "spacesuit:sp" then
+		inv:set_stack("listname", {name="spacesuit:sp", count=1, wear=0, metadata=""})
+		inv:add_item(stack_one)
+	end
 end)
 print("[MOD] mars-pack_initial_items loaded!")
