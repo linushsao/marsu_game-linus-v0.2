@@ -158,3 +158,24 @@ minetest.register_craft({
 		{'3d_armor:helmet_diamond'},
 	}
 })
+
+--borrow from game HADES
+
+minetest.register_node(":default:lamp_wall", {
+    description = "Wall Lamp",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	tiles = {"default_lamp.png"},
+	sunlight_propagates = true,
+	light_source = 13,
+	walkable = false,
+	groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.1875, -0.1875, 0.375, 0.1875, 0.1875, 0.5},
+		}
+	},
+--	sounds = default.node_sound_glass_defaults(),
+})
