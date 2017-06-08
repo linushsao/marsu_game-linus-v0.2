@@ -44,8 +44,8 @@ if bags or unified_inventory then
 		output = bagmod..":bag_medium",
 		recipe = {
 			{"", "group:stick", ""},
-			{"bags:small", "marssurvive:alien_death_fiber", "bags:small"},
-			{"bags:small", "marssurvive:alien_death_fiber", "bags:small"},
+			{bagmod..":small", "marssurvive:alien_death_fiber", bagmod..":small"},
+			{bagmod..":small", "marssurvive:alien_death_fiber", bagmod..":small"},
 		},
 	})
 
@@ -53,8 +53,8 @@ if bags or unified_inventory then
 		output = bagmod..":bag_large",
 		recipe = {
 			{"", "group:stick", ""},
-			{"bags:medium", "marssurvive:alien_big_fiber", "bags:medium"},
-			{"bags:medium", "marssurvive:alien_big_fiber", "bags:medium"},
+			{bagmod..":medium", "marssurvive:alien_big_fiber", bagmod..":medium"},
+			{bagmod..":medium", "marssurvive:alien_big_fiber", bagmod..":medium"},
 	    },
 	})
 end
