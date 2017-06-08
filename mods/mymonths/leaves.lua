@@ -139,6 +139,7 @@ end
 --All papyrus should be die after sandstorm's season
 minetest.register_abm({
 	nodenames = {'default:papyrus'},
+	neighbors = {"air"},
 	interval = INTERVAL_TIME,
 	chance = CHANGE_NUMBER,
 	action = function (pos, node, active_object_count, active_object_count_wider)
@@ -151,6 +152,7 @@ minetest.register_abm({
 --All leaves should be pale green by August
 minetest.register_abm({
 	nodenames = {'default:leaves','group:moretrees_leaves'},
+	neighbors = {"air", "group:leaves_change"},
 	interval = INTERVAL_TIME,
 	chance = CHANGE_NUMBER,
 
@@ -179,6 +181,7 @@ minetest.register_abm({
 	nodenames = {'group:leaves_change','mymonths:leaves_pale_green'},
 	interval = INTERVAL_TIME,
 	chance = CHANGE_NUMBER,
+	neighbors = {"air", "group:leaves_change"},
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -201,11 +204,12 @@ minetest.register_abm({
 
 --All leaves should be red by mid October
 minetest.register_abm({
-nodenames = {'group:leaves_change','mymonths:leaves_orange'},
+	nodenames = {'group:leaves_change','mymonths:leaves_orange'},
 --	nodenames = {'default:leaves','group:moretrees_leaves','mymonths:leaves_pale_green','mymonths:leaves_orange'},
 
-interval = INTERVAL_TIME,
-chance = CHANGE_NUMBER,
+	interval = INTERVAL_TIME,
+	chance = CHANGE_NUMBER,
+	neighbors = {"air", "group:leaves_change"},
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -232,6 +236,7 @@ minetest.register_abm({
 	nodenames = {'group:leaves_change','mymonths:leaves_red', 'mymonths:leaves_red_aspen'},
 	interval = INTERVAL_TIME,
 	chance = CHANGE_NUMBER,
+	neighbors = {"air", "group:leaves_change"},
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -296,6 +301,7 @@ minetest.register_abm({
 	nodenames = {'group:sticks_change','mymonths:sticks_default', 'mymonths:leaves_blooms', 'mymonths:sticks_aspen', 'mymonths:leaves_aspen_blooms'},
 	interval = INTERVAL_TIME,
 	chance = CHANGE_NUMBER,
+	neighbors = {"air", "group:leaves_change"},
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -371,6 +377,7 @@ minetest.register_abm({
 	nodenames = {'group:leaves_change','mymonths:sticks_default','mymonths:leaves_sticks', 'mymonths:leaves_blooms', 'mymonths:sticks_aspen', 'mymonths:leaves_aspen_blooms'},
 	interval = INTERVAL_TIME,
 	chance = CHANGE_NUMBER,
+	neighbors = {"air", "group:leaves_change"},
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -402,6 +409,7 @@ minetest.register_abm({
 	nodenames = {'default:apple'},
 	interval = INTERVAL_TIME,
 	chance = CHANGE_NUMBER,
+	neighbors = {"air"},
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -460,6 +468,7 @@ minetest.register_abm({
 	nodenames = {'default:leaves'},
 	interval = INTERVAL_TIME,
 	chance = CHANGE_NUMBER,
+	neighbors = {"air"},
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
@@ -481,6 +490,7 @@ minetest.register_abm({
 	nodenames = {'default:apple'},
 	interval = INTERVAL_TIME,
 	chance = CHANGE_NUMBER,
+	neighbors = {"air"},
 
 	action = function (pos, node, active_object_count, active_object_count_wider)
 

@@ -39,6 +39,7 @@ marsair.needed_air = {name="marssurvive:air", count=marsairconfig.need_air_gener
 --air generation
 function marsair.generate(pos)
 	local new_item =  marsair.needed_air
+	new_item.count = 1
 	if not marsair.is_airflower({x=pos.x, y=pos.y+1, z=pos.z}) then return end
 	if (minetest.get_node({x=pos.x, y=pos.y+2, z=pos.z}).name ~= "marsair:pot_lid") then
 		return end
@@ -73,6 +74,7 @@ end
 --tree-air generation
 function marsair.clean(pos)
 	local new_item = marsair.needed_air
+	new_item.count = 1
 	local status = false
 	local positions = minetest.find_nodes_in_area({y=pos.y-2, x=pos.x-2, z=pos.z-2},
 									     {y=pos.y+2, x=pos.x+2, z=pos.z+2},
@@ -218,6 +220,7 @@ minetest.register_node("marsair:airmaker", {
 		meta:set_string("formspec", formspec)
 		local inv = meta:get_inventory()
 		inv:set_size("main", 4)
+		
 	end,
 	on_punch = function(pos, node, clicker, item, _)
 		local node = minetest.get_node({x=pos.x, y=pos.y+2, z=pos.z})

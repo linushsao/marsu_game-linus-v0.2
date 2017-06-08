@@ -5,6 +5,7 @@ minetest.register_abm({
   nodenames = {'group:flower','group:farming'},
 	interval = 10,
 	chance = 10,
+	neighbors = {"air", "group:leaves_change"},
 
 	action = function (pos)
 
@@ -22,6 +23,7 @@ minetest.register_abm({
 	nodenames = {'group:soil'},
 	interval = 240,
 	chance = 100,
+	neighbors = {"air", "group:leaves_change"},
 
 	action = function (pos)
 

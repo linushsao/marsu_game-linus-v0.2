@@ -16,7 +16,7 @@ marsairconfig.flower_air_chance = 4
 
 --same with tree
 marsairconfig.tree_air_time = 40*60
-marsairconfig.tree_air_chance = 10
+marsairconfig.tree_air_chance = 1
 
 --the time until the tree-air becomes normal air and disappear
 marsairconfig.tree_air_disappear_time = 10
