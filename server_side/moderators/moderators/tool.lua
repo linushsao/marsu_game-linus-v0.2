@@ -1,5 +1,5 @@
-minetest.register_tool("maptools:pick_admin", {
-	description = "Admin Pickaxe",
+minetest.register_tool("moderators:pick_mod", {
+	description = "Moderator Pickaxe",
 	range = 12,
 	inventory_image = "default_tool_mesepick.png^[colorize:#AA00FF]",
 	groups = {not_in_creative_inventory = 0},
@@ -19,8 +19,8 @@ minetest.register_tool("maptools:pick_admin", {
 	},
 })
 
-minetest.register_tool("maptools:pick_admin_with_drops", {
-	description = "Admin Pickaxe with Drops",
+minetest.register_tool("moderators:pick_mod_with_drops", {
+	description = "Moderator Pickaxe with Drops",
 	range = 12,
 	inventory_image = "default_tool_mesepick.png^[colorize:#AA66FF]"",
 	groups = {not_in_creative_inventory = 0},
