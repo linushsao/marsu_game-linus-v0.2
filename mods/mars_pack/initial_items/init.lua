@@ -9,9 +9,9 @@ minetest.register_on_newplayer(function(player)
 	end
 	
 	--enforce spacesuit stack one:
-	local stack_one = inv:get_stack("listname", 1)
+	local stack_one = inv:get_stack("main", 1)
 	if stack_one.name ~= "spacesuit:sp" then
-		inv:set_stack("listname", {name="spacesuit:sp", count=1, wear=0, metadata=""})
+		inv:set_stack("main", 1, {name="spacesuit:sp", count=1, wear=0, metadata=""})
 		inv:add_item(stack_one)
 	end
 end)
