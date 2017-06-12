@@ -23,7 +23,7 @@ if minetest.get_modpath("marsair") ~= nil then
 	mobs.human.items[#mobs.human.items+1] = {"marsair:air 1", "currency:minegeld_5 1"}
 end
 if minetest.get_modpath("mesecons_stickyblocks") ~= nil then
-	mobs.human.items[#mobs.human.items+1] = {"mesecons_stickyblocks:sticky_block_all", "currency:minegeld_10 1"}
+	mobs.human.items[#mobs.human.items+1] = {"mesecons_stickyblocks:sticky_block_all 1", "currency:minegeld_10 1"}
 end
 
 -- Trader ( same as NPC but with right-click shop )
