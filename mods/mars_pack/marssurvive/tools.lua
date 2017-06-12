@@ -26,10 +26,10 @@ minetest.register_tool("marssurvive:diglazer", {
 			if minetest.is_protected(p,name) or minetest.get_meta(p):get_string("infotext")~="" then
 				return itemstack
 			elseif minetest.registered_nodes[minetest.get_node(p).name].walkable then
-				marssurvive.replacenode(p)
 				local it=minetest.add_item(p, minetest.get_node(p).name)
 				it:setvelocity({x=math.random(-1,1),y=2,z=math.random(-1,1)})
 				it:get_luaentity().age=marssurvive.itemdroptime
+				marssurvive.replacenode(p)
 			end
 		end
 		return itemstack
