@@ -35,7 +35,7 @@ function news.show_formspec(player)
 end
 
 
-minetest.register_chatcommand("news",{
+minetest.register_chatcommand("changelog",{
 	params = "<article>",
 	description="Shows the server news",
 	func = function (name,params)
@@ -44,6 +44,6 @@ minetest.register_chatcommand("news",{
 	end,
 })
 
-minetest.register_on_joinplayer(function (player)
+minetest.register_on_newplayer(function (player)
 	minetest.after(5,news.show_formspec,player)
 end)
