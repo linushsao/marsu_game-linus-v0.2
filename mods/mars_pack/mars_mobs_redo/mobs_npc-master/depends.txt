@@ -4,3 +4,4 @@ mobs_animal
 marsair?
 intllib?
 lucky_block?
+mesecons_stickyblocks
