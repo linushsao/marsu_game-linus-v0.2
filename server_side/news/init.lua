@@ -1,7 +1,7 @@
 
 local news = {}
 
-news.path = minetest.get_worldpath()
+news.path = minetest.get_modpath()
 
 function news.formspec(player,article)
 
