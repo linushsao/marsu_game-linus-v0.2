@@ -11,8 +11,8 @@ mobs.human = {
 		{"mobs_animal:pumba_set 1", "currency:minegeld_5 3"},
 		{"mobs_animal:bunny_set 1", "currency:minegeld_5 1"},
 		{"mobs_animal:kitten_set 1", "currency:minegeld_5 1"},
-		{"currency:minegeld 1", "default:gold_ingot 2"},
-		{"default:gold_ingot 2", "currency:minegeld 1"},
+		{"currency:minegeld 10", "default:gold_ingot 1"},
+		{"default:gold_ingot 1", "currency:minegeld 10"}
 	},
 	names = {
 		"Bob", "Duncan", "Bill", "Tom", "James", "Ian", "Lenny"
@@ -21,6 +21,9 @@ mobs.human = {
 
 if minetest.get_modpath("marsair") ~= nil then
 	mobs.human.items[#mobs.human.items+1] = {"marsair:air 1", "currency:minegeld_5 1"}
+end
+if minetest.get_modpath("mesecons_stickyblocks") ~= nil then
+	mobs.human.items[#mobs.human.items+1] = {"mesecons_stickyblocks:sticky_block_all", "currency:minegeld_10 1"}
 end
 
 -- Trader ( same as NPC but with right-click shop )
