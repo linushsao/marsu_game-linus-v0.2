@@ -180,7 +180,7 @@ minetest.register_craft({
 	        { "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" }
 	},
 })
-
+--[[ commented due to multiple colliding recipe of teleport tube
 -- Teleport tube
 minetest.register_craft({
 	output = "pipeworks:teleport_tube_1 0",
@@ -190,4 +190,4 @@ minetest.register_craft({
 	        { "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" }
 	},
 })
-
+]]
