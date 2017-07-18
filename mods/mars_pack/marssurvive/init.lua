@@ -1,6 +1,5 @@
 marssurvive={player_space={},
-itemdroptime=tonumber(minetest.setting_get("item_entity_ttl")),
-aliens={},aliens_max=4}--TODO move to aliens mod
+itemdroptime=tonumber(minetest.setting_get("item_entity_ttl"))}--TODO move to aliens mod
 
 
 if marssurvive.itemdroptime=="" or marssurvive.itemdroptime==nil then
