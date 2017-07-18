@@ -1,28 +1,30 @@
 minetest.register_abm({
 	nodenames = {"air"},
-	neighbors = {"marssurvive:stone_medium","marssurvive:stone_small","marssurvive:stone","default:dirt_with_grass"},
+	neighbors = {"marssurvive:stone_medium","marssurvive:stone_small", 
+		     "marssurvive:stone", "marssurvive:sand",
+		     "default:dirt_with_grass"},
 	interval = 120,
-	chance = 50,
+	chance = 800,
 	action = function(pos)
 		local name=minetest.get_node(pos).name
 		pos={x=pos.x,y=pos.y+1,z=pos.z}
-		if math.random(45)==1 and minetest.get_node(pos).name=="air" then
+		if minetest.get_node(pos).name=="air" then
 			local rnd=math.random(10)
     			local np=minetest.find_node_near(pos, 1,{"marssurvive:stone"})
 			if np~=nil and pos.y>0 then
 				rnd=-1
 			end
-			if rnd==1 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive_aliens:alien_common") end
-			if rnd==2 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive_aliens:alien_death") end
-			if rnd==3 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive_aliens:alien_big") end
-			if rnd==4 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive_aliens:alien_teleport") end
-			if rnd==5 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive_aliens:alien_small") end
-			if rnd==6 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive_aliens:alien_glitch") end
-			if rnd==7 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive_aliens:alien_sand") end
-			if rnd==8 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive_aliens:alien_glow") end
-			if rnd==9 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive_aliens:alien_stone") end
-			if rnd==10 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive_aliens:alien_warn") end
-			if rnd==11 and marssurvive_aliens_max(1)==true then minetest.env:add_entity(pos, "marssurvive_aliens:alien_crystal") end
+			if rnd==1 then minetest.env:add_entity(pos, "marssurvive_aliens:alien_common") end
+			if rnd==2 then minetest.env:add_entity(pos, "marssurvive_aliens:alien_death") end
+			if rnd==3 then minetest.env:add_entity(pos, "marssurvive_aliens:alien_big") end
+			if rnd==4 then minetest.env:add_entity(pos, "marssurvive_aliens:alien_teleport") end
+			if rnd==5 then minetest.env:add_entity(pos, "marssurvive_aliens:alien_small") end
+			if rnd==6 then minetest.env:add_entity(pos, "marssurvive_aliens:alien_glitch") end
+			if rnd==7 then minetest.env:add_entity(pos, "marssurvive_aliens:alien_sand") end
+			if rnd==8 then minetest.env:add_entity(pos, "marssurvive_aliens:alien_glow") end
+			if rnd==9 then minetest.env:add_entity(pos, "marssurvive_aliens:alien_stone") end
+			if rnd==10 then minetest.env:add_entity(pos, "marssurvive_aliens:alien_warn") end
+			if rnd==11 then minetest.env:add_entity(pos, "marssurvive_aliens:alien_crystal") end
 			return
 		end
 	end,
@@ -30,23 +32,6 @@ minetest.register_abm({
 
 
 --ALIEN REGISTRATION
-function marssurvive_aliens_max(check,add)
-		local c=0
-		for i in pairs(marssurvive.aliens) do
-			c=c+1
-			if marssurvive.aliens[i]:getpos()==nil then
-				table.remove(marssurvive.aliens,c)
-				c=c-1
-			end
-		end
-		if c>=marssurvive.aliens_max then return false end
-		if check==0 then
-			table.insert(marssurvive.aliens,add)
-		end
-		return true
-end
-
-
 local function marssurvive_distance(self,o)
 if o==nil or o.x==nil then return nil end
 local p=self.object:getpos()
@@ -414,10 +399,10 @@ on_activate=function(self, staticdata)
 			self.owner_command = data.owner_command
 		end
 		--don't remove friendly aliens
-		if marssurvive_aliens_max(0,self.object)==false and self.team ~= "human" then
-			self.object:remove()
-			return self
-		end
+		--if marssurvive_aliens_max(0,self.object)==false and self.team ~= "human" then
+		--	self.object:remove()
+		--	return self
+		--end
 		self.object:setvelocity({x=0,y=-8,z=0})
 		self.object:setacceleration({x=0,y=-8,z=0})
 		setanim(self,"stand")
