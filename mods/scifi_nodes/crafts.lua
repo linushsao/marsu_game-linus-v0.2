@@ -1,6 +1,6 @@
 -- CRAFTING RECIPES FOR SCIFI NODES
 
--- 6 basic plastic from 9 homedecor plastic sheet
+-- 6 basic plastic (scifi_nodes:white2) from 9 homedecor plastic sheet
 minetest.register_craft({
 	output = "scifi_nodes:white2 6",
 	recipe = {
@@ -9,6 +9,28 @@ minetest.register_craft({
 		{"homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting"}
 	}
 })
+
+-- Recycle / Alternative recipes for basic plastic (scifi_nodes:white2) - to recycle similar nodes
+----- 
+
+local scifi_craft_shapeless_1 = function(a, b)
+minetest.register_craft({
+	output = "scifi_nodes:"..a,	
+	recipe = {
+		{b}
+	}
+})
+end
+
+scifi_craft_shapeless_1("white2", "scifi_nodes:white")
+scifi_craft_shapeless_1("white2", "scifi_nodes:tile")
+scifi_craft_shapeless_1("white2", "scifi_nodes:white_base")
+scifi_craft_shapeless_1("white2", "scifi_nodes:whiteoct")
+scifi_craft_shapeless_1("white2", "scifi_nodes:whitetile")
+scifi_craft_shapeless_1("white2", "scifi_nodes:whtlightbnd")
+
+
+-----
 
 -- 6 plastic wall from 6 plastic
 minetest.register_craft({
@@ -69,9 +91,10 @@ minetest.register_craft({
 
 -- 1 black from 1 plastic and 1 black dye
 minetest.register_craft({
-    output = "scifi_nodes:black",
+    output = "scifi_nodes:black 4",
     recipe = {
-        {"scifi_nodes:white2", "dye:black"}
+        {"scifi_nodes:white2", "scifi_nodes:white2", "dye:black"},
+        {"scifi_nodes:white2", "scifi_nodes:white2", ""}
     }
 })
 
@@ -1070,183 +1093,82 @@ minetest.register_craft({
 
 -- FEW SLOPES (will be making more when respective block recipe will be ready)
 
--- 6 plastic slope from 3 plastic
-minetest.register_craft({
-    output = "scifi_nodes:slope_white2 6",
-    recipe = {
-        {"scifi_nodes:white2", ""},
-        {"scifi_nodes:white2","scifi_nodes:white2"}
-    }
-}) 
 
--- 6 white slope from 3 plastic wall
-minetest.register_craft({
-    output = "scifi_nodes:slope_white 6",
-    recipe = {
-        {"scifi_nodes:white", ""},
-        {"scifi_nodes:white","scifi_nodes:white"}
-    }
-})
 
--- 6 black slope from 3 black wall
+-- slopes from original full node
+local scifi_craft_slopes = function(a, b, c, d)
 minetest.register_craft({
-    output = "scifi_nodes:slope_black 6",
-    recipe = {
-        {"scifi_nodes:black", ""},
-        {"scifi_nodes:black","scifi_nodes:black"}
-    }
+	output = "scifi_nodes:"..a,	
+	recipe = {
+		{ b, "" },
+		{ c, d }
+	}
 })
+end
 
--- 6 blue light box slope from 3 blue light box
-minetest.register_craft({
-    output = "scifi_nodes:slope_blight 6",
-    recipe = {
-        {"scifi_nodes:light", ""},
-        {"scifi_nodes:light","scifi_nodes:light"}
-    }
-})
+scifi_craft_slopes("slope_alien 6", "scifi_nodes:alien", "scifi_nodes:alien", "scifi_nodes:alien")
+scifi_craft_slopes("slope_black 6", "scifi_nodes:black", "scifi_nodes:black", "scifi_nodes:black")
+scifi_craft_slopes("slope_blight 6", "scifi_nodes:light", "scifi_nodes:light", "scifi_nodes:light")
+scifi_craft_slopes("slope_blight2 6", "scifi_nodes:bluwllight", "scifi_nodes:bluwllight", "scifi_nodes:bluwllight")
+scifi_craft_slopes("slope_blklt2 6", "scifi_nodes:blklt2", "scifi_nodes:blklt2", "scifi_nodes:blklt2")
+scifi_craft_slopes("slope_bluebars 6", "scifi_nodes:bluebars", "scifi_nodes:bluebars", "scifi_nodes:bluebars")
+scifi_craft_slopes("slope_bluemetal 6", "scifi_nodes:bluemetal", "scifi_nodes:bluemetal", "scifi_nodes:bluemetal")
+scifi_craft_slopes("slope_gblock 6", "scifi_nodes:gblock", "scifi_nodes:gblock", "scifi_nodes:gblock")
+scifi_craft_slopes("slope_glight 6", "scifi_nodes:green_light", "scifi_nodes:green_light", "scifi_nodes:green_light")
+scifi_craft_slopes("slope_greenmetal 6", "scifi_nodes:greenmetal", "scifi_nodes:greenmetal", "scifi_nodes:greenmetal")
+scifi_craft_slopes("slope_grey 6", "scifi_nodes:grey", "scifi_nodes:grey", "scifi_nodes:grey")
+scifi_craft_slopes("slope_holes 6", "scifi_nodes:holes", "scifi_nodes:holes", "scifi_nodes:holes")
+scifi_craft_slopes("slope_lightstripe 6", "scifi_nodes:lightstp", "scifi_nodes:lightstp", "scifi_nodes:lightstp")
+scifi_craft_slopes("slope_mesh 6", "scifi_nodes:mesh", "scifi_nodes:mesh", "scifi_nodes:mesh")
+scifi_craft_slopes("slope_mesh2 6", "scifi_nodes:mesh2", "scifi_nodes:mesh2", "scifi_nodes:mesh2")
+scifi_craft_slopes("slope_pipe 6", "scifi_nodes:pipe", "scifi_nodes:pipe", "scifi_nodes:pipe")
+scifi_craft_slopes("slope_purple 6", "scifi_nodes:purple", "scifi_nodes:purple", "scifi_nodes:purple")
+scifi_craft_slopes("slope_rlight 6", "scifi_nodes:red_light", "scifi_nodes:red_light", "scifi_nodes:red_light")
+scifi_craft_slopes("slope_rough 6", "scifi_nodes:rough", "scifi_nodes:rough", "scifi_nodes:rough")
+scifi_craft_slopes("slope_sreen 6", "scifi_nodes:sreen", "scifi_nodes:sreen", "scifi_nodes:sreen")
+scifi_craft_slopes("slope_stripes 6", "scifi_nodes:stripes", "scifi_nodes:stripes", "scifi_nodes:stripes")
+scifi_craft_slopes("slope_vent 6", "scifi_nodes:vent", "scifi_nodes:vent", "scifi_nodes:vent")
+scifi_craft_slopes("slope_wall 6", "scifi_nodes:wall", "scifi_nodes:wall", "scifi_nodes:wall")
+scifi_craft_slopes("slope_wallpipe 6", "scifi_nodes:wallpipe", "scifi_nodes:wallpipe", "scifi_nodes:wallpipe")
+scifi_craft_slopes("slope_white 6", "scifi_nodes:white", "scifi_nodes:white", "scifi_nodes:white")
+scifi_craft_slopes("slope_white2 6", "scifi_nodes:white2", "scifi_nodes:white2", "scifi_nodes:white2")
 
--- 6 blue light box slope from 3 blue light box
-minetest.register_craft({
-    output = "scifi_nodes:slope_rlight 6",
-    recipe = {
-        {"scifi_nodes:red_light", ""},
-        {"scifi_nodes:red_light","scifi_nodes:red_light"}
-    }
-})
 
--- 6 blue light box slope from 3 blue light box
+-- recycle slopes back to original full node
+local scifi_craft_slopes_BA = function(a, b, c)
 minetest.register_craft({
-    output = "scifi_nodes:slope_glight 6",
-    recipe = {
-        {"scifi_nodes:green_light", ""},
-        {"scifi_nodes:green_light","scifi_nodes:green_light"}
-    }
+	output = "scifi_nodes:"..a,	
+	recipe = {
+		{ b,c }
+	}
 })
+end
 
--- 6 blue light2 slopes from 3 blue wall light
-minetest.register_craft({
-    output = "scifi_nodes:slope_blight2 6",
-    recipe = {
-        {"scifi_nodes:bluwllight", ""},
-        {"scifi_nodes:bluwllight","scifi_nodes:bluwllight"}
-    }
-})
+scifi_craft_slopes_BA("alien", "scifi_nodes:slope_alien", "scifi_nodes:slope_alien")
+scifi_craft_slopes_BA("black", "scifi_nodes:slope_black", "scifi_nodes:slope_black")
+scifi_craft_slopes_BA("light", "scifi_nodes:slope_blight", "scifi_nodes:slope_blight")
+scifi_craft_slopes_BA("bluwllight", "scifi_nodes:slope_blight2", "scifi_nodes:slope_blight2")
+scifi_craft_slopes_BA("blklt2", "scifi_nodes:slope_blklt2", "scifi_nodes:slope_blklt2")
+scifi_craft_slopes_BA("bluebars", "scifi_nodes:slope_bluebars", "scifi_nodes:slope_bluebars")
+scifi_craft_slopes_BA("bluemetal", "scifi_nodes:slope_bluemetal", "scifi_nodes:slope_bluemetal")
+scifi_craft_slopes_BA("gblock", "scifi_nodes:slope_gblock", "scifi_nodes:slope_gblock")
+scifi_craft_slopes_BA("green_light", "scifi_nodes:slope_glight", "scifi_nodes:slope_glight")
+scifi_craft_slopes_BA("greenmetal", "scifi_nodes:slope_greenmetal", "scifi_nodes:slope_greenmetal")
+scifi_craft_slopes_BA("grey", "scifi_nodes:slope_grey", "scifi_nodes:slope_grey")
+scifi_craft_slopes_BA("holes", "scifi_nodes:slope_holes", "scifi_nodes:slope_holes")
+scifi_craft_slopes_BA("lightstp", "scifi_nodes:slope_lightstripe", "scifi_nodes:slope_lightstripe")
+scifi_craft_slopes_BA("mesh", "scifi_nodes:slope_mesh", "scifi_nodes:slope_mesh")
+scifi_craft_slopes_BA("mesh2", "scifi_nodes:slope_mesh2", "scifi_nodes:slope_mesh2")
+scifi_craft_slopes_BA("pipe", "scifi_nodes:slope_pipe", "scifi_nodes:slope_pipe")
+scifi_craft_slopes_BA("purple", "scifi_nodes:slope_purple", "scifi_nodes:slope_purple")
+scifi_craft_slopes_BA("red_light", "scifi_nodes:slope_rlight", "scifi_nodes:slope_rlight")
+scifi_craft_slopes_BA("rough", "scifi_nodes:slope_rough", "scifi_nodes:slope_rough")
+scifi_craft_slopes_BA("sreen", "scifi_nodes:slope_sreen", "scifi_nodes:slope_sreen")
+scifi_craft_slopes_BA("stripes", "scifi_nodes:slope_stripes", "scifi_nodes:slope_stripes")
+scifi_craft_slopes_BA("vent", "scifi_nodes:slope_vent", "scifi_nodes:slope_vent")
+scifi_craft_slopes_BA("wall", "scifi_nodes:slope_wall", "scifi_nodes:slope_wall")
+scifi_craft_slopes_BA("wallpipe", "scifi_nodes:slope_wallpipe", "scifi_nodes:slope_wallpipe")
+scifi_craft_slopes_BA("white", "scifi_nodes:slope_white", "scifi_nodes:slope_white")
+scifi_craft_slopes_BA("white2", "scifi_nodes:slope_white2", "scifi_nodes:slope_white2")
 
--- 6 blue slope from 3 blue bars
-minetest.register_craft({
-    output = "scifi_nodes:slope_bluebars 6",
-    recipe = {
-        {"scifi_nodes:bluebars", ""},
-        {"scifi_nodes:bluebars","scifi_nodes:bluebars"}
-    }
-})
-
--- 6 lightstripe slope from 3 twin lights
-minetest.register_craft({
-    output = "scifi_nodes:slope_lightstripe 6",
-    recipe = {
-        {"scifi_nodes:lightstp", ""},
-        {"scifi_nodes:lightstp","scifi_nodes:lightstp"}
-    }
-})
-
--- 6 metal floormesh slope from 3 metal floormesh
-minetest.register_craft({
-    output = "scifi_nodes:slope_mesh2 6",
-    recipe = {
-        {"scifi_nodes:mesh2", ""},
-        {"scifi_nodes:mesh2","scifi_nodes:mesh2"}
-    }
-})
-
--- 6 metal mesh slope from 3 metal mesh
-minetest.register_craft({
-    output = "scifi_nodes:slope_mesh 6",
-    recipe = {
-        {"scifi_nodes:mesh", ""},
-        {"scifi_nodes:mesh","scifi_nodes:mesh"}
-    }
-})
-
--- 6 stripes slope from 3 hazard stripes
-minetest.register_craft({
-    output = "scifi_nodes:slope_stripes 6",
-    recipe = {
-        {"scifi_nodes:stripes", ""},
-        {"scifi_nodes:stripes","scifi_nodes:stripes"}
-    }
-})
-
--- 6 vent slope from 3 vent
-minetest.register_craft({
-    output = "scifi_nodes:slope_vent 6",
-    recipe = {
-        {"scifi_nodes:vent2", ""},
-        {"scifi_nodes:vent2","scifi_nodes:vent2"}
-    }
-})
-
--- 6 purple slope from 3 purple node
-minetest.register_craft({
-    output = "scifi_nodes:slope_purple 6",
-    recipe = {
-        {"scifi_nodes:purple", ""},
-        {"scifi_nodes:purple","scifi_nodes:purple"}
-    }
-})
-
--- 6 green metal slope from 3 green metal
-minetest.register_craft({
-    output = "scifi_nodes:slope_greenmetal 6",
-    recipe = {
-        {"scifi_nodes:greenmetal", ""},
-        {"scifi_nodes:greenmetal","scifi_nodes:greenmetal"}
-    }
-})
-
--- 6 grey slope from 3 grey wall
-minetest.register_craft({
-    output = "scifi_nodes:slope_grey 6",
-    recipe = {
-        {"scifi_nodes:grey", ""},
-        {"scifi_nodes:grey","scifi_nodes:grey"}
-    }
-})
-
--- 6 blue metal slope from 3 blue metal
-minetest.register_craft({
-    output = "scifi_nodes:slope_bluemetal 6",
-    recipe = {
-        {"scifi_nodes:bluemetal", ""},
-        {"scifi_nodes:bluemetal","scifi_nodes:bluemetal"}
-    }
-})
-
--- 6 metal wall slope from 3 metal wall
-minetest.register_craft({
-    output = "scifi_nodes:slope_wall 6",
-    recipe = {
-        {"scifi_nodes:wall", ""},
-        {"scifi_nodes:wall","scifi_nodes:wall"}
-    }
-})
-
--- 6 rough metal slope from 3 rough metal
-minetest.register_craft({
-    output = "scifi_nodes:slope_rough 6",
-    recipe = {
-        {"scifi_nodes:rough", ""},
-        {"scifi_nodes:rough","scifi_nodes:rough"}
-    }
-})
-
--- 6 black stripe light slope from 3 black stripe light
-minetest.register_craft({
-    output = "scifi_nodes:slope_blklt2 6",
-    recipe = {
-        {"scifi_nodes:blklt2", ""},
-        {"scifi_nodes:blklt2","scifi_nodes:blklt2"}
-    }
-})
 
