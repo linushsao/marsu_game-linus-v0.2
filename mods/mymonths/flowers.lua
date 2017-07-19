@@ -11,7 +11,14 @@ minetest.register_abm({
 
 		if mymonths.month_counter == 10
 		or mymonths.month_counter == 11 then
-
+			lid_pos = minetest.find_node_near(pos, 1, 'marsair:pot_lid')
+			if lid_pos then
+				if pos.y+1 == lid_pos.y then
+					if pos.x == lid_pos.x and pos.z == lid_pos.z then
+						return
+					end
+				end
+			end
 			minetest.set_node(pos, {name = 'default:dry_grass_1'})
 		end
 	end
