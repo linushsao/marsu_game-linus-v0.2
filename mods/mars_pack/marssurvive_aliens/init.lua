@@ -1,3 +1,5 @@
+marssurvive_aliens = {alien_abm_max = 10}
+
 minetest.register_abm({
 	nodenames = {"air"},
 	neighbors = {"marssurvive:stone_medium","marssurvive:stone_small", 
@@ -9,7 +11,21 @@ minetest.register_abm({
 		local name=minetest.get_node(pos).name
 		pos={x=pos.x,y=pos.y+1,z=pos.z}
 		if minetest.get_node(pos).name=="air" then
-			minetest.log('error', 'add alien')
+			count = 0
+			objects = minetest.get_objects_inside_radius(pos, 50)
+			for _, obj in ipairs(objects) do
+				entity = obj:get_luaentity()
+				if entity then
+					if entity.name:find('alien') then
+						count = count +1
+					end
+				end
+			end
+			if count > marssurvive_aliens.alien_abm_max then
+				return 
+			end
+
+
 			local rnd=math.random(10)
     			local np=minetest.find_node_near(pos, 1,{"marssurvive:stone"})
 			if np~=nil and pos.y>0 then
