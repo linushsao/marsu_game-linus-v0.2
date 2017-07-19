@@ -287,7 +287,9 @@ local marssurvive_alien=function(self, dtime)
 						and (not(self.status_curr=="attack" and ob:get_luaentity().name=="__builtin:item")))) then
 						self.attack_target=ob
 						self.status_curr="attack"
-						self.life=100
+						if ob:is_player() then
+							self.life=100
+						end
 						break
 					end
 				end
@@ -325,7 +327,7 @@ function setanim(self,type)
 end
 
 function marssurvive_aliens_reg_alien(name,hp,drop,team,distance,texture,size,shoot,tp)
-local life = 20
+local life = 50
 local alien_type = "monster"
 if (team == "human") then 
         life = 10000000000 --never die! ( die after 317,... years ;) ) 
