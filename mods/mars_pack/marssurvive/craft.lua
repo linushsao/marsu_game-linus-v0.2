@@ -33,7 +33,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "marssurvive:diglazer",
 	recipe = {
-		{"spacesuit:air_gassbotte","marssurvive:shieldblock","marssurvive:shieldblock"},
+		{"spacesuit:air_gassbottle","marssurvive:shieldblock","marssurvive:shieldblock"},
 		{"","marssurvive:shieldblock","marssurvive:shieldblock"},
 	}
 })

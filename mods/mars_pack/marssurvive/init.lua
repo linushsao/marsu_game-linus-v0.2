@@ -11,11 +11,10 @@ end
 dofile(minetest.get_modpath("marssurvive") .. "/spacesuit.lua")
 dofile(minetest.get_modpath("marssurvive") .. "/mapgen.lua")
 dofile(minetest.get_modpath("marssurvive") .. "/nodes.lua")
-dofile(minetest.get_modpath("marssurvive") .. "/craft.lua")
 dofile(minetest.get_modpath("marssurvive") .. "/functions.lua")
 dofile(minetest.get_modpath("marssurvive") .. "/tools.lua")
 dofile(minetest.get_modpath("marssurvive") .. "/bags.lua")
-
+dofile(minetest.get_modpath("marssurvive") .. "/craft.lua")
 
 function marssurvive_setgrav(player,grav)
 	local aa= 1 - ((1-grav)*0.4)
