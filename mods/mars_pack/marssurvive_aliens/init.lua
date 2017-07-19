@@ -3,8 +3,8 @@ minetest.register_abm({
 	neighbors = {"marssurvive:stone_medium","marssurvive:stone_small", 
 		     "marssurvive:stone", "marssurvive:sand",
 		     "default:dirt_with_grass"},
-	interval = 120,
-	chance = 800,
+	interval = 200,
+	chance = 80*80/2,
 	action = function(pos)
 		local name=minetest.get_node(pos).name
 		pos={x=pos.x,y=pos.y+1,z=pos.z}
@@ -300,7 +300,6 @@ local marssurvive_alien=function(self, dtime)
 					  and (not(self.status_curr=="attack" and ob:get_luaentity().name=="__builtin:item")))) then
 						self.attack_target=ob
 						self.status_curr="attack"
-						self.life=100
 						break
 					end
 				end
