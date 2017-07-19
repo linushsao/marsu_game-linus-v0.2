@@ -721,7 +721,6 @@ minetest.register_node("marssurvive_aliens:secam", {
 	is_ground_content = false,
 	paramtype = "light",
 	paramtype2 = "facedir",
-	drop="marssurvive_aliens:secam_off",
 	node_box = {type="fixed",
 		fixed={	{-0.2, -0.5, -0.2, 0.2, -0.4, 0.2},
 			{-0.1, -0.2, -0.1, 0.1, -0.4, 0.1}}
