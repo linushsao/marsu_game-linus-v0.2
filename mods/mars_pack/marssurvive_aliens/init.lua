@@ -794,7 +794,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "marssurvive_alien:secam",
+	output = "marssurvive_aliens:secam",
 	recipe = {
 		{"default:steel_ingot", "dye:black", "default:steel_ingot"},
 		{"default:glass", "default:steel_ingot", "default:glass"},
