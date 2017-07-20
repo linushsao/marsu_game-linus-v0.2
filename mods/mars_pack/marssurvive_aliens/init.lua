@@ -1,4 +1,4 @@
-marssurvive_aliens = {alien_abm_max = 10}
+marssurvive_aliens = {alien_abm_max = 4}
 
 minetest.register_abm({
 	nodenames = {"air"},
@@ -11,10 +11,10 @@ minetest.register_abm({
 		local name=minetest.get_node(pos).name
 		pos={x=pos.x,y=pos.y+1,z=pos.z}
 		if minetest.get_node(pos).name=="air" then
-			count = 0
-			objects = minetest.get_objects_inside_radius(pos, 50)
+			local count = 0
+			local objects = minetest.get_objects_inside_radius(pos, 50)
 			for _, obj in ipairs(objects) do
-				entity = obj:get_luaentity()
+				local entity = obj:get_luaentity()
 				if entity then
 					if entity.name:find('alien') then
 						count = count +1
@@ -395,8 +395,6 @@ on_punch=function(self, puncher, time_from_last_punch, tool_capabilities, dir)
 on_rightclick=function(self, clicker)
 	if (self.team ~= "human") then return end
 	if (clicker:get_player_name() ~= self.owner) then return end
-        
-	print(self.owner_command)
 	if self.owner_command == "" then
 		self.owner_command = "stand"
 		print('stand')

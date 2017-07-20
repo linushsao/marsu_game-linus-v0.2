@@ -1,6 +1,0 @@
-default
-mobs
-mobs_animal
-marsair?
-intllib?
-lucky_block?

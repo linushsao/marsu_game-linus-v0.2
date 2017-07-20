@@ -35,7 +35,7 @@ local revertsky = function()
 	end
 
 	for i = 1, table.getn(ps) do
-		ps[i].p:set_sky(ps[i].sky.bgcolor, ps[i].sky.type, ps[i].sky.textures)
+		--ps[i].p:set_sky(ps[i].sky.bgcolor, ps[i].sky.type, ps[i].sky.textures)
 	end
 
 	ps = {}
@@ -130,10 +130,12 @@ lightning.strike = function(pos)
 
 	local playerlist = minetest.get_connected_players()
 	for i = 1, #playerlist do
-		local sky = {}
-		sky.bgcolor, sky.type, sky.textures = playerlist[i]:get_sky()
-		table.insert(ps, { p = playerlist[i], sky = sky})
-		playerlist[i]:set_sky(0xffffff, "plain", {})
+		-- TODO: fix the sky-problem (see line 38)
+		--local sky = {}
+		--sky.a, sky.b, sky.c, sky.d = playerlist[i]:get_sky()
+		--print(dump(sky))
+		--table.insert(ps, { p = playerlist[i], sky = sky})
+		--playerlist[i]:set_sky(0xffffff, "plain", {})
 	end
 	-- trigger revert of skybox
 	ttl = 5

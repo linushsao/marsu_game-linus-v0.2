@@ -289,7 +289,7 @@ minetest.register_abm{
 minetest.register_abm{
         label = "making tree-air",
 	nodenames = {"marsair:tree_air_cleaner"},
-	interval = tree_air_maker_time,
+	interval = marsairconfig.tree_air_maker_time,
 	chance = 1,
 	action = function(pos)
 		marsair.clean(pos)
