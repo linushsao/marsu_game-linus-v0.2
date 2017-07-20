@@ -52,7 +52,7 @@ minetest.register_globalstep(function(dtime)
 			if not privs.fly then
 				privs.fly = true
 			end
-			if math.random(3) == 1 then
+			--[[if math.random(3) == 1 then
 				local particle = jetpack_particle_default
 				ppos = player:getpos()
 				local spawnxz = player:get_look_dir()
@@ -63,7 +63,7 @@ minetest.register_globalstep(function(dtime)
 				ppos.z = ppos.z+(-2+math.random(4))/10
 				particle.pos = ppos
 				minetest.add_particle(particle)
-			end
+			end]]--
 
 			meta.charge = meta.charge - wear_per_step
 			technic.set_RE_wear(jetpack_stack, meta.charge, 
