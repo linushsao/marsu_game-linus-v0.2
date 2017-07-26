@@ -1,6 +1,6 @@
 dofile(minetest.get_modpath("jetpack") .. "/config.lua")
 
-jetpack = {max_charge = 200000, wear_per_step = 200}
+jetpack = {max_charge = 200000, wear_per_step = 200, dtime = 0}
 
 minetest.register_tool('jetpack:jetpack', {
     description = "Jetpack",
@@ -10,7 +10,7 @@ minetest.register_tool('jetpack:jetpack', {
     wear_represents = "technic_RE_charge",
 })
 
-jetpack_particle_default = {
+--[[jetpack_particle_default = {
 	velocity = {x=0, y=-10, z=0},
 	acceleration = {x=0, y=10, z=0},
 	expirationtime = 0.5,
@@ -18,7 +18,7 @@ jetpack_particle_default = {
 	collisiondetection = true,
 	glow = 15,
 	texture = "fire_basic_flame.png",
-}
+}]]--
 
 minetest.register_craft({
         output = "jetpack:jetpack",
@@ -33,22 +33,31 @@ minetest.register_craft({
 technic.register_power_tool('jetpack:jetpack', jetpack.max_charge)
 
 minetest.register_globalstep(function(dtime)
+	if jetpack.dtime < 2 then
+		jetpack.dtime = jetpack.dtime + dtime
+		return
+	else
+		jetpack.dtime = 0
+	end
 	for i ,player in ipairs(minetest.get_connected_players()) do
 		local pname = player:get_player_name()
 		local inv = player:get_inventory()
 		local jetpack_stack = inv:get_stack('main', 2)
 		local privs = minetest.get_player_privs(pname)
+		print(0, privs.basic_privs, privs.fly)
 		if not jetpack_stack:get_name():find('jetpack:') then 
-			if not privs.basic_privs then
+			if not (privs.basic_privs == true) then
+				print(1)
 				privs.fly = nil
 				minetest.set_player_privs(pname, privs)
-				return
 			end
+			return
 		end
 		
 		local wear_per_step = jetpack.wear_per_step
 		local meta = minetest.deserialize(jetpack_stack:get_metadata())
 		if meta and meta.charge and meta.charge >= wear_per_step+2 then
+			print(2, privs.fly)
 			if not privs.fly then
 				privs.fly = true
 			end
@@ -71,11 +80,14 @@ minetest.register_globalstep(function(dtime)
 			jetpack_stack:set_metadata(minetest.serialize(meta))
 			inv:set_stack('main', 2, jetpack_stack)
 		else
-			if not privs.basic_privs then
+			print(3, privs.basic_privs)
+			if not (privs.basic_privs == true) then
 				privs.fly = nil
 			end
 		end
-		minetest.set_player_privs(pname, privs)
+		print(4, privs.fly)
+		--minetest.set_player_privs(pname, privs)
+		print(dump(minetest.get_player_privs(pname)))
 	end
 end)
 
