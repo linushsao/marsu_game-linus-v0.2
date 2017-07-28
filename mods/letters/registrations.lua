@@ -71,7 +71,7 @@ if minetest.get_modpath("colouredstonebricks") then
 	letters.register_letters("colouredstonebricks", "yellow", "colouredstonebricks:yellow", "Yellow", "colouredstonebricks_yellow.png")
 end
 
---adding some glow crystal to letters mod for some beauty of shops
+--Added meselamp and glow crystals to letters
 
 if minetest.get_modpath("caverealms") then
 	letters.register_letters("caverealms", "glow_crystal", "caverealms:glow_crystal", "Glow Crystal", "caverealms_glow_crystal.png")
