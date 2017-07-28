@@ -22,6 +22,7 @@ local default_nodes = {
 	{"obsidianbrick", "obsidian_brick"},
 	{"pine_tree", "pine_tree"},
 	{"pine_wood", "pine_wood"},
+	{"meselamp", "default_meselamp"},
 }
 
 for _, row in pairs(default_nodes) do
@@ -68,4 +69,13 @@ if minetest.get_modpath("colouredstonebricks") then
 	letters.register_letters("colouredstonebricks", "red", "colouredstonebricks:red", "Red", "colouredstonebricks_red.png")
 	letters.register_letters("colouredstonebricks", "white", "colouredstonebricks:white", "White", "colouredstonebricks_white.png")
 	letters.register_letters("colouredstonebricks", "yellow", "colouredstonebricks:yellow", "Yellow", "colouredstonebricks_yellow.png")
+end
+
+--adding some glow crystal to letters mod for some beauty of shops
+
+if minetest.get_modpath("caverealms") then
+	letters.register_letters("caverealms", "glow_crystal", "caverealms:glow_crystal", "Glow Crystal", "caverealms_glow_crystal.png")
+	letters.register_letters("caverealms", "glow_emerald", "caverealms:glow_emerald", "Glow Emerald", "caverealms_glow_emerald.png")
+	letters.register_letters("caverealms", "glow_ruby", "caverealms:glow_ruby", "Glow Ruby", "caverealms_glow_ruby.png")
+	letters.register_letters("caverealms", "glow_amethyst", "caverealms:glow_amethyst", "Glow Amethyst", "caverealms_glow_amethyst.png")
 end
