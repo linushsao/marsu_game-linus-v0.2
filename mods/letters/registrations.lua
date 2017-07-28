@@ -22,7 +22,7 @@ local default_nodes = {
 	{"obsidianbrick", "obsidian_brick"},
 	{"pine_tree", "pine_tree"},
 	{"pine_wood", "pine_wood"},
-	{"meselamp", "default_meselamp"},
+	{"meselamp", "meselamp"},
 }
 
 for _, row in pairs(default_nodes) do
