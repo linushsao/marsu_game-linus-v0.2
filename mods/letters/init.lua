@@ -58,6 +58,7 @@ function letters.register_letters(modname, subname, from_node, description, tile
 			},
 			groups = groups,
 			legacy_wallmounted = false,
+			light_source = minetest.registered_nodes[from_node].light_source, --adding light for those nodes with light
 		})
 		minetest.register_node(":" ..modname..":"..nameu, {
 			description = descu,
@@ -78,6 +79,7 @@ function letters.register_letters(modname, subname, from_node, description, tile
 			},
 			groups = groups,
 			legacy_wallmounted = false,
+			light_source = minetest.registered_nodes[from_node].light_source, --adding light for those nodes with light
 		})
 		--[[minetest.register_craft({
 			output = from_node,
