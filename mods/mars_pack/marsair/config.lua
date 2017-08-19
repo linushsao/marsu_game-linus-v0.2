@@ -1,7 +1,7 @@
 --time after that air disappears without by going trought the wall or so
 --because in real u can't hold air endless in any building
 marsairconfig.leak_time = 30*60
-marsairconfig.leak_chance = 10
+marsairconfig.leak_chance = 50
 
 --the count of air-units a generator needs to generate air
 marsairconfig.need_air_generation_count = 8
