@@ -42,7 +42,7 @@ minetest.register_abm({
 	chance = marsairconfig.tree_air_chance,
 	action = function(pos)
 		local node = minetest.get_node(pos)
-		local airleave = marsir.registered_airleaves[node.name]
+		local airleave = marsair.registered_airleaves[node.name]
 		if airleave == nil then 
 			minetest.log('error', 'TREEAIR'..node.name)
 			return 
