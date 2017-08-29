@@ -1,6 +1,6 @@
 marssurvive_aliens = {
 	alien_abm_max = 4, 
-	alien_spawnchance = 80*80/2, --(^-1)
+	alien_spawnchance = 80*80/1, --(^-1)
 	alien_lifetime = 25,
 	alien_spawninterval = 500
 }
