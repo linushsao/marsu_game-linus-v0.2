@@ -1,12 +1,17 @@
-marssurvive_aliens = {alien_abm_max = 4}
+marssurvive_aliens = {
+	alien_abm_max = 4, 
+	alien_spawnchance = 80*80/2, --(^-1)
+	alien_lifetime = 25,
+	alien_spawninterval = 500
+}
 
 minetest.register_abm({
 	nodenames = {"air"},
 	neighbors = {"marssurvive:stone_medium","marssurvive:stone_small", 
 		     "marssurvive:stone", "marssurvive:sand",
 		     "default:dirt_with_grass"},
-	interval = 200,
-	chance = 80*80/2,
+	interval = marssurvive_aliens.alien_spawninterval,
+	chance = marssurvive_aliens.alien_spawnchance,
 	action = function(pos)
 		local name=minetest.get_node(pos).name
 		pos={x=pos.x,y=pos.y+1,z=pos.z}
@@ -343,7 +348,7 @@ function setanim(self,type)
 end
 
 function marssurvive_aliens_reg_alien(name,hp,drop,team,distance,texture,size,shoot,tp)
-local life = 50
+local life = marssurvive_aliens.alien_lifetime
 local alien_type = "monster"
 if (team == "human") then 
         life = 10000000000 --never die! ( die after 317,... years ;) ) 
