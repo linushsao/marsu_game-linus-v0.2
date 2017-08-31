@@ -712,6 +712,7 @@ minetest.register_node("marssurvive_aliens:secam_off", {
 			{-0.1, -0.2, -0.1, 0.1, -0.4, 0.1}}
 
 	},
+	drop = "marssurvive_aliens:secam",
 	on_place = minetest.rotate_node,
 	on_construct = function(pos)
 		minetest.get_meta(pos):set_string("infotext","click to activate and secure")
@@ -746,7 +747,7 @@ minetest.register_node("marssurvive_aliens:secam", {
 		fixed={	{-0.2, -0.5, -0.2, 0.2, -0.4, 0.2},
 			{-0.1, -0.2, -0.1, 0.1, -0.4, 0.1}}
 	},
-on_timer=function(pos, elapsed)
+	on_timer=function(pos, elapsed)
 		for i, ob in pairs(minetest.get_objects_inside_radius(pos, 15)) do
 			if ob:get_luaentity() and ob:get_luaentity().type=="monster" then
 				local v=ob:getpos()
