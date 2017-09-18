@@ -1,0 +1,14 @@
+IRC-channel
+############
+
+Address: irc.freenode.net
+Channel: #marsserver
+
+You can check who is in the IRC channel "/irc_names" command.
+
+If you want to cheack your mails on irc make a double click on "Mars Server" and
+then send the following commands to it:
+login YOURNAME YOURPASSWORD
+cmd inbox text
+
+See Also: [Main]
