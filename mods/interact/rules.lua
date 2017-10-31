@@ -29,8 +29,9 @@ interact.s4_multi_question = "Where should u build your mine?"
 
 --The answers to the multiple choice questions. Only one of these should be true.
 interact.s4_multi1 = "Near spawn, under 100 blocks away from it."
-interact.s4_multi2 = "In the desert 100 blocks away from other's areas"
-interact.s4_multi3 = "Under your home/base"
+interact.s4_multi2 = "Under your home/base"
+interact.s4_multi3 = "In the desert 100 blocks away from other's areas"
+
 
 --Which answer is needed for the quiz questions. interact.quiz1-4 takes true or false.
 --True is left, false is right.
@@ -43,4 +44,4 @@ interact.quiz2 = false
 interact.quiz3 = true
 interact.quiz4 = true
 interact.quiz5 = false
-interact.quiz_multi = 3
+interact.quiz_multi = 2
