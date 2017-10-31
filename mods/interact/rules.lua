@@ -25,7 +25,7 @@ interact.s4_question2 = "Is it allowed to grief or steal or kill?"
 interact.s4_question3 = "Do you can build 110 blocks away from other peoples areas?"
 interact.s4_question4 = "Should you ask people for items or help?"
 interact.s4_question5 = "Is it allowed to date?"
-interact.s4_multi_question1 = "Where should u build your mine?"
+interact.s4_multi_question = "Where should u build your mine?"
 
 --The answers to the multiple choice questions. Only one of these should be true.
 interact.s4_multi1 = "Near spawn, under 100 blocks away from it."
