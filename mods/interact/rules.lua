@@ -22,8 +22,8 @@ by pushing the Build-button at spawn.
 --The checkboxes for the first 4 questions are in config.lua
 interact.s4_question1 = "Is PVP is allowed?"
 interact.s4_question2 = "Is it allowed to grief or steal or kill?"
-interact.s4_question3 = "Do you can build 110 blocks away from other peoples areas?"
-interact.s4_question4 = "Should you ask people for items or help?"
+interact.s4_question3 = "Do you can build 110 blocks away from other people's areas?"
+interact.s4_question4 = "Should you ask peoples for items?"
 interact.s4_question5 = "Is it allowed to date?"
 interact.s4_multi_question = "Where should u build your mine?"
 
@@ -42,6 +42,6 @@ interact.s4_multi3 = "In the desert 100 blocks away from other's areas"
 interact.quiz1 = false
 interact.quiz2 = false
 interact.quiz3 = true
-interact.quiz4 = true
+interact.quiz4 = false
 interact.quiz5 = false
 interact.quiz_multi = 2
