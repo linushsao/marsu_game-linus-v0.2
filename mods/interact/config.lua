@@ -87,7 +87,7 @@ interact.quiz_fail_msg = "You answered a question incorrectly. type in '/rules' 
 
 --The messages send to the player after interact is granted.
 interact.interact_msg1 = "Thanks for accepting the rules, you now are able to interact with things."
-interact.interact_msg2 = "Happy Kingdoming! find the wiki at the spawn inn for more info!"
+interact.interact_msg2 = "Happy Mining! search in the wiki at the spawn for more info!"
 
 --The priv required to use the /rules command. If fast is a default priv, I recomend replacing shout with that.
 interact.priv = {shout = true}
