@@ -36,7 +36,7 @@ local mon = {
 	{5,  "May",      t3, t3, 1},
 	{6,  "June",     t3, t3, 1.1},
 	{7,  "July",     t1, t5, 1.2},
-	{8,  "Augest",   t1, t5, 1.5},
+	{8,  "August",   t1, t5, 1.5},
 	{9,  "September",t3, t3, 1},
 	{10, "October",  t3, t3, 1},
 	{11, "November", t4, t2, .9},
