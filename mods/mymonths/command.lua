@@ -110,7 +110,7 @@ minetest.register_chatcommand("setmonth", {
 		or param == "august"
 		or param == "aug" then
 
-			mymonths.month = "Augest"
+			mymonths.month = "August"
 			mymonths.month_counter = 8
 			minetest.chat_send_player(name, "Month has been changed to August")
 
@@ -260,7 +260,7 @@ minetest.register_chatcommand("holidays", {
 		minetest.chat_send_player(name, "Friendship Day - March 12")
 		minetest.chat_send_player(name, "Miners Day - April 10")
 		minetest.chat_send_player(name, "Minetest Day - June 5")
-		minetest.chat_send_player(name, "Builders Day - Augest 12")
+		minetest.chat_send_player(name, "Builders Day - August 12")
 		minetest.chat_send_player(name, "Harvest Day - October 8")
 		minetest.chat_send_player(name, "New Years Eve - December 14")
 	end
