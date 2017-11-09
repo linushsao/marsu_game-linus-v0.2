@@ -3,7 +3,7 @@ minetest.register_node("more_chests:wifi", {
 	tiles = {"wifi_top.png", "wifi_top.png", "wifi_side.png",
 		"wifi_side.png", "wifi_side.png", "wifi_front.png"},
 	paramtype2 = "facedir",
-	groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2,},
+	groups = {choppy=2, oddly_breakable_by_hand=1,},
 	legacy_facedir_simple = true,
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
