@@ -588,7 +588,7 @@ minetest.register_node("caverealms:s_fortress", {
 
 --dungeon master statue (nodebox)
 minetest.register_node("caverealms:dm_statue", {
-	description = "DM Statue"
+	description = "DM Statue",
 	tiles = {
 		"caverealms_dm_stone.png",
 		"caverealms_dm_stone.png",
