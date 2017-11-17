@@ -1,5 +1,6 @@
 --MONEY!!!
 -- ŧ
+if false then --for test disable mod
 economy={}
 
 economy.itemprices_pr={
@@ -967,3 +968,5 @@ minetest.register_craft({
 		{"default:steel_ingot", "default:copperblock", "default:steel_ingot"},
 	},
 })
+	
+end --for test disable mod
