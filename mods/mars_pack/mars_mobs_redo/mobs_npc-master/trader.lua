@@ -30,10 +30,10 @@ end
 
 mobs:register_mob("mobs_npc:trader", {
 	type = "npc",
-	passive = false,
-	damage = 20,
-	attack_type = "dogfight",
-	attacks_monsters = true,
+	passive = true,
+	damage = 0,
+	--attack_type = "dogfight",
+	attacks_monsters = false,
 	pathfinding = false,
 	hp_min = 9999999,
 	hp_max = 9999999,
@@ -51,7 +51,7 @@ mobs:register_mob("mobs_npc:trader", {
 	jump = false,
 	drops = {},
 	water_damage = 0,
-	lava_damage = 4,
+	lava_damage = 0,
 	no_air_damage = true,
 	light_damage = 0,
 	follow = {"default:diamond"},
