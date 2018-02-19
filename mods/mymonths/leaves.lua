@@ -18,11 +18,9 @@ local moretrees_leaves_table = {
 	moretrees:'sequoia_leaves', moretrees:'palm_leaves', moretrees:'spruce_leaves', 
 	moretrees:'pine_leaves', moretrees:'poplar_leaves', moretrees:'willow_leaves', 
 	moretrees:'jungletree_leaves_red', moretrees:'jungletree_leaves_green', 
-	moretrees:'jungletree_leaves_yellow', moretrees:'rubber_tree_leaves'
-}
+	moretrees:'jungletree_leaves_yellow', moretrees:'rubber_tree_leaves'}
 
 local v1
-
 
 for i, name in pairs(leaves_table) do
 
