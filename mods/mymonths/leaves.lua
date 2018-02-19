@@ -9,11 +9,17 @@ local leaves_table = {
 local sticks_table = {'default', 'aspen'}
 
 --linus added for moretrees
-local moretrees_leaves_table = {"default:acacia_leaves","default:aspen_leaves","default:jungleleaves"
-                               ,"moretrees:apple_tree_leaves","moretrees:beech_leaves","moretrees:birch_leaves","moretrees:cedar_leaves"
-							   ,"moretrees:date_palm_leaves","moretrees:fir_leaves","moretrees:fir_leaves_bright","moretrees:jungletree_leaves_red"
-							   ,"moretrees:jungletree_leaves_yellow","moretrees:oak_leaves","moretrees:palm_leaves","moretrees:poplar_leaves"
-							   ,"moretrees:rubber_tree_leaves","moretrees:sequoia_leaves","moretrees:spruce_leaves"}
+
+local moretrees_leaves_table = {
+	default:'acacia_leaves', default:'aspen_leaves',default:'jungleleaves', 
+	moretrees:'apple_tree_leaves', moretrees:'beech_leaves', 
+	moretrees:'birch_leaves', moretrees:'cedar_leaves', moretrees:'date_palm_leaves', 
+	moretrees:'oak_leaves', moretrees:'fir_leaves', moretrees:'fir_leaves_bright', 
+	moretrees:'sequoia_leaves', moretrees:'palm_leaves', moretrees:'spruce_leaves', 
+	moretrees:'pine_leaves', moretrees:'poplar_leaves', moretrees:'willow_leaves', 
+	moretrees:'jungletree_leaves_red', moretrees:'jungletree_leaves_green', 
+	moretrees:'jungletree_leaves_yellow', moretrees:'rubber_tree_leaves'
+}
 
 local v1
 
