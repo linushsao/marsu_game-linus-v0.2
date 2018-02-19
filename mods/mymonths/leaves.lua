@@ -159,7 +159,7 @@ minetest.register_abm({
 	action = function (pos, node, active_object_count, active_object_count_wider)
 
 		if (mymonths.month_counter == 8) then
-			print("action of Autust")
+			print("action of August")
 			if (string.match(node.name,"default")) or (string.match(node.name,"moretrees"))  then --leave start change
 				if (string.match(node.name,"default")) then minetest.set_node(pos, {name = 'mymonths:leaves_pale_green'})  end
 				if (string.match(node.name,"moretrees")) then
