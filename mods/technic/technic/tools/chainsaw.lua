@@ -78,6 +78,52 @@ if minetest.get_modpath("moretrees") then
 	end
 end
 
+--Support for mymonths leaves and sticks
+if minetest.get_modpath("mymonths") then
+	-- table for normal leaves of mymonths
+	local leaves_table = {
+		'pale_green', 'orange', 'red', 'blooms', 'acacia_blooms',
+		'orange_aspen', 'red_aspen', 'aspen_blooms', 'yellow_aspen', 'sticks'
+	}
+	
+	--table for added moretrees in mymonths
+	local moretrees_leaves_table = {
+		'acacia_leaves', 'aspen_leaves', 'jungleleaves',
+		'apple_tree_leaves', 'beech_leaves', 'birch_leaves', 'cedar_leaves',
+		'date_palm_leaves', 'oak_leaves', 'fir_leaves', 'fir_leaves_bright',
+		'sequoia_leaves', 'palm_leaves', 'spruce_leaves', 'pine_leaves', 'poplar_leaves',
+		'willow_leaves', 'jungletree_leaves_red', 'jungletree_leaves_green',
+		'jungletree_leaves_yellow', 'rubber_tree_leaves'
+	}
+	
+	-- iterating over the normal leaves of mymonths
+	for _, m in pairs(leaves_table) do
+		if chainsaw_leaves then
+			timber_nodenames['mymonths:leaves_' .. m] = true
+		end
+	end
+	
+	-- iterating over both to add those moretrees leaves version of mymonths
+	for _, i in pairs(leaves_table) do
+		for _, j in pairs(moretrees_leaves_table) do
+			if chainsaw_leaves then
+				timber_nodenames['mymonths:leaves_' .. i .. "_" .. j] = true
+			end
+		end
+	end
+	
+	-- for mymonths sticks
+	if chainsaw_leaves then
+		timber_nodenames['mymonths:sticks_default'] = true
+		timber_nodenames['mymonths:sticks_aspen'] = true
+	end
+	
+	-- for added moretrees mymonths sticks
+	for _, p in pairs(moretrees_leaves_table) do
+		timber_nodenames['mymonths:sticks_' .. p] = true
+	end
+end
+
 -- Support growing_trees
 if minetest.get_modpath("growing_trees") then
 	timber_nodenames["growing_trees:trunk"]         = true
