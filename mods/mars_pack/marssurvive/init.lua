@@ -17,7 +17,7 @@ dofile(minetest.get_modpath("marssurvive") .. "/bags.lua")
 dofile(minetest.get_modpath("marssurvive") .. "/craft.lua")
 
 function marssurvive_setgrav(player,grav)
-	player:set_physics_override({gravity=grav, jump=1/grav})
+	player:set_physics_override({gravity=grav})
 end
 
 -- seting up settings for joined players
