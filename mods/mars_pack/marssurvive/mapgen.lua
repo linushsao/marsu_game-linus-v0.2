@@ -210,7 +210,7 @@ minetest.clear_registered_decorations()
 	})
 
 minetest.register_abm({
-	label = "Grass spread",
+	label = "Grass spread mars",
 	nodenames = {"default:dirt"},
 	neighbors = {
 		"air",
