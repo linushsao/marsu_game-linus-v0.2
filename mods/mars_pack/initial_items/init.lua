@@ -6,6 +6,7 @@ minetest.register_on_newplayer(function(player)
 	inv:add_item("main","marsair:airgen")
 	inv:add_item("main","marsair:airmaker 3")
 	inv:add_item("main","default:apple 10")
+	inv:add_item("main","marssurvive:air 10")
 	if minetest.check_player_privs(player:get_player_name(), {server=true}) then
 		inv:add_item("main","marssurvive:tospaceteleporter")
 	end
