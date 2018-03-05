@@ -1,1 +1,4 @@
 marssurvive
+marsair
+spacesuit
+default
