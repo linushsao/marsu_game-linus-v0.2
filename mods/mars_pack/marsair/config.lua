@@ -12,11 +12,11 @@ marsairconfig.need_air_fixleak_count = 4
 --the time one flower needs to generate an air-unit
 marsairconfig.flower_air_time = 2*60
 --the chance to generate air by flower after flower_air_time
-marsairconfig.flower_air_chance = 30
+marsairconfig.flower_air_chance = 3.333
 
 --same with tree
 marsairconfig.tree_air_time = 5*60
-marsairconfig.tree_air_chance = 30
+marsairconfig.tree_air_chance = 10
 
 --the time until the tree-air becomes normal air and disappear
 marsairconfig.tree_air_disappear_time = 10
