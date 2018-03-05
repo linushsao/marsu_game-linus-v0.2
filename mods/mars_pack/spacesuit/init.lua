@@ -138,11 +138,9 @@ minetest.register_globalstep(function(dtime)
 		if stack_one_sp(inv) then
 			local wear = inv:get_stack("main", 1):get_wear()
 			if n == "marsair:air_stable" then
-				if wear < 65533 then
-					local new_wear = wear-(65534/20)
-					if new_wear < 0 then new_wear = 0 end
-					set_wear_sp(inv, new_wear)
-				end
+				local new_wear = wear-(65534/20)
+				if new_wear < 0 then new_wear = 0 end
+				set_wear_sp(inv, new_wear)
 			else
 				if wear < 65533 then
 					local new_wear=wear+ (65534/900)
