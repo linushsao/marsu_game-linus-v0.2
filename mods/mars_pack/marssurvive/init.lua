@@ -22,7 +22,7 @@ end
 
 -- seting up settings for joined players
 minetest.register_on_joinplayer(function(player)
-		player:override_day_night_ratio(12000)
+		--player:override_day_night_ratio(12000)
 		marssurvive.player_space[player:get_player_name()]={inside=""}
 		marssurvive_space(player)
 		player:hud_add({
