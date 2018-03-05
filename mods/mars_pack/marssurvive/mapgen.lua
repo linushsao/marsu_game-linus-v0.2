@@ -209,12 +209,24 @@ minetest.clear_registered_decorations()
 		decoration = "marssurvive:crystal",
 	})
 
--- make grass spreadable on normal dirt
-minetest.register_node(":default:dirt", {
-	description = "Dirt",
-	tiles = {"default_dirt.png"},
-	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1}, --look here
-	sounds = default.node_sound_dirt_defaults(),
+minetest.register_abm({
+	label = "Grass spread",
+	nodenames = {"default:dirt"},
+	neighbors = {
+		"air",
+	},
+	interval = 6,
+	chance = 50,
+	catch_up = false,
+	action = function(pos, node)
+		-- Check for darkness: night, shadow or under a light-blocking node
+		-- Returns if ignore above
+		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
+		if (minetest.get_node_light(above) or 0) < 13 then
+			return
+		end
+		minetest.set_node(pos, {name = "default:dirt_with_grass"})
+	end
 })
 
 -- this part makes it crash or just wont work
