@@ -3,6 +3,9 @@ minetest.register_on_newplayer(function(player)
 	local inv=player:get_inventory()
 	inv:add_item("main","marssurvive:sandpick")
 	inv:add_item("main","spacesuit:air_gassbottle")
+	inv:add_item("main","marsair:airgen")
+	inv:add_item("main","marsair:airmaker 3")
+	inv:add_item("main","default:apple 10")
 	if minetest.check_player_privs(player:get_player_name(), {server=true}) then
 		inv:add_item("main","marssurvive:tospaceteleporter")
 	end
