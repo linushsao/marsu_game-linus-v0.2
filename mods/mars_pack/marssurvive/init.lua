@@ -40,13 +40,13 @@ function marssurvive_space(player)
 	local pos=player:getpos().y
 	if marssurvive.player_space[player:get_player_name()].inside~="cave" and pos<=-100 then
 		marssurvive.player_space[player:get_player_name()].inside="cave"
-		marssurvive_setgrav(player,0.3)
+		marssurvive_setgrav(player,3.6)
 		minetest.after(0.1,function()
 			player:set_sky(000000, "plain", {}, false)
 		end)
 	elseif marssurvive.player_space[player:get_player_name()].inside~="mars" and (pos>-100) and (pos<=1000) then
 		marssurvive.player_space[player:get_player_name()].inside="mars"
-		marssurvive_setgrav(player,0.3)
+		marssurvive_setgrav(player,3.6)
 		minetest.after(0.1,function()
 			player:set_sky({r=219, g=168, b=117},"plain",{}, false)
 		end)
