@@ -17,8 +17,7 @@ dofile(minetest.get_modpath("marssurvive") .. "/bags.lua")
 dofile(minetest.get_modpath("marssurvive") .. "/craft.lua")
 
 function marssurvive_setgrav(player,grav)
-	local aa= 1 - ((1-grav)*0.4)
-	player:set_physics_override({gravity=grav, jump=aa})
+	player:set_physics_override({gravity=grav, jump=1/grav})
 end
 
 -- seting up settings for joined players
@@ -40,13 +39,13 @@ function marssurvive_space(player)
 	local pos=player:getpos().y
 	if marssurvive.player_space[player:get_player_name()].inside~="cave" and pos<=-100 then
 		marssurvive.player_space[player:get_player_name()].inside="cave"
-		marssurvive_setgrav(player,3.6)
+		marssurvive_setgrav(player,0.37)--3.6/9.81 = 0.37
 		minetest.after(0.1,function()
 			player:set_sky(000000, "plain", {}, false)
 		end)
 	elseif marssurvive.player_space[player:get_player_name()].inside~="mars" and (pos>-100) and (pos<=1000) then
 		marssurvive.player_space[player:get_player_name()].inside="mars"
-		marssurvive_setgrav(player,3.6)
+		marssurvive_setgrav(player,0.37)
 		minetest.after(0.1,function()
 			player:set_sky({r=219, g=168, b=117},"plain",{}, false)
 		end)
