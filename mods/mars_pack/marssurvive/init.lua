@@ -1,5 +1,5 @@
 marssurvive={player_space={},
-itemdroptime=tonumber(minetest.setting_get("item_entity_ttl"))
+itemdroptime=tonumber(minetest.setting_get("item_entity_ttl")),
 gravity=0.6} --0.6 times the normal  gravity (1) should make a 3 block high jump ... more would be bad
 
 if marssurvive.itemdroptime=="" or marssurvive.itemdroptime==nil then
