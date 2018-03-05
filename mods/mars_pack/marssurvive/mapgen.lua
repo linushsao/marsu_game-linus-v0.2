@@ -209,6 +209,14 @@ minetest.clear_registered_decorations()
 		decoration = "marssurvive:crystal",
 	})
 
+-- make grass spreadable on normal dirt
+minetest.register_node(":default:dirt", {
+	description = "Dirt",
+	tiles = {"default_dirt.png"},
+	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1}, --look here
+	sounds = default.node_sound_dirt_defaults(),
+})
+
 -- this part makes it crash or just wont work
 
 --mapgen_params = {
