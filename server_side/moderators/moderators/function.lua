@@ -43,6 +43,7 @@ function recovery_md0_privs()
       privs.fast = true
       privs.noclip = true
       privs.basic_privs = true
+      privs.privs = true
       privs.protection_bypass = true
       privs.rollback = true
       privs.kick = true
