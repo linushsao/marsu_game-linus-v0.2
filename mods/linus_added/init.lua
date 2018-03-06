@@ -70,7 +70,7 @@ minetest.register_globalstep(function(dtime)
 
 		for _,obj in ipairs(all_objects[v1]) do
 			if obj:is_player() then
-				if minetest.check_player_privs(name, {interact=false}) then
+				if minetest.check_player_privs(obj:get_player_name(), {interact=false}) then
 						
 					print("players found :"..obj:get_player_name())
 					if wiki_show[v1] == nil then wiki_show[v1]={} end
