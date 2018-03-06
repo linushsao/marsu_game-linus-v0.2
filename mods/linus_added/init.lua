@@ -71,23 +71,23 @@ minetest.register_globalstep(function(dtime)
 		for _,obj in ipairs(all_objects[v1]) do
 			if obj:is_player() then
 				local privs = minetest.get_player_privs(playername)
-				if privs.interact then
-						continue
-				end
-				print("players found :"..obj:get_player_name())
-				if wiki_show[v1] == nil then wiki_show[v1]={} end
-				if wiki_show[v1][obj:get_player_name()] == nil then --never show wiki
-					wiki_show[v1][obj:get_player_name()] = true
-					print(v1.." show to "..obj:get_player_name())
-				elseif wiki_show[v1][obj:get_player_name()] == true then
-					wiki_show[v1][obj:get_player_name()] = false --had show
-					print(v1.." had show to "..obj:get_player_name())
-				elseif wiki_show[v1][obj:get_player_name()] == false then
-					print(v1.." had show to "..obj:get_player_name())
-				end
-				print("player: "..obj:get_player_name())
-				if wiki_show[v1][obj:get_player_name()] then
-					wikilib.show_wiki_page(obj:get_player_name(), "Main")
+				if not privs.interact then
+						
+					print("players found :"..obj:get_player_name())
+					if wiki_show[v1] == nil then wiki_show[v1]={} end
+					if wiki_show[v1][obj:get_player_name()] == nil then --never show wiki
+						wiki_show[v1][obj:get_player_name()] = true
+						print(v1.." show to "..obj:get_player_name())
+					elseif wiki_show[v1][obj:get_player_name()] == true then
+						wiki_show[v1][obj:get_player_name()] = false --had show
+						print(v1.." had show to "..obj:get_player_name())
+					elseif wiki_show[v1][obj:get_player_name()] == false then
+						print(v1.." had show to "..obj:get_player_name())
+					end
+					print("player: "..obj:get_player_name())
+					if wiki_show[v1][obj:get_player_name()] then
+						wikilib.show_wiki_page(obj:get_player_name(), "Main")
+					end
 				end
 			end
 		end
