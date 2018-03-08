@@ -1,0 +1,4 @@
+dig = Sammle
+place = Platziere
+craft = Fertige
+The end of the Quest Unlock this Items = Durch Abschluss der Aufgabe schaltest du frei
