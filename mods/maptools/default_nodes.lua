@@ -387,3 +387,17 @@ minetest.register_node("maptools:desert_sand_soil_wet", {
 	groups = {unbreakable = 1, not_in_creative_inventory = maptools.creative, soil = 3, wet = 1, desert = 1},
 	sounds = default.node_sound_sand_defaults(),
 })
+
+-- Mars:
+
+minetest.register_node("maptools:mars_warning", {
+	description = S("Unbreakable Mars Warn Tape"),
+	range = 12,
+	stack_max = 10000,
+	drawtype = "normal",
+	tiles = {"marssurvive_warntape.png"},
+	sunlight_propagates = false,
+	drop = "",
+	groups = {unbreakable = 1, not_in_creative_inventory = maptools.creative},
+	sounds = default.node_sound_glass_defaults(),
+})
