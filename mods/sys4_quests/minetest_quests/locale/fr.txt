@@ -1,0 +1,423 @@
+### Quests Title ###
+
+Bronze Discover = Découvre le bronze
+Clay Digger = Récolte de l'argile
+Coal Digger = Mine du charbon
+Coal Digger Lover = Mine du charbon - Amateur
+Copper Digger = Mine du cuivre
+Cotton Digger = Récolte du coton
+Diamond Digger = Mine du diamant
+Diamond Digger Lover = Mine du diamant - Amateur
+Diamond Digger Pro = Mine du diamant - Pro
+Diamond Digger Expert = Mine du diamant - Expert
+Flower Digger = Cueille des fleurs
+Gold Digger = Mine de l'or
+Gravel Digger = Ramasse du gravier
+Iron Digger = Mine du fer
+Iron Digger Lover = Mine du fer - Amateur
+Iron Digger Pro = Mine du fer - Pro
+Iron Digger Expert = Mine du fer - Expert
+Iron Digger Master = Mine du fer - Maître
+Iron Digger God = Mine du fer - Dieu
+Mese Digger = Mine du mese
+Mese Digger Lover = Mine du mese - Amateur
+Mese Digger Pro = Mine du mese - Pro
+Mese Digger Expert =  Mine du mese - Expert
+Obsidian Digger = Mine de l'obsidienne
+Obsidian Digger Lover = Mine de l'obsidienne - Amateur
+Papyrus Digger = Coupe du papyrus
+Sand Digger = Ramasse du sable
+Snow Digger = Ramasse de la neige
+Steel Blower = Souffleur d'acier
+Stone Digger = Mine de la roche
+Stone Digger Lover = Mine de la roche - Amateur
+Stone Digger Pro = Mine de la roche - Pro
+Stone Digger Expert =  Mine de la roche - Expert
+Tree Digger = Coupe du bois
+Wheat Digger = Récolte du blé
+
+Book Crafter = Fait des livres
+Bronze Crafter = Forge du bronze
+Bronze Crafter Lover = Forge du bronze - Amateur
+Bronze Crafter Pro = Forge du bronze - Pro
+Bronze Crafter Expert = Forge du bronze - Expert
+Dye Crafter = Fait des teintures
+Furnace Crafter = Fait un four
+Glass Blower = Souffleur de verre
+Gunpowder Crafter = Fait de la poudre à canon
+Interior Decorator = Décorateur d'intérieur
+Obsidian Shard Crafter = Fait des échardes d'obsidienne
+Paper Crafter = Fait du papier
+Sandstone Crafter = Fait du gré
+Sticks Crafter = Fait des bâtons
+Sticks Crafter Lover = Fait des bâtons - Amateur
+Tools Crafter = Fait des outils en bois
+Wood Crafter = Fait des planches
+Wood Crafter Lover = Fait des planches - Amateur
+Wool Crafter = Fait de la laine
+Wool Crafter Lover = Fait de la laine - Amateur
+
+Brick Builder = Pose des briques
+Bronze Block Builder = Pose des blocs en bronze
+Cobble Builder = Pose des pavés en pierre
+Cobble Builder Lover = Pose des pavés en pierre - Amateur
+Copper Block Builder = Pose des blocs en cuivre
+Fence Placer = Pose des barrières
+Glass Builder = Pose des blocs de verre
+Gold Block Builder = Pose des blocs en or
+Obsidian Builder = Pose des blocs d'obsidienne
+Obsidian Brick Builder = Pose des briques d'obsidiennes
+Obsidian Glass Builder = Pose du verre d'obsidienne
+Sandstone Builder = Pose du gré
+Sandstone Bricks Builder = Pose des briques de gré
+Steel Block Builder = Pose des blocs en acier
+Stone Builder = Pose de la roche
+Stone Brick Builder = Pose des briques en roche
+Straw Builder = Pose des blocs de paille
+Wood Builder = Pose des planches
+Wood Builder Lover = Pose des planches - Amateur
+
+### Custom Descriptions ###
+
+colored wools = Blocs de laine teinté
+dyes = teintures
+flowers = fleurs
+vessels items = objets de vaisselle
+wooden tools = outils en bois
+
+### Nodes names ###
+
+# Trees
+group:tree = Troncs d'arbres
+default:tree = Troncs d'arbres
+default:acacia_tree = Troncs d'Acacia
+default:jungletree = Troncs de jungle
+default:pine_tree = Troncs de Sapin
+default:aspen_tree = Troncs de Tremble
+
+# Stick
+group:stick = Bâtons
+default:stick = Bâtons
+
+# Wood
+group:wood = Planches de bois
+default:acacia_wood = Planches d'Acacia
+default:aspen_wood = Planches de Tremble
+default:junglewood = Planches de jungle
+default:pine_wood = Planches de Sapin
+default:wood = Planches de bois
+stairs:slab_acacia_wood = Dalles en planches d'Acacia
+stairs:stair_acacia_wood = Escaliers en planches d'Acacia
+stairs:slab_aspen_wood = Dalles en planches de Tremble
+stairs:stair_aspen_wood = Escaliers en planches de Tremble
+stairs:slab_junglewood = Dalles en planches de jungle
+stairs:stair_junglewood = Escaliers en planches de jungle
+stairs:slab_pine_wood = Dalles en planches de Sapin
+stairs:stair_pine_wood = Escaliers en planches de Sapin
+stairs:slab_wood = Dalles en planches de bois
+stairs:stair_wood = Escaliers en planches de bois
+
+# Leaves
+default:acacia_leaves = Feuilles d'Acacia
+default:aspen_leaves = Feuilles de Tremble
+default:jungleleaves = Feuilles de jungle
+default:leaves = Feuilles d'arbres
+default:pine_needles = Aiguilles de Sapin
+
+# Saplings
+default:acacia_sapling = Jeunes pousses d'Acacias
+default:aspen_sapling = Jeunes pousses de Trembles
+default:junglesapling = Jeunes pousses de jungle
+default:pine_sapling = Jeunes pousses de Sapins
+default:sapling = Jeunes pousses d'arbres
+
+# Fruits
+default:apple = Pommes
+
+# Haches
+default:axe_bronze = Haches en bronze
+default:axe_diamond = Haches en diamant
+default:axe_mese = Haches en mese
+default:axe_steel = Haches en acier
+default:axe_stone = Haches en pierre
+default:axe_wood = Haches en bois
+
+# Picks
+default:pick_bronze = Pioches en bronze
+default:pick_diamond = Pioches en diamant
+default:pick_mese = Pioches en mese
+default:pick_steel = Pioches en acier
+default:pick_stone = Pioches en pierre
+default:pick_wood = Pioches en bois
+
+# Shovels
+default:shovel_bronze = Pelles en bronze
+default:shovel_diamond = Pelles en diamant
+default:shovel_mese = Pelles en mese
+default:shovel_steel = Pelles en acier
+default:shovel_stone = Pelles en pierre
+default:shovel_wood = Pelles en bois
+
+# Swords
+default:sword_bronze = Épées en bronze
+default:sword_diamond = Épées en diamant
+default:sword_mese = Épées en mese
+default:sword_steel = Épées en acier
+default:sword_stone = Épées en pierre
+default:sword_wood = Épées en bois
+
+# Books
+default:book = Livres
+default:bookshelf = Bibliothèques
+
+# Bricks
+default:brick = Blocs de Briques
+default:clay_brick = Briques
+stairs:slab_brick = Dalles en briques
+stairs:stair_brick = Escaliers en briques
+
+# Metal Lumps
+default:copper_lump = Minerai de cuivre
+default:gold_lump = Minerai d'or
+default:iron_lump = Minerai de fer
+
+# Ingots
+default:bronze_ingot = Lingots de bronze
+default:copper_ingot = Lingots de cuivre
+default:gold_ingot = Lingots d'or
+default:steel_ingot = Lingots d'acier
+
+# Metal Blocks
+default:bronzeblock = Blocs en bronze
+default:copperblock = Blocs en cuivre
+default:goldblock = Blocs en or
+default:steelblock = Blocs en acier
+stairs:slab_bronzeblock = Dalles en bronze
+stairs:stair_bronzeblock = Escaliers en bronze
+stairs:slab_copperblock = Dalles en cuivre
+stairs:stair_copperblock = Escaliers en cuivre
+stairs:slab_goldblock = Dalles en or
+stairs:stair_goldblock = Escaliers en or
+stairs:slab_steelblock = Dalles en acier
+stairs:stair_steelblock = Escaliers en acier
+
+# Cactus
+default:cactus = Troncs de cactus
+
+# Clays
+default:clay = Blocs d'argile
+default:clay_lump = Morceaux d'argile
+
+# Coal
+default:coal_lump = Minerai de charbon
+default:coalblock = Blocs de charbon
+
+# Stones
+default:cobble = Pavés de pierre
+default:desert_cobble = Pavés de pierre du desert
+default:desert_stone = Roches du desert
+default:desert_stonebrick = Briques en roche du desert
+default:mossycobble = Pavés de pierre moussue
+default:stone = Roches
+default:stone_with_coal = Roches de charbon
+default:stone_with_copper = Roches de cuivre
+default:stone_with_diamond = Roches de diamant
+default:stone_with_gold = Roches d'or
+default:stone_with_iron = Roches de fer
+default:stone_with_mese = Roches de mese
+default:stonebrick = Briques en roche
+stairs:slab_cobble = Dalles en pavés de pierre
+stairs:stair_cobble = Escaliers en pavés de pierre
+stairs:slab_desert_cobble = Dalles en pavés du desert
+stairs:stair_desert_cobble = Escaliers en pavés du desert
+stairs:slab_desert_stone = Dalles en roche du desert
+stairs:stair_desert_stone = Escaliers en roche du desert
+stairs:slab_desert_stonebrick = Dalles en briques du desert
+stairs:stair_desert_stonebrick = Escaliers en briques du desert
+stairs:slab_stone = Dalles en roche
+stairs:stair_stone = Escaliers en roche
+stairs:slab_stonebrick = Dalles en briques de roche
+stairs:stair_stonebrick = Escaliers en briques de roche
+
+# Obsidian
+default:obsidian = Blocs d'obsidienne
+default:obsidian_glass = Blocs en verre d'obsidienne
+default:obsidian_shard = Échardes d'obsidienne
+default:obsidianbrick = Briques en obsidienne
+stairs:slab_obsidian = Dalles en obsidienne
+stairs:stair_obsidian = Escaliers en obsidienne
+stairs:slab_obsidianbrick = Dalles en briques d'obsidienne
+stairs:stair_obsidianbrick = Escaliers en briques d'obsidienne
+
+# Sands
+default:desert_sand = Blocs de sable du desert
+default:sand = Blocs de sable
+default:sandstone = Blocs de gré
+default:sandstonebrick = Blocs en briques de gré
+stairs:slab_sandstone = Dalles en gré
+stairs:stair_sandstone = Escaliers en gré
+stairs:slab_sandstonebrick = Dalles en briques de gré
+stairs:stair_sandstonebrick = Escaliers en briques de gré
+
+# Gravel
+default:gravel = Blocs de gravier
+
+# Precious Stones
+default:diamond = Diamants
+default:diamondblock = Blocs en diamant
+default:mese = Blocs en mese
+default:mese_crystal = Cristaux de mese
+default:mese_crystal_fragment = Fragments de cristal de mese
+
+# Dirts
+default:dirt = Blocs de terre
+default:dirt_with_dry_grass = Blocs de terre herbeuse sec
+default:dirt_with_grass = Blocs de terre herbeuse
+default:dirt_with_snow = Blocs de terre neigeuse
+
+# Vegetation
+default:dry_grass_1 = Touffes d'herbe sèche
+default:dry_shrub = Arbustes secs
+default:grass_1 = Touffes d'herbe
+default:junglegrass = Touffes d'herbe de jungle
+default:papyrus = Tiges de papyrus
+
+# Wooden Objects
+default:chest = Coffre en bois
+default:chest_locked = Coffre en bois protégé
+default:fence_acacia_wood = Barrières en Acacia
+default:fence_aspen_wood = Barrières en Tremble
+default:fence_junglewood = Barrières en jungle
+default:fence_pine_wood = Barrières en Sapin
+default:fence_wood = Barrières en bois
+default:ladder_wood = Échelles en bois
+default:sign_wall_wood = Pancartes en bois
+
+# Stone Objects
+default:furnace = Four
+
+# Metal Objects
+default:ladder_steel = Échelles en acier
+default:rail = Rails en acier
+default:sign_wall_steel = Pancartes en acier
+
+# Mese Objects
+default:meselamp = Lampes en mese
+
+# Verre
+default:glass = Blocs en verre
+
+# Others
+default:ice = Blocs de glace
+default:lava_source = Sources de lave
+default:nyancat = Nyancats
+default:nyancat_rainbow = Queues de Nyancats
+default:paper = Feuilles de papier
+default:river_water_source = Sources d'eau de rivières
+default:snow = Plaques de neige
+default:snowblock = Blocs de neige
+default:torch = Torches
+default:water_source = Sources d'eau
+
+# Beds
+beds:bed_bottom = Lits simples
+beds:fancy_bed_bottom = Lits chics
+
+# Boats
+boats:boat = Bateaux
+
+# Doors
+doors:door_glass = Portes en verre
+doors:door_obsidian_glass = Portes en verre d'obsidienne
+doors:door_steel = Portes en acier
+doors:door_wood = Portes en bois
+doors:gate_acacia_wood_closed = Portails en Acacia
+doors:gate_aspen_wood_closed = Portails en Tremble
+doors:gate_junglewood_closed = Portails en jungle
+doors:gate_pine_wood_closed = Portails en Sapin
+doors:gate_wood_closed = Portails en bois
+doors:trapdoor = Trappes en bois
+doors:trapdoor_steel = Trappes en acier
+
+# Dyes
+dye:black = Teintures noires
+dye:blue = Teintures bleues
+dye:brown = Teintures marrons
+dye:cyan = Teintures cyans
+dye:dark_green = Teintures vert foncées
+dye:dark_grey = Teintures gris foncées
+dye:green = Teintures vertes
+dye:grey = Teintures grises
+dye:magenta = Teintures magentas
+dye:orange = Teintures oranges
+dye:pink = Teintures roses
+dye:red = Teintures rouges
+dye:violet = Teintures violettes
+dye:white = Teintures blanches
+dye:yellow = Teintures jaunes
+
+# Farming
+farming:cotton = Cotons
+farming:cotton_1 = Plants de cotons
+farming:flour = Farine de blé
+farming:hoe_bronze = Houes en bronze
+farming:hoe_diamond = Houes en diamant
+farming:hoe_mese = Houes en mese
+farming:hoe_steel = Houes en acier
+farming:hoe_stone = Houes en pierre
+farming:hoe_wood = Houes en bois
+farming:straw = Blocs de paille
+farming:wheat = Bottes de blé
+farming:wheat_1 = Bottes de blé
+stairs:slab_straw = Dalles en paille
+stairs:stair_straw = Escaliers en paille
+
+# Fire
+fire:flint_and_steel = Briquets en silex
+
+# Flowers
+flowers:dandelion_white = Marguerites
+flowers:dandelion_yellow = Pissenlits
+flowers:geranium = Géraniums
+flowers:rose = Roses
+flowers:tulip = Tulipes
+flowers:viola = Violettes
+
+# Screwdriver
+screwdriver:screwdriver = Tournevis
+
+# TNT
+tnt:gunpowder = Poudre à canon
+tnt:tnt = Blocs de TNT
+
+# Vessels
+vessels:drinking_glass = Verres à boire
+vessels:glass_bottle = Bouteilles en verre
+vessels:shelf = Vesseliers
+vessels:steel_bottle = Bouteilles en acier
+
+# Walls
+walls:cobble = Murets en pavés de pierre
+walls:desertcobble = Murets en pavés du desert
+walls:mossycobble = Murets en pavés moussus
+
+# Wools
+wool:black = Blocs de laine noire
+wool:blue = Blocs de laine bleue
+wool:brown = Bloc de laines marron
+wool:cyan = Blocs de laine cyan
+wool:dark_green = Blocs de laine vert foncée
+wool:dark_grey = Blocs de laine gris foncée
+wool:green = Blocs de laine verte
+wool:grey = Blocs de laine grise
+wool:magenta = Blocs de laine magenta
+wool:orange = Blocs de laine orange
+wool:pink = Blocs de laine rose
+wool:red = Blocs de laine rouge
+wool:violet = Blocs de laine violette
+wool:white = Blocs de laine blanche
+wool:yellow = Blocs de laine jaune
+
+# Xpanes
+xpanes:bar = Barres de fer
+xpanes:pane = Vitres

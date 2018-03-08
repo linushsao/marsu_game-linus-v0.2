@@ -1,0 +1,15 @@
+### Quests Title ###
+
+Bag Crafter = Fait des sacs
+Bag Crafter Lover = Fait des sacs - Amateur
+Textile Worker = Travail du textile
+
+### Custom Desc. ###
+
+wools = blocs de laine
+
+### Items Name ###
+
+unified_inventory:bag_small = Petits sacs
+unified_inventory:bag_medium = Sacs moyens
+unified_inventory:bag_large = Grands sacs

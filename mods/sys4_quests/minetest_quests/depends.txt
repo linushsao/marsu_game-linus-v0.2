@@ -1,0 +1,17 @@
+sys4_quests
+default
+stairs
+intllib?
+moreores?
+beds?
+boats?
+bucket?
+doors?
+dye?
+fire?
+flowers?
+screwdriver?
+tnt?
+vessels?
+walls?
+xpanes?

@@ -1,0 +1,259 @@
+
+### Quests Title ###
+
+Tree Digger = Schneide Holz
+Crumbly Nodes Digger = Grabe alles
+Papyrus Digger = Sammle Papyrus
+Coal Digger = Finde Kohle
+Stone Digger = Baue Stein ab
+Iron Digger = Finde Eisen
+Copper Digger = Finde Kupfer
+Gold Digger = Finde Gold
+Mese Digger = Finde Mese
+Diamond Digger = Finde Diamanten
+Obsidian Digger = Finde Obsidian
+
+Wood Crafter = Fertige Bretter
+Sticks Crafter = Fertige Stöcker
+Sandstone Crafter = Fertige Sandstein
+Papers Crafter = Fertige Papier
+Books Crafter = Fertige Bücher
+Bronze Crafter = Fertige Bronze
+Tools Crafter = Holzwerkzeuge
+Tools Crafter Lover = Steinwerkzeuge
+Tools Crafter Pro = Stahlwerkzeuge
+Tools Crafter Expert = Mesewerkzeuge
+Tools Crafter Master = Diamantwerkzeuge
+
+Furnace Builder = Platziere Öfen
+Wood Builder = Platziere Bretter
+Wood Builder Lover = Platziere Holzplatten
+
+### Custom Descriptions ###
+
+Blocks of Crumbly Nodes = Bröckelige Blöcke
+Wooden Tools = Holzwerkzeuge
+Stone Tools = Steinwerkzeuge
+Steel or Bronze Tools = Stahl- oder Bronzewerkzeuge
+Mese Tools = Mesewerkzeuge
+Diamond Tools = Diamantwerkzeuge
+
+### Nodes names ###
+
+# Trees
+group:tree = Bäume
+default:tree = Baum
+default:acacia_tree = Akazie
+default:jungletree = Tropenbaum
+default:pine_tree = Kiefer
+
+# Stick
+group:stick = Stöcker
+default:stick = Stock
+
+# Wood
+group:wood = Bretter
+default:wood = Holzbretter
+default:acacia_wood = Akazienholzbretter
+default:junglewood = Tropenholzbretter
+default:pine_wood = Kiefernholzbretter
+stairs:slab_acacia_wood = Akazienholzplatte
+stairs:stair_acacia_wood = Akazienholztreppe
+stairs:slab_junglewood = Tropenholzplatte
+stairs:stair_junglewood = Tropenholztreppe
+stairs:slab_pine_wood = Kiefernholzplatte
+stairs:stair_pine_wood = Kiefernholztreppe
+stairs:slab_wood = Holzplatte
+stairs:stair_wood = Holztreppe
+
+# Leaves
+default:acacia_leaves = Akazienlaub
+default:jungleleaves = Tropenlaub
+default:leaves = Laub
+default:pine_needles = Kiefernnadeln
+
+# Saplings
+default:acacia_sapling = Akaziensetzling
+default:junglesapling = Tropensetzling
+default:pine_sapling = Kiefernsetzling
+default:sapling = Setzling
+
+# Fruits
+default:apple = Apfel
+
+# Haches
+default:axe_bronze = Bronzeaxt
+default:axe_diamond = Diamantaxt
+default:axe_mese = Meseaxt
+default:axe_steel = Stahlaxt
+default:axe_stone = Steinaxt
+default:axe_wood = Holzaxt
+
+# Picks
+default:pick_bronze = Bronzespitzhacke
+default:pick_diamond = Diamantspitzhacke
+default:pick_mese = Mesespitzhacke
+default:pick_steel = Stahlspitzhacke
+default:pick_stone = Steinspitzhacke
+default:pick_wood = Holzspitzhacke
+
+# Shovels
+default:shovel_bronze = Bronzeschaufel
+default:shovel_diamond = Diamantschaufel
+default:shovel_mese = Meseschaufel
+default:shovel_steel = Stahlschaufel
+default:shovel_stone = Steinschaufel
+default:shovel_wood = Holzschaufel
+
+# Swords
+default:sword_bronze = Bronzeschwert
+default:sword_diamond = Diamantschwert
+default:sword_mese = Meseschwert
+default:sword_steel = Stahlschwert
+default:sword_stone = Steinschwert
+default:sword_wood = Holzschwert
+
+# Books
+default:book = Buch
+default:bookshelf = Bücherregal
+
+# Bricks
+default:brick = Ziegelblock
+default:clay_brick = Tonziegel
+stairs:slab_brick = Ziegelplatte
+stairs:stair_brick = Ziegeltreppe
+
+# Metal Lumps
+default:copper_lump = Kupferklumpen
+default:gold_lump = Goldklumpen
+default:iron_lump = Eisenklumpen
+
+# Ingots
+default:bronze_ingot = Bronzebarren
+default:copper_ingot = Kupferbarren
+default:gold_ingot = Goldbarren
+default:steel_ingot = Stahlbarren
+
+# Metal Blocks
+default:bronzeblock = Bronzeblock
+default:copperblock = Kupferblock
+default:goldblock = Goldblock
+default:steelblock = Stahlblock
+stairs:slab_bronzeblock = Bronzeblockplatte
+stairs:stair_bronzeblock = Bronzeblocktreppe
+stairs:slab_copperblock = Kupferblockplatte
+stairs:stair_copperblock = Kupferblocktreppe
+stairs:slab_goldblock = Goldblockplatte
+stairs:stair_goldblock = Goldblocktreppe
+stairs:slab_steelblock = Stahlblockplatte
+stairs:stair_steelblock = Stahlblocktreppe
+
+# Cactus
+default:cactus = Kaktus
+
+# Chests
+default:chest = Truhe
+default:chest_locked = Verschlossene Truhe
+
+# Clays
+default:clay = Ton
+default:clay_lump = Tonklumpen
+
+# Coal
+default:coal_lump = Kohleklumpen
+default:coalblock = Kohleblock
+
+# Stones
+default:cobble = Bruchstein
+default:desert_cobble = Wüstenbruchstein
+default:desert_stone = Wüstenstein
+default:desert_stonebrick = Wüstensteinziegel
+default:mossycobble = Bemooster Bruchstein
+default:stone = Stein
+default:stone_with_coal = Kohleerz
+default:stone_with_copper = Kupfererz
+default:stone_with_diamond = Diamanterz
+default:stone_with_gold = Golderz
+default:stone_with_iron = Eisenerz
+default:stone_with_mese = Meseerz
+default:stonebrick = Steinziegel
+stairs:slab_cobble = Bruchsteinplatte
+stairs:stair_cobble = Bruchsteintreppe
+stairs:slab_desert_cobble = Wüstenbruchsteinplatte
+stairs:stair_desert_cobble = Wüstenbruchsteintreppe
+stairs:slab_desert_stone = Wüstensteinplatte
+stairs:stair_desert_stone = Wüstensteintreppe
+stairs:slab_desert_stonebrick = Wüstensteinziegelplatte
+stairs:stair_desert_stonebrick = Wüstensteinziegeltreppe
+stairs:slab_stone = Steinplatte
+stairs:stair_stone = Steintreppe
+stairs:slab_stonebrick = Steinziegelplatte
+stairs:stair_stonebrick = Steinziegeltreppe
+
+# Obsidian
+default:obsidian = Obsidian
+default:obsidian_glass = Obsidianglas
+default:obsidian_shard = Obsidianscherbe
+default:obsidianbrick = Obsidianziegel
+stairs:slab_obsidian = Obsidianplatte
+stairs:stair_obsidian = Obsidiantreppe
+stairs:slab_obsidianbrick = Obsidianziegelplatte
+stairs:stair_obsidianbrick = Obsidianziegeltreppe
+
+# Sands
+default:desert_sand = Wüstensand
+default:sand = Sand
+default:sandstone = Sandstein
+default:sandstonebrick = Sandsteinziegel
+stairs:slab_sandstone = Sandsteinplatte
+stairs:stair_sandstone = Sandsteintreppe
+stairs:slab_sandstonebrick = Sandsteinziegelplatte
+stairs:stair_sandstonebrick = Sandsteinziegeltreppe
+
+# Gravel
+default:gravel = Kies
+
+# Precious Stones
+default:diamond = Diamant
+default:diamondblock = Diamantblock
+default:mese = Mese
+default:mese_crystal = Mesekristall
+default:mese_crystal_fragment = Mesekristallsplitter
+
+# Dirts
+default:dirt = Erde
+default:dirt_with_dry_grass = Erde mit vertrocknetem Gras
+default:dirt_with_grass = Erde mit Gras
+default:dirt_with_snow = Erde mit Schnee
+
+# Vegetation
+default:dry_grass_1 = Vertrocknetes Gras
+default:dry_shrub = Vertrockneter Strauch
+default:grass_1 = Gras
+default:junglegrass = Tropengras
+default:papyrus = Papyrus
+
+# Wooden Objects
+default:fence_wood = Holzzaun
+default:ladder = Leiter
+default:sign_wall = Schild
+
+# Stone Objects
+default:furnace = Ofen
+
+# Verre
+default:glass = Glas
+
+# Others
+default:ice = Eis
+default:lava_source = Lavaquelle
+default:meselamp = Meselampe
+default:nyancat = Nyan Cat
+default:nyancat_rainbow = Nyan-Cat-Regenbogen
+default:paper = Papier
+default:rail = Schiene
+default:river_water_source = Flusswasserquelle
+default:snow = Schnee
+default:snowblock = Schneeblock
+default:torch = Fackel
+default:water_source = Wasserquelle

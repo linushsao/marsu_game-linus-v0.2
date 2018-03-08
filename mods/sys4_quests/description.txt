@@ -1,0 +1,9 @@
+This mod pack provide :
+
+- sys4_quests : Core of the quests system. It provide an API for easily make your own quests.
+
+- minetest_quests : Quests written for default minetest game.
+
+- many more quests based on minetest_quests and others mod...
+
+See README.md file for more informations.

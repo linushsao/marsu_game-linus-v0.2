@@ -1,0 +1,15 @@
+### Quests Title ###
+
+Bag Crafter =
+Bag Crafter Lover = 
+Textile Worker =
+
+### Custom Desc. ###
+
+wools =
+
+### Items Name ###
+
+unified_inventory:bag_small =
+unified_inventory:bag_medium =
+unified_inventory:bag_large =
