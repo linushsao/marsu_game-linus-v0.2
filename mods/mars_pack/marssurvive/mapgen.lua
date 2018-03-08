@@ -231,13 +231,11 @@ minetest.register_abm({
 
 -- this part makes it crash or just wont work
 
---mapgen_params = {
---mgname ="mars_desert",
---seed=8777,
---water_level=-31000,
---flags="caves, noflat",
---mg_name = "marssurvive", 
---}--light, mgv7_np_cave1
+mapgen_params = {
+water_level=-31000,
+flags="caves,dungeons,light,decorations",
+}
 
-
---minetest.set_mapgen_params(mapgen_params)
+minetest.register_on_mapgen_init(function()
+	minetest.set_mapgen_params(mapgen_params)
+end)
