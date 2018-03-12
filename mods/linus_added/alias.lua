@@ -21,4 +21,8 @@ minetest.register_alias("farming:seed_strawberry", "farming:blueberries")
 minetest.register_alias("farming:seed_tomato", "farming:tomato")
 minetest.register_alias("farming:seed_potato", "farming:potato")
 
+--remove pollution
+minetest.register_alias("pollution:dirt", "marssurvive:clayblock")
+minetest.register_alias("pollution:water_source", "default:water_source")
+
 
