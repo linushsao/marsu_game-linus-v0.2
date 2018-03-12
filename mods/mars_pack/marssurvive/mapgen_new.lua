@@ -2,7 +2,8 @@ minetest.clear_registered_ores()
 minetest.clear_registered_biomes()
 minetest.clear_registered_decorations()
 
-	minetest.register_biome({
+
+minetest.register_biome({
 		name = "mars_desert",
 		--node_dust = "",
 		node_top = "marssurvive:sand",
@@ -16,9 +17,45 @@ minetest.clear_registered_decorations()
 		node_river_water = "air",
 		y_min = -31000,
 		y_max = 200,
-		heat_point = 50,
-		humidity_point = 50,
-	})
+		heat_point = 45,
+		humidity_point = 70,
+})
+
+minetest.register_biome({
+		name = "mars_desert2",
+		--node_dust = "",
+		node_top = "marssurvive:sand2",
+		depth_top = 5,
+		node_filler = "marssurvive:stone",
+		depth_filler = 3,
+		node_stone = "marssurvive:stone",
+		node_water_top = "air",
+		depth_water_top =1 ,
+		node_water = "air",
+		node_river_water = "air",
+		y_min = -31000,
+		y_max = 200,
+		heat_point = 92,
+		humidity_point = 16,
+})
+
+minetest.register_biome({
+		name = "mars_desert3",
+		--node_dust = "",
+		node_top = "marssurvive:sand3",
+		depth_top = 5,
+		node_filler = "marssurvive:stone",
+		depth_filler = 3,
+		node_stone = "marssurvive:stone",
+		node_water_top = "air",
+		depth_water_top =1 ,
+		node_water = "air",
+		node_river_water = "air",
+		y_min = -31000,
+		y_max = 200,
+		heat_point = 89,
+		humidity_point = 42,
+})
 
 	minetest.register_ore({
 		ore_type       = "scatter",
@@ -181,7 +218,7 @@ minetest.clear_registered_decorations()
 
 	minetest.register_decoration({
 		deco_type = "simple",
-		place_on = {"marssurvive:sand"},
+		place_on = {"group:mars_sand"},
 		sidelen = 16,
 		fill_ratio = 0.01,
 		y_min = -20,
@@ -191,7 +228,7 @@ minetest.clear_registered_decorations()
 
 	minetest.register_decoration({
 		deco_type = "simple",
-		place_on = {"marssurvive:sand"},
+		place_on = {"group:mars_sand"},
 		sidelen = 16,
 		fill_ratio = 0.01,
 		y_min = -20,
@@ -201,7 +238,7 @@ minetest.clear_registered_decorations()
 
 	minetest.register_decoration({
 		deco_type = "simple",
-		place_on = {"marssurvive:sand","marssurvive:stone"},
+		place_on = {"group:mars_sand","marssurvive:stone"},
 		sidelen = 16,
 		fill_ratio = 0.00001,
 		y_min = -31000,

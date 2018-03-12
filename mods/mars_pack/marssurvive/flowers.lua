@@ -66,7 +66,7 @@ end
 
 minetest.register_abm({			-- making default plants grow on grass
 	nodenames = {"default:dirt_with_grass"},
-	interval = 1,
+	interval = 40,
 	chance = 120,
 	action = function(pos)
 		local posu={x=pos.x,y=pos.y+1,z=pos.z}

@@ -1,4 +1,4 @@
-
+--[[
 minetest.register_abm({			-- making default plants grow on grass
 	nodenames = {"default:dirt_with_grass"},
 	interval = 40,
@@ -92,6 +92,7 @@ if minetest.get_modpath("scifi_nodes") then
 	end,
 })
 end
+]]--
 
 
 minetest.register_abm({
