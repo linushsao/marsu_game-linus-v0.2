@@ -44,6 +44,7 @@ end
 --23
 --3
 
+--[[
 minetest.register_abm({
 	nodenames = {"air"},
 	neighbors = {"marsair:air"},
@@ -61,6 +62,24 @@ minetest.register_abm({
 					minetest.set_node(fill_pos, {name = "marsair:air"})
 					minetest.get_meta(fill_pos):set_int("level",level+1)
 				end
+			end
+		end
+	end,
+})]]--
+
+minetest.register_abm({
+	nodenames = {"marsair:air"},
+	neighbors = {"air"},
+	interval = 3,
+	chance = 1,
+	action = function(pos)
+		for _,fill_pos in pairs(minetest.find_nodes_in_area(
+		    {x=pos.x-1, y=pos.y-1, z=pos.z-1},
+		    {x=pos.x+1, y=pos.y+1, z=pos.z+1}, "air")) do
+			local level = minetest.get_meta(pos):get_int("level")
+			if level>0 and level<marsair.radius then
+			   minetest.set_node(fill_pos, {name = "marsair:air"})
+			   minetest.get_meta(fill_pos):set_int("level",level+1)
 			end
 		end
 	end,
