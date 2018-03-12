@@ -10,6 +10,7 @@ minetest.register_craft({
 
 
 minetest.register_craft({
+	type = "shapeless",
 	output = "default:sand",
 	recipe = {"group:mars_sand"},
 })
@@ -132,17 +133,14 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'marssurvive:clayblock',
 	recipe = {
-		{'default:clay_lump','default:clay_lump',''},
-
+		{'default:clay_lump','default:clay_lump'},
 	}
 })
 
 minetest.register_craft({
+	type = "shapeless",
 	output = 'default:clay_lump 2',
-	recipe = {
-		{'marssurvive:clayblock',},
-
-	}
+	recipe = {'marssurvive:clayblock',},
 })
 
 -- cooking:
