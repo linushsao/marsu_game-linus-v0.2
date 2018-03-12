@@ -57,8 +57,9 @@ minetest.register_abm({
 	interval = marsairconfig.vacuum_leak_speed,
 	chance = 1,
 	action = function(pos)
+		air_pos = minetest.find_node_near(pos, 1, "air")
 		minetest.log("action", "airleak1 at pos: "..pos.x..","..pos.y..
-		","..pos.z)
+		","..pos.z.." by: "..air_pos.x..","..airpos.y..","..airpos.z)
 		if math.random(marsairconfig.vacuum_leak_chance) == 1 then
 			minetest.set_node(pos, {name = "air"})
 			return
