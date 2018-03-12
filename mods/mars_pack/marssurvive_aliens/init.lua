@@ -347,7 +347,7 @@ function setanim(self,type)
 	return self
 end
 
-function marssurvive_aliens_reg_alien(name,hp,drop,team,distance,texture,size,shoot,tp)
+function marssurvive_aliens_reg_alien(name,hp,drop,team,distance,texture,size,shoot,tp,speed)
 local life = marssurvive_aliens.alien_lifetime
 local alien_type = "monster"
 if (team == "human") then 
@@ -440,7 +440,7 @@ on_step=marssurvive_alien,
 	timer=0,
 	timer2=0,
 	drop=drop,
-	move={x=0,y=0,z=0,speed=2},
+	move={x=0,y=0,z=0,speed=speed},
 	dmg=4,
 	team=team,
 	type = alien_type,
@@ -476,17 +476,17 @@ end
         
 end
 
-marssurvive_aliens_reg_alien("common",50,"marssurvive_aliens:aliengun","msalien1",10,"marssurvive_sp2.png",{x=0.6, y=1},1,0)
-marssurvive_aliens_reg_alien("death",40,"marssurvive:unused2","msalien1",10,"marssurvive_sp3.png",{x=1, y=1},0,0)
-marssurvive_aliens_reg_alien("big",80,"marssurvive:unused","msalien2",10,"marssurvive_sp4.png",{x=2, y=2},0,0)
-marssurvive_aliens_reg_alien("teleport",60,"default:copper_lump","msalien3",20,"marssurvive_sp4.png^[colorize:#00d76f33",{x=1, y=1},0,1)
-marssurvive_aliens_reg_alien("small",20,"marssurvive:unusedgold","msalien4",20,"marssurvive_sp4.png^[colorize:#0ed2ff33",{x=0.5, y=0.5},0,0)
-marssurvive_aliens_reg_alien("glitch",30,"marssurvive:glitch","msalien3",15,"marssurvive_glitsh.png",{x=0.6, y=1.4},1,1)
-marssurvive_aliens_reg_alien("sand",50,"default:copper_lump","msalien1",15,"default_desert_sand.png^[colorize:#cf411b66",{x=1, y=1},0,0)
-marssurvive_aliens_reg_alien("glow",80,"marssurvive:stone_glow","msalien1",15,"marssurvive_oxogen.png^[colorize:#00ff00aa",{x=1, y=1.2},0,0)
-marssurvive_aliens_reg_alien("stone",60,"default:copper_lump","msalien1",15,"default_desert_stone.png^[colorize:#cf7d6788",{x=1, y=0.5},0,0,1)
-marssurvive_aliens_reg_alien("warn",20,"marssurvive:warning","msalien1",15,"marssurvive_warntape.png",{x=2, y=1},1,0)
-marssurvive_aliens_reg_alien("crystal",100,"marssurvive:crystal","msalien3",15,"marssurvive_glitsh.png^[colorize:#cc0000aa",{x=1, y=0.2},0,1)
+marssurvive_aliens_reg_alien("common",50,"marssurvive_aliens:aliengun","msalien1",10,"marssurvive_sp2.png",{x=0.6, y=1},1,0,2)
+marssurvive_aliens_reg_alien("death",40,"marssurvive:unused2","msalien1",10,"marssurvive_sp3.png",{x=1, y=1},0,0,2)
+marssurvive_aliens_reg_alien("big",80,"marssurvive:unused","msalien2",10,"marssurvive_sp4.png",{x=2, y=2},0,0,4)
+marssurvive_aliens_reg_alien("teleport",60,"default:copper_lump","msalien3",20,"marssurvive_sp4.png^[colorize:#00d76f33",{x=1, y=1},0,1,3)
+marssurvive_aliens_reg_alien("small",20,"marssurvive:unusedgold","msalien4",20,"marssurvive_sp4.png^[colorize:#0ed2ff33",{x=0.5, y=0.5},0,0,1)
+marssurvive_aliens_reg_alien("glitch",30,"marssurvive:glitch","msalien3",15,"marssurvive_glitsh.png",{x=0.6, y=1.4},1,1,3)
+marssurvive_aliens_reg_alien("sand",50,"default:copper_lump","msalien1",15,"default_desert_sand.png^[colorize:#cf411b66",{x=1, y=1},0,0,1)
+marssurvive_aliens_reg_alien("glow",80,"marssurvive:stone_glow","msalien1",15,"marssurvive_oxogen.png^[colorize:#00ff00aa",{x=1, y=1.2},0,0,2)
+marssurvive_aliens_reg_alien("stone",60,"default:copper_lump","msalien1",15,"default_desert_stone.png^[colorize:#cf7d6788",{x=1, y=0.5},0,0,1,2)
+marssurvive_aliens_reg_alien("warn",20,"marssurvive:warning","msalien1",15,"marssurvive_warntape.png",{x=2, y=1},1,0,3)
+marssurvive_aliens_reg_alien("crystal",100,"marssurvive:crystal","msalien3",15,"marssurvive_glitsh.png^[colorize:#cc0000aa",{x=1, y=0.2},0,1,5)
 
 marssurvive_tmp_owner=""
 function marssurvive_awshoot(self)
