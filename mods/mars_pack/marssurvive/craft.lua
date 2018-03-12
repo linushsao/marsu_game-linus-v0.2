@@ -8,11 +8,6 @@ minetest.register_craft({
 })
 
 
-minetest.register_craft({
-	type = "cooking"
-	output = "default:glass",
-	recipe = "group:mars_sand",
-})
 
 minetest.register_craft({
 	output = "default:sand",
@@ -32,10 +27,6 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "marssurvive:smart_glasspane_side",
 	recipe = {{"marssurvive:smart_glasspane_up"},}})
-minetest.register_craft({
-	type = "cooking",
-	output = "default:glass",
-	recipe = "marssurvive:smart_glasspane_side",})
 
 minetest.register_craft({
 	output = "marssurvive:clight 3",
@@ -48,13 +39,6 @@ minetest.register_craft({
 	recipe = {
 		{"spacesuit:air_gassbottle","marssurvive:shieldblock","marssurvive:shieldblock"},
 		{"","marssurvive:shieldblock","marssurvive:shieldblock"},
-	}
-})
-
-minetest.register_craft({
-	output = "default:water_source",
-	recipe = {
-		{"marssurvive:ice","",""},
 	}
 })
 
@@ -134,5 +118,78 @@ minetest.register_craft({
 	output = "marssurvive:wood 3",
 	recipe = {{"marssurvive:tree","",""}}})
 
+
+minetest.register_craft({
+	output = 'default:sapling',
+	recipe = {
+		{'', 'default:apple', ''},
+		{'', 'default:dirt', ''},
+		{'', '', ''},
+	}
+})
+
+
+minetest.register_craft({
+	output = 'marssurvive:clayblock',
+	recipe = {
+		{'default:clay_lump','default:clay_lump',''},
+
+	}
+})
+
+minetest.register_craft({
+	output = 'default:clay_lump 2',
+	recipe = {
+		{'marssurvive:clayblock',},
+
+	}
+})
+
+-- cooking:
+
+minetest.register_craft({
+	output = 'default:furnace',
+	recipe = {
+		{'group:cobble', 'group:cobble', 'group:cobble'},
+		{'group:cobble', '', 'group:cobble'},
+		{'group:cobble', 'group:cobble', 'group:cobble'},
+	}
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "default:water_source",
+	recipe = "marssurvive:ice",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "default:water_source",
+	recipe = "default:ice",
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "marssurvive:mars_sapling",
+	burntime = 10,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "marssurvive:wood",
+	burntime = 15,
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "default:glass",
+	recipe = "marssurvive:smart_glasspane_side",
+})
+
+minetest.register_craft({
+	type = "cooking"
+	output = "default:glass",
+	recipe = "group:mars_sand",
+})
 
 
