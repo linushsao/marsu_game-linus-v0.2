@@ -8,7 +8,7 @@ else
 	marssurvive.itemdroptime=hook_tmp_time-20
 end
 
-dofile(minetest.get_modpath("marssurvive") .. "/spacesuit.lua")
+dofile(minetest.get_modpath("marssurvive") .. "/flowers.lua")
 dofile(minetest.get_modpath("marssurvive") .. "/mapgen.lua")
 dofile(minetest.get_modpath("marssurvive") .. "/nodes.lua")
 dofile(minetest.get_modpath("marssurvive") .. "/functions.lua")
