@@ -57,6 +57,8 @@ minetest.register_abm({
 	interval = marsairconfig.vacuum_leak_speed,
 	chance = 1,
 	action = function(pos)
+		minetest.log("action", "airleak1 at pos: "..pos.x..","..pos.y..
+		","..pos.z)
 		if math.random(marsairconfig.vacuum_leak_chance) == 1 then
 			minetest.set_node(pos, {name = "air"})
 			return
@@ -99,12 +101,15 @@ function air_leak(pos)
 	--print('\n\nAIRLEAK')
 	if minetest.find_node_near(pos, 20, "marsair:airgen_admin") then return end
 	local gene_pos = minetest.find_node_near(pos, 20, "marsair:airgen")
+
+	-- if there is no airgen, then leak else search for connection to it
 	if gene_pos == nil then 
 		--print('NO AIRGEN')
 		minetest.set_node(pos, {name = "air"}) 
 		return false
 	end
-	
+
+	-- allow only one leak per abm interval and airgenerator
 	local meta = minetest.get_meta(gene_pos)
 	local dtime = minetest.get_gametime()-meta:get_int("leak")
 	if (dtime > 4) then
@@ -113,8 +118,11 @@ function air_leak(pos)
 		return
 	end
 	
+	-- if there is content ignore near, return, because u don't know
+	-- whether there can be an generator near
 	if minetest.find_node_near(pos, 20, "ignore") then return end
 	
+
 	local start_poss = minetest.serialize(pos)
 	--print('START POSS', start_poss)
 	local found = {}
@@ -138,7 +146,8 @@ function air_leak(pos)
 						new[nposs] = 1
 					elseif node_name == "marsair:airgen" then
 						if not airgen_removeone(gene_pos) then
-							minetest.set_node(pos, {name = "air"}) 
+minetest.log("action", "airleak2 at pos: "..pos.x..","..pos.y..","..pos.z)
+							minetest.set_node(pos, {name = "air"})
 						end
 						return
 					end
