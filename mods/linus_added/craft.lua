@@ -9,18 +9,6 @@ minetest.register_craft({
 
 -- fuels additional
 
-minetest.register_craft({
-	type = "fuel",
-	recipe = "marssurvive:mars_sapling",
-	burntime = 10,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "marssurvive:wood",
-	burntime = 15,
-})
-
 --others
 minetest.register_craft({
 	output = 'default:lamp_wall 2',
@@ -31,17 +19,6 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
-	type = "cooking",
-	output = "default:water_source",
-	recipe = "marssurvive:ice",
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "default:water_source",
-	recipe = "default:ice",
-})
 
 minetest.register_craft({
 	type = "cooking",
@@ -49,23 +26,6 @@ minetest.register_craft({
 	recipe = "caverealms:thin_ice",
 })
 
-minetest.register_craft({
-	output = 'default:furnace',
-	recipe = {
-		{'group:cobble', 'group:cobble', 'group:cobble'},
-		{'group:cobble', '', 'group:cobble'},
-		{'group:cobble', 'group:cobble', 'group:cobble'},
-	}
-})
-
-minetest.register_craft({
-	output = 'default:sapling',
-	recipe = {
-		{'', 'default:apple', ''},
-		{'', 'default:dirt', ''},
-		{'', '', ''},
-	}
-})
 
 minetest.register_craft({
 	output = 'marssurvive:sand 3',
@@ -74,22 +34,6 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
-	output = 'default:sand',
-	recipe = {
-		{'marssurvive:sand'},
-	}
-})
-
-minetest.register_craft({
-	output = 'marssurvive:clayblock',
-	recipe = {
-		{'default:clay_lump','default:clay_lump',''},
-		{'','',''},
-		{'','',''},
-
-	}
-})
 
 minetest.register_craft({
 	output = 'default:sand',
@@ -107,30 +51,12 @@ minetest.register_craft({
 })
 
 --cooking recipe
-minetest.register_craft({
-  type = "cooking",
-	output = 'default:desert_stone',
-	recipe = 'default:desert_cobble',
-})
-
-minetest.register_craft({
-  type = "cooking",
-	output = 'marssurvive:stone',
-	recipe = 'marssurvive:cobble',
-
-})
 
 minetest.register_craft({
 	output = 'default:desert_cobble',
 	recipe = {
 		{'marssurvive:cobble'},
 	}
-})
-
-minetest.register_craft({
-  type = "cooking",
-	output = 'default:clay_lump 2',
-	recipe = 'marssurvive:clayblock',
 })
 
 --
