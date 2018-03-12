@@ -27,7 +27,7 @@ minetest.register_node("marsair:air", {
 	paramtype = "light",
 	sunlight_propagates =true,
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(30)
+		minetest.get_node_timer(pos):start(60)
 	end,
 	on_timer = function (pos, elapsed)
 		minetest.set_node(pos, {name = "marsair:air_stable"})
