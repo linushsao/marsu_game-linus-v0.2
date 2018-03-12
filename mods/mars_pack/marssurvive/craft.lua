@@ -1,9 +1,22 @@
+
 minetest.register_craft({
 	output = "marssurvive:trapdoor_1 2",
 	recipe = {
 		{"marssurvive:warning","marssurvive:shieldblock",""},
 		{"marssurvive:warning","marssurvive:shieldblock", ""},
 	}
+})
+
+
+minetest.register_craft({
+	type = "cooking"
+	output = "default:glass",
+	recipe = "group:mars_sand",
+})
+
+minetest.register_craft({
+	output = "default:sand",
+	recipe = {"group:mars_sand"},
 })
 
 minetest.register_craft({

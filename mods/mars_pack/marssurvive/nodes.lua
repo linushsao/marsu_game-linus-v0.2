@@ -459,7 +459,21 @@ collision_box = {
 minetest.register_node("marssurvive:sand", {
 	description = "Sand",
 	tiles = {"default_desert_sand.png^[colorize:#cf411b66"},
-	groups = {crumbly = 3, falling_node = 1, sand = 1},
+	groups = {crumbly = 3, falling_node = 1, sand = 1, mars_sand = 1},
+	sounds = default.node_sound_sand_defaults(),
+})
+
+minetest.register_node("marssurvive:sand2", {
+	description = "Sand",
+	tiles = {"default_desert_sand.png^[colorize:#df412b66"},
+	groups = {crumbly = 3, falling_node = 1, sand = 1, mars_sand = 1},
+	sounds = default.node_sound_sand_defaults(),
+})
+
+minetest.register_node("marssurvive:sand3", {
+	description = "Sand",
+	tiles = {"default_desert_sand.png^[colorize:#df110b66"},
+	groups = {crumbly = 3, falling_node = 1, sand = 1, mars_sand = 1},
 	sounds = default.node_sound_sand_defaults(),
 })
 
