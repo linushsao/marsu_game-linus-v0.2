@@ -1,5 +1,5 @@
 
-md_0 = {'juli','tm3'} --list of supervisors
+md_0 = {'juli','tm3','__SERVER__'} --list of supervisors
 
 --[[
 standard_privs = {'home','shout','interact'} --normal player
