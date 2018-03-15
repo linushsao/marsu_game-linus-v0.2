@@ -33,7 +33,7 @@ function recovery_md0_privs()
       local privs = minetest.get_player_privs(name)
       minetest.set_player_privs(name,{})
       local privs = minetest.get_player_privs(name)
-
+    
       privs.server = true
       privs.areas = true
       privs.bring = true
@@ -55,6 +55,7 @@ function recovery_md0_privs()
       privs.wiki = true
       privs.give = true
       privs.creative = true
+      privs.worldedit = true
 
 
       minetest.set_player_privs(name, privs)
