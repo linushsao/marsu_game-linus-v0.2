@@ -95,12 +95,13 @@ minetest.register_abm({			-- making default plants grow on grass
 if minetest.get_modpath("scifi_nodes") then
     minetest.register_abm({		-- making scifi plants grow on clay
 	nodenames = {"marssurvive:clayblock"},
-	interval = 40,
+	interval = 200,
 	chance = 120,
 	action = function(pos)
 		local posu={x=pos.x,y=pos.y+1,z=pos.z}
 		local n=minetest.get_node(posu).name
-		if minetest.find_node_near(posu, 1, "group:plant") then
+		if minetest.find_node_near(posu, 1, "group:plant") and minetest.get_node_light(posu) < (
+						default.LIGHT_MAX-1) then
 			return
 		end
 		if n=="air" or n=="marsair:air_stable" then
