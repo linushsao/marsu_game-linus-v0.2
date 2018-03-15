@@ -44,6 +44,7 @@ end
 
 
 for _, flower in pairs(marssurvive.flowers.farming) do
+	print("add to plant group: "..flower)
 	local def = minetest.registered_nodes[flower]
 	local groups = table.copy(def.groups)
 	groups.plant = 1
