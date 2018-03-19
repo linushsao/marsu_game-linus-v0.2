@@ -11,6 +11,7 @@ dofile(minetest.get_modpath("linus_added") .. "/alias.lua")
 dofile(minetest.get_modpath("linus_added") .. "/craft.lua")
 dofile(minetest.get_modpath("linus_added") .. "/ores.lua")
 dofile(minetest.get_modpath("linus_added") .. "/abm.lua")
+dofile(minetest.get_modpath("linus_added") .. "/stairs.lua")
 
 --skycolor change by time
 day_timer = 0
