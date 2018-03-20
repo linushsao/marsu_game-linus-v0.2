@@ -304,6 +304,6 @@ minetest.register_on_leaveplayer(function(player)
 	end
 end)
 
-minetest.log("action" "[MOD] ufos loaded!")
+minetest.log("action", "[MOD] ufos loaded!")
 
 
