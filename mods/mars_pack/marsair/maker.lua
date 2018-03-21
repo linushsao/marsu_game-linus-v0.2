@@ -40,7 +40,7 @@ marsair.needed_air = {name="marssurvive:air", count=marsairconfig.need_air_gener
 function marsair.generate(pos)
 	local new_item =  marsair.needed_air
 	new_item.count = 1
-	if not marsair.is_airflower({x=pos.x, y=pos.y+1, z=pos.z}) then return end
+	if not marsair.is_airflower_at({x=pos.x, y=pos.y+1, z=pos.z}) then return end
 	if (minetest.get_node({x=pos.x, y=pos.y+2, z=pos.z}).name ~= "marsair:pot_lid") then
 		return end
 	local meta = minetest.get_meta(pos) 
@@ -180,7 +180,7 @@ minetest.register_node("marsair:pot_lid", {
 })
 	
 minetest.register_node("marsair:airmaker", {
-	description = "Airmaker",
+	description = "flower Airmaker",
 	tiles = {
 		{
 			image = "airmaker_top.png",
@@ -222,13 +222,28 @@ minetest.register_node("marsair:airmaker", {
 		inv:set_size("main", 4)
 		
 	end,
-	on_punch = function(pos, node, clicker, item, _)
-		local node = minetest.get_node({x=pos.x, y=pos.y+2, z=pos.z})
-		if node.name == "marsair:pot_lid" then
-			minetest.set_node({x=pos.x, y=pos.y+2, z=pos.z}, {name="air", param2=node.param2})
-		elseif node.name ~= "scifi_nodes:pot_lid" and node.name == "air" then
-			if marsair.is_airflower({x=pos.x, y=pos.y+1, z=pos.z}) then
-				minetest.set_node({x=pos.x, y=pos.y+2, z=pos.z}, {name="marsair:pot_lid", param2=node.param2})
+	on_punch = function(pos, node, clicker, pointed_thing)
+		local itemname = clicker:get_wielded_item():get_name()
+		if marsair.is_airflower(itemname) then
+			local flower_pos = {x=pos.x, y=pos.y+1, z=pos.z}
+			if marsair.is_free_space(flower_pos) then
+				minetest.swap_node(flower_pos,
+						   {name=itemname})
+				local stack = {name=itemname, count=1, 
+					       wear=0, metadata=""}
+				clicker:get_inventory():remove_item("main", 
+								    stack)
+			end
+		end
+		local lid_pos = {x=pos.x, y=pos.y+2, z=pos.z}
+		local node_name = minetest.get_node(lid_pos).name
+		if node_name == "marsair:pot_lid" then
+			marsair.delete_node(lid_pos)
+		elseif node_name == "scifi_nodes:pot_lid"
+			or marsair.is_free_space(lid_pos) then
+			if marsair.is_airflower_at({x=pos.x, y=pos.y+1, z=pos.z}) then
+				minetest.swap_node({x=pos.x, y=pos.y+2, z=pos.z}, 
+				{name="marsair:pot_lid", param2=node.param2})
 			end
 		end
 	end,

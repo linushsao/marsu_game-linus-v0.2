@@ -9,12 +9,22 @@ dofile(modfolder.."/config.lua")
 --flowers-config
 dofile(modfolder.."/flower_conf.lua")
 
-marsair.is_airflower = function(pos)
-	local nodename = minetest.get_node(pos).name 
-	for _, flower in pairs(marsair.air_flowers) do
-		if nodename == flower then return true end
+marsair.airflower_check = {}
+for _, flower in pairs(marsair.air_flowers) do
+	marsair.airflower_check[flower] = 1
+end
+marsair.is_airflower = function(nodename)
+	if marsair.airflower_check[nodename] then 
+		return true
+	else
+		return false
 	end
-	return false
+end
+
+
+marsair.is_airflower_at = function(pos)
+	local nodename = minetest.get_node(pos).name
+	return marsair.is_airflower(nodename)
 end
 
 --AIR

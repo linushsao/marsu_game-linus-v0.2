@@ -153,8 +153,8 @@ minetest.register_node("marsair:airgen", {
 				},
 			}
 		},
-	groups = {dig_immediate=3, tubedevice = 1, tubedevice_receiver = 1},
-	sounds = default.node_sound_stone_defaults(),
+	groups = {crumbly = 2, tubedevice = 1, tubedevice_receiver = 1},
+	sounds = default.node_sound_glass_defaults(),
 	on_construct = function(pos)
 		minetest.get_meta(pos):set_string("infotext", "Air Generator")
 		local node = minetest.get_node(pos)
@@ -178,16 +178,18 @@ minetest.register_node("marsair:airgen", {
 		end
 		--print(pos, dump(player), dump(fields))
 	end,
-	 tube = {
+	tube = {
 		insert_object = function(pos, node, stack, direction)
 			local meta = minetest.get_meta(pos)
 			local inv = meta:get_inventory()
+			if not inv:room_for_item("main", stack) then
+				marsair.use_air_gene(pos, false)
+				inv:remove_item("main", stack)
+			end
 			return inv:add_item("main", stack)
 		end,
 		can_insert = function(pos, node, stack, direction)
-			local meta = minetest.get_meta(pos)
-			local inv = meta:get_inventory()
-			return inv:room_for_item("main", stack)
+			return true
 		end,
 		connect_sides = {left = 1, right = 1, back = 1, front=1, bottom=1},
 	},
@@ -220,8 +222,8 @@ minetest.register_node("marsair:airgen_admin", {
 				},
 			}
 		},
-	groups = {dig_immediate=3, tubedevice = 1, tubedevice_receiver = 1},
-	sounds = default.node_sound_stone_defaults(),
+	groups = {crumbly=2,tubedevice = 1, tubedevice_receiver = 1},
+	sounds = default.node_sound_glass_defaults(),
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
 		marsair.spread_air(pos)
 		return itemstack

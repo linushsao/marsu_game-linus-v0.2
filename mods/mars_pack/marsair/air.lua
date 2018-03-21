@@ -1,3 +1,28 @@
+marsair.build_allowed = {
+	["air"] = 1,
+	["marsair:air_stable"] = 1,
+	["marsair:air"] = 1
+}
+
+function marsair.is_free_space(pos) 
+	local name = minetest.get_node(pos).name
+	if marsair.build_allowed[name] then return true
+	else return false end
+end
+
+function marsair.delete_node(pos)
+	if minetest.find_node_near(pos,1,
+		"marsair:air_stable") then 
+		minetest.swap_node(pos, {name="marsair:air_stable"})
+
+	elseif minetest.find_node_near(pos,1,
+		"marsair:air") then
+		minetest.swap_node(pos, {name="marsair:air_stable"})
+	else
+		minetest.swap_node(pos, {name="air"})
+	end
+end
+
 minetest.register_node("marsair:air_stable", {
 	description = "Air (stable) [You Hacker!]",
 	walkable = false,
