@@ -1452,69 +1452,20 @@ local do_states = function(self, dtime)
 	elseif self.state == "walk" then
 
 		local s = self.object:getpos()
-		local lp = nil
-
-		-- is there something I need to avoid?
-		if self.water_damage > 0
-		and self.lava_damage > 0 then
-
-			lp = minetest.find_node_near(s, 1, {"group:water", "group:lava"})
-
-		elseif self.water_damage > 0 then
-
-			lp = minetest.find_node_near(s, 1, {"group:water"})
-
-		elseif self.lava_damage > 0 then
-
-			lp = minetest.find_node_near(s, 1, {"group:lava"})
-		end
-
+		-- mars part:	
+		lp = minetest.find_node_near(s, 5, "marsair:air_stable")
 		if lp then
 
-			-- if mob in water or lava then look for land
-			if (self.lava_damage
-				and minetest.registered_nodes[self.standing_in].groups.lava)
-			or (self.water_damage
-				and minetest.registered_nodes[self.standing_in].groups.water) then
-
-				lp = minetest.find_node_near(s, 5, {"group:soil", "group:stone",
-					"group:sand", "default:ice", "default:snowblock"})
-
-				-- did we find land?
-				if lp then
-
-					local vec = {
-						x = lp.x - s.x,
-						z = lp.z - s.z
-					}
-
-					yaw = (atan(vec.z / vec.x) + pi / 2) - self.rotate
-
-					if lp.x > s.x then yaw = yaw + pi end
-
-						-- look towards land and jump/move in that direction
-						yaw = set_yaw(self.object, yaw)
-						do_jump(self)
-						set_velocity(self, self.walk_velocity)
-				else
-					yaw = (random(0, 360) - 180) / 180 * pi
-				end
-
-			else
-
-				local vec = {
-					x = lp.x - s.x,
-					z = lp.z - s.z
-				}
-
-				yaw = (atan(vec.z / vec.x) + pi / 2) - self.rotate
-
-				if lp.x > s.x then yaw = yaw + pi end
-			end
-
+			local vec = {
+				x = lp.x - s.x,
+				z = lp.z - s.z
+			}
+			yaw = (atan(vec.z / vec.x) + pi / 2) - self.rotate
+			if lp.x > s.x then yaw = yaw + pi end
+				-- look towards land and jump/move in that direction
 			yaw = set_yaw(self.object, yaw)
-
-		-- otherwise randomly turn
+			do_jump(self)
+			set_velocity(self, self.walk_velocity)
 		elseif random(1, 100) <= 30 then
 
 			yaw = random() * 2 * pi
