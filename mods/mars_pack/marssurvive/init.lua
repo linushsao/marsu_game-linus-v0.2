@@ -32,7 +32,7 @@ local function set_marssky(player)
 			local im_top = "marssurvive_sky_twilight_top.png"
 			local im = "marssurvive_sky_twilight_side.png"
 			local im_bottom = "marssurvive_sky_twilight_bottom.png"
-			player:set_sky({r=100, g=80, b=50}, "skybox",
+			player:set_sky({r=160, g=80, b=50}, "skybox",
 				{im_top,im_bottom,im,im,im,im}, false)
 		else
 			local im_top = "marssurvive_sky_night_top.png"
@@ -65,7 +65,7 @@ local function marssurvive_space(player)
 			player:set_sky({r=0, g=0, b=0},"skybox",
 				{im,im,im,im,im,im}, false)
 		end)
-	else
+	elseif (pos>-100) and (pos<=1000) then
 		set_marssky(player)
 	end
 end
