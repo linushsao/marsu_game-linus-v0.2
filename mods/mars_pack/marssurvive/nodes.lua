@@ -667,3 +667,25 @@ minetest.register_node(":default:cloud", {
 	--drawtype = "airlike",
 })
 
+minetest.register_node("marssurvive:led", {
+	description = "Light emitting diode (LED)",
+	tiles = {"marssurvive_led.png"},
+	inventory_image = "marssurvive_led.png",
+	wield_image = "marssurvive_led.png",
+	drawtype = "signlike",
+	groups = {snappy = 3, attached_node = 2},
+	paramtype = "light",
+	paramtype2 = "wallmounted",
+	walkable = false,
+	sunlight_propagates = true,
+	selection_box = {
+			  type = "wallmounted",
+			  wall_bottom = {-0.5, -0.5, -0.5, 0.5, -5/32, 0.5}
+			},
+
+	light_source = 13,
+})
+minetest.clear_craft({output="default:torch"})
+minetest.register_alias_force("default:torch", "marssurvive:led")
+minetest.register_alias_force("default:torch_wall", "marssurvive:led")
+

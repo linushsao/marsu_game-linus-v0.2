@@ -21,6 +21,55 @@ function marssurvive_setgrav(player,grav)
 	player:set_physics_override({gravity=grav})
 end
 
+
+local function set_marssky(player) 
+	minetest.after(0.1, function()
+		local light = 12-math.abs(minetest.get_timeofday()*24-12)
+		--twilight from 4-8 and 16-20
+		if (light >= 8) then 
+			player:set_sky({r=220, g=170, b=115},"plain",{}, false)
+		elseif (light >= 4) and (light <= 8) then
+			local im_top = "marssurvive_sky_twilight_top.png"
+			local im = "marssurvive_sky_twilight_side.png"
+			local im_bottom = "marssurvive_sky_twilight_bottom.png"
+			player:set_sky({r=100, g=80, b=50}, "skybox",
+				{im_top,im_bottom,im,im,im,im}, false)
+		else
+			local im_top = "marssurvive_sky_night_top.png"
+			local im = "marssurvive_sky_night_side.png"
+			local im_bottom = "marssurvive_sky_night_bottom.png"
+			player:set_sky({r=100, g=80, b=50}, "skybox",
+				{im_top,im_bottom,im,im,im,im}, false)
+		end
+	end)
+end
+
+local function marssurvive_space(player)
+	local pos=player:getpos().y
+	if marssurvive.player_space[player:get_player_name()].inside~="cave" and pos<=-100 then
+		marssurvive.player_space[player:get_player_name()].inside="cave"
+		marssurvive_setgrav(player,marssurvive.gravity)
+		minetest.after(0.1,function()
+			player:set_sky(000000, "plain", {}, false)
+		end)
+	elseif marssurvive.player_space[player:get_player_name()].inside~="mars"
+	    and (pos>-100) and (pos<=1000) then
+		marssurvive.player_space[player:get_player_name()].inside="mars"
+		marssurvive_setgrav(player,marssurvive.gravity)
+		set_marssky(player)
+	elseif marssurvive.player_space[player:get_player_name()].inside~="space" and pos>1000 then
+		marssurvive.player_space[player:get_player_name()].inside="space"
+		marssurvive_setgrav(player,0.05)
+		minetest.after(0.1,function()
+			local im = "marssurvive_space_sky.png"
+			player:set_sky({r=0, g=0, b=0},"skybox",
+				{im,im,im,im,im,im}, false)
+		end)
+	else
+		set_marssky(player)
+	end
+end
+
 -- seting up settings for joined players
 minetest.register_on_joinplayer(function(player)
 		--player:override_day_night_ratio(12000)
@@ -36,30 +85,6 @@ minetest.register_on_joinplayer(function(player)
 		})
 end)
 
-function marssurvive_space(player)
-	local pos=player:getpos().y
-	if marssurvive.player_space[player:get_player_name()].inside~="cave" and pos<=-100 then
-		marssurvive.player_space[player:get_player_name()].inside="cave"
-		marssurvive_setgrav(player,marssurvive.gravity)
-		minetest.after(0.1,function()
-			player:set_sky(000000, "plain", {}, false)
-		end)
-	elseif marssurvive.player_space[player:get_player_name()].inside~="mars" and (pos>-100) and (pos<=1000) then
-		marssurvive.player_space[player:get_player_name()].inside="mars"
-		marssurvive_setgrav(player,marssurvive.gravity)
-		minetest.after(0.1,function()
-			player:set_sky({r=219, g=168, b=117},"plain",{}, false)
-		end)
-	elseif marssurvive.player_space[player:get_player_name()].inside~="space" and pos>1000 then
-		marssurvive.player_space[player:get_player_name()].inside="space"
-		marssurvive_setgrav(player,0.05)
-		minetest.after(0.1,function()
-			player:set_sky({r=0, g=0, b=0},"skybox",{"marssurvive_space_sky.png","marssurvive_space_sky.png^marssurvive_mars.png","marssurvive_space_sky.png","marssurvive_space_sky.png","marssurvive_space_sky.png","marssurvive_space_sky.png"})
-		end)
-	end
-
-
-end
 
 local timer = 0
 minetest.register_globalstep(function(dtime)

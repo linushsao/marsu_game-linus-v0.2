@@ -190,4 +190,25 @@ minetest.register_craft({
 	recipe = "group:mars_sand",
 })
 
+--led
+minetest.register_craftitem("marssurvive:silicon", {
+	description = "mars silicon",
+	image = "marssurvive_silicon.png"
+})
+
+minetest.register_craft({
+	output = 'marssurvive:silicon 8',
+	recipe = {
+		{'', '', ''},
+		{'marssurvive:sand', 'marssurvive:sand', ''},
+		{'marssurvive:sand', 'default:iron_lump', ''},
+	}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "marssurvive:led 4",
+	recipe = {"marssurvive:silicon", "default:glass"},
+})
+
 
