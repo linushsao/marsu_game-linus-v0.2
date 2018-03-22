@@ -685,7 +685,8 @@ minetest.register_node("marssurvive:led", {
 
 	light_source = 13,
 })
-minetest.clear_craft({output="default:torch"})
+--minetest.clear_craft({output="default:torch"})
 minetest.register_alias_force("default:torch", "marssurvive:led")
 minetest.register_alias_force("default:torch_wall", "marssurvive:led")
+minetest.register_alias_force("default:torch_ceiling", "marssurvive:led")
 
