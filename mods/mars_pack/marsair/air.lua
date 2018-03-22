@@ -86,7 +86,7 @@ minetest.register_abm({
 		minetest.log("action", "airleak1 at pos: "..pos.x..","..pos.y..
 		","..pos.z.." by: "..airpos.x..","..airpos.y..","..airpos.z)
 		if math.random(marsairconfig.vacuum_leak_chance) == 1 then
-			minetest.set_node(pos, {name = "air"})
+			minetest.swap_node(pos, {name = "air"})
 			return
 		end
 		minetest.after(0.1, function(pos)
@@ -98,13 +98,13 @@ minetest.register_abm({
 				local new_pos = positions_over[math.random(#positions_over)]
 				minetest.set_node(pos, {name = "air"})
 				if math.random(5) ~= 1 then
-					minetest.set_node(new_pos, {name = "marsair:air_stable"})
+					minetest.swap_node(new_pos, {name = "marsair:air_stable"})
 				end
 			elseif positions_nextto and #positions_nextto >= 1 then
 				local new_pos = positions_nextto[math.random(#positions_nextto)]
 				minetest.set_node(pos, {name = "air"})
 				if math.random(10) ~= 1 then
-					minetest.set_node(new_pos, {name = "marsair:air_stable"})
+					minetest.swap_node(new_pos, {name = "marsair:air_stable"})
 				end
 			end
 		end, pos)

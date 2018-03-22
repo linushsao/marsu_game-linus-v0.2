@@ -328,6 +328,7 @@ local item_drop = function(self, cooked)
 
 	local obj, item, num
 	local pos = self.object:getpos()
+	if not pos then return end -- sometimes its nil idk why
 
 	self.drops = self.drops or {} -- nil check
 
@@ -1388,7 +1389,10 @@ end
 local do_states = function(self, dtime)
 
 	local yaw = 0
-
+	local rnd_v = math.random(5,10)/10
+	if (math.random(100) < 20) then
+		rnd_v = math.random(1,10)/10
+	end
 	if self.state == "stand" then
 
 		if random(1, 4) == 1 then
@@ -1434,7 +1438,7 @@ local do_states = function(self, dtime)
 			and random(1, 100) <= self.walk_chance
 			and is_at_cliff(self) == false then
 
-				set_velocity(self, self.walk_velocity)
+				set_velocity(self, self.walk_velocity*rnd_v)
 				self.state = "walk"
 				set_animation(self, "walk")
 
@@ -1450,12 +1454,12 @@ local do_states = function(self, dtime)
 		end
 
 	elseif self.state == "walk" then
-
 		local s = self.object:getpos()
 		-- mars part:	
 		lp = minetest.find_node_near(s, 5, "marsair:air_stable")
 		if lp then
-
+			lp.x = lp.x+math.random(-3,3)/10
+			lp.z = lp.z+math.random(-3,3)/10
 			local vec = {
 				x = lp.x - s.x,
 				z = lp.z - s.z
@@ -1465,13 +1469,14 @@ local do_states = function(self, dtime)
 				-- look towards land and jump/move in that direction
 			yaw = set_yaw(self.object, yaw)
 			do_jump(self)
-			set_velocity(self, self.walk_velocity)
-		elseif random(1, 100) <= 30 then
-
+			set_velocity(self, self.walk_velocity*rnd_v)
+		end
+		--[[if random(1, 100) <= 30 then
+			set_velocity(self, 0)
 			yaw = random() * 2 * pi
 
 			yaw = set_yaw(self.object, yaw)
-		end
+		end]]--
 
 		-- stand for great fall in front
 		local temp_is_cliff = is_at_cliff(self)
@@ -1483,7 +1488,7 @@ local do_states = function(self, dtime)
 			self.state = "stand"
 			set_animation(self, "stand")
 		else
-			set_velocity(self, self.walk_velocity)
+			set_velocity(self, self.walk_velocity*rnd_v)
 
 			if flight_check(self)
 			and self.animation

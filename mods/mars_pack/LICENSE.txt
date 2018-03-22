@@ -1,0 +1,25 @@
+This Mod is made by juli
+some parts of the code are based on the
+marssurvive mod by AiTechEye (V7)
+
+License for Code
+----------------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 2.1 of the License, or
+(at your option) any later version.
+
+http://www.gnu.org/licenses/lgpl-2.1.html
+
+License for Media
+-----------------
+
+For all mods except the compost mod: MIT license
+
+For the compost mod (4 images):
+marssurvive/textures/base.png
+marssurvive/textures/compost_compost_1.png
+marssurvive/textures/compost_compost_2.png
+marssurvive/textures/compost_compost_3.png
+CC-BY-SA 3.0 UNPORTED. Created by cd2 (cdqwertz)

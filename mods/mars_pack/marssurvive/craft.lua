@@ -139,8 +139,8 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "shapeless",
-	output = 'default:clay_lump 2',
-	recipe = {'marssurvive:clayblock',},
+	output = 'default:clay_lump 4',
+	recipe = {'marssurvive:clayblock','marssurvive:clayblock'},
 })
 
 -- cooking:

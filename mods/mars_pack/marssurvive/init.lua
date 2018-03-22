@@ -15,6 +15,7 @@ dofile(minetest.get_modpath("marssurvive") .. "/functions.lua")
 dofile(minetest.get_modpath("marssurvive") .. "/tools.lua")
 dofile(minetest.get_modpath("marssurvive") .. "/bags.lua")
 dofile(minetest.get_modpath("marssurvive") .. "/craft.lua")
+dofile(minetest.get_modpath("marssurvive") .. "/compost.lua")
 
 function marssurvive_setgrav(player,grav)
 	player:set_physics_override({gravity=grav})

@@ -1,5 +1,5 @@
 -- checks if the area is too big or if its outside in 14 directions
-marsair.radius = 21
+marsair.radius = 15
 
 --check if outside or inside
 marsair.is_inside = function(pos)
@@ -66,6 +66,11 @@ minetest.register_abm({
 		end
 	end,
 })]]--
+local function make_air_at(pos, level) 
+	minetest.swap_node(pos, {name = "marsair:air"})
+	minetest.get_meta(pos):set_int("level",level)
+	minetest.get_node_timer(pos):start(60)
+end
 
 minetest.register_abm({
 	nodenames = {"marsair:air"},
@@ -73,28 +78,28 @@ minetest.register_abm({
 	interval = 3,
 	chance = 1,
 	action = function(pos)
+	    minetest.after(0.5, function(pos)
 		for _,fill_pos in pairs(minetest.find_nodes_in_area(
 		    {x=pos.x-1, y=pos.y-1, z=pos.z-1},
 		    {x=pos.x+1, y=pos.y+1, z=pos.z+1}, "air")) do
 			local level = minetest.get_meta(pos):get_int("level")
 			if level>0 and level<marsair.radius then
-			   minetest.set_node(fill_pos, {name = "marsair:air"})
-			   minetest.get_meta(fill_pos):set_int("level",level+1)
+			   	make_air_at(fill_pos, level+1)
 			end
 		end
+	    end, pos)
 	end,
 })
 
 marsair.spread_air = function(pos)
 	local success = 0
-	for i=1,17,1 do
+	for i=1,18,1 do
 		--airgenerator every time 0
 		minetest.get_meta(pos):set_int("level",0)
 		local fill_pos=minetest.find_node_near(pos,1,{"air"})
 		if fill_pos~=nil then
-			minetest.set_node(fill_pos, {name = "marsair:air"})
-			minetest.get_meta(fill_pos):set_int("level",1)
-			local success = 1
+			make_air_at(fill_pos, 1)
+			success = 1
 		else
 			break
 		end
