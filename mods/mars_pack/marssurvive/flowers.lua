@@ -101,7 +101,7 @@ if minetest.get_modpath("scifi_nodes") then
 	action = function(pos)
 		local posu={x=pos.x,y=pos.y+1,z=pos.z}
 		local n=minetest.get_node(posu).name
-		if minetest.find_node_near(posu, 1, "group:plant") and minetest.get_node_light(posu) < (
+		if minetest.find_node_near(posu, 1, "group:plant") or minetest.get_node_light(posu) < (
 						default.LIGHT_MAX-1) then
 			return
 		end
