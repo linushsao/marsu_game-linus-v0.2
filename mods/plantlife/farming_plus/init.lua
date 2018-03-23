@@ -232,23 +232,11 @@ minetest.register_abm({
 -- ========= STRAWBERRIES =========
 dofile(minetest.get_modpath("farming_plus").."/strawberries.lua")
 
--- ========= RHUBARB =========
-dofile(minetest.get_modpath("farming_plus").."/rhubarb.lua")
-
--- ========= POTATOES =========
-dofile(minetest.get_modpath("farming_plus").."/potatoes.lua")
-
--- ========= TOMATOES =========
-dofile(minetest.get_modpath("farming_plus").."/tomatoes.lua")
-
 -- ========= ORANGES =========
 dofile(minetest.get_modpath("farming_plus").."/oranges.lua")
 
 -- ========= BANANAS =========
 dofile(minetest.get_modpath("farming_plus").."/bananas.lua")
-
--- ========= CARROTS =========
-dofile(minetest.get_modpath("farming_plus").."/carrots.lua")
 
 -- ========= COCOA =========
 dofile(minetest.get_modpath("farming_plus").."/cocoa.lua")
