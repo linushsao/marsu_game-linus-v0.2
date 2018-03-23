@@ -15,7 +15,8 @@ marssurvive.flowers = {
 		"flowers:mushroom_red", "flowers:rose", "flowers:tulip",
 		"flowers:dandelion_yellow", "flowers:geranium", 
 		"flowers:viola", "flowers:dandelion_white", 
-		"default:papyrus",
+		"default:papyrus", "default:acacia_bush_sapling",
+		"default:bush_sapling"
 	},
 	scifi = {
 		"scifi_nodes:eyetree", "scifi_nodes:flower1", 
@@ -27,24 +28,62 @@ marssurvive.flowers = {
 		"scifi_nodes:plant6", "scifi_nodes:plant7", 
 		"scifi_nodes:plant8", "scifi_nodes:plant9",
 		"scifi_nodes:plant10", "scifi_nodes:plant_trap",
-	}
+	},
+
 }
 
-if minetest.get_modpath("farming_plus") then
-	local farming_plus = {
-		"farming_plus:potato", "farming_plus:tomato", 
-		"farming_plus:strawberry", "farming_plus:rhubarb", 
-		"farming_plus:orange", "farming_plus:carrot", 
-		"farming:pumpkin", 
-	}
-	for _, flower in pairs(farming_plus) do
-		table.insert(marssurvive.flowers.farming, flower)
+-- external farming plants
+local test_plants = {
+	"farming_plus:potato", "farming_plus:tomato", 
+	"farming_plus:strawberry", "farming_plus:rhubarb", 
+	"farming_plus:orange", "farming_plus:carrot", 
+	"farming:pumpkin", "farming:potato_4", "farming:tomato_8",
+	"farming:rhubarb_3", "farming:carrot_8", "farming:barley_7",
+	"farming:beanbush", "farming:blueberry_4", "farming:coffee_5",
+	"farming:corn_8", "farming:cocumber_4", "farming:grapebush",
+	"farming:hemp_8", "farming:melon_8", "farming:raspberry_4",
+	"bushes:raspberry_bush", "bushes:strawberry_bush", 
+	"bushes:blackberry_bush", "bushes:gooseberry_bush", 
+	"bushes:blueberry_bush", 
+}
+
+for _, plant in pairs(test_plants) do
+	if minetest.registered_nodes[plant] ~= nil then
+		table.insert(marssurvive.flowers.farming, plant)
 	end
 end
 
+minetest.override_item("default:leaves", {
+		drop = {
+		max_items = 1,
+		items = {
+			{ items = {"default:sapling"}, rarity=20},
+			{ items = {"default:aspen_sapling"}, rarity=30},
+			{ items = {"default:junglesapling"}, rarity=30},
+			{ items = {"default:acacia_sapling"}, rarity=30},
+			{ items = {"default:leaves"}}
+		}
+	},
+})
 
+if minetest.registered_nodes["farming:cocoa_1"] ~= nil then
+    minetest.log("action", "marssurvive: add cocoa to jungle_tree")
+    minetest.override_item("default:jungleleaves", {
+		drop = {
+		max_items = 1,
+		items = {
+			{ items = {"default:junglesapling"}, rarity = 20},
+			{ items = {"farming:cocoa_1"}, rarity = 30 },
+			{ items = {"default:jungleleaves"}}
+		}
+	},
+    })
+end
+
+
+-- make all plants to group plant, need by abm
 for _, flower in pairs(marssurvive.flowers.farming) do
-	print("add to plant group: "..flower)
+	minetest.log("action", "marssurvive: add to plant group: "..flower)
 	local def = minetest.registered_nodes[flower]
 	local groups = table.copy(def.groups)
 	groups.plant = 1
@@ -67,7 +106,7 @@ end
 
 minetest.register_abm({			-- making default plants grow on grass
 	nodenames = {"default:dirt_with_grass"},
-	interval = 40,
+	interval = 120,
 	chance = 120,
 	action = function(pos)
 		local posu={x=pos.x,y=pos.y+1,z=pos.z}
