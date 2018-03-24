@@ -1,5 +1,5 @@
 -- checks if the area is too big or if its outside in 14 directions
-marsair.radius = 15
+marsair.radius = 16
 
 --check if outside or inside
 marsair.is_inside = function(pos)
@@ -108,6 +108,10 @@ marsair.spread_air = function(pos)
 end
 --end level system
 
+minetest.register_privilege("full_air_spreed", {
+	decription = "Can spread air with airgen outside of rooms, which may"..
+		"generate a bit lag if abused.",
+})
 
 marsair.use_air_gene = function(pos, player)
 	if player and minetest.is_protected(pos,player:get_player_name()) then return end
@@ -117,7 +121,9 @@ marsair.use_air_gene = function(pos, player)
 	local needed_air = {name="marsair:air", count=8, wear=0, metadata=""}
 	
 	--check for inside/outside (try to not generate outside of a house)
-	if not marsair.is_inside(pos) then
+	local full_air_spreed = minetest.check_player_privs(player, 
+			{full_air_spreed=1})
+	if (not marsair.is_inside(pos)) and (not full_air_spreed) then
 		minetest.get_meta(pos):set_string("infotext", "Air Generator [This area is too big (max " .. marsair.radius-1 .. "steps) you have to rebuild]")
 		return
 	end
