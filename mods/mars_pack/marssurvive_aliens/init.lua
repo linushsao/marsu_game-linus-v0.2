@@ -1,6 +1,6 @@
 marssurvive_aliens = {
 	alien_abm_max = 4, 
-	alien_spawnchance = 80*80*2, --(^-1)
+	alien_spawnchance = 80*80*80, -- one per block
 	alien_lifetime = 25,
 	alien_spawninterval = 1000
 }
@@ -14,7 +14,7 @@ minetest.register_abm({
 	chance = marssurvive_aliens.alien_spawnchance,
 	action = function(pos)
 		local name=minetest.get_node(pos).name
-		pos={x=pos.x,y=pos.y+1,z=pos.z}
+		pos={x=pos.x,y=pos.y+2,z=pos.z} --for big aliens
 		if minetest.get_node(pos).name=="air" then
 			local count = 0
 			local objects = minetest.get_objects_inside_radius(pos, 50)
@@ -179,9 +179,11 @@ local marssurvive_alien=function(self, dtime)
 					minetest.sound_play("marssurvive_attack1", {pos=self.object:getpos(), gain = 1, max_hear_distance = 15,})
 				end
 --hurting
-				if tpos<=3 and math.random(3)==1 then
-					--stay and fight:
-					self.object:setvelocity({x=0, y=self.move.y, z=0})
+				if tpos<=3 then
+				    --stay and fight
+				    self.object:setvelocity({x=0, y=self.move.y, z=0})
+				    setanim(self, "mine")
+				    if math.random(3)==1 then
 					self.attack_target:punch(self.object, 1.0, {full_punch_interval=1.0,damage_groups={fleshy=4}}, nil)
 
 					if self.attack_target:is_player() and self.attack_target:get_hp()<=0 then
@@ -195,6 +197,7 @@ local marssurvive_alien=function(self, dtime)
 						self.object:set_hp(self.object:get_hp()+5)
 						setanim(self,"stand")
 					end
+				    end
 				end
 			end
 		end
