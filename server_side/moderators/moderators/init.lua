@@ -19,7 +19,7 @@ dofile(minetest.get_modpath("moderators") .. "/crafting.lua")
 
 
 local not_reset_privs = {
-	interact=1, full_air_spreed=1, home=1, shout=1
+	interact=1, full_air_spread=1, home=1, shout=1
 }
 --check privs for areas for all players
 minetest.register_on_joinplayer(function(player)

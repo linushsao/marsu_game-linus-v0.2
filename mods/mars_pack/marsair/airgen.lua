@@ -108,7 +108,7 @@ marsair.spread_air = function(pos)
 end
 --end level system
 
-minetest.register_privilege("full_air_spreed", {
+minetest.register_privilege("full_air_spread", {
 	decription = "Can spread air with airgen outside of rooms, which may"..
 		"generate a bit lag if abused.",
 })
@@ -121,9 +121,9 @@ marsair.use_air_gene = function(pos, player)
 	local needed_air = {name="marsair:air", count=8, wear=0, metadata=""}
 	
 	--check for inside/outside (try to not generate outside of a house)
-	local full_air_spreed = minetest.check_player_privs(player, 
-			{full_air_spreed=1})
-	if (not marsair.is_inside(pos)) and (not full_air_spreed) then
+	local full_air_spread = minetest.check_player_privs(player, 
+			{full_air_spread=true})
+	if (not marsair.is_inside(pos)) and (not full_air_spread) then
 		minetest.get_meta(pos):set_string("infotext", "Air Generator [This area is too big (max " .. marsair.radius-1 .. "steps) you have to rebuild]")
 		return
 	end
