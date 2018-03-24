@@ -1,6 +1,6 @@
 marssurvive_aliens = {
 	alien_abm_max = 4, 
-	alien_spawnchance = 80*80*2, --(^-1)
+	alien_spawnchance = 80*80*80, -- one per block
 	alien_lifetime = 25,
 	alien_spawninterval = 1000
 }
@@ -14,7 +14,7 @@ minetest.register_abm({
 	chance = marssurvive_aliens.alien_spawnchance,
 	action = function(pos)
 		local name=minetest.get_node(pos).name
-		pos={x=pos.x,y=pos.y+1,z=pos.z}
+		pos={x=pos.x,y=pos.y+2,z=pos.z} --for big aliens
 		if minetest.get_node(pos).name=="air" then
 			local count = 0
 			local objects = minetest.get_objects_inside_radius(pos, 50)
