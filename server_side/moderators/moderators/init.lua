@@ -18,42 +18,27 @@ dofile(minetest.get_modpath("moderators") .. "/crafting.lua")
 
 
 
+local not_reset_privs = {
+	interact=1, full_air_spreed=1, home=1, shout=1
+}
 --check privs for areas for all players
 minetest.register_on_joinplayer(function(player)
 
-print("CHECK PLAYERS")
---	minetest.chat_send_all("ready to revoke privs")
   local playername = player:get_player_name()
---  minetest.chat_send_all(playername)
- -- if ((playername ~= "tm3") and (playername ~= "juli") and (playername ~= "yang2003") and (playername ~= "admin")) then
-  if is_md0(playername) then
-		recovery_md0_privs()
+  
+    if is_md0(playername) then
+	--	recovery_md0_privs()
 		return true
-	else
-    local privs = minetest.get_player_privs(playername)
---    minetest.chat_send_all("ready to revoke privs")
-
-    if (privs.interact) then
---    minetest.chat_send_all("for interat")
-    minetest.set_player_privs(playername,{})
---    minetest.chat_send_all(dump(minetest.get_player_privs(playername)))
-    local privs = minetest.get_player_privs(playername)
-    privs.home = true
-    privs.shout = true
-    privs.interact = true
-    minetest.set_player_privs(playername, privs)
     else
---      minetest.chat_send_all("for no interat")
-      minetest.set_player_privs(playername,{})
---      minetest.chat_send_all(dump(minetest.get_player_privs(playername)))
-      local privs = minetest.get_player_privs(playername)
-      privs.home = true
-      privs.shout = true
-      minetest.set_player_privs(playername, privs)
+	local privs = minetest.get_player_privs(playername)
+	minetest.set_player_privs(playername,{})
+	for priv, value in pairs(privs) do
+	    if not not_reset_privs[priv] then
+		    privs[priv] = nil
+	    end
+	end
+	minetest.set_player_privs(playername, privs)
     end
---    minetest.chat_send_all("revoke completely")
---    minetest.chat_send_all(dump(minetest.get_player_privs(playername)))
-  end
 
 end)
 
@@ -94,10 +79,6 @@ minetest.register_globalstep(function(dtime)
 		timer = 0
 	end
 
-end)
-
-minetest.register_on_shutdown(function()
---recovery_md0_privs() --recovery supervisors's privs
 end)
 
 --read all configure at server starting
@@ -197,29 +178,7 @@ load_worldedit_limits()
 load_mars_conf()
 register_pos_conf()
 
-
-
---[[
---spawn point
-minetest.register_on_newplayer(function(player)
-    player:setpos({x=v["spawn"].x, y=v["spawn"].y, z=v["spawn"].z})
-    return true
-end)
-
---respawn to player hall when die
-minetest.register_on_respawnplayer(function(player)
-    player:setpos({x=v["respawn"].x, y=v["respawn"].y, z=v["respawn"].z})
-		return true
-
-end)
-]]
-
-print(dump(msg))
-print(dump(worldedit_limits))
-
-
 minetest.register_on_shutdown(function()
---recovery_md0_privs() --recovery supervisors's privs
 	save_all_mars_config()
 	minetest.log("action","mars_config saved.")
 
