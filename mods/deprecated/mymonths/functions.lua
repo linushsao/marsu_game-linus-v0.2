@@ -41,19 +41,8 @@ end)
 
 -- Check to see if file exists and if not sets default values.
 local f, err = io.open(minetest.get_worldpath().."/mymonths_data", "r")
-
---if f == nil then
-
 	mymonths.day_counter = 1
 	mymonths.month_counter = 6
 	mymonths.month = "June"
 	mymonths.weather = "clear"
 	mymonths.day_name = "Monday"
---[[else
-
-	mymonths.day_counter = mymonths.read_mymonths().day_counter
-	mymonths.month_counter = mymonths.read_mymonths().month_counter
-	mymonths.month = mymonths.read_mymonths().month
-	mymonths.weather = mymonths.read_mymonths().weather
-	mymonths.day_name = mymonths.read_mymonths().day_name
-end]]--

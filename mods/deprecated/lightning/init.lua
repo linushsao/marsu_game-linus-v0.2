@@ -202,7 +202,7 @@ minetest.register_node("lightning:dying_flame", {
 
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(rng:next(20, 40))
-		minetest.after(0.5, fire.on_flame_add_at, pos)
+		--minetest.after(0.5, fire.on_flame_add_at, pos)
 	end,
 })
 
