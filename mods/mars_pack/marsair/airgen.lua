@@ -123,7 +123,7 @@ marsair.use_air_gene = function(pos, player)
 	--check for inside/outside (try to not generate outside of a house)
 	local full_air_spread = false
 	if player then
-		local full_air_spread = minetest.check_player_privs(player, 
+		full_air_spread = minetest.check_player_privs(player, 
 			{full_air_spread=true})
 	end
 	if (not marsair.is_inside(pos)) and (not full_air_spread) then
