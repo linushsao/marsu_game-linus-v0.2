@@ -48,37 +48,20 @@ local check_time = ""
 
 minetest.register_globalstep(function(dtime)
 
-	local check_file_reset = minetest.get_worldpath() .. "/check_file_reset"
+    local check_file_reset = minetest.get_worldpath() .. "/check_file_reset"
+    timer = timer + dtime
 
+    if timer >= 60 then
+	check_time = (os.date("%H%M"))
 
-	timer = timer + dtime
-
-	if timer >= 60 then
-
-		check_time = (os.date("%H%M"))
-
-    if check_time == "2354" then
-          minetest.chat_send_all("!!!Warning,Server will be restarted after 5 mins!!!")
-    elseif check_time == "2358" then
-          minetest.chat_send_all("!!!Warning,Server will be restarted after 1 mins!!!")
-          minetest.chat_send_all("!!!Server will be online again in a minute !!!")
-
-					recovery_md0_privs() --recovery supervisors's privs
-
-					--[[
-					if io.open(check_file_reset, "r") ~= nil then
-						local check_file = minetest.get_worldpath() .. "/check_file" --means reset privs for supervisors
-						local check_file_worldedit = minetest.get_worldpath() .. "/check_file_worldedit" --means add worldedit privs for supervisors
-
-						os.execute("rm -rf "..check_file_worldedit)
-						os.execute("touch  "..check_file)
-					end
-					]]
-
+        if check_time == "2354" then
+              minetest.chat_send_all("!!!Warning,Server will be restarted after 5 mins!!!")
+        elseif check_time == "2358" then
+              minetest.chat_send_all("!!!Warning,Server will be restarted after 1 mins!!!")
+              minetest.chat_send_all("!!!Server will be online again in a minute !!!")
+        end
+	      timer = 0
     end
-		timer = 0
-	end
-
 end)
 
 --read all configure at server starting
