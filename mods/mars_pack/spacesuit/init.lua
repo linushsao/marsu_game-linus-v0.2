@@ -202,8 +202,8 @@ minetest.register_alias("marssurvive:spblue", "spacesuit:spblue")
 
 --for test
 minetest.register_on_player_hpchange(function(player, hp_change)
-	print("\n\nHP_CHANGE: " .. hp_change)
-	print(dump(player:get_armor_groups()))
+	--print("\n\nHP_CHANGE: " .. hp_change)
+	--print(dump(player:get_armor_groups()))
 	return hp_change
 end, true)
 
