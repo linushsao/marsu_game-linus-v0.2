@@ -71,11 +71,22 @@ minetest.register_node("spacesuit:air_gassbottle", {
 minetest.register_craftitem("spacesuit:air_gassbottle_empty", {
         description = "empty Air gassbotte",
         inventory_image = "gassbottle_empty.png",
-    	on_place = function(itemstack, user, pointed_thing)
+    	on_use = function(itemstack, user, pointed_thing)
+		if not pointed_thing.under then return end
 	        local node = minetest.get_node(pointed_thing.under)
 	        if string.sub(node.name, 1, 14) == "marsair:airgen" then
 		        itemstack:set_count(itemstack:get_count()-1)
-			user:get_inventory():add_item("main", "spacesuit:air_gassbottle")
+			local inv = user:get_inventory()
+			local stack = ItemStack("spacesuit:air_gassbottle")
+			if inv:room_for_item("main", stack) then
+				inv:add_item("main", stack)
+			else
+				local playername = user:get_player_name()
+				minetest.chat_send_player(playername,
+				    "your inventory is full: bottle dropped")
+				print(dump(stack, user, user:getpos()))
+				minetest.item_drop(stack, user, user:getpos())
+			end
 			return itemstack
 		end
 	end,
@@ -202,8 +213,6 @@ minetest.register_alias("marssurvive:spblue", "spacesuit:spblue")
 
 --for test
 minetest.register_on_player_hpchange(function(player, hp_change)
-	--print("\n\nHP_CHANGE: " .. hp_change)
-	--print(dump(player:get_armor_groups()))
 	return hp_change
 end, true)
 
