@@ -83,8 +83,8 @@ minetest.register_abm({
 	chance = 1,
 	action = function(pos)
 		airpos = minetest.find_node_near(pos, 1, "air")
-		minetest.log("action", "airleak1 at pos: "..pos.x..","..pos.y..
-		","..pos.z.." by: "..airpos.x..","..airpos.y..","..airpos.z)
+		--minetest.log("action", "airleak1 at pos: "..pos.x..","..pos.y..
+		--","..pos.z.." by: "..airpos.x..","..airpos.y..","..airpos.z)
 		if math.random(marsairconfig.vacuum_leak_chance) == 1 then
 			minetest.swap_node(pos, {name = "air"})
 			return
@@ -172,7 +172,8 @@ function air_leak(pos)
 						new[nposs] = 1
 					elseif node_name == "marsair:airgen" then
 						if not airgen_removeone(gene_pos) then
-minetest.log("action", "airleak2 at pos: "..pos.x..","..pos.y..","..pos.z)
+--minetest.log("action", "airleak2 at pos: "..pos.x..","..pos.y..","..pos.z)
+minetest.chat_send_player("juli", "airleak2 at pos: "..pos.x..","..pos.y..","..pos.z)
 							minetest.set_node(pos, {name = "air"})
 						end
 						return
