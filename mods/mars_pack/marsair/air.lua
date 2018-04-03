@@ -4,6 +4,18 @@ marsair.build_allowed = {
 	["marsair:air"] = 1
 }
 
+marsair.debug = {}
+marsair.debug.last_airleak1 = 0
+
+local function send_debug_airleak1(pos, airpos) 
+	if minetest.get_gametime()-marsair.debug.last_airleak1 > 20 then
+		marsair.debug.last_airleak1 = minetest.get_gametime()
+		minetest.log("action", "airleak1 at pos: "..pos.x..","..pos.y..
+		","..pos.z.." by: "..airpos.x..","..airpos.y..","..airpos.z)
+	end
+end
+
+
 function marsair.is_free_space(pos) 
 	local name = minetest.get_node(pos).name
 	if marsair.build_allowed[name] then return true
@@ -82,9 +94,8 @@ minetest.register_abm({
 	interval = marsairconfig.vacuum_leak_speed,
 	chance = 1,
 	action = function(pos)
-		airpos = minetest.find_node_near(pos, 1, "air")
-		--minetest.log("action", "airleak1 at pos: "..pos.x..","..pos.y..
-		--","..pos.z.." by: "..airpos.x..","..airpos.y..","..airpos.z)
+		local airpos = minetest.find_node_near(pos, 1, "air")
+		send_debug_airleak1(pos, airpos)
 		if math.random(marsairconfig.vacuum_leak_chance) == 1 then
 			minetest.swap_node(pos, {name = "air"})
 			return
@@ -172,8 +183,7 @@ function air_leak(pos)
 						new[nposs] = 1
 					elseif node_name == "marsair:airgen" then
 						if not airgen_removeone(gene_pos) then
---minetest.log("action", "airleak2 at pos: "..pos.x..","..pos.y..","..pos.z)
-minetest.chat_send_player("juli", "airleak2 at pos: "..pos.x..","..pos.y..","..pos.z)
+minetest.log("action", "airleak2 at pos: "..pos.x..","..pos.y..","..pos.z)
 							minetest.set_node(pos, {name = "air"})
 						end
 						return
