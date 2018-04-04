@@ -258,7 +258,8 @@ function quests.start_all_group_quests(playername, groupname)
 	end
 end
 
-function quests.check_player_finished_all(playername) 
+function quests.check_player_finished_all(playername)
+	if not quests.active_quests[playername] then return false end
 	return (next(quests.active_quests[playername]) == nil)
 end
 
